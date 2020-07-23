@@ -89,26 +89,27 @@ p {
 }
 
 pre {
-    margin: 1em 0
-}
-
-pre {
-    font-family: monospace, serif;
-    font-size: 1em;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    background: lightgray;
-    padding: 5px;
+    line-height: 1.4;
+    padding: 1.25rem 1.5rem;
+    margin: .85rem 0;
+    background-color: #282c34;
+    border-radius: 6px;
+    overflow: auto;
     direction: ltr;
     text-align: left;
+    color: #fff;
+}
+
+pre .key{
+    color: #A14E69;
 }
 
 ul {
     padding: 0;
     font-size: 20px;
-    margin: 1em 0;
+    margin: 1em 2em;
     list-style: none;
-    list-style-image: none
+    list-style-type:disc;
 }
 
 .container {
@@ -351,6 +352,10 @@ footer#footer {
     margin-bottom: 40px;
 }
 
+.title {
+    border-bottom: 1px #dedede solid;
+}
+
 #go_top {
     display: none;
     position: fixed;
@@ -383,6 +388,8 @@ table {
     border-collapse: collapse;
     width: 100%;
     margin-top: 10px;
+    text-align: left;
+    direction: ltr;
 }
 
 td, th {

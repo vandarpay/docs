@@ -1,53 +1,56 @@
 <div class="article" id="basic">
-    <h2 class="article-header">مفاهیم اولیه</h2>
-    <p>به بخش مستندات فنی وندار خوش آمدید. برای استفاده از مستندات فنی درگاه و درگاه دومرحله‌ای لازم است از API key ارائه شده در صفحه‌ی درگاه پرداخت میز کار استفاده کنید. برای استفاده از سایر APIها باید با فراخوانی API احراز هویت توکن مورد نظر را دریافت کنید.</p>
-    <p>در استفاده از مستندات زیر به سطح دسترسی کاربران کسب‌وکار توجه کنید، ممکن است بعضی از APIها برای بعضی از کاربران قابل دسترسی نباشد.وب‌سرویس‌های وندار به صورت REST در اختیار کاربران و همکاران تجاری ما قرار گرفته است.</p>
-    <div class="info">
-        <strong>نکته!</strong> مدت زمان اعتبار توکن‌ها ۵ روز است.
-    </div>
-    <div class="info">
-        <strong>نکته!</strong> همواره به جای {business} نام انگلیسی کسب‌وکار جایگذاری شود.
-    </div>
-
-    <table>
-        <tr>
-            <th>Company</th>
-            <th>Contact</th>
-            <th>Country</th>
-        </tr>
-        <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-        </tr>
-        <tr>
-            <td>Centro comercial Moctezuma</td>
-            <td>Francisco Chang</td>
-            <td>Mexico</td>
-        </tr>
-        <tr>
-            <td>Ernst Handel</td>
-            <td>Roland Mendel</td>
-            <td>Austria</td>
-        </tr>
-        <tr>
-            <td>Island Trading</td>
-            <td>Helen Bennett</td>
-            <td>UK</td>
-        </tr>
-        <tr>
-            <td>Laughing Bacchus Winecellars</td>
-            <td>Yoshi Tannamuri</td>
-            <td>Canada</td>
-        </tr>
-        <tr>
-            <td>Magazzini Alimentari Riuniti</td>
-            <td>Giovanni Rovelli</td>
-            <td>Italy</td>
-        </tr>
-    </table>
-    
-    <pre>
+    <h2 class="article-header">درگاه پرداخت</h2>
+    <div>
+        <h3 class="sub-title">
+            <strong>مرحله اول:</strong> ارسال اطلاعات و دریافت توکن
+        </h3>
+        <p>به بخش مستندات فنی وندار خوش آمدید. برای استفاده از مستندات فنی درگاه و درگاه دومرحله‌ای لازم است از API key ارائه شده در صفحه‌ی درگاه پرداخت میز کار استفاده کنید. برای استفاده از سایر APIها باید با فراخوانی API احراز هویت توکن مورد نظر را دریافت کنید.</p>
+        <p>در استفاده از مستندات زیر به سطح دسترسی کاربران کسب‌وکار توجه کنید، ممکن است بعضی از APIها برای بعضی از کاربران قابل دسترسی نباشد.وب‌سرویس‌های وندار به صورت REST در اختیار کاربران و همکاران تجاری ما قرار گرفته است.</p>
+        <div class="info">
+            <strong>نکته!</strong> مدت زمان اعتبار توکن‌ها ۵ روز است.
+        </div>
+        <div class="info">
+            <strong>نکته!</strong> همواره به جای {business} نام انگلیسی کسب‌وکار جایگذاری شود.
+        </div>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>api_key</td>
+                <td>string</td>
+                <td>required</td>
+            </tr>
+            <tr>
+                <td>amount</td>
+                <td>Integer</td>
+                <td>required</td>
+            </tr>
+            <tr>
+                <td>callback_url</td>
+                <td>String</td>
+                <td>required</td>
+            </tr>
+            <tr>
+                <td>mobile_number</td>
+                <td>String</td>
+                <td>optional</td>
+            </tr>
+            <tr>
+                <td>factorNumber</td>
+                <td>String</td>
+                <td>optional</td>
+            </tr>
+            <tr>
+                <td>description</td>
+                <td>String</td>
+                <td>optional</td>
+            </tr>
+        </table>
+        
+        <pre>
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
@@ -74,5 +77,6 @@ if ($err) {
 } else {
     echo $response;
 }
-    </pre>
+        </pre>
+    </div>
 </div>
