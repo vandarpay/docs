@@ -1,0 +1,78 @@
+<div class="article" id="basic">
+    <h2 class="article-header">مفاهیم اولیه</h2>
+    <p>به بخش مستندات فنی وندار خوش آمدید. برای استفاده از مستندات فنی درگاه و درگاه دومرحله‌ای لازم است از API key ارائه شده در صفحه‌ی درگاه پرداخت میز کار استفاده کنید. برای استفاده از سایر APIها باید با فراخوانی API احراز هویت توکن مورد نظر را دریافت کنید.</p>
+    <p>در استفاده از مستندات زیر به سطح دسترسی کاربران کسب‌وکار توجه کنید، ممکن است بعضی از APIها برای بعضی از کاربران قابل دسترسی نباشد.وب‌سرویس‌های وندار به صورت REST در اختیار کاربران و همکاران تجاری ما قرار گرفته است.</p>
+    <div class="info">
+        <strong>نکته!</strong> مدت زمان اعتبار توکن‌ها ۵ روز است.
+    </div>
+    <div class="info">
+        <strong>نکته!</strong> همواره به جای {business} نام انگلیسی کسب‌وکار جایگذاری شود.
+    </div>
+
+    <table>
+        <tr>
+            <th>Company</th>
+            <th>Contact</th>
+            <th>Country</th>
+        </tr>
+        <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+        </tr>
+        <tr>
+            <td>Centro comercial Moctezuma</td>
+            <td>Francisco Chang</td>
+            <td>Mexico</td>
+        </tr>
+        <tr>
+            <td>Ernst Handel</td>
+            <td>Roland Mendel</td>
+            <td>Austria</td>
+        </tr>
+        <tr>
+            <td>Island Trading</td>
+            <td>Helen Bennett</td>
+            <td>UK</td>
+        </tr>
+        <tr>
+            <td>Laughing Bacchus Winecellars</td>
+            <td>Yoshi Tannamuri</td>
+            <td>Canada</td>
+        </tr>
+        <tr>
+            <td>Magazzini Alimentari Riuniti</td>
+            <td>Giovanni Rovelli</td>
+            <td>Italy</td>
+        </tr>
+    </table>
+    
+    <pre>
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+    CURLOPT_URL => "https://vandar.io/api/ipg/send",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "POST",
+    CURLOPT_POSTFIELDS => "-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"api_key\"\r\n\r\nAPI_KEY\r",
+    CURLOPT_HTTPHEADER => array(
+    "content-type: multipart/form-data"
+    ),
+));
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+    echo "cURL Error #:" . $err;
+} else {
+    echo $response;
+}
+    </pre>
+</div>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <title>مستندات وندار | ارایه دهنده راهکارهای پرداخت</title>
+    <meta name="description" content="">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="format-detection" content="telephone=no">
+    <link href="https://fonts.googleapis.com/css2?family=Markazi+Text&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.rtl.css">
+    <link rel='icon' href='favicon.ico' type='image/x-icon' >
+</head>
+<body dir="rtl">
+<header id="header">
+    <h1>Vandar</h1>
+    <h2>مستندات وندار</h2>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <ul>
+                <li>
+                    <a href="#basic">مفاهیم اولیه</a>
+                </li>
+                <li>
+                    <a href="#ipg">درگاه پرداخت</a>
+                </li>
+                <li>
+                    <a href="#auth">لاگین</a>
+                </li>
+                <li>
+                    <a href="#business">کسب‌وکار</a>
+                </li>
+                <li>
+                    <a href="#iban">سرویس شبا</a>
+                </li>
+                <li>
+                    <a href="#invoice">صورت حساب</a>
+                </li>
+                <li>
+                    <a href="#settlement">سرویس تسویه</a>
+                </li>
+                <li>
+                    <a href="#errors">خطا‌ها</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-9">
+                <article class="content">
+                    <div class="article" id="basic">
+                        <h2 class="article-header">مفاهیم اولیه</h2>
+                        <p>به بخش مستندات فنی وندار خوش آمدید. برای استفاده از مستندات فنی درگاه و درگاه دومرحله‌ای لازم است از API key ارائه شده در صفحه‌ی درگاه پرداخت میز کار استفاده کنید. برای استفاده از سایر APIها باید با فراخوانی API احراز هویت توکن مورد نظر را دریافت کنید.</p>
+                        <p>در استفاده از مستندات زیر به سطح دسترسی کاربران کسب‌وکار توجه کنید، ممکن است بعضی از APIها برای بعضی از کاربران قابل دسترسی نباشد.وب‌سرویس‌های وندار به صورت REST در اختیار کاربران و همکاران تجاری ما قرار گرفته است.</p>
+                        <div class="info">
+                            <strong>نکته!</strong> مدت زمان اعتبار توکن‌ها ۵ روز است.
+                        </div>
+                        <div class="info">
+                            <strong>نکته!</strong> همواره به جای {business} نام انگلیسی کسب‌وکار جایگذاری شود.
+                        </div>
+                    </div>
+                </article>
+        </div>
+    </div>
+</div>
+
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-xs-6 no-padding-bottom">
+                <a href="https://github.com/vandarpay/docs" target="_blank">مخزن گیت‌هاب</a>
+            </div>
+            <div class="col-sm-4 col-xs-6 text-right no-padding-bottom">2020 &copy; <a href="https://vandar.io" target="_blank">وندار</a></div>
+        </div>
+    </div>
+
+</footer>
+<button onclick="goTop()" id="go_top" title="Go to top">^</button>
+<script>
+    window.onscroll = function() {
+        var top = document.getElementById("go_top");
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            top.style.display = "block";
+        } else {
+            top.style.display = "none";
+        }
+    };
+
+    function goTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    };
+</script>
+</body>
+</html>
