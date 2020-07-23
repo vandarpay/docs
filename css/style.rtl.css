@@ -117,6 +117,10 @@ img {
     margin-top: 5px;
 }
 
+.active{
+    font-weight: bold;
+}
+
 .container {
     width: 100%;
     max-width: 1140px;
