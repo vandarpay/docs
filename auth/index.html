@@ -203,19 +203,10 @@
                                 نمونه پاسخ دریافتی ناموفق
                             </h3>
                             <pre>
-<span class="key">HTTP/1.1</span> 422
+<span class="key">HTTP/1.1</span> 400
 {
     "<span class="key">status</span>": 0,
-    "<span class="key">errors</span>": [
-        "وارد کردن api key الزامی است",
-        "api_key معتبر نیست",
-        "IP پذیرنده معتبر نیست",
-        "وارد کردن callback_url الزامی است",
-        "callback_url معتبر نیست",
-        "وارد کردن amount الزامی است",
-        "amount نباید کوچکتر از 1000 باشد",
-        "amount باید عدد یا رشته‌ای از اعداد باشد",
-    ]
+    "<span class="key">error</span>": "نام کاربری یا رمز عبور اشتباه وارد شده است"
 }
                             </pre>
                         </div>
