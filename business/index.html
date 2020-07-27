@@ -92,137 +92,109 @@
                             <pre>
 <span class="key">HTTP/1.1</span> 200
 {
-<code class="language-json hljs">{
-    "<span class="hljs-attr">status</span>": <span class="hljs-number">1</span>,
-    "<span class="hljs-attr">data</span>": [
+
+    "<span class="key">status</span>": 1,
+    "<span class="key">data</span>": [
         {
-            "<span class="hljs-attr">id</span>": <span class="hljs-literal">null</span>,
-            "<span class="hljs-attr">business_name</span>": <span
-            class="hljs-string">"personal"</span>,
-            "<span class="hljs-attr">business_name_fa</span>": <span
-            class="hljs-string">"حساب شخصی"</span>,
-            "<span class="hljs-attr">national_code</span>": <span
-            class="hljs-string">"00******35"</span>,
-            "<span class="hljs-attr">business_type</span>": <span
-            class="hljs-string">"personal"</span>,
-            "<span class="hljs-attr">phone_number</span>": <span class="hljs-literal">null</span>,
-            "<span class="hljs-attr">postal_code</span>": <span
-            class="hljs-string">"0123456789"</span>,
-            "<span class="hljs-attr">address</span>": <span class="hljs-literal">null</span>,
-            "<span class="hljs-attr">wallet</span>": <span class="hljs-number">0</span>,
-            "<span class="hljs-attr">avatar</span>": <span
-            class="hljs-string">"users/default.png"</span>,
-            "<span class="hljs-attr">city_id</span>": <span class="hljs-literal">null</span>,
-            "<span class="hljs-attr">mcc_code</span>": <span class="hljs-literal">null</span>,
-            "<span class="hljs-attr">national_id</span>": <span class="hljs-literal">null</span>,
-            "<span class="hljs-attr">legal_business_name</span>": <span
-            class="hljs-literal">null</span>,
-            "<span class="hljs-attr">today_transactions</span>": <span class="hljs-number">0</span>,
-            "<span class="hljs-attr">today_settlements</span>": <span class="hljs-number">0</span>,
-            "<span class="hljs-attr">statusBox</span>": {
-                "<span class="hljs-attr">kyc</span>": <span class="hljs-literal">true</span>,
-                "<span class="hljs-attr">shahkar</span>": <span class="hljs-literal">false</span>,
-                "<span class="hljs-attr">mobile</span>": <span class="hljs-string">"accepted"</span>,
-                "<span class="hljs-attr">email</span>": <span class="hljs-string">"accepted"</span>,
-                "<span class="hljs-attr">personal_information</span>": <span class="hljs-string">"accepted"</span>,
-                "<span class="hljs-attr">mobile_owner_national_card</span>": <span
-            class="hljs-literal">false</span>
+            "<span class="key">id</span>":null,
+            "<span class="key">business_name</span>":"personal",
+            "<span class="key">business_name_fa</span>,"حساب شخصی":"
+            "<span class="key">national_code</span>":
+           "00******35",
+            "<span class="key">business_type</span>": "personal",
+            "<span class="key">phone_number</span>":null,
+            "<span class="key">postal_code</span>": <"0123456789">,
+            "<span class="key">address</span>":null,
+            "<span class="key">wallet</span>": 0,
+            "<span class="key">avatar</span>": "users/default.png",
+            "<span class="key">city_id</span>": null,
+            "<span class="key">mcc_code</span>": null,
+            "<span class="key">national_id</span>": null,
+            "<span class="key">legal_business_name</span>":null,
+            "<span class="key">today_transactions</span>":0,
+            "<span class="key">today_settlements</span>": 0,
+            "<span class="key">statusBox</span>": {
+                "<span class="key">kyc</span>": true,
+                "<span class="key">shahkar</span>": false,
+                "<span class="key">mobile</span>": "accepted",
+                "<span class="key">email</span>": "accepted",
+                "<span class="key">personal_information</span>":"accepted",
+                "<span class="key">mobile_owner_national_card</span>": false
             }
         },
         {
-            "<span class="hljs-attr">id</span>": <span class="hljs-number">662</span>,
-            "<span class="hljs-attr">active</span>": <span class="hljs-number">1</span>,
-            "<span class="hljs-attr">business_name</span>": <span class="hljs-string">"your business name"</span>,
-            "<span class="hljs-attr">business_name_fa</span>": <span
-            class="hljs-string">"مریم"</span>,
-            "<span class="hljs-attr">legal_business_name</span>": <span
-            class="hljs-literal">null</span>,
-            "<span class="hljs-attr">national_id</span>": <span class="hljs-literal">null</span>,
-            "<span class="hljs-attr">business_type</span>": <span
-            class="hljs-string">"personal"</span>,
-            "<span class="hljs-attr">phone_number</span>": <span
-            class="hljs-string">"88****22"</span>,
-            "<span class="hljs-attr">postal_code</span>": <span
-            class="hljs-string">"0123456789"</span>,
-            "<span class="hljs-attr">city_id</span>": <span class="hljs-string">"8-6"</span>,
-            "<span class="hljs-attr">mcc_code</span>": <span class="hljs-string">"15200002"</span>,
-            "<span class="hljs-attr">address</span>": <span
-            class="hljs-string">"تهران میدان آزادی"</span>,
-            "<span class="hljs-attr">wallet</span>": <span class="hljs-number">1050</span>,
-            "<span class="hljs-attr">deductible_amount</span>": <span
-            class="hljs-string">"10500"</span>,
-            "<span class="hljs-attr">blocked_amount</span>": <span class="hljs-number">0</span>,
-            "<span class="hljs-attr">avatar</span>": <span class="hljs-string">"businesses/avatars/iz3giCpBWyoj7CYoalqulFX3RyQ63CMkbxFvQ5Zn.png"</span>,
-            "<span class="hljs-attr">statusBox</span>": {
-                "<span class="hljs-attr">payment_required</span>": <span
-            class="hljs-literal">false</span>,
-                "<span class="hljs-attr">national_card_photo</span>": <span class="hljs-string">"accepted"</span>,
-                "<span class="hljs-attr">official_Newspaper</span>": <span class="hljs-string">"accepted"</span>,
-                "<span class="hljs-attr">introduction_letter</span>": <span class="hljs-string">"accepted"</span>
+            "<span class="key">id</span>": 662,
+            "<span class="key">active</span>": 1,
+            "<span class="key">business_name</span>": "your business name",
+            "<span class="key">business_name_fa</span>": "مریم",
+            "<span class="key">legal_business_name</span>": null,
+            "<span class="key">national_id</span>":null,
+            "<span class="key">business_type</span>": "personal",
+            "<span class="key">phone_number</span>": "88****22",
+            "<span class="key">postal_code</span>": "0123456789",
+            "<span class="key">city_id</span>":"8-6",
+            "<span class="key">mcc_code</span>": "15200002",
+            "<span class="key">address</span>": "تهران میدان آزادی",
+            "<span class="key">wallet</span>": 1050,
+            "<span class="key">deductible_amount</span>": "10500",
+            "<span class="key">blocked_amount</span>": 0,
+            "<span class="key">avatar</span>": "businesses/avatars/iz3giCpBWyoj7CYoalqulFX3RyQ63CMkbxFvQ5Zn.png",
+            "<span class="key">statusBox</span>": {
+                "<span class="key">payment_required</span>": false,
+                "<span class="key">national_card_photo</span>":"accepted",
+                "<span class="key">official_Newspaper</span>": "accepted",
+                "<span class="key">introduction_letter</span>": "accepted"
             },
-            "<span class="hljs-attr">status</span>": <span class="hljs-number">1</span>,
-            "<span class="hljs-attr">today_transactions</span>": <span class="hljs-number">0</span>,
-            "<span class="hljs-attr">today_settlements</span>": <span class="hljs-number">0</span>,
-            "<span class="hljs-attr">role_name</span>": <span class="hljs-string">"مالک"</span>,
-            "<span class="hljs-attr">role</span>": <span class="hljs-string">"owner"</span>,
-            "<span class="hljs-attr">permissions</span>": [
-                <span class="hljs-string">"business_setting"</span>,
-                <span class="hljs-string">"add_iban"</span>,
-                <span class="hljs-string">"remove_iban"</span>,
-                <span class="hljs-string">"view_dashboard"</span>,
-                <span class="hljs-string">"create_request_forms"</span>,
-                <span class="hljs-string">"view_gateway_ipgs"</span>,
-                <span class="hljs-string">"create_gateway_ipgs"</span>,
-                <span class="hljs-string">"edit_gateway_ipgs"</span>,
-                <span class="hljs-string">"view_transactions_report"</span>,
-                <span class="hljs-string">"view_settlements"</span>,
-                <span class="hljs-string">"add_settlements"</span>,
-                <span class="hljs-string">"edit_settlements"</span>,
-                <span class="hljs-string">"view_request_forms"</span>
+            "<span class="key">status</span>": 1,
+            "<span class="key">today_transactions</span>": 0,
+            "<span class="key">today_settlements</span>": 0,
+            "<span class="key">role_name</span>": "مالک",
+            "<span class="key">role</span>": "owner",
+            "<span class="key">permissions</span>": [
+                <span class="key">"business_setting"</span>,
+                <span class="key">"add_iban"</span>,
+                <span class="key">"remove_iban"</span>,
+                <span class="key">"view_dashboard"</span>,
+                <span class="key">"create_request_forms"</span>,
+                <span class="key">"view_gateway_ipgs"</span>,
+                <span class="key">"create_gateway_ipgs"</span>,
+                <span class="key">"edit_gateway_ipgs"</span>,
+                <span class="key">"view_transactions_report"</span>,
+                <span class="key">"view_settlements"</span>,
+                <span class="key">"add_settlements"</span>,
+                <span class="key">"edit_settlements"</span>,
+                <span class="key">"view_request_forms"</span>
             ],
-            "<span class="hljs-attr">tools</span>": {
-                "<span class="hljs-attr">ipg</span>": {
-                    "<span class="hljs-attr">is_enabled</span>": <span
-            class="hljs-literal">true</span>,
-                    "<span class="hljs-attr">is_created</span>": <span
-            class="hljs-literal">true</span>
+            "<span class="key">tools</span>": {
+                "<span class="key">ipg</span>": {
+                    "<span class="key">is_enabled</span>":true,
+                    "<span class="key">is_created</span>": true
                 },
-                "<span class="hljs-attr">subscription</span>": {
-                    "<span class="hljs-attr">is_enabled</span>": <span
-            class="hljs-literal">false</span>,
-                    "<span class="hljs-attr">is_created</span>": <span
-            class="hljs-literal">null</span>
+                "<span class="key">subscription</span>": {
+                    "<span class="key">is_enabled</span>": false,
+                    "<span class="key">is_created</span>": null
                 },
-                "<span class="hljs-attr">requestMoney</span>": {
-                    "<span class="hljs-attr">is_enabled</span>": <span
-            class="hljs-literal">true</span>,
-                    "<span class="hljs-attr">is_created</span>": <span
-            class="hljs-literal">false</span>
+                "<span class="key">requestMoney</span>": {
+                    "<span class="key">is_enabled</span>": true,
+                    "<span class="key">is_created</span>": false
                 },
-                "<span class="hljs-attr">api</span>": {
-                    "<span class="hljs-attr">is_enabled</span>": <span
-            class="hljs-literal">false</span>,
-                    "<span class="hljs-attr">is_created</span>": <span
-            class="hljs-literal">null</span>
+                "<span class="key">api</span>": {
+                    "<span class="key">is_enabled</span>": false,
+                    "<span class="key">is_created</span>": null
                 },
-                "<span class="hljs-attr">customer</span>": {
-                    "<span class="hljs-attr">is_enabled</span>": <span
-            class="hljs-literal">false</span>,
-                    "<span class="hljs-attr">is_created</span>": <span
-            class="hljs-literal">null</span>
+                "<span class="key">customer</span>": {
+                    "<span class="key">is_enabled</span>": false,
+                    "<span class="key">is_created</span>": null
                 },
-                "<span class="hljs-attr">log</span>": {
-                    "<span class="hljs-attr">is_enabled</span>": <span
-            class="hljs-literal">true</span>,
-                    "<span class="hljs-attr">is_created</span>": <span
-            class="hljs-literal">null</span>
+                "<span class="key">log</span>": {
+                    "<span class="key">is_enabled</span>": true
+                    "<span class="key">is_created</span>": null
                 }
             }
         }
     ]
 }
-</code>
-}
+
                             </pre>
                             <ul>
                                 <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست
@@ -386,12 +358,132 @@
     "<span class="key">error</span>": Unauthenticated
 }
                             </pre>
+                            <ul>
+                                <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست
+                                    است
+                                </li>
+                                <li>error: نوع خطا را نمایش میدهد</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="title">
+                                <strong>اطلاعات</strong>
+                            </h3>
+                            <p>در این بخش اطلاعات مربوط به کسب و کار خاصی نمایش داده میشود<strong>
+                                نکته:</strong> به جای {business} نام کسب‌وکار ثبت شده خود در وندار
+                                را بنویسید.</p>
+                            <pre>
+<span class="key">METHOD:</span> GET
+<span class="key">URL:</span> https://api.vandar.io/v2/business/{business}
+                            </pre>
+
+                            <h3 class="sub-title">
+                                نمونه پاسخ دریافتی موفق
+                            </h3>
+                            <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+ "<span class="key">status</span>": 1,
+    "<span class="key">data</span>": [
+            "<span class="key">id</span>": 662,
+            "<span class="key">active</span>": 1,
+            "<span class="key">business_name</span>": "your business name",
+            "<span class="key">business_name_fa</span>": "مریم",
+            "<span class="key">legal_business_name</span>": null,
+            "<span class="key">national_id</span>":null,
+            "<span class="key">business_type</span>": "personal",
+            "<span class="key">phone_number</span>": "88****22",
+            "<span class="key">postal_code</span>": "0123456789",
+            "<span class="key">city_id</span>":"8-6",
+            "<span class="key">mcc_code</span>": "15200002",
+            "<span class="key">address</span>": "تهران میدان آزادی",
+            "<span class="key">wallet</span>": 1050,
+            "<span class="key">deductible_amount</span>": "10500",
+            "<span class="key">blocked_amount</span>": 0,
+            "<span class="key">avatar</span>": "businesses/avatars/iz3giCpBWyoj7CYoalqulFX3RyQ63CMkbxFvQ5Zn.png",
+            "<span class="key">statusBox</span>": {
+                "<span class="key">payment_required</span>": false,
+                "<span class="key">national_card_photo</span>":"accepted",
+                "<span class="key">official_Newspaper</span>": "accepted",
+                "<span class="key">introduction_letter</span>": "accepted"
+            },
+            "<span class="key">status</span>": 1,
+            "<span class="key">today_transactions</span>": 0,
+            "<span class="key">today_settlements</span>": 0,
+            "<span class="key">role_name</span>": "مالک",
+            "<span class="key">role</span>": "owner",
+            "<span class="key">permissions</span>": [
+                <span class="key">"business_setting"</span>,
+                <span class="key">"add_iban"</span>,
+                <span class="key">"remove_iban"</span>,
+                <span class="key">"view_dashboard"</span>,
+                <span class="key">"create_request_forms"</span>,
+                <span class="key">"view_gateway_ipgs"</span>,
+                <span class="key">"create_gateway_ipgs"</span>,
+                <span class="key">"edit_gateway_ipgs"</span>,
+                <span class="key">"view_transactions_report"</span>,
+                <span class="key">"view_settlements"</span>,
+                <span class="key">"add_settlements"</span>,
+                <span class="key">"edit_settlements"</span>,
+                <span class="key">"view_request_forms"</span>
+            ],
+            "<span class="key">tools</span>": {
+                "<span class="key">ipg</span>": {
+                    "<span class="key">is_enabled</span>":true,
+                    "<span class="key">is_created</span>": true
+                },
+                "<span class="key">subscription</span>": {
+                    "<span class="key">is_enabled</span>": false,
+                    "<span class="key">is_created</span>": null
+                },
+                "<span class="key">requestMoney</span>": {
+                    "<span class="key">is_enabled</span>": true,
+                    "<span class="key">is_created</span>": false
+                },
+                "<span class="key">api</span>": {
+                    "<span class="key">is_enabled</span>": false,
+                    "<span class="key">is_created</span>": null
+                },
+                "<span class="key">customer</span>": {
+                    "<span class="key">is_enabled</span>": false,
+                    "<span class="key">is_created</span>": null
+                },
+                "<span class="key">log</span>": {
+                    "<span class="key">is_enabled</span>": true
+                    "<span class="key">is_created</span>": null
+                }
+            }
+
+]
+
+}
+                            </pre>
+                            <ul>
+                                <li>نمونه خروجی مشابه خروجی لیست تمامی کسب و کار ها است . </li>
+                            </ul>
+                            <h3 class="sub-title">
+                                نمونه پاسخ دریافتی ناموفق
+                            </h3>
+                            <pre>
+<span class="key">HTTP/1.1</span> 421
+{
+    "<span class="key">status</span>": 0,
+    "<span class="key">error</span>": Unauthenticated
+}
+                            </pre>
+                            <ul>
+                                <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست
+                                    است
+                                </li>
+                                <li>error: نوع خطا را نمایش میدهد</li>
+                            </ul>
                         </div>
                     </div>
                 </article>
         </div>
     </div>
 </div>
+
 
 <footer id="footer">
     <div class="container">
