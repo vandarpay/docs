@@ -352,7 +352,7 @@
                                 نمونه پاسخ دریافتی ناموفق
                             </h3>
                             <pre>
-<span class="key">HTTP/1.1</span> 421
+<span class="key">HTTP/1.1</span> 401
 {
     "<span class="key">status</span>": 0,
     "<span class="key">error</span>": Unauthenticated
@@ -465,7 +465,97 @@
                                 نمونه پاسخ دریافتی ناموفق
                             </h3>
                             <pre>
-<span class="key">HTTP/1.1</span> 421
+<span class="key">HTTP/1.1</span> 401
+{
+    "<span class="key">status</span>": 0,
+    "<span class="key">error</span>": Unauthenticated
+}
+                            </pre>
+                            <ul>
+                                <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست
+                                    است
+                                </li>
+                                <li>error: نوع خطا را نمایش میدهد</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="title">
+                                <strong>کاربران</strong>
+                            </h3>
+                            <p>در این بخش میتوانید تمامی کاربران کسب و کار خود را مشاهده کنید با
+                                نمایش نقش آن ها و مواردی دیگر که در زیر توضیح داده میشود .<strong>
+                                    نکته:</strong> به جای {business} نام کسب‌وکار ثبت شده خود در
+                                وندار
+                                را بنویسید</p>
+                            <pre>
+<span class="key">METHOD:</span> GET
+<span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/iam
+                            </pre>
+                            <h3 class="sub-title">
+                                نمونه json
+                            </h3>
+                            <pre>
+{
+    "<span class="key">api_key</span>": "کلید اختصاصی دریافتی کاربر از پنل",
+}
+                            </pre>
+                            <h3 class="sub-title">
+                                نمونه پاسخ دریافتی موفق
+                            </h3>
+                            <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+
+
+    "<span class="key">status</span>": 1,
+    "<span class="key">data</span>": {
+      "<span class="key">users</span>": [
+        {
+          "<span class="key">name</span>": "مریم نبیان",
+          "<span class="key">avatar</span>": "https://vandar.io/storage/users/default.png",
+          "<span class="key">role</span>, "مالک کسب و کار":
+          "<span class="key">status</span>": 1,
+          "<span class="key">role_id</span>": 0,
+          "<span class="key">id</span>": null
+        }
+      ]
+    }
+}
+
+                            </pre>
+                            <ul>
+                                <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست
+                                    است
+                                </li>
+                                <li> data: شامل لیست کاربران و اطلاعات آن ها می باشد
+                                    <ul>
+                                        <li>
+                                           name : نام کاربر در کسب و کار است .
+                                        </li>
+                                        <li>
+                                        avatar : عکس کاربر در کسب و کار است .
+                                        </li>
+                                        <li>role : نقش کاربر در کسب و کار را میگوید.</li>
+                                        <li>status : ؟</li>
+                                        <li>role_id : ایدی مورد نظر با نقش کاربر را میگوید.
+                                            <ul>
+                                                <li>0 : ماسک کسب و کار </li>
+                                                <li>1 : مدیر </li>
+                                                <li>2 : حسابدار</li>
+                                                <li>3 : برنامه نویس </li>
+                                                <li>4 : ناظر</li>
+                                            </ul>
+                                        </li>
+                                        <li>id : ایدی فرد در کسب و کار میباشد
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <h3 class="sub-title">
+                                نمونه پاسخ دریافتی ناموفق
+                            </h3>
+                            <pre>
+<span class="key">HTTP/1.1</span> 401
 {
     "<span class="key">status</span>": 0,
     "<span class="key">error</span>": Unauthenticated
