@@ -49,17 +49,9 @@
         </div>
         <div class="col-sm-9">
                 <article class="content">
-                    <div class="article" id="basic">
-                        <h2 class="article-header">مفاهیم اولیه</h2>
-                        <p>به بخش مستندات فنی وندار خوش آمدید. برای استفاده از مستندات فنی درگاه و درگاه دومرحله‌ای لازم است از API key ارائه شده در صفحه‌ی درگاه پرداخت میز کار استفاده کنید. برای استفاده از سایر APIها باید با فراخوانی API احراز هویت توکن مورد نظر را دریافت کنید.</p>
-                        <p>در استفاده از مستندات زیر به سطح دسترسی کاربران کسب‌وکار توجه کنید، ممکن است بعضی از APIها برای بعضی از کاربران قابل دسترسی نباشد.وب‌سرویس‌های وندار به صورت REST در اختیار کاربران و همکاران تجاری ما قرار گرفته است.</p>
-                        <div class="info">
-                            <strong>نکته!</strong> مدت زمان اعتبار توکن‌ها ۵ روز است.
-                        </div>
                         <div class="info">
                             <strong>نکته!</strong> همواره به جای {business} نام انگلیسی کسب‌وکار جایگذاری شود.
                         </div>
-                    </div>
                     <div class="article" id="ipg">
                         <h2 class="article-header">کسب و کار</h2>
                         <div>
@@ -77,14 +69,6 @@
                             <pre>
 <span class="key">METHOD:</span> GET
 <span class="key">URL:</span> https://api.vandar.io/v2/business
-                            </pre>
-                            <h3 class="sub-title">
-                                نمونه json
-                            </h3>
-                            <pre>
-{
-    "<span class="key">api_key</span>": "کلید اختصاصی دریافتی کاربر از پنل",
-}
                             </pre>
                             <h3 class="sub-title">
                                 نمونه پاسخ دریافتی موفق
@@ -492,14 +476,6 @@
 <span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/iam
                             </pre>
                             <h3 class="sub-title">
-                                نمونه json
-                            </h3>
-                            <pre>
-{
-    "<span class="key">api_key</span>": "کلید اختصاصی دریافتی کاربر از پنل",
-}
-                            </pre>
-                            <h3 class="sub-title">
                                 نمونه پاسخ دریافتی موفق
                             </h3>
                             <pre>
@@ -536,10 +512,10 @@
                                         avatar : عکس کاربر در کسب و کار است .
                                         </li>
                                         <li>role : نقش کاربر در کسب و کار را میگوید.</li>
-                                        <li>status : ؟</li>
+                                        <li>status : مقدار 0 و  1 دارد که نشان دهنده فعال یا غیر فعال بودن کاربر است.</li>
                                         <li>role_id : ایدی مورد نظر با نقش کاربر را میگوید.
                                             <ul>
-                                                <li>0 : ماسک کسب و کار </li>
+                                                <li>0 : مالک کسب و کار </li>
                                                 <li>1 : مدیر </li>
                                                 <li>2 : حسابدار</li>
                                                 <li>3 : برنامه نویس </li>
