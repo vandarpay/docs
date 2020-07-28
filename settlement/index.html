@@ -21,166 +21,476 @@
     <div class="row">
         <div class="col-sm-3">
             <ul>
-                <li>
-                    <a href="https://vandarpay.github.io/docs/">مفاهیم اولیه</a>
-                </li>
-                <li>
-                    <a href="https://vandarpay.github.io/docs/ipg">درگاه پرداخت</a>
-                </li>
-                <li>
-                    <a href="https://vandarpay.github.io/docs/auth">لاگین</a>
-                </li>
-                <li>
-                    <a href="https://vandarpay.github.io/docs/business">کسب‌وکار</a>
-                </li>
-                <li>
-                    <a href="https://vandarpay.github.io/docs/iban">سرویس شبا</a>
-                </li>
-                <li>
-                    <a href="https://vandarpay.github.io/docs/invoice">صورت حساب</a>
-                </li>
-                <li>
-                    <a href="https://vandarpay.github.io/docs/settlement" class="active">سرویس تسویه</a>
-                </li>
-                <li>
-                    <a href="https://vandarpay.github.io/docs/errors">خطا‌ها</a>
-                </li>
+              <li>
+                  <a href="https://vandarpay.github.io/docs/">مفاهیم اولیه</a>
+              </li>
+              <li>
+                  <a href="https://vandarpay.github.io/docs/ipg">درگاه پرداخت</a>
+              </li>
+              <li>
+                  <a href="https://vandarpay.github.io/docs/auth">لاگین</a>
+              </li>
+              <li>
+                  <a href="https://vandarpay.github.io/docs/business">کسب‌وکار</a>
+              </li>
+              <li>
+                  <a href="https://vandarpay.github.io/docs/iban">سرویس شبا</a>
+              </li>
+              <li>
+                  <a href="https://vandarpay.github.io/docs/invoice">صورت حساب</a>
+              </li>
+              <li>
+                  <a href="https://vandarpay.github.io/docs/settlement" class="active">سرویس تسویه</a>
+              </li>
+              <li>
+                  <a href="https://vandarpay.github.io/docs/errors">خطا‌ها</a>
+              </li>
             </ul>
         </div>
         <div class="col-sm-9">
-                <article class="content">
-                    <div class="article" id="basic">
-                        <h2 class="article-header">مفاهیم اولیه</h2>
-                        <p>به بخش مستندات فنی وندار خوش آمدید. برای استفاده از مستندات فنی درگاه و درگاه دومرحله‌ای لازم است از API key ارائه شده در صفحه‌ی درگاه پرداخت میز کار استفاده کنید. برای استفاده از سایر APIها باید با فراخوانی API احراز هویت توکن مورد نظر را دریافت کنید.</p>
-                        <p>در استفاده از مستندات زیر به سطح دسترسی کاربران کسب‌وکار توجه کنید، ممکن است بعضی از APIها برای بعضی از کاربران قابل دسترسی نباشد.وب‌سرویس‌های وندار به صورت REST در اختیار کاربران و همکاران تجاری ما قرار گرفته است.</p>
-                        <div class="info">
-                            <strong>نکته!</strong> مدت زمان اعتبار توکن‌ها ۵ روز است.
-                        </div>
-                        <div class="info">
-                            <strong>نکته!</strong> همواره به جای {business} نام انگلیسی کسب‌وکار جایگذاری شود.
-                        </div>
+            <article class="content">
+                <div class="article" id="ipg">
+                    <h2 class="article-header">سرویس تسویه</h2>
+                    <div>
+                        <h3 class="title">
+                            <strong>مقدمه</strong>
+                        </h3>
+                        <p>در این بخش راجع به فرآیند تسویه توضیح داده خواهد شد.</p> <!--TODO: Content.-->
                     </div>
-                    <div class="article" id="ipg">
-                        <h2 class="article-header">درگاه پرداخت</h2>
-                        <div>
-                            <h3 class="title">
-                                <strong>مقدمه</strong>
-                            </h3>
-                            <p>برای فروشـگاه‌های اینترنتی که خدمات یا محصولاتی را در وب‌سـایت خود ارائه می‌کنـند، از درگاه پرداخت وندار استفاده کنید.</p>
+                    <div>
+                        <h3 class="title">
+                            <strong><a>لیست تسویه ها</a></strong>
+                        </h3>
+                        <p>در این بخش شما می‌توانید همه‌ی تسویه‌هایی را که تا به حال ثبت کرده‌اید، مشاهده نمایید.</p>
+                        <div class="info">
+                            <strong>نکته! </strong>پارامتر deductible_amount نشان‌دهنده مبلغ قابل برداشت امروز و پارامتر blocked_amount نشان‌دهنده مبلغ مسدود‌شده در حساب است.
                         </div>
-                        <div>
-                            <h3 class="title">
-                                <strong>مرحله اول:</strong> ارسال اطلاعات و دریافت توکن
-                            </h3>
-                            <p>در مرحله اول باید پارامترهای موجود در جدول زیر را با متد POST به آدرسی که مشخص شده ارسال کنید. به نوع داده‌ها و نام فیلد توجه کنید. اگر برای فیلد شماره موبایل، شماره موبایل کاربر را به درگاه ارسال نمایید، کاربر به صورت خودکار به صفحه پرداخت درگاه موبایلی هدایت می‌شود، به این معنی که در صفحه‌ی درگاه پرداخت بر مبنای شماره موبایل کاربر فهرست کارت‌های ذخیره شده‌اش در PSP نمایش داده می‌شود.</p>
-                            <pre>
-<span class="key">METHOD:</span> post
-<span class="key">URL:</span> https://ipg.vandar.io/api/v3/send
-                            </pre>
-                            <h3 class="sub-title">
-                                پارامترهای مجاز
-                            </h3>
-                            <table>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Status</th>
-                                </tr>
-                                <tr>
-                                    <td>api_key</td>
-                                    <td>string</td>
-                                    <td>required</td>
-                                </tr>
-                                <tr>
-                                    <td>amount</td>
-                                    <td>Integer</td>
-                                    <td>required</td>
-                                </tr>
-                                <tr>
-                                    <td>callback_url</td>
-                                    <td>String</td>
-                                    <td>required</td>
-                                </tr>
-                                <tr>
-                                    <td>mobile_number</td>
-                                    <td>String</td>
-                                    <td>optional</td>
-                                </tr>
-                                <tr>
-                                    <td>factorNumber</td>
-                                    <td>String</td>
-                                    <td>optional</td>
-                                </tr>
-                                <tr>
-                                    <td>description</td>
-                                    <td>String</td>
-                                    <td>optional</td>
-                                </tr>
-                            </table>
-                            <h3 class="sub-title">
-                                توضیحات
-                            </h3>
-                            <ul>
-                                <li>api_key (اجباری): این کلید بعد از ساخت درگاه پرداخت صادر می‌شود. برای دریافت این کلید به داشبورد وندار مراجعه کنید</li>
-                                <li>amount (اجباری): مبلغ تراکنش به صورت ریالی و بزرگتر یا مساوی 1000</li>
-                                <li>callback_url (اجباری): باید با آدرس درگاه پرداخت تایید شده در وندار بر روی یک دامنه باشد</li>
-                                <li>mobile_number (اختیاری): شماره موبایل (اختیاری، جهت نمایش کارت های خریدار به ایشان و نمایش درگاه موبایلی )</li>
-                                <li>factorNumber (اختیاری): شماره فاکتور شما (اختیاری)</li>
-                                <li>description (اختیاری): توضیحات (اختیاری، حداکثر 255 کاراکتر)</li>
-                            </ul>
-                            <h3 class="sub-title">
-                                نمونه json
-                            </h3>
-                            <pre>
-{
-    "<span class="key">api_key</span>": "کلید درگاه پرداخت دریافتی از پنل",
-    "<span class="key">amount</span>": 1000,
-    "<span class="key">callback_url</span>": "https://example.com/callback",
-    "<span class="key">mobile_number</span>": "09123456789",
-    "<span class="key">factorNumber</span>": "12345",
-    "<span class="key">description</span>": "توضیحات دلخواه",
-}
-                            </pre>
-                            <div class="info">
-                                <strong>نکته!</strong> آدرس بازگشتی در فرایند پرداخت وندار بسیار مهم است. از بخش تنظیمات درگاه پرداخت می‌توانید تعداد نامحدودی آدرس وبسایت به درگاه پرداخت خود اضافه کنید. لطفا دامنه و تمامی ساب دامنه‌های وبسایت خود را که قصد دارید به عنوان آدرس بازگشتی ارسال نمایید را به پنل خود اضافه کنید. هنگام وارد کردن آدرس ها به http و https هم دقت کنید. در صورت رعایت نکردن این نکات خطای <strong>آدرس بازگشتی نامعتبر است</strong> را دریافت می‌کنید
-                                <img src="../images/ipg-setting.png" alt="تنظیمات درگاه پرداخت">
-                                <img src="../images/ipg-url.png" alt="تنظیمات درگاه پرداخت">
-                            </div>
-                            <h3 class="sub-title">
-                                نمونه پاسخ دریافتی موفق
-                            </h3>
-                            <pre>
+                        <pre>
+<span class="key">METHOD:</span> GET
+<span class="key">URL:</span> https://api.vandar.io/v2.1/business/{business}/settlement
+                        </pre>
+                        <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد مشاهده‌ی تسویه‌های آن را دارید.</p>
+
+
+                        <h3 class="sub-title">
+                          نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
 <span class="key">HTTP/1.1</span> 200
 {
-    "<span class="key">status</span>": 1,
-    "<span class="key">token</span>": "توکن پرداختی که در مراحل بعدی مورد استفاده قرار می‌گیرد.",
+  "status": 1,
+  "data": {
+    "wallet": 26099,
+    "blocked_amount": 0,
+    "deductible_amount": 26099,
+    "currency": "Toman",
+    "settlements": {
+      "data": [
+        {
+          "id": "8edaa0a0-a33f-11ea-838d-676dce32760e",
+          "iban_id": 22822, <!--TODO: Is it right?-->
+          "gateway_transaction_id": 159024236678,
+          "amount": 100000,
+          "payment_number": null,
+          "status": "CANCELED",
+          "wallet": 160985,
+          "settlement_date": "2020-05-31"
+        },
+        {
+          "id": "807003f0-8398-11ea-a42b-ede62b9de0c1",
+          "iban_id": 902,
+          "gateway_transaction_id": 158745010355,
+          "amount": 50000,
+          "payment_number": null,
+          "status": "DONE",
+          "wallet": 99485,
+          "settlement_date": "2020-04-21"
+        },
+        {
+          "id": "010a7850-82ff-11ea-85bd-49ef214903e3",
+          "iban_id": 902,
+          "gateway_transaction_id": 158738422601,
+          "amount": 68000000,
+          "payment_number": null,
+          "status": "DONE",
+          "wallet": 126485,
+          "settlement_date": "2020-04-21"
+        },
+        {
+          "id": "53665740-82cf-11ea-baf3-95ebee6a9eca",
+          "iban_id": 26,
+          "gateway_transaction_id": 158736374134,
+          "amount": 15000000,
+          "payment_number": null,
+          "status": "CANCELED",
+          "wallet": 43126485,
+          "settlement_date": "2020-04-21"
+        },
+        {
+          "id": "456afdb0-82cf-11ea-8e13-3183b5b1630b",
+          "iban_id": 7215,
+          "gateway_transaction_id": 158736367341,
+          "amount": 5000000,
+          "payment_number": null,
+          "status": "CANCELED",
+          "wallet": 58126485,
+          "settlement_date": "2020-04-21"
+        }
+      ],
+      "first": "https:\/\/api.settlement.vandar.io\/v1\/settlements?page=1",
+      "last": "https:\/\/api.settlement.vandar.io\/v1\/settlements?page=19",
+      "prev": null,
+      "next": "https:\/\/api.settlement.vandar.io\/v1\/settlements?page=2",
+      "current_page": 1,
+      "from": 1,
+      "last_page": 19,
+      "path": "https:\/\/api.settlement.vandar.io\/v1\/settlements",
+      "per_page": 5,
+      "to": 5,
+      "total": 93
+    }
+  }
 }
-                            </pre>
-                            <h3 class="sub-title">
-                                نمونه پاسخ دریافتی ناموفق
-                            </h3>
-                            <pre>
-<span class="key">HTTP/1.1</span> 422
+                        </pre>
+
+                        <ul>
+                          <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+                          <li>
+                            data: 
+                            <ul>
+                              <li>wallet: مبلغ کیف پول کاربر به تومان</li>
+                              <li>blocked_amount: مبلغی که به دستور احکام قضایی در حساب مسدود شده است.</li>
+                              <li>deductible_amount: مبلغ قابل برداشت امروز</li>
+                              <li>currency: </li>
+                              <li>settlements: 
+                                <ul>
+                                  <li>
+                                    data:
+                                    <ul>
+                                      <li>id: آیدی تسویه</li>
+                                      <li>iban_id: شناسه یکتای شماره شبا که برای پیگیری شبا در وندار مورد استفاده قرار می گیرد</li>
+                                      <li>gateway_transaction_id: شناسه یکتای تسویه که برای پیگیری تسویه از وندار مورد استفاده قرار می‌گیرد.</li>
+                                      <li>amount: مبلغ تسویه به تومان</li>
+                                      <li>payment_number: شناسه واریز ثبت شده در هنگام ثبت تسویه</li>
+                                      <li>status: استتوس تسویه</li>
+                                      <li>wallet: مبلغ کیف پول بعد از انجام این تسویه</li>
+                                      <li>settlement_date: زمان انجام تسویه</li>
+                                    </ul>
+                                  </li>
+                                  <li>first: آدرس اولین صفحه</li>
+                                  <li>last: آدرس آخرین صفحه</li>
+                                  <li>prev: آدرس صفحه قبل</li>
+                                  <li>next: آدرس صفحه بعد</li>
+                                  <li>current_page: آدرس همین صفحه</li>
+                                  <li>from: شماره اولین آیتم تسویه ای که در این صفحه آمده است </li>
+                                  <li>last_page: تعداد کل صفحات تسویه</li>
+                                  <li>path: آدرس خالص بدون صفحه بندی</li>
+                                  <li>per_page: تعداد آیتم در هر صفحه</li>
+                                  <li>to: شماره آخرین آیتم تسویه ای که در این صفحه آمده است</li>
+                                  <li>total: تعداد کل آیتم های تسویه</li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 4xx
 {
-    "<span class="key">status</span>": 0,
-    "<span class="key">errors</span>": [
-        "وارد کردن api key الزامی است",
-        "api_key معتبر نیست",
-        "IP پذیرنده معتبر نیست",
-        "وارد کردن callback_url الزامی است",
-        "callback_url معتبر نیست",
-        "وارد کردن amount الزامی است",
-        "amount نباید کوچکتر از 1000 باشد",
-        "amount باید عدد یا رشته‌ای از اعداد باشد",
-    ]
+  "status": 0,
+  "error": "Unauthenticated"
 }
-                            </pre>
-                        </div>
-                    </div>
-                </article>
-        </div>
-    </div>
-</div>
+                        </pre>
+
+                        <ul>
+                          <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+                          <li>errors: آرایه ای از خطا‌ها</li>
+                        </ul>
+
+                        <!--<pre>
+                        <span style="color: orange">// 4xx status code</span> &lt;!&ndash;TODO: Other possible errors (4xx family).&ndash;&gt;
+                        {
+                          سایر خطاهای ممکن
+                        }
+                        </pre>-->
+
+
+                        <h3 class="title">
+                            <strong><a>ثبت درخواست تسویه</a></strong>
+                        </h3>
+                        <p>در این بخش شما می‌توانید یک درخواست تسویه را ثبت نمایید.</p>
+
+                        <pre>
+<span class="key">METHOD:</span> POST
+<span class="key">URL:</span> https://api.vandar.io/v2.1/business/{business}/settlement/store
+                        </pre>
+
+                        <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد ثبت تسویه برای آن را دارید.</p>
+                        <h3 class="sub-title">
+                            پارامترهای مجاز
+                        </h3>
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>amount</td>
+                                <td>integer</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
+                                <td>iban</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
+                                <td>payment_number</td>
+                                <td>integer</td>
+                                <td>optional</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                        <h3 class="sub-title">
+                          توضیحات
+                        </h3>
+                        <ul>
+                            <li>amount (اجباری): مبلغ تراکنش به تومان و بزرگتر یا مساوی 5000 و کوچکتر یا مساوی مبلغ کیف پول</li>
+                            <li>iban (اجباری): شماره شبا ای که می خواد پول به آن واریز شود</li>
+                            <li>payment_number (اختیاری): شناسه واریز شماره ای اختیاری است تا حداکثر ۱۵ رقم</li>
+                        </ul>
+
+                        <h3 class="sub-title">
+                          نمونه json 
+                        </h3>
+                      <pre>
+{
+  "<span class="key">amount</span>": 50000,
+  "<span class="key">iban</span>": "IR430550011480005587452001",
+  "<span class="key">payment_number</span>": "123456"
+}
+                      </pre>
+
+                        <h3 class="sub-title">
+                          نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+  "status": 1,
+  "data": {
+    "settlement": [
+      {
+        "id": "b6c72d20-a4ba-11ea-8a6c-9dc8b4b708ac",
+        "iban_id": "b6b5c440-a4ba-11ea-837b-bf6e427ec6d0",
+        "transaction_id": 159100434426,
+        "amount": 50000,
+        "payment_number": null,
+        "status": "PENDING",
+        "wallet": 60985,
+        "settlement_date": "2020-06-02",
+        "settlement_date_jalali": "1399\/03\/13"
+      }
+    ]
+  }
+}
+                        </pre>
+
+                        <ul>
+                          <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+                          <li>
+                            data:
+                            <ul>
+                              <li>wallet: مبلغ کیف پول کاربر به تومان</li>
+                              <li>blocked_amount: مبلغی که به دستور احکام قضایی در حساب مسدود شده است.</li>
+                              <li>deductible_amount: مبلغ قابل برداشت امروز</li>
+                              <li>currency: </li>
+                              <li>settlements: 
+                                <ul>
+                                  <li>
+                                    data:
+                                    <ul>
+                                      <li>id: آیدی تسویه</li>
+                                      <li>iban_id: شناسه یکتای شماره شبا که برای پیگیری شبا در وندار مورد استفاده قرار می گیرد</li>
+                                      <li>transaction_id: شناسه یکتای تسویه که برای پیگیری تسویه از وندار مورد استفاده قرار می‌گیرد.</li>
+                                      <li>amount: مبلغ تسویه به تومان</li>
+                                      <li>payment_number: شناسه واریز ثبت شده در هنگام ثبت تسویه</li>
+                                      <li>status: استتوس تسویه</li>
+                                      <li>wallet: مبلغ کیف پول بعد از انجام این تسویه</li>
+                                      <li>settlement_date: زمان انجام تسویه</li>
+                                      <li>settlement_date: زمان انجام تسویه به تاریخ شمسی</li>
+                                    </ul>
+                                  </li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+
+                        <h3 class="sub-title">
+                          نمونه پاسخ دریافتی ناموفق:
+                        </h3>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 4xx
+{
+  "status": 0,
+  "error": "Unauthenticated"
+}
+                        </pre>
+
+                        <ul>
+                          <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+                          <li>errors: آرایه ای از خطا‌ها</li>
+                        </ul>
+
+<!--                        <pre>
+<span style="color: orange">// 4xx status code</span> &lt;!&ndash;TODO: Other possible errors (4xx family).&ndash;&gt;
+{
+  سایر خطاهای ممکن
+}
+                        </pre>-->
+
+                        <h3 class="title">
+                            <strong>نمایش جزییات یک تسویه</strong>
+                        </h3>
+                        <p>در این بخش شما می‌توانید یک درخواست تسویه را نمایش دهید.</p>
+
+                        <pre>
+<span class="key">METHOD:</span> GET
+<span class="key">URL:</span> https://api.vandar.io/v2.1/business/{business}/settlement/{id}
+                        </pre>
+
+                        <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد دارید یک تسویه از آن را نمایش دهید.</p>
+                        <p>پارامتر {id} همان id مربوط به تسویه‌ای است که قصد نمایش آن را دارید.</p>
+
+                        <h3 class="sub-title">
+                          نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+    "status": 1,
+    "data": {
+      "settlement": {
+        "id": "8edaa0a0-a33f-11ea-838d-676dce32760e",
+        "iban_id": 22822,
+        "gateway_transaction_id": 159024236678,
+        "amount": 100000,
+        "payment_number": null,
+        "status": "CANCELED",
+        "wallet": 160985,
+        "settlement_date": "2020-05-31"
+      }
+    }
+  }
+                        </pre>
+
+                        <ul>
+                          <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+                          <li>
+                            data:
+                            <ul>
+                              <li>wallet: مبلغ کیف پول کاربر به تومان</li>
+                              <li>blocked_amount: مبلغی که به دستور احکام قضایی در حساب مسدود شده است.</li>
+                              <li>deductible_amount: مبلغ قابل برداشت امروز</li>
+                              <li>currency: </li>
+                              <li>settlements: 
+                                <ul>
+                                  <li>
+                                    data:
+                                    <ul>
+                                      <li>id: آیدی تسویه</li>
+                                      <li>iban_id: شناسه یکتای شماره شبا که برای پیگیری شبا در وندار مورد استفاده قرار می گیرد</li>
+                                      <li>gateway_transaction_id: شناسه یکتای تسویه که برای پیگیری تسویه از وندار مورد استفاده قرار می‌گیرد.</li>
+                                      <li>amount: مبلغ تسویه به تومان</li>
+                                      <li>payment_number: شناسه واریز ثبت شده در هنگام ثبت تسویه</li>
+                                      <li>status: استتوس تسویه</li>
+                                      <li>wallet: مبلغ کیف پول بعد از انجام این تسویه</li>
+                                      <li>settlement_date: زمان انجام تسویه</li>
+                                    </ul>
+                                  </li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 4xx
+{
+  "status": 0,
+  "error": "Unauthenticated"
+}
+                        </pre>
+
+                        <ul>
+                          <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+                          <li>errors: آرایه ای از خطا‌ها</li>
+                        </ul>
+
+<!--                        <pre>
+<span style="color: orange">// 4xx status code</span> &lt;!&ndash;TODO: Other possible errors (4xx family).&ndash;&gt;
+{
+  سایر خطاهای ممکن
+}
+                        </pre>-->
+
+
+                        <h3 class="title">
+                            <strong><a href="#cancel">لغو یک تسویه</a></strong>
+                        </h3>
+                        <p>در این بخش شما می‌توانید یک درخواست تسویه در حال انجام یا ناموفق را لغو نمایید.</p>
+
+                        <pre>
+<span class="key">METHOD:</span> DELETE
+<span class="key">URL:</span> https://api.vandar.io/v2.1/business{business}/settlement/{transaction_id}
+                        </pre>
+                        <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد لغو یک تسویه برای آن را دارید.</p>
+                        <p>پارامتر {transaction_id} همان transaction_id مربوط به تسویه‌ای است که قصد لغو آن را دارید.</p> <!--TODO: Right?-->
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+  "status": 1,
+  "message": "درخواست تسویه شما از دستور پرداخت خارج شد و وجه تسویه به حساب شما برگشت داده شد"
+}
+                        </pre>
+
+                        <ul>
+                          <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+                          <li>message: درخواست تسویه شما از دستور پرداخت خارج شد و وجه تسویه به حساب شما برگشت داده شد</li>
+                        </ul>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 4xx
+{
+  "status": 0,
+  "error": "Unauthenticated"
+}
+                        </pre>
+
+                        <ul>
+                          <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+                          <li>errors: آرایه ای از خطا‌ها</li>
+                        </ul>
+
+<!--                        <pre>
+<span style="color: orange">// 4xx status code</span> &lt;!&ndash;TODO: Other possible errors (4xx family).&ndash;&gt;
+{
+  سایر خطاهای ممکن
+}
+                        </pre>-->
 
 <footer id="footer">
     <div class="container">
