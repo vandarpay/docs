@@ -414,6 +414,13 @@ td, th {
     margin-top: 10px;
 }
 
+.download-box {
+    padding: 20px;
+    background-color: rgba(76,159,135,0.15);
+    font-size: large;
+    margin-top: 10px;
+}
+
 tr:nth-child(even) {
     background-color: #dddddd;
 }
