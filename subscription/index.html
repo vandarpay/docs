@@ -223,14 +223,14 @@
   "message": "درخواست توکن با موفقیت ثبت شد.",
   "result": {
     "authorization": {
-      "id": "0cf235d0-d48b-11ea-86cd-298ec898a9bd"
+      "token": "0cf235d0-d48b-11ea-86cd-298ec898a9bd"
     }
   }
 }
                         </pre>
                         <div class="info">
                           <strong>نکته! </strong>
-                          id دریافتی در این قسمت یکبار مصرف است و پس از ۲۰ دقیقه باطل می شود.
+                          token دریافتی در این قسمت یکبار مصرف است و پس از ۲۰ دقیقه باطل می شود.
                         </div>
                         <ul>
                           <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
@@ -240,7 +240,7 @@
                             <ul>
                               <li>authorization: 
                                 <ul>
-                                  <li>id: آیدی شما در سرویس اشتراک که باید درخواست های بعدی خود را با این آیدی ارسال کنید.</li>
+                                  <li>token: آیدی شما در سرویس اشتراک که باید درخواست های بعدی خود را با این آیدی ارسال کنید.</li>
                                 </ul>
                               </li>
                             </ul>
@@ -250,7 +250,7 @@
                         نمونه پاسخ دریافتی نا موفق:
                       </h3>
                       <pre>
-<span class="key">HTTP/1.1</span> 4xx
+<span class="key">HTTP/1.1</span> 401
 {
   "status": 0,
   "error": "Unauthenticated"
@@ -265,13 +265,13 @@
                         ۲. انتقال کاربر به صفحه بانک
                       </h3>
                       <p>
-                        در مرحله بعد id دریافتی از قسمت قبل را در انتهای 
+                        در مرحله بعد token دریافتی از قسمت قبل را در انتهای 
                          آدرس 
                         می گذارید و در مرورگر وارد سایت می شوید.
                       </p>
                       <pre>
 <span class="key">METHOD:</span> get
-<span class="key">URL:</span> https://subscription.vandar.io/authorizations/{id}
+<span class="key">URL:</span> https://subscription.vandar.io/authorizations/{token}
                       </pre>
 
 <img src="../images/authorize-intro.png" alt="صفحه ورود بانک">
@@ -280,10 +280,19 @@
 <h3 class="title">
   ۳. دریافت کد اشتراک
 </h3>
-<p>در صورتی که کاربر بر روی دکمه دسترسی دارد کلیک کند، وندار کاربر را به آدرس برگشتی که در مرحله اول ارسال کرده‌اید به همراه پارامتر subscription_code و status هدایت می‌کند. نمونه موفق:</p>
-<img src="../images/authorize-callback.png" alt="بازگشت موفق">
+<p>در صورتی که کاربر بر روی دکمه دسترسی دارد کلیک کند، وندار کاربر را به آدرس برگشتی که در مرحله اول ارسال کرده‌اید به همراه پارامتر token و status و authorization_id هدایت می‌کند.
+
+</p>
+
+<p>نمونه موفق</p>
+<pre>
+https://yourdomain.com/callback?token=8cfd3e60-dc77-11ea-a593-15deb083f3e2&authorization_id=9f307e30-dc77-11ea-830e-7533ca1787c5&status=SUCCEED
+</pre>
+
 <p>نمونه ناموفق</p>
-<img src="../images/authorize-callback.png" alt="بازگشت ناموفق">
+<pre>
+https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&status=FAILED
+</pre>
 
 <h3 class="title">
   ۴. لیست اشتراک‌ها
@@ -304,7 +313,7 @@
     {
       "id": "b4d32590-d426-11ea-b5b5-0b0e1f82ac3c",
       "customer_uuid": "b4d1e440-d426-11ea-a9d3-051cbf7b8f81",
-      "temp_authorization_uuid": "96ff2c90-d426-11ea-b499-6ddbc3441df4",
+      "token": "96ff2c90-d426-11ea-b499-6ddbc3441df4",
       "bank_code": "062",
       "callback_url": "http:\/\/vandar.ui\/dd\/callback.php",
       "count": 7,
@@ -340,7 +349,7 @@
     <ul>
       <li>id: آیدی اشتراک که برای درخواست برداشت وجه از این آیدی استفاده می شود.</li>
       <li>customer_uuid: شناسه مشتری کسب و کار شما</li>
-      <li>temp_authorization_uuid: آیدی ای که در مرحله اول برای شما ارسال شده است.</li>
+      <li>token: توکنی که در مرحله اول برای شما ارسال شده است.</li>
       <li>bank_code: کد بانک که لیست آن در بالا اشاره شده است.</li>
       <li>callback_url: آدرس بازگشتی ای که در زمان درخواست ارسال کرده اید.</li>
       <li>count: رشته عددی مشخص کننده تعداد درخواست های برداشت وجه که به صورت ماهیانه مشخص می‌شود.</li>
@@ -382,7 +391,7 @@
   نمونه پاسخ دریافتی نا موفق:
 </h3>
 <pre>
-<span class="key">HTTP/1.1</span> 4xx
+<span class="key">HTTP/1.1</span> 401
 {
 "status": 0,
 "error": "Unauthenticated"
@@ -413,7 +422,7 @@
     "authorizations": {
       "id": "b4d32590-d426-11ea-b5b5-0b0e1f82ac3c",
       "customer_uuid": "b4d1e440-d426-11ea-a9d3-051cbf7b8f81",
-      "temp_authorization_uuid": "96ff2c90-d426-11ea-b499-6ddbc3441df4",
+      "token": "96ff2c90-d426-11ea-b499-6ddbc3441df4",
       "bank_code": "062",
       "callback_url": "http:\/\/vandar.ui\/dd\/callback.php",
       "count": 7,
@@ -437,7 +446,7 @@
         <ul>
           <li>id: آیدی اشتراک که برای درخواست برداشت وجه از این آیدی استفاده می شود.</li>
           <li>customer_uuid: شناسه مشتری کسب و کار شما</li>
-          <li>temp_authorization_uuid: آیدی ای که در مرحله اول برای شما ارسال شده است.</li>
+          <li>token: توکنی که در مرحله اول برای شما ارسال شده است.</li>
           <li>bank_code: کد بانک که لیست آن در بالا اشاره شده است.</li>
           <li>callback_url: آدرس بازگشتی ای که در زمان درخواست ارسال کرده اید.</li>
           <li>count: رشته عددی مشخص کننده تعداد درخواست های برداشت وجه که به صورت ماهیانه مشخص می‌شود.</li>
@@ -457,7 +466,7 @@
 </h3>
 <p>در صورتی که توکن فرستاده شده برای کسب و کاری که در آدرس ارسال کردید، معتبر نباشد پاسخ زیر را دریافت می کنید:</p>
 <pre>
-<span class="key">HTTP/1.1</span> 4xx
+<span class="key">HTTP/1.1</span> 401
 {
   "status": 0,
   "error": "Unauthenticated"
@@ -471,7 +480,7 @@
 
   <p>در صورتی که اشتراکی با id ارسال شده موجود نباشد پاسخ زیر را دریافت می کنید:</p>
 <pre>
-<span class="key">HTTP/1.1</span> 4xx
+<span class="key">HTTP/1.1</span> 404
 {
   "status": 0,
   "message": "برنامه کاربردی با این شناسه کاربری یافت نشد"
@@ -532,7 +541,7 @@
 </h3>
 <p>در صورتی که توکن فرستاده شده برای کسب و کاری که در آدرس ارسال کردید، معتبر نباشد پاسخ زیر را دریافت می کنید:</p>
 <pre>
-<span class="key">HTTP/1.1</span> 4xx
+<span class="key">HTTP/1.1</span> 401
 {
   "status": 0,
   "error": "Unauthenticated"
@@ -546,7 +555,7 @@
 
   <p>در صورتی که اشتراکی با id ارسال شده موجود نباشد پاسخ زیر را دریافت می کنید:</p>
 <pre>
-<span class="key">HTTP/1.1</span> 4xx
+<span class="key">HTTP/1.1</span> 404
 {
   "status": 0,
   "message": "خطای ۴۰۴ رخ داده است"
@@ -714,7 +723,7 @@
 </ul>
 <p>در صورتی که توکن فرستاده شده معتبر نباشد پاسخ زیر را دریافت می کنید:</p>
 <pre>
-<span class="key">HTTP/1.1</span> 4xx
+<span class="key">HTTP/1.1</span> 401
 {
   "status": 0,
   "error": "Unauthenticated"
@@ -835,7 +844,7 @@
   نمونه پاسخ دریافتی ناموفق:
 </h3>
 <pre>
-<span class="key">HTTP/1.1</span> 4xx
+<span class="key">HTTP/1.1</span> 401
 {
   "status": 0,
   "error": "Unauthenticated"
@@ -912,7 +921,7 @@
   نمونه پاسخ دریافتی ناموفق:
 </h3>
 <pre>
-<span class="key">HTTP/1.1</span> 4xx
+<span class="key">HTTP/1.1</span> 401
 {
   "status": 0,
   "error": "Unauthenticated"
@@ -975,7 +984,7 @@
     نمونه پاسخ دریافتی ناموفق:
   </h3>
 <pre>
-<span class="key">HTTP/1.1</span> 4xx
+<span class="key">HTTP/1.1</span> 401
 {
   "status": 0,
   "error": "Unauthenticated"
