@@ -302,7 +302,7 @@
 </h3>
 <pre>
 <span class="key">HTTP/1.1</span> 200
-{ //TODO
+{
   "data": [
     {
       "id": "b4d32590-d426-11ea-b5b5-0b0e1f82ac3c",
@@ -316,7 +316,7 @@
       "name": "محمد مقصودی",
       "email": "customer.email@gmail.com",
       "national_code": "2993968416",
-      "creation_datetime": "13990511231209", //TODO
+      "creation_datetime": "13990511231209",
     },
     ...
   ],
@@ -425,7 +425,7 @@
       "name": "محمد مقصودی",
       "email": "customer.email@gmail.com",
       "national_code": "2993968416",
-      "creation_datetime": "13990511231209", //TODO
+      "creation_datetime": "13990511231209",
     }
   }
 }
@@ -654,7 +654,6 @@
       "id": "8c6e27c0-dbbd-11ea-a2f6-e9c8bf97463f",
       "authorization_id": "2866fa80-dbbd-11ea-a0f9-d19612a00c59",
       "retry_count": 1,
-      "business_id": 1141,
       "gateway_transaction_id": "159714176734",
       "amount": "10000",
       "wage_amount": 200,
@@ -675,17 +674,16 @@
     <ul>
       <li>withdrawal: 
         <ul>
-          <li>id: </li>
-          <li>authorization_id: </li>
-          <li>retry_count: </li>
-          <li>business_id: </li>
-          <li>gateway_transaction_id: </li>
-          <li>amount: </li>
-          <li>wage_amount: </li>
-          <li>payment_number: </li>
-          <li>status: </li>
-          <li>description: </li>
-          <li>withdrawal_date: </li>
+          <li>id: آیدی درخواست برداشت وجه</li>
+          <li>authorization_id: آیدی اشتراکی که درخواست برداشت وجه برای آن صادر شده است</li>
+          <li>retry_count: تعداد دفعات تلاش برای برداشت وجه</li>
+          <li>gateway_transaction_id: شناسه یکتای برداشت وجه</li>
+          <li>amount: مبلغ برداشت وجه</li>
+          <li>wage_amount: کارمزد </li>
+          <li>payment_number: شناسه بانکی برداشت وجه</li>
+          <li>status: وضعیت برداشت وجه که ۴ حالت PENDING, DONE, CANCELED, FAILED دارد.</li>
+          <li>description: توضیحات </li>
+          <li>withdrawal_date: تاریخ درخواست برداشت وجه ارسالی توسط شما</li>
         </ul>
       </li>
     </ul>
@@ -731,7 +729,7 @@
                             <li>errors: آرایه ای از خطا‌ها</li>
                           </ul>
 
-  <p>توکن نادرست در صورت ورود آدرس نادرست ؟؟؟؟؟ :</p>
+  <p>در صورت عدم وجود کسب و کار این خطا را دریافت می کنید: </p>
 <pre>
 <span class="key">HTTP/1.1</span> 404
 {
@@ -769,7 +767,6 @@
       "id": "f3d084e0-b603-11ea-94ad-ebc7f5bf8e12",
       "authorization_id": "dd205c00-b603-11ea-b6fc-ed9baa10357b",
       "retry_count": 1,
-      "business_id": 20,
       "gateway_transaction_id": 159281892196,
       "amount": 10000,
       "wage_amount": "200.00",
@@ -802,17 +799,16 @@
   <li>
     data: 
     <ul>
-      <li>id: </li>
-      <li>authorization_id: </li>
-      <li>retry_count: </li>
-      <li>business_id: </li>
-      <li>gateway_transaction_id: </li>
-      <li>amount: </li>
-      <li>wage_amount: </li>
-      <li>payment_number: </li>
-      <li>status: </li>
-      <li>description: </li>
-      <li>withdrawal_date: </li>
+      <li>id: آیدی درخواست برداشت وجه</li>
+      <li>authorization_id: آیدی اشتراکی که درخواست برداشت وجه برای آن صادر شده است</li>
+      <li>retry_count: تعداد دفعات تلاش برای برداشت وجه</li>
+      <li>gateway_transaction_id: شناسه یکتای برداشت وجه</li>
+      <li>amount: مبلغ برداشت وجه</li>
+      <li>wage_amount: کارمزد </li>
+      <li>payment_number: شناسه بانکی برداشت وجه</li>
+      <li>status: وضعیت برداشت وجه که ۴ حالت PENDING, DONE, CANCELED, FAILED دارد.</li>
+      <li>description: توضیحات </li>
+      <li>withdrawal_date: تاریخ درخواست برداشت وجه ارسالی توسط شما</li>
     </ul>
   </li>
   <li>
@@ -880,7 +876,6 @@
       "id": "f3d084e0-b603-11ea-94ad-ebc7f5bf8e12",
       "authorization_id": "dd205c00-b603-11ea-b6fc-ed9baa10357b",
       "retry_count": 1,
-      "business_id": 20,
       "gateway_transaction_id": 159281892196,
       "amount": 10000,
       "wage_amount": "200.00",
@@ -901,17 +896,16 @@
     <ul>
       <li>withdrawal: 
         <ul>
-          <li>id: </li>
-          <li>authorization_id: </li>
-          <li>retry_count: </li>
-          <li>business_id: </li>
-          <li>gateway_transaction_id: </li>
-          <li>amount: </li>
-          <li>wage_amount: </li>
-          <li>payment_number: </li>
-          <li>status: </li>
-          <li>description: </li>
-          <li>withdrawal_date: </li>
+          <li>id: آیدی درخواست برداشت وجه</li>
+          <li>authorization_id: آیدی اشتراکی که درخواست برداشت وجه برای آن صادر شده است</li>
+          <li>retry_count: تعداد دفعات تلاش برای برداشت وجه</li>
+          <li>gateway_transaction_id: شناسه یکتای برداشت وجه</li>
+          <li>amount: مبلغ برداشت وجه</li>
+          <li>wage_amount: کارمزد </li>
+          <li>payment_number: شناسه بانکی برداشت وجه</li>
+          <li>status: وضعیت برداشت وجه که ۴ حالت PENDING, DONE, CANCELED, FAILED دارد.</li>
+          <li>description: توضیحات </li>
+          <li>withdrawal_date: تاریخ درخواست برداشت وجه ارسالی توسط شما</li>
         </ul>
       </li>
     </ul>
@@ -973,8 +967,7 @@
       <ul>
         <li>withdrawal: 
           <ul>
-            <li>id: </li>
-            آیدی برداشت وجهی که قصد کنسل کردن آن را داشتید.
+            <li>id: </li> آیدی برداشت وجهی که قصد کنسل کردن آن را داشتید.
           </ul>
         </li>
       </ul>
