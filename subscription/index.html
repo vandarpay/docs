@@ -230,7 +230,7 @@
                         </pre>
                         <div class="info">
                           <strong>نکته! </strong>
-                          uuid دریافتی در این قسمت یکبار مصرف است و پس از ۲۰ دقیقه باطل می شود.
+                          id دریافتی در این قسمت یکبار مصرف است و پس از ۲۰ دقیقه باطل می شود.
                         </div>
                         <ul>
                           <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
@@ -246,9 +246,6 @@
                             </ul>
                           </li>
                         </ul>
-                        <div class="info">
-                          <strong>نکته! </strong>این آیدی در درخواست های بعدی uuid نامیده می شود .
-                        </div>
                       <h3 class="sub-title">
                         نمونه پاسخ دریافتی نا موفق:
                       </h3>
@@ -268,13 +265,13 @@
                         ۲. انتقال کاربر به صفحه بانک
                       </h3>
                       <p>
-                        در مرحله بعد uuid دریافتی از قسمت قبل را در انتهای 
+                        در مرحله بعد id دریافتی از قسمت قبل را در انتهای 
                          آدرس 
                         می گذارید و در مرورگر وارد سایت می شوید.
                       </p>
                       <pre>
 <span class="key">METHOD:</span> get
-<span class="key">URL:</span> https://subscription.vandar.io/authorizations/{uuid}
+<span class="key">URL:</span> https://subscription.vandar.io/authorizations/{id}
                       </pre>
 
 <img src="../images/authorize-intro.png" alt="صفحه ورود بانک">
@@ -396,12 +393,12 @@
     <li>errors: آرایه ای از خطا‌ها</li>
   </ul>
 <h3 class="title">
-  ۵. نمایش یک اشتراک با uuid 
+  ۵. نمایش یک اشتراک با id 
 </h3>
-<p>شما می توانید با این دستور جزییات یک اشتراک را با فرستادن uuid دریافت کنید.</p>
+<p>شما می توانید با این دستور جزییات یک اشتراک را با فرستادن id دریافت کنید.</p>
 <pre>
 <span class="key">Method:</span> GET
-<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/subscription/authorization/{uuid}
+<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/subscription/authorization/{id}
 </pre>
 <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد مشاهده یکی از اشتراک های آن را دارید.</p>
 <h3 class="sub-title">
