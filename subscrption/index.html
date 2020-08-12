@@ -194,7 +194,7 @@
                           </li>
                           <li>callback_url (اجباری): باید با آدرس درگاه پرداخت تایید شده در وندار بر روی یک دامنه باشد</li>
                           <li>count (اجباری): رشته عددی مشخص کننده تعداد درخواست های برداشت وجه که به صورت ماهیانه مشخص می‌شود.</li>
-                          <li>limit (اجباری): شته عددی مشخص کننده حداکثر مبلغ برداشت وجه در هر برداشت. واحد پول ریال است.</li>
+                          <li>limit (اجباری): رشته عددی مشخص کننده حداکثر مبلغ برداشت وجه در هر برداشت. واحد پول ریال است.</li>
                           <li>name (اختیاری): نام کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
                           <li>email (اختیاری): ایمیل کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود.</li>
                         </ul>
@@ -229,7 +229,8 @@
 }
                         </pre>
                         <div class="info">
-                          <strong>نکته! </strong>توکن دریافتی در این قسمت یکبار مصرف می باشد .
+                          <strong>نکته! </strong>
+                          uuid دریافتی در این قسمت یکبار مصرف است و پس از ۲۰ دقیقه باطل می شود.
                         </div>
                         <ul>
                           <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
@@ -301,14 +302,12 @@
 </h3>
 <pre>
 <span class="key">HTTP/1.1</span> 200
-{
+{ //TODO
   "data": [
     {
       "id": "b4d32590-d426-11ea-b5b5-0b0e1f82ac3c",
       "customer_uuid": "b4d1e440-d426-11ea-a9d3-051cbf7b8f81",
       "temp_authorization_uuid": "96ff2c90-d426-11ea-b499-6ddbc3441df4",
-      "application_id": 2,
-      "success_code": "qCWkzcpSy43Mz2iJ",
       "bank_code": "062",
       "callback_url": "http:\/\/vandar.ui\/dd\/callback.php",
       "count": 7,
@@ -316,24 +315,8 @@
       "mobile": "09129311989",
       "name": "محمد مقصودی",
       "email": "customer.email@gmail.com",
-      "scopes": [
-        "oak:withdrawal-from:execute"
-      ],
-      "monthly_call_limitation": "7",
-      "max_amount_per_transaction": "10200",
       "national_code": "2993968416",
-      "creation_datetime": "13990511231209",
-      "type": "CODE",
-      "lifetime": "864000000",
-      "deposits": [
-        "0203214109001"
-      ],
-      "client_id": "vandario",
-      "payman_code": null,
-      "payman_id": null,
-      "count_daily": null,
-      "start_date": null,
-      "expiration_date": null
+      "creation_datetime": "13990511231209", //TODO
     },
     ...
   ],
@@ -358,31 +341,18 @@
   <li>
     data: 
     <ul>
-      <li>id: آیدی اشتراک</li>
-      <li>customer_uuid: </li>
-      <li>temp_authorization_uuid: </li>
-      <li>application_id: </li>
-      <li>success_code: </li>
-      <li>bank_code: </li>
-      <li>callback_url: </li>
-      <li>count: </li>
-      <li>limit: </li>
-      <li>mobile: </li>
-      <li>name: </li>
-      <li>email: </li>
-      <li>scopes: </li>
-      <li>monthly_call_limitation: </li>
-      <li>max_amount_per_transaction: </li>
-      <li>national_code: </li>
-      <li>creation_datetime: </li>
-      <li>type: </li>
-      <li>lifetime: </li>
-      <li>deposits: </li>
-      <li>client_id: </li>
-      <li>payman_code: </li>
-      <li>count_daily: </li>
-      <li>start_date: </li>
-      <li>expiration_date: </li>
+      <li>id: آیدی اشتراک که برای درخواست برداشت وجه از این آیدی استفاده می شود.</li>
+      <li>customer_uuid: شناسه مشتری کسب و کار شما</li>
+      <li>temp_authorization_uuid: آیدی ای که در مرحله اول برای شما ارسال شده است.</li>
+      <li>bank_code: کد بانک که لیست آن در بالا اشاره شده است.</li>
+      <li>callback_url: آدرس بازگشتی ای که در زمان درخواست ارسال کرده اید.</li>
+      <li>count: رشته عددی مشخص کننده تعداد درخواست های برداشت وجه که به صورت ماهیانه مشخص می‌شود.</li>
+      <li>limit: رشته عددی مشخص کننده حداکثر مبلغ برداشت وجه در هر برداشت. واحد پول ریال است.</li>
+      <li>mobile: شماره موبایل کاربر</li>
+      <li>name: نام کاربر اگر در مرحله قبل ارسال کردید</li>
+      <li>email: ایمیل کاربر اگر در مرحله قبل ارسال کردید</li>
+      <li>national_code: کدملی کاربر در صورتی که بانک به وندار برگردانده باشد</li>
+      <li>creation_datetime: زمان ساخت اشتراک</li>
     </ul>
   </li>
   <li>
@@ -444,7 +414,18 @@
   "message": "مجوز با موفقیت به نمایش در آمد.",
   "result": {
     "authorizations": {
-      "id": "0cf235d0-d48b-11ea-86cd-298ec898a9bd"
+      "id": "b4d32590-d426-11ea-b5b5-0b0e1f82ac3c",
+      "customer_uuid": "b4d1e440-d426-11ea-a9d3-051cbf7b8f81",
+      "temp_authorization_uuid": "96ff2c90-d426-11ea-b499-6ddbc3441df4",
+      "bank_code": "062",
+      "callback_url": "http:\/\/vandar.ui\/dd\/callback.php",
+      "count": 7,
+      "limit": "10200",
+      "mobile": "09129311989",
+      "name": "محمد مقصودی",
+      "email": "customer.email@gmail.com",
+      "national_code": "2993968416",
+      "creation_datetime": "13990511231209", //TODO
     }
   }
 }
@@ -457,7 +438,18 @@
     <ul>
       <li>authorizations: 
         <ul>
-          <li>id: آیدی شما در سرویس اشتراک که باید درخواست های بعدی خود را با این آیدی ارسال کنید.</li>
+          <li>id: آیدی اشتراک که برای درخواست برداشت وجه از این آیدی استفاده می شود.</li>
+          <li>customer_uuid: شناسه مشتری کسب و کار شما</li>
+          <li>temp_authorization_uuid: آیدی ای که در مرحله اول برای شما ارسال شده است.</li>
+          <li>bank_code: کد بانک که لیست آن در بالا اشاره شده است.</li>
+          <li>callback_url: آدرس بازگشتی ای که در زمان درخواست ارسال کرده اید.</li>
+          <li>count: رشته عددی مشخص کننده تعداد درخواست های برداشت وجه که به صورت ماهیانه مشخص می‌شود.</li>
+          <li>limit: رشته عددی مشخص کننده حداکثر مبلغ برداشت وجه در هر برداشت. واحد پول ریال است.</li>
+          <li>mobile: شماره موبایل کاربر</li>
+          <li>name: نام کاربر اگر در مرحله قبل ارسال کردید</li>
+          <li>email: ایمیل کاربر اگر در مرحله قبل ارسال کردید</li>
+          <li>national_code: کدملی کاربر در صورتی که بانک به وندار برگردانده باشد</li>
+          <li>creation_datetime: زمان ساخت اشتراک</li>
         </ul>
       </li>
     </ul>
@@ -498,15 +490,17 @@
 
 
 <h3 class="title">
-  ۶. پاک کردن یک اشتراک با استفاده از uuid 
+  ۶. پاک کردن یک اشتراک با استفاده از id 
 </h3>
 
 <pre>
 <span class="key">Method:</span> DELETE
-<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/subscription/authorization/{uuid}
+<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/subscription/authorization/{id}
 </pre>
 
 <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد حذف یکی از اشتراک های آن را دارید.</p>
+<p>پارامتر {id} همان id مربوط به اشتراکی است که قصد حذف آن را دارید.</p>
+
 <h3 class="sub-title">
   نمونه پاسخ دریافتی موفق:
 </h3>
@@ -571,7 +565,7 @@
 
 <h2 class="article-header">سرویس برداشت وجه  (Withdrawal)</h2>
 
-<p>سرویس برداشت وجه از حساب دیگران, این سرویس هنگامی به کار می‌رود که شما قصد دارید از حساب مشتریان خود یکبار یا به صورت دوره‌ای وجهی را برداشت کنید.</p>
+<p>سرویس برداشت وجه از حساب دیگران، این سرویس هنگامی به کار می‌رود که شما قصد دارید از حساب مشتریان خود یکبار یا به صورت دوره‌ای وجهی را برداشت کنید.</p>
 
 <h3 class="title">
   ۱. ثبت درخواست برداشت وجه
@@ -580,8 +574,8 @@
 <p>این درخواست برداشت وجه را می توانید تا سقف محدودیت مبلغ و تعداد برداشت تعیین شده برای اشتراک صدا بزنید.</p>
 
 <pre>
-  <span class="key">Method:</span> POST
-  <span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/subscription/withdrawal/store
+<span class="key">Method:</span> POST
+<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/subscription/withdrawal/store
 </pre>
 
 <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد برداشت وجه از اشتراک آن را دارید.</p>
@@ -599,11 +593,6 @@
   </tr>
   </thead>
   <tbody>
-  <tr>
-      <td>business_id</td>
-      <td>string</td>
-      <td>required</td>
-  </tr>
   <tr>
       <td>authorization_id</td>
       <td>string</td>
@@ -628,9 +617,6 @@
 </h3>
 
 <ul>
-  <li>business_id (اجباری): 
-    آیدی کسب و کاری که می خواهید از یکی از اشتراک‌های آن وجه برداشت کنید
-  </li>
   <li>authorization_id (اجباری):
     آیدی دریافتی در بخش اشتراک که می خواهید مبلغ از آن دسترسی برداشت شود
   </li>
@@ -648,7 +634,6 @@
 
 <pre>
 {
-  "business_id": "200",
   "authorization_id": "dd205c00-b603-11ea-b6fc-ed9baa10357b",
   "amount": "10000",
   "withdrawal_date": "2020-07-04"
@@ -660,12 +645,51 @@
 </h3>
 
 <pre>
-  
+<span class="key">HTTP/1.1</span> 200
+{
+  "status": 1,
+  "message": "درخواست برداشت وجه با موفقیت ثبت شد.",
+  "result": {
+    "withdrawal": {
+      "id": "8c6e27c0-dbbd-11ea-a2f6-e9c8bf97463f",
+      "authorization_id": "2866fa80-dbbd-11ea-a0f9-d19612a00c59",
+      "retry_count": 1,
+      "business_id": 1141,
+      "gateway_transaction_id": "159714176734",
+      "amount": "10000",
+      "wage_amount": 200,
+      "payment_number": null,
+      "status": "PENDING",
+      "description": null,
+      "withdrawal_date": "1399\/05\/21"
+    }
+  }
+}
 </pre>
 
 <ul>
-  <li></li>
-  <li></li>
+  <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+  <li>message: پیغام درخواست برداشت وجه با موفقیت ثبت شد</li>
+  <li>
+    result:
+    <ul>
+      <li>withdrawal: 
+        <ul>
+          <li>id: </li>
+          <li>authorization_id: </li>
+          <li>retry_count: </li>
+          <li>business_id: </li>
+          <li>gateway_transaction_id: </li>
+          <li>amount: </li>
+          <li>wage_amount: </li>
+          <li>payment_number: </li>
+          <li>status: </li>
+          <li>description: </li>
+          <li>withdrawal_date: </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
 </ul>
 
 <h3 class="sub-title">
@@ -831,107 +855,149 @@
 
 
 
-      <h3 class="title">
-          ۳. نمایش یک برداشت وجه:
-      </h3>
+<h3 class="title">
+    ۳. نمایش یک برداشت وجه:
+</h3>
 
 <pre>
-  <span class="key">METHOD:</span> GET
-  <span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/subscription/withdrawal/{uuid}
+<span class="key">METHOD:</span> GET
+<span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/subscription/withdrawal/{id}
 </pre>
-
 <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد دارید یک برداشت وجه از آن را نمایش دهید.</p>
+<p>پارامتر {id} همان id مربوط به برداشت وجهی است که قصد نمایش آن را دارید.</p>
+
+
+<h3 class="sub-title">
+  نمونه پاسخ دریافتی موفق:
+</h3>
+<pre>
+<span class="key">HTTP/1.1</span> 2xx
+{
+  "status": 1,
+  "message": "برداشت وجه با موفقیت به نمایش درآمد.",
+  "result": {
+    "withdrawal": {
+      "id": "f3d084e0-b603-11ea-94ad-ebc7f5bf8e12",
+      "authorization_id": "dd205c00-b603-11ea-b6fc-ed9baa10357b",
+      "retry_count": 1,
+      "business_id": 20,
+      "gateway_transaction_id": 159281892196,
+      "amount": 10000,
+      "wage_amount": "200.00",
+      "payment_number": null,
+      "status": "DONE",
+      "description": null,
+      "withdrawal_date": "1399\/04\/04"
+      }
+    },
+  }
+}
+</pre>
+<ul>
+  <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+  <li>message: پیغام برداشت وجه با موفقیت به نمایش درآمد</li>
+  <li>
+    result:
+    <ul>
+      <li>withdrawal: 
+        <ul>
+          <li>id: </li>
+          <li>authorization_id: </li>
+          <li>retry_count: </li>
+          <li>business_id: </li>
+          <li>gateway_transaction_id: </li>
+          <li>amount: </li>
+          <li>wage_amount: </li>
+          <li>payment_number: </li>
+          <li>status: </li>
+          <li>description: </li>
+          <li>withdrawal_date: </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<h3 class="sub-title">
+  نمونه پاسخ دریافتی ناموفق:
+</h3>
+<pre>
+<span class="key">HTTP/1.1</span> 4xx
+{
+  "status": 0,
+  "error": "Unauthenticated"
+}
+</pre>
+  
+  <ul>
+    <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+    <li>errors: آرایه ای از خطا‌ها</li>
+  </ul>
+
+
       
-<p>پارامتر {id} همان id مربوط به تسویه‌ای است که قصد نمایش آن را دارید.</p>
-          <h3 class="sub-title">
+          <h3 class="title">
               ۴. انصراف از برداشت وجه:
           </h3>
 
           <p>در صورتی که کاربر از برداشت وجه منصرف شود با صدا زدن متد زیر می تواند انصراف خود را اعلام کند.</p>
 
-          <pre>
-              <span class="key">METHOD:</span> POST
-              <span class="key">URL:</span> https://api.vandar.io/v2.1https://api.vandar.io/v2/business/{business}/settlement/store
-          </pre>
+<pre>
+<span class="key">METHOD:</span> PUT
+<span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/subscription/withdrawal/{id}
+</pre>
+<p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد دارید یک برداشت وجه از آن را نمایش دهید.</p>
+<p>پارامتر {id} همان id مربوط به برداشت وجهی است که قصد نمایش آن را دارید.</p>
+
+<h3 class="sub-title">
+  نمونه پاسخ دریافتی موفق:
+</h3>
+
+<pre>
+  <span class="key">HTTP/1.1</span> 200
+{
+  "status": 1,
+  "message": "برداشت وجه با موفقیت لغو گردید.",
+  "result": {
+    "withdrawal": {
+      "id": "8c6e27c0-dbbd-11ea-a2f6-e9c8bf97463f"
+    }
+  }
+}
+  </pre>
+
+  <ul>
+    <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+    <li>message: پیغام برداشت وجه با موفقیت لغو گردید.</li>
+    <li>
+      result:
+      <ul>
+        <li>withdrawal: 
+          <ul>
+            <li>id: </li>
+            آیدی برداشت وجهی که قصد کنسل کردن آن را داشتید.
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 class="sub-title">
+    نمونه پاسخ دریافتی ناموفق:
+  </h3>
+<pre>
+<span class="key">HTTP/1.1</span> 4xx
+{
+  "status": 0,
+  "error": "Unauthenticated"
+}
+</pre>
+      
+      <ul>
+        <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+        <li>errors: آرایه ای از خطا‌ها</li>
+      </ul>
 
 
-          <h3 class="sub-title">
-              خروجی موفق:
-          </h3>
-
-          <pre>
-              <span class="key">HTTP/1.1</span> 200
-              {
-                "status": 1,
-                "data": {
-                  "settlement": [
-                    {
-                      "id": "b6c72d20-a4ba-11ea-8a6c-9dc8b4b708ac",
-                      "iban_id": "b6b5c440-a4ba-11ea-837b-bf6e427ec6d0",
-                      "transaction_id": 159100434426,
-                      "amount": 50000,
-                      "payment_number": null,
-                      "status": "PENDING",
-                      "wallet": 60985,
-                      "settlement_date": "2020-06-02",
-                      "settlement_date_jalali": "1399\/03\/13"
-                    }
-                  ]
-                }
-              }
-              </pre>
-
-              <h3 class="sub-title">
-                  خروجی ناموفق در صورت ورود توکن نا درست:
-              </h3>
-
-              <pre>
-                  <span class="key">HTTP/1.1</span> 200
-                  {
-                    "status": 1,
-                    "data": {
-                      "settlement": [
-                        {
-                          "id": "b6c72d20-a4ba-11ea-8a6c-9dc8b4b708ac",
-                          "iban_id": "b6b5c440-a4ba-11ea-837b-bf6e427ec6d0",
-                          "transaction_id": 159100434426,
-                          "amount": 50000,
-                          "payment_number": null,
-                          "status": "PENDING",
-                          "wallet": 60985,
-                          "settlement_date": "2020-06-02",
-                          "settlement_date_jalali": "1399\/03\/13"
-                        }
-                      ]
-                    }
-                  }
-                  </pre>
-
-                  <h3 class="sub-title">
-                      خروجی ناموفق در صورت وارد کردن کسب و کار نادرست در url:
-                  </h3>
-
-                  <pre>
-                      <span class="key">HTTP/1.1</span> 200
-                      {
-                        "status": 1,
-                        "data": {
-                          "settlement": [
-                            {
-                              "id": "b6c72d20-a4ba-11ea-8a6c-9dc8b4b708ac",
-                              "iban_id": "b6b5c440-a4ba-11ea-837b-bf6e427ec6d0",
-                              "transaction_id": 159100434426,
-                              "amount": 50000,
-                              "payment_number": null,
-                              "status": "PENDING",
-                              "wallet": 60985,
-                              "settlement_date": "2020-06-02",
-                              "settlement_date_jalali": "1399\/03\/13"
-                            }
-                          ]
-                        }
-                      }
-                      </pre>
                       </div>
                     </article>
               </div>
