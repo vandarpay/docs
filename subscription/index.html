@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <title>مستندات وندار | ارایه دهنده راهکارهای پرداخت</title>
+    <meta name="description" content="">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="format-detection" content="telephone=no">
+    <link href="https://fonts.googleapis.com/css2?family=Markazi+Text&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.rtl.css">
+    <link rel='icon' href='../favicon.ico' type='image/x-icon' >
+</head>
+<body dir="rtl">
+<header id="header">
+    <h1>Vandar</h1>
+    <h2>مستندات وندار</h2>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <ul>
+              <li>
+                  <a href="https://vandarpay.github.io/docs/">مفاهیم اولیه</a>
+              </li>
+              <li>
+                  <a href="https://vandarpay.github.io/docs/ipg">درگاه پرداخت</a>
+              </li>
+              <li>
+                  <a href="https://vandarpay.github.io/docs/auth">لاگین</a>
+              </li>
+              <li>
+                  <a href="https://vandarpay.github.io/docs/business">کسب‌وکار</a>
+              </li>
+              <li>
+                  <a href="https://vandarpay.github.io/docs/invoice">صورت حساب</a>
+              </li>
+              <li>
+                  <a href="https://vandarpay.github.io/docs/settlement">سرویس تسویه</a>
+              </li>
+              <li>
+                <a href="https://vandarpay.github.io/docs/subscription" class="active">سرویس اشتراک</a>
+              </li>
+              <li>
+                  <a href="https://vandarpay.github.io/docs/errors">خطا‌ها</a>
+              </li>
+            </ul>
+        </div>
+        <div class="col-sm-9">
+            <article class="content">
+                <div class="article" id="ipg">
+                    <h2 class="article-header">مقدمه</h2>
+                    <div>
+                        <h3 class="title">
+                            <strong>دایرکت دبیت یا سرویس اشتراک چیست:</strong>
+                        </h3>
+                        <p>سرویس اشتراک یا دایرکت دبیت سرویسی است که یک فرد وجوهی را از حساب بانکی شخص دیگری خارج میکند در واقع شما به بانک اجازه میدهید که مبلغی را مستقیما   از حسابتان کسر و در قبال آن خدماتی را به شما  ارایه دهد. به طور کلی دایرت دبیت برداشت مستقیم پول برای انجام معاملات مالی در صورت صدور مجوز توسط پرداخت کننده می باشد. این کار بیشتر زمانی انجام می شود که شما بخواهید اشتراک خود را تمدید کنید.
+
+                            شما می توانید در وندار به وسیله این API اشتراک حساب های خود را مدیریت کنید.
+                            تمامی API های وندار بر اساس معماری REST پیاده سازی شده و آدرس آن به شرح زیر می باشد:
+                            </p>
+                        <p>برای تمامی درخواست های ارسالی باید مقادیر زیر در هدر ارسال شوند:
+                            توکن همان کلید API یی است که از وندار دریافت کرده اید.
+                            </p>
+                        <pre>
+<span class="key">Accept:</span> application/json
+<span class="key">Authorization</span> Bearer {Token}
+                        </pre>
+                        <br>
+                        <h2 class="article-header">سرویس دریافت توکن (AUTHORIZATION)</h2>
+
+                        <h3 class="title">
+                            ۱. ایجاد درخواست اشتراک:
+                        </h3>
+                        <p>اولین مرحله از برای دریافت دسترسی به حساب بانکی و ایجاد یک اشتراک جدید. ثبت درخواست اشتراک است. لازم است که درخواست اشتراک خود را به آدرس زیر ارسال کنید.</p>
+                        <pre>
+<span class="key">Method:</span> POST
+<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/subscription/authorization/store
+                        </pre>
+                        <h3 class="sub-title">
+                          پارامترهای مجاز
+                        </h3>
+                        <table class="table">
+                          <thead>
+                          <tr>
+                              <th>name</th>
+                              <th>Type</th>
+                              <th>Status</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                              <td>bank_code</td>
+                              <td>string</td>
+                              <td>required</td>
+                          </tr>
+                          <tr>
+                              <td>mobile</td>
+                              <td>string</td>
+                              <td>required</td>
+                          </tr>
+                          <tr>
+                              <td>callback_url</td>
+                              <td>string</td>
+                              <td>required</td>
+                          </tr>
+                          <tr>
+                            <td>count</td>
+                            <td>integer</td>
+                            <td>required</td>
+                          </tr>
+                          <tr>
+                            <td>limit</td>
+                            <td>integer</td>
+                            <td>required</td>
+                          </tr>
+                          <tr>
+                            <td>name</td>
+                            <td>string</td>
+                            <td>optional</td>
+                          </tr>
+                          <tr>
+                            <td>email</td>
+                            <td>string</td>
+                            <td>optional</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <h3 class="sub-title">
+                        توضیحات
+                      </h3>
+                        <ul>
+                          <li>bank_code (اجباری): کد بانک که از جدول زیر قابل دسترسی است
+                            <br>
+                            <table class="table" style="direction: rtl;">
+                                <thead>
+                                <tr>
+                                    <th>Bank</th>
+                                    <th>Code</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                      <td>آینده</td>
+                                      <td>062</td>
+                                  </tr>
+                                  <tr>
+                                    <td>بانک ایران زمین</td>
+                                    <td>069</td>
+                                  </tr>
+                                  <tr>
+                                    <td>بانک دی</td>
+                                    <td>066</td>
+                                  </tr>
+                                  <tr>
+                                    <td>بانک انصار</td>
+                                    <td>063</td>
+                                  </tr>
+                                  <tr>
+                                    <td>بانک شهر</td>
+                                    <td>061</td>
+                                  </tr>
+                                  <tr>
+                                    <td>بانک سرمایه</td>
+                                    <td>058</td>
+                                  </tr>
+                                  <tr>
+                                    <td>بانک سامان</td>
+                                    <td>056</td>
+                                  </tr>
+                                  <tr>
+                                    <td>بانک اقتصاد نوین</td>
+                                    <td>055</td>
+                                  </tr>
+                                  <tr>
+                                    <td>پست بانک ایران</td>
+                                    <td>021</td>
+                                  </tr>
+                                  <tr>
+                                    <td>بانک سپه</td>
+                                    <td>015</td>
+                                  </tr>
+                                  <tr>
+                                    <td>بانک ملت</td>
+                                    <td>012</td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                            <br>
+                          </li>
+                          <li>
+                            mobile (اجباری): شماره موبایل کاربر
+                          </li>
+                          <li>callback_url (اجباری): باید با آدرس درگاه پرداخت تایید شده در وندار بر روی یک دامنه باشد</li>
+                          <li>count (اجباری): رشته عددی مشخص کننده تعداد درخواست های برداشت وجه که به صورت ماهیانه مشخص می‌شود.</li>
+                          <li>limit (اجباری): رشته عددی مشخص کننده حداکثر مبلغ برداشت وجه در هر برداشت. واحد پول ریال است.</li>
+                          <li>name (اختیاری): نام کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
+                          <li>email (اختیاری): ایمیل کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود.</li>
+                        </ul>
+                        <h3 class="sub-title">
+                          نمونه json 
+                        </h3>
+                        <pre>
+{
+  "bank_code": "062",
+  "mobile": "09123456789",
+  "callback_url": "https://paperpiano.ir/subscription/callback",
+  "count": 7,
+  "limit": 10000,
+  "name": "محمد مقصودی",
+  "email": "yourcustomer@gmail.com"
+}   
+                        </pre>
+                        <h3 class="sub-title">
+                          نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 2xx
+{
+  "status": 1,
+  "message": "درخواست توکن با موفقیت ثبت شد.",
+  "result": {
+    "authorization": {
+      "token": "0cf235d0-d48b-11ea-86cd-298ec898a9bd"
+    }
+  }
+}
+                        </pre>
+                        <div class="info">
+                          <strong>نکته! </strong>
+                          token دریافتی در این قسمت یکبار مصرف است و پس از ۲۰ دقیقه باطل می شود.
+                        </div>
+                        <ul>
+                          <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+                          <li>message: پیغام درخواست توکن با موفقیت ثبت شد</li>
+                          <li>
+                            result:
+                            <ul>
+                              <li>authorization: 
+                                <ul>
+                                  <li>token: آیدی شما در سرویس اشتراک که باید درخواست های بعدی خود را با این آیدی ارسال کنید.</li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      <h3 class="sub-title">
+                        نمونه پاسخ دریافتی نا موفق:
+                      </h3>
+                      <pre>
+<span class="key">HTTP/1.1</span> 401
+{
+  "status": 0,
+  "error": "Unauthenticated"
+}
+                        </pre>
+
+                        <ul>
+                          <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+                          <li>errors: آرایه ای از خطا‌ها</li>
+                        </ul>
+                      <h3 class="title">
+                        ۲. انتقال کاربر به صفحه بانک
+                      </h3>
+                      <p>
+                        در مرحله بعد token دریافتی از قسمت قبل را در انتهای 
+                         آدرس 
+                        می گذارید و در مرورگر وارد سایت می شوید.
+                      </p>
+                      <pre>
+<span class="key">METHOD:</span> get
+<span class="key">URL:</span> https://subscription.vandar.io/authorizations/{token}
+                      </pre>
+
+<img src="../images/authorize-intro.png" alt="صفحه ورود بانک">
+<p>با وارد کردن کد ملی و گذر واژه صحیح وارد صفحه زیر می شوید.</p>
+<img src="../images/authorize.png" alt="صفحه دسترسی">
+<h3 class="title">
+  ۳. دریافت کد اشتراک
+</h3>
+<p>در صورتی که کاربر بر روی دکمه دسترسی دارد کلیک کند، وندار کاربر را به آدرس برگشتی که در مرحله اول ارسال کرده‌اید به همراه پارامتر token و status و authorization_id هدایت می‌کند.
+
+</p>
+
+<p>نمونه موفق</p>
+<pre>
+https://yourdomain.com/callback?token=8cfd3e60-dc77-11ea-a593-15deb083f3e2&authorization_id=9f307e30-dc77-11ea-830e-7533ca1787c5&status=SUCCEED
+</pre>
+
+<p>نمونه ناموفق</p>
+<pre>
+https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&status=FAILED
+</pre>
+
+<h3 class="title">
+  ۴. لیست اشتراک‌ها
+</h3>
+<p>در این بخش  شما می توانید لیست اشتراک های ایجاد شده را مشاهده کنید.</p>
+<pre>
+<span class="key">METHOD:</span> GET
+<span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/subscription/authorization
+</pre>
+<p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد مشاهده‌ی اشتراک‌های آن را دارید.</p>
+<h3 class="sub-title">
+  نمونه پاسخ دریافتی موفق:
+</h3>
+<pre>
+<span class="key">HTTP/1.1</span> 200
+{
+  "data": [
+    {
+      "id": "b4d32590-d426-11ea-b5b5-0b0e1f82ac3c",
+      "customer_uuid": "b4d1e440-d426-11ea-a9d3-051cbf7b8f81",
+      "token": "96ff2c90-d426-11ea-b499-6ddbc3441df4",
+      "bank_code": "062",
+      "callback_url": "http:\/\/vandar.ui\/dd\/callback.php",
+      "count": 7,
+      "limit": "10200",
+      "mobile": "09129311989",
+      "name": "محمد مقصودی",
+      "email": "customer.email@gmail.com",
+      "national_code": "2993968416",
+      "created_at": "1399\/04\/04 14:47:09"
+    },
+    ...
+  ],
+  "links": {
+    "first": "http:\/\/dd.vandar.io\/api\/v1\/vandario\/authorizations?page=1",
+    "last": "http:\/\/dd.vandar.io\/api\/v1\/vandario\/authorizations?page=1",
+    "prev": null,
+    "next": null
+  },
+  "meta": {
+    "current_page": 1,
+    "from": 1,
+    "last_page": 1,
+    "path": "http:\/\/dd.vandar.io\/api\/v1\/vandario\/authorizations",
+    "per_page": 20,
+    "to": 3,
+    "total": 3
+  }
+}
+</pre>
+<ul>
+  <li>
+    data: 
+    <ul>
+      <li>id: آیدی اشتراک که برای درخواست برداشت وجه از این آیدی استفاده می شود.</li>
+      <li>customer_uuid: شناسه مشتری کسب و کار شما</li>
+      <li>token: توکنی که در مرحله اول برای شما ارسال شده است.</li>
+      <li>bank_code: کد بانک که لیست آن در بالا اشاره شده است.</li>
+      <li>callback_url: آدرس بازگشتی ای که در زمان درخواست ارسال کرده اید.</li>
+      <li>count: رشته عددی مشخص کننده تعداد درخواست های برداشت وجه که به صورت ماهیانه مشخص می‌شود.</li>
+      <li>limit: رشته عددی مشخص کننده حداکثر مبلغ برداشت وجه در هر برداشت. واحد پول ریال است.</li>
+      <li>mobile: شماره موبایل کاربر</li>
+      <li>name: نام کاربر اگر در مرحله قبل ارسال کردید</li>
+      <li>email: ایمیل کاربر اگر در مرحله قبل ارسال کردید</li>
+      <li>national_code: کدملی کاربر در صورتی که بانک به وندار برگردانده باشد</li>
+      <li>created_at: زمان ساخت اشتراک</li>
+    </ul>
+  </li>
+  <li>
+    links:
+    <ul>
+      <li>first: آدرس اولین صفحه</li>
+      <li>last: آدرس آخرین صفحه</li>
+      <li>prev: آدرس صفحه قبل</li>
+      <li>next: آدرس صفحه بعد</li>
+    </ul>
+  </li>
+  <li>
+    meta:
+    <ul>
+      <li>current_page: آدرس همین صفحه</li>
+      <li>from: شماره اولین آیتم تسویه ای که در این صفحه آمده است </li>
+      <li>last_page: تعداد کل صفحات تسویه</li>
+      <li>path: آدرس خالص بدون صفحه بندی</li>
+      <li>per_page: تعداد آیتم در هر صفحه</li>
+      <li>to: شماره آخرین آیتم تسویه ای که در این صفحه آمده است</li>
+      <li>total: تعداد کل آیتم های تسویه</li>
+    </ul>
+  </li>
+</ul>
+<div class="info">
+  <strong>نکته! </strong> 
+     در این قسمت در خروجی id را دریافت میکنیم که مطابق با همان subscription_code دریافتی از url در مرحله قبل می باشد. و در مراحل بعد برای استفاده از متد show و revoke که برای نمایش و پاک کردن اشتراک است مورد استفاده قرار میگیرد. 
+</div>
+<h3 class="sub-title">
+  نمونه پاسخ دریافتی نا موفق:
+</h3>
+<pre>
+<span class="key">HTTP/1.1</span> 401
+{
+"status": 0,
+"error": "Unauthenticated"
+}
+  </pre>
+  <ul>
+    <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+    <li>errors: آرایه ای از خطا‌ها</li>
+  </ul>
+<h3 class="title">
+  ۵. نمایش یک اشتراک با id 
+</h3>
+<p>شما می توانید با این دستور جزییات یک اشتراک را با فرستادن id دریافت کنید.</p>
+<pre>
+<span class="key">Method:</span> GET
+<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/subscription/authorization/{id}
+</pre>
+<p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد مشاهده یکی از اشتراک های آن را دارید.</p>
+<h3 class="sub-title">
+  نمونه پاسخ دریافتی موفق:
+</h3>
+<pre>
+<span class="key">HTTP/1.1</span> 2xx
+{
+  "status": 1,
+  "message": "مجوز با موفقیت به نمایش در آمد.",
+  "result": {
+    "authorizations": {
+      "id": "b4d32590-d426-11ea-b5b5-0b0e1f82ac3c",
+      "customer_uuid": "b4d1e440-d426-11ea-a9d3-051cbf7b8f81",
+      "token": "96ff2c90-d426-11ea-b499-6ddbc3441df4",
+      "bank_code": "062",
+      "callback_url": "http:\/\/vandar.ui\/dd\/callback.php",
+      "count": 7,
+      "limit": "10200",
+      "mobile": "09129311989",
+      "name": "محمد مقصودی",
+      "email": "customer.email@gmail.com",
+      "national_code": "2993968416",
+      "created_at": "1399\/04\/04 14:47:09"
+    }
+  }
+}
+</pre>
+<ul>
+  <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+  <li>message: پیغام مجوز با موفقیت به نمایش در آمد</li>
+  <li>
+    result:
+    <ul>
+      <li>authorizations: 
+        <ul>
+          <li>id: آیدی اشتراک که برای درخواست برداشت وجه از این آیدی استفاده می شود.</li>
+          <li>customer_uuid: شناسه مشتری کسب و کار شما</li>
+          <li>token: توکنی که در مرحله اول برای شما ارسال شده است.</li>
+          <li>bank_code: کد بانک که لیست آن در بالا اشاره شده است.</li>
+          <li>callback_url: آدرس بازگشتی ای که در زمان درخواست ارسال کرده اید.</li>
+          <li>count: رشته عددی مشخص کننده تعداد درخواست های برداشت وجه که به صورت ماهیانه مشخص می‌شود.</li>
+          <li>limit: رشته عددی مشخص کننده حداکثر مبلغ برداشت وجه در هر برداشت. واحد پول ریال است.</li>
+          <li>mobile: شماره موبایل کاربر</li>
+          <li>name: نام کاربر اگر در مرحله قبل ارسال کردید</li>
+          <li>email: ایمیل کاربر اگر در مرحله قبل ارسال کردید</li>
+          <li>national_code: کدملی کاربر در صورتی که بانک به وندار برگردانده باشد</li>
+          <li>created_at: زمان ساخت اشتراک</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<h3 class="sub-title">
+  نمونه پاسخ دریافتی ناموفق:
+</h3>
+<p>در صورتی که توکن فرستاده شده برای کسب و کاری که در آدرس ارسال کردید، معتبر نباشد پاسخ زیر را دریافت می کنید:</p>
+<pre>
+<span class="key">HTTP/1.1</span> 401
+{
+  "status": 0,
+  "error": "Unauthenticated"
+}
+</pre>
+  
+                          <ul>
+                            <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+                            <li>errors: آرایه ای از خطا‌ها</li>
+                          </ul>
+
+  <p>در صورتی که اشتراکی با id ارسال شده موجود نباشد پاسخ زیر را دریافت می کنید:</p>
+<pre>
+<span class="key">HTTP/1.1</span> 404
+{
+  "status": 0,
+  "message": "برنامه کاربردی با این شناسه کاربری یافت نشد"
+}
+</pre>
+  
+                          <ul>
+                            <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+                            <li>message: آرایه ای از خطا‌ها</li>
+                          </ul>
+
+
+
+
+<h3 class="title">
+  ۶. پاک کردن یک اشتراک با استفاده از id 
+</h3>
+
+<pre>
+<span class="key">Method:</span> DELETE
+<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/subscription/authorization/{id}
+</pre>
+
+<p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد حذف یکی از اشتراک های آن را دارید.</p>
+<p>پارامتر {id} همان id مربوط به اشتراکی است که قصد حذف آن را دارید.</p>
+
+<h3 class="sub-title">
+  نمونه پاسخ دریافتی موفق:
+</h3>
+<pre>
+<span class="key">HTTP/1.1</span> 2xx
+{
+  "status": 1,
+  "message": "مجوز با موفقیت لغو گردید.",
+  "result": {
+    "authorizations": {
+      "id": "0cf235d0-d48b-11ea-86cd-298ec898a9bd"
+    }
+  }
+}
+</pre>
+<ul>
+  <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+  <li>message: پیغام مجوز با موفقیت لغو گردید</li>
+  <li>
+    result:
+    <ul>
+      <li>authorization: 
+        <ul>
+          <li>id: آیدی اشتراک حذف شده </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<h3 class="sub-title">
+  نمونه پاسخ دریافتی ناموفق:
+</h3>
+<p>در صورتی که توکن فرستاده شده برای کسب و کاری که در آدرس ارسال کردید، معتبر نباشد پاسخ زیر را دریافت می کنید:</p>
+<pre>
+<span class="key">HTTP/1.1</span> 401
+{
+  "status": 0,
+  "error": "Unauthenticated"
+}
+</pre>
+  
+                          <ul>
+                            <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+                            <li>errors: آرایه ای از خطا‌ها</li>
+                          </ul>
+
+  <p>در صورتی که اشتراکی با id ارسال شده موجود نباشد پاسخ زیر را دریافت می کنید:</p>
+<pre>
+<span class="key">HTTP/1.1</span> 404
+{
+  "status": 0,
+  "message": "خطای ۴۰۴ رخ داده است"
+}
+</pre>
+  
+                          <ul>
+                            <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+                            <li>message: آرایه ای از خطا‌ها</li>
+                          </ul>
+
+<br>
+
+<h2 class="article-header">سرویس برداشت وجه  (Withdrawal)</h2>
+
+<p>سرویس برداشت وجه از حساب دیگران، این سرویس هنگامی به کار می‌رود که شما قصد دارید از حساب مشتریان خود یکبار یا به صورت دوره‌ای وجهی را برداشت کنید.</p>
+
+<h3 class="title">
+  ۱. ثبت درخواست برداشت وجه
+</h3>
+
+<p>این درخواست برداشت وجه را می توانید تا سقف محدودیت مبلغ و تعداد برداشت تعیین شده برای اشتراک صدا بزنید.</p>
+
+<pre>
+<span class="key">Method:</span> POST
+<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/subscription/withdrawal/store
+</pre>
+
+<p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد برداشت وجه از اشتراک آن را دارید.</p>
+
+<h3 class="sub-title">
+  پارامترهای مجاز
+</h3>
+
+<table class="table" dir="rtl">
+  <thead>
+  <tr>
+      <th>name</th>
+      <th>Type</th>
+      <th>Status</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+      <td>authorization_id</td>
+      <td>string</td>
+      <td>required</td>
+  </tr>
+  <tr>
+      <td>amount</td>
+      <td>string</td>
+      <td>required</td>
+  </tr>
+  <tr>
+    <td>withdrawal_date</td>
+    <td>string</td>
+    <td>required</td>
+  </tr>
+
+  </tbody>
+</table>
+
+<h3 class="sub-title">
+  توضیحات
+</h3>
+
+<ul>
+  <li>authorization_id (اجباری):
+    آیدی دریافتی در بخش اشتراک که می خواهید مبلغ از آن دسترسی برداشت شود
+  </li>
+  <li>amount (اجباری): 
+    مبلغ برداشت وجه 
+  </li>
+  <li>withdrawal_date (اجباری): 
+    تاریخی از امروز به بعد که می خواهید مبلغ در آن روز از حساب برداشت شود
+  </li>
+</ul>
+
+<h3 class="sub-title">
+  نمونه json 
+</h3>
+
+<pre>
+{
+  "authorization_id": "dd205c00-b603-11ea-b6fc-ed9baa10357b",
+  "amount": "10000",
+  "withdrawal_date": "2020-07-04"
+}
+</pre>
+
+<h3 class="sub-title">
+  نمونه پاسخ دریافتی موفق:
+</h3>
+
+<pre>
+<span class="key">HTTP/1.1</span> 200
+{
+  "status": 1,
+  "message": "درخواست برداشت وجه با موفقیت ثبت شد.",
+  "result": {
+    "withdrawal": {
+      "id": "8c6e27c0-dbbd-11ea-a2f6-e9c8bf97463f",
+      "authorization_id": "2866fa80-dbbd-11ea-a0f9-d19612a00c59",
+      "retry_count": 1,
+      "gateway_transaction_id": "159714176734",
+      "amount": "10000",
+      "wage_amount": 200,
+      "payment_number": null,
+      "status": "PENDING",
+      "description": null,
+      "withdrawal_date": "1399\/05\/21"
+    }
+  }
+}
+</pre>
+
+<ul>
+  <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+  <li>message: پیغام درخواست برداشت وجه با موفقیت ثبت شد</li>
+  <li>
+    result:
+    <ul>
+      <li>withdrawal: 
+        <ul>
+          <li>id: آیدی درخواست برداشت وجه</li>
+          <li>authorization_id: آیدی اشتراکی که درخواست برداشت وجه برای آن صادر شده است</li>
+          <li>retry_count: تعداد دفعات تلاش برای برداشت وجه</li>
+          <li>gateway_transaction_id: شناسه یکتای برداشت وجه</li>
+          <li>amount: مبلغ برداشت وجه</li>
+          <li>wage_amount: کارمزد </li>
+          <li>payment_number: شناسه بانکی برداشت وجه</li>
+          <li>status: وضعیت برداشت وجه که ۴ حالت PENDING, DONE, CANCELED, FAILED دارد.</li>
+          <li>description: توضیحات </li>
+          <li>withdrawal_date: تاریخ درخواست برداشت وجه ارسالی توسط شما</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 class="sub-title">
+  نمونه پاسخ دریافتی ناموفق:
+</h3>
+<p>
+  اگر بیشتر از تعداد count این درخواست را صدا بزنید با خطای زیر مواجه می شوید.
+</p>
+
+<pre>
+<span class="key">HTTP/1.1</span> 4xx
+{
+  "status": 0,
+  "errors": {
+    "authorization_id": "ذخیره برداشت وجه به دلیل رسیدن به حداکثر تعداد برداشت در ماه، امکان پذیر نیست."
+  }
+}
+</pre>
+<ul>
+  <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+  <li>
+    errors:
+    <ul>
+      <li>authorization_id: متن خطا</li>
+    </ul>
+  </li>
+</ul>
+<p>در صورتی که توکن فرستاده شده معتبر نباشد پاسخ زیر را دریافت می کنید:</p>
+<pre>
+<span class="key">HTTP/1.1</span> 401
+{
+  "status": 0,
+  "error": "Unauthenticated"
+}
+</pre>
+  
+                          <ul>
+                            <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+                            <li>errors: آرایه ای از خطا‌ها</li>
+                          </ul>
+
+  <p>در صورت عدم وجود کسب و کار این خطا را دریافت می کنید: </p>
+<pre>
+<span class="key">HTTP/1.1</span> 404
+{
+  "status": 0,
+  "error": "کسب و کار وجود ندارد"
+}
+</pre>
+  
+                          <ul>
+                            <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+                            <li>message: آرایه ای از خطا‌ها</li>
+                          </ul>
+
+
+
+<h3 class="title">
+  ۲. لیست برداشت وجه های ثبت شده
+</h3>
+<p>با استفاده از api زیر می توانید تمام برداشت های وجه انجام شده تا کنون را مشاهده کنید. </p>
+<pre>
+<span class="key">Method:</span> GET
+<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/subscription/withdrawal
+</pre>
+<p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد نمایش لیست برداشت وجه از اشتراک آن را دارید.</p>
+
+<h3 class="sub-title">
+  نمونه پاسخ دریافتی موفق:
+</h3>
+
+<pre>
+<span class="key">HTTP/1.1</span> 200
+{
+  "data": [
+    {
+      "id": "f3d084e0-b603-11ea-94ad-ebc7f5bf8e12",
+      "authorization_id": "dd205c00-b603-11ea-b6fc-ed9baa10357b",
+      "retry_count": 1,
+      "gateway_transaction_id": 159281892196,
+      "amount": 10000,
+      "wage_amount": "200.00",
+      "payment_number": null,
+      "status": "DONE",
+      "description": null,
+      "withdrawal_date": "1399\/04\/04"
+    },
+    ...
+  ],
+  "links": {
+    "first": "http:\/\/api.vandar.local\/v2\/business\/vandario\/subscription\/withdrawal?page=1",
+    "last": "http:\/\/api.vandar.local\/v2\/business\/vandario\/subscription\/withdrawal?page=33",
+    "prev": null,
+    "next": "http:\/\/api.vandar.local\/v2\/business\/vandario\/subscription\/withdrawal?page=2"
+  },
+  "meta": {
+    "current_page": 1,
+    "from": 1,
+    "last_page": 33,
+    "path": "http:\/\/api.vandar.local\/v2\/business\/vandario\/subscription\/withdrawal",
+    "per_page": 20,
+    "to": 20,
+    "total": 656
+  }
+}
+</pre>
+
+<ul>
+  <li>
+    data: 
+    <ul>
+      <li>id: آیدی درخواست برداشت وجه</li>
+      <li>authorization_id: آیدی اشتراکی که درخواست برداشت وجه برای آن صادر شده است</li>
+      <li>retry_count: تعداد دفعات تلاش برای برداشت وجه</li>
+      <li>gateway_transaction_id: شناسه یکتای برداشت وجه</li>
+      <li>amount: مبلغ برداشت وجه</li>
+      <li>wage_amount: کارمزد </li>
+      <li>payment_number: شناسه بانکی برداشت وجه</li>
+      <li>status: وضعیت برداشت وجه که ۴ حالت PENDING, DONE, CANCELED, FAILED دارد.</li>
+      <li>description: توضیحات </li>
+      <li>withdrawal_date: تاریخ درخواست برداشت وجه ارسالی توسط شما</li>
+    </ul>
+  </li>
+  <li>
+    links:
+    <ul>
+      <li>first: آدرس اولین صفحه</li>
+      <li>last: آدرس آخرین صفحه</li>
+      <li>prev: آدرس صفحه قبل</li>
+      <li>next: آدرس صفحه بعد</li>
+    </ul>
+  </li>
+  <li>
+    meta:
+    <ul>
+      <li>current_page: آدرس همین صفحه</li>
+      <li>from: شماره اولین آیتم تسویه ای که در این صفحه آمده است </li>
+      <li>last_page: تعداد کل صفحات تسویه</li>
+      <li>path: آدرس خالص بدون صفحه بندی</li>
+      <li>per_page: تعداد آیتم در هر صفحه</li>
+      <li>to: شماره آخرین آیتم تسویه ای که در این صفحه آمده است</li>
+      <li>total: تعداد کل آیتم های تسویه</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 class="sub-title">
+  نمونه پاسخ دریافتی ناموفق:
+</h3>
+<pre>
+<span class="key">HTTP/1.1</span> 401
+{
+  "status": 0,
+  "error": "Unauthenticated"
+}
+</pre>
+<ul>
+  <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+  <li>errors: آرایه ای از خطا‌ها</li>
+</ul>
+
+
+
+<h3 class="title">
+    ۳. نمایش یک برداشت وجه:
+</h3>
+
+<pre>
+<span class="key">METHOD:</span> GET
+<span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/subscription/withdrawal/{id}
+</pre>
+<p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد دارید یک برداشت وجه از آن را نمایش دهید.</p>
+<p>پارامتر {id} همان id مربوط به برداشت وجهی است که قصد نمایش آن را دارید.</p>
+
+
+<h3 class="sub-title">
+  نمونه پاسخ دریافتی موفق:
+</h3>
+<pre>
+<span class="key">HTTP/1.1</span> 2xx
+{
+  "status": 1,
+  "message": "برداشت وجه با موفقیت به نمایش درآمد.",
+  "result": {
+    "withdrawal": {
+      "id": "f3d084e0-b603-11ea-94ad-ebc7f5bf8e12",
+      "authorization_id": "dd205c00-b603-11ea-b6fc-ed9baa10357b",
+      "retry_count": 1,
+      "gateway_transaction_id": 159281892196,
+      "amount": 10000,
+      "wage_amount": "200.00",
+      "payment_number": null,
+      "status": "DONE",
+      "description": null,
+      "withdrawal_date": "1399\/04\/04"
+      }
+    },
+  }
+}
+</pre>
+<ul>
+  <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+  <li>message: پیغام برداشت وجه با موفقیت به نمایش درآمد</li>
+  <li>
+    result:
+    <ul>
+      <li>withdrawal: 
+        <ul>
+          <li>id: آیدی درخواست برداشت وجه</li>
+          <li>authorization_id: آیدی اشتراکی که درخواست برداشت وجه برای آن صادر شده است</li>
+          <li>retry_count: تعداد دفعات تلاش برای برداشت وجه</li>
+          <li>gateway_transaction_id: شناسه یکتای برداشت وجه</li>
+          <li>amount: مبلغ برداشت وجه</li>
+          <li>wage_amount: کارمزد </li>
+          <li>payment_number: شناسه بانکی برداشت وجه</li>
+          <li>status: وضعیت برداشت وجه که ۴ حالت PENDING, DONE, CANCELED, FAILED دارد.</li>
+          <li>description: توضیحات </li>
+          <li>withdrawal_date: تاریخ درخواست برداشت وجه ارسالی توسط شما</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<h3 class="sub-title">
+  نمونه پاسخ دریافتی ناموفق:
+</h3>
+<pre>
+<span class="key">HTTP/1.1</span> 401
+{
+  "status": 0,
+  "error": "Unauthenticated"
+}
+</pre>
+  
+  <ul>
+    <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+    <li>errors: آرایه ای از خطا‌ها</li>
+  </ul>
+
+
+      
+          <h3 class="title">
+              ۴. انصراف از برداشت وجه:
+          </h3>
+
+          <p>در صورتی که کاربر از برداشت وجه منصرف شود با صدا زدن متد زیر می تواند انصراف خود را اعلام کند.</p>
+
+<pre>
+<span class="key">METHOD:</span> PUT
+<span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/subscription/withdrawal/{id}
+</pre>
+<p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد دارید یک برداشت وجه از آن را نمایش دهید.</p>
+<p>پارامتر {id} همان id مربوط به برداشت وجهی است که قصد نمایش آن را دارید.</p>
+
+<h3 class="sub-title">
+  نمونه پاسخ دریافتی موفق:
+</h3>
+
+<pre>
+  <span class="key">HTTP/1.1</span> 200
+{
+  "status": 1,
+  "message": "برداشت وجه با موفقیت لغو گردید.",
+  "result": {
+    "withdrawal": {
+      "id": "8c6e27c0-dbbd-11ea-a2f6-e9c8bf97463f"
+    }
+  }
+}
+  </pre>
+
+  <ul>
+    <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+    <li>message: پیغام برداشت وجه با موفقیت لغو گردید.</li>
+    <li>
+      result:
+      <ul>
+        <li>withdrawal: 
+          <ul>
+            <li>id: </li> آیدی برداشت وجهی که قصد کنسل کردن آن را داشتید.
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 class="sub-title">
+    نمونه پاسخ دریافتی ناموفق:
+  </h3>
+<pre>
+<span class="key">HTTP/1.1</span> 401
+{
+  "status": 0,
+  "error": "Unauthenticated"
+}
+</pre>
+      
+      <ul>
+        <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
+        <li>errors: آرایه ای از خطا‌ها</li>
+      </ul>
+
+
+                      </div>
+                    </article>
+              </div>
+          </div>
+      </div>
+  <footer id="footer">
+    <div class="container">
+        <div class="row" style="text-align: center">
+            <div class="col-sm-8 col-xs-6 no-padding-bottom">
+                <a href="https://github.com/vandarpay/docs" target="_blank">مخزن گیت‌هاب</a>
+            </div>
+            <div class="col-sm-4 col-xs-6 text-right no-padding-bottom">2020 &copy; <a href="https://vandar.io" target="_blank">وندار</a></div>
+        </div>
+    </div>
+
+</footer>
+<button onclick="goTop()" id="go_top" title="Go to top">^</button>
+<script>
+    window.onscroll = function() {
+        var top = document.getElementById("go_top");
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            top.style.display = "block";
+        } else {
+            top.style.display = "none";
+        }
+    };
+
+    function goTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    };
+</script>
+</body>
+</html>
