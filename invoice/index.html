@@ -123,10 +123,97 @@
 <span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/transaction?per_page=10&page=1
 <span class="key">Header:</span> authorization : Bearer {token}</pre>
 
+
+                            <h3 class="sub-title">
+                                پارامترهای مجاز
+                            </h3>
+                            <table>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Status</th>
+                                </tr>
+                                <tr>
+                                    <td>fromDate</td>
+                                    <td>String</td>
+                                    <td>optional</td>
+                                </tr>
+                                <tr>
+                                    <td>toDate</td>
+                                    <td>String</td>
+                                    <td>optional</td>
+                                </tr>
+                                <tr>
+                                    <td>statusKind</td>
+                                    <td>String</td>
+                                    <td>optional</td>
+                                </tr>
+                                <tr>
+                                    <td>status</td>
+                                    <td>String</td>
+                                    <td>optional</td>
+                                </tr>
+                                <tr>
+                                    <td>channel</td>
+                                    <td>String</td>
+                                    <td>optional</td>
+                                </tr>
+
+                                <tr>
+                                    <td>formId</td>
+                                    <td>String</td>
+                                    <td>optional</td>
+                                </tr>
+
+                                <tr>
+                                    <td>ref_id</td>
+                                    <td>String</td>
+                                    <td>optional</td>
+                                </tr>
+
+                                <tr>
+                                    <td>tracking_code</td>
+                                    <td>String</td>
+                                    <td>optional</td>
+                                </tr>
+
+                                <tr>
+                                    <td>per_page</td>
+                                    <td>String</td>
+                                    <td>optional</td>
+                                </tr>
+
+
+
+                            </table>
                             <h3 class="sub-title">
                                 توضیحات
                             </h3>
                             <ul>
+                                <li>fromDate (اختیاری): شروع بازه زمانی با فرمت 990504</li>
+                                <li>toDate (اختیاری): پایان بازه زمانی با فرمت 990527</li>
+                                <li>statusKind (اختیاری): این پارامتر مشخص کننده نوع تراکنش می‌باشد. </li>
+                                <ul>
+                                    <li> transactions: مشخص کننده تراکنش‌ها </li>
+                                    <li> settlement : مشخص کننده تسویه‌ها </li>
+                                </ul>
+                                <li>status (اختیاری):  مشخص کننده وضعیت تراکنش یا تسویه می‌باشد</li>
+                                <ul>
+                                    <li>succeed: وضعیت موفق </li>
+                                    <li>failed : وضعیت نا‌موفق </li>
+                                    <li>pending : وضعیت در حال انجام </li>
+                                    <li>canceled : وضعیت لغو شده </li>
+                                </ul>
+                                <li>channel (اختیاری): این پارامتر مشخص می‌کند که تراکنش از چه کانالی انجام شده است</li>
+                                <ul>
+                                    <li> ipg: تراکنش های درگاه پرداخت </li>
+                                    <li> form : تراکنش های فرم پرداخت </li>
+                                </ul>
+                                <li>formId (اختیاری): شناسه فرم پرداخت </li>
+                                <li>ref_id (اختیاری): این پارامتر جستجو بر اساس کد مرجع را فراهم می‌سازد</li>
+                                <li>tracking_code (اختیاری): این پارامتر جستجو بر اساس کد پیگیری را فراهم می‌سازد</li>
+                                <li>tracking_code (اختیاری): </li>
+
                                 <li>per_page(اختیاری): تعداد رکورد اطلاعاتی درخواست صورت حساب را مشخص میکند </li>
                                 <li>page(اختیاری): با توجه به pagination، صفحه مورد نظر را مشخص می‌کند. </li>
                             </ul>
