@@ -213,7 +213,7 @@
                         </h3>
 
                         <pre>
-<span class="key">HTTP/1.1</span> 2xx
+<span class="key">HTTP/1.1</span> 200
 {
   "status": 1,
   "message": "درخواست توکن با موفقیت ثبت شد.",
@@ -410,7 +410,7 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
   نمونه پاسخ دریافتی موفق:
 </h3>
 <pre>
-<span class="key">HTTP/1.1</span> 2xx
+<span class="key">HTTP/1.1</span> 200
 {
   "status": 1,
   "message": "مجوز با موفقیت به نمایش در آمد.",
@@ -507,7 +507,7 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
   نمونه پاسخ دریافتی موفق:
 </h3>
 <pre>
-<span class="key">HTTP/1.1</span> 2xx
+<span class="key">HTTP/1.1</span> 200
 {
   "status": 1,
   "message": "مجوز با موفقیت لغو گردید.",
@@ -700,7 +700,7 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
 </p>
 
 <pre>
-<span class="key">HTTP/1.1</span> 4xx
+<span class="key">HTTP/1.1</span> 422
 {
   "status": 0,
   "errors": {
@@ -763,6 +763,7 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
 
 <pre>
 <span class="key">HTTP/1.1</span> 200
+
 {
   "data": [
     {
@@ -775,7 +776,8 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
       "payment_number": null,
       "status": "DONE",
       "description": null,
-      "withdrawal_date": "1399\/04\/04"
+      "withdrawal_date": "1399\/04\/04",
+      "customer_info": "محمد محمدی"
     },
     ...
   ],
@@ -811,6 +813,7 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
       <li>status: وضعیت برداشت وجه که ۴ حالت PENDING, DONE, CANCELED, FAILED دارد.</li>
       <li>description: توضیحات </li>
       <li>withdrawal_date: تاریخ درخواست برداشت وجه ارسالی توسط شما</li>
+      <li>customer_info: اطلاعات کاربر شما که درخواست برداشت وجه برای آن ثبت شده است</li>
     </ul>
   </li>
   <li>
@@ -869,7 +872,7 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
   نمونه پاسخ دریافتی موفق:
 </h3>
 <pre>
-<span class="key">HTTP/1.1</span> 2xx
+<span class="key">HTTP/1.1</span> 200
 {
   "status": 1,
   "message": "برداشت وجه با موفقیت به نمایش درآمد.",
