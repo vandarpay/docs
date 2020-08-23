@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5ab2c936-4e71-4614-97df-669d63eb7f5d",
+		"_postman_id": "9dbc29e6-0852-41c6-8d35-f37875962961",
 		"name": "VandarAPI Copy",
 		"description": "The Vandar API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
