@@ -59,6 +59,16 @@
                         <div class="info">
                             <strong>نکته! </strong>پارامتر deductible_amount نشان‌دهنده مبلغ قابل برداشت امروز و پارامتر blocked_amount نشان‌دهنده مبلغ مسدود‌شده در حساب است.
                         </div>
+                        <div class="info">
+                            <strong>نکته! </strong>انواع حالت‌های ممکن تسویه (فیلد status مربوط به settlement) عبارتند از: INIT, PENDING, DONE, FAILED, CANCELED
+                            <br>
+                            <br>
+                                - INIT: وقتی که تسویه به بانک فرستاده می‌شود. <br>
+                                - PENDING: وقتی که تسویه به بانک فرستاده شده و در انتظار رسیدن به سیکل مورد نظر است. <br>
+                                - DONE: تسویه‌ای که با موفقیت انجام شده است. <br>
+                                - FAILED: تسویه‌ای که با خطا مواجه شده است. <br>
+                                - CANCELED: تسویه لغو شده است. لازم به ذکر است که امکان لغو تسویه در وضعیت تسویه‌ی آنی وجود ندارد. <br>
+                        </div>
                         <pre>
 <span class="key">METHOD:</span> GET
 <span class="key">URL:</span> https://api.vandar.io/v2.1/business/{business}/settlement
