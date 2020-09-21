@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "9dbc29e6-0852-41c6-8d35-f37875962961",
-		"name": "VandarAPI Copy",
+		"_postman_id": "ccb9c4dd-21e7-4b2c-a825-8c82b58b7b36",
+		"name": "VandarAPI",
 		"description": "The Vandar API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -50,6 +50,113 @@
 						"description": "در مرحله اول شما می بایست پارامترهای موجود در جدول زیر رو با متد POST به آدرسی که مشخص شده ارسال کنید. به نوع داده ها و نام فیلد توجه کنید. در صورتی که برای فیلد شماره موبایل، شماره موبایل کاربر را به درگاه ارسال نمایید، بصورت اتوماتیک درگاه موبایلی نمایش داده می شود"
 					},
 					"response": [
+						{
+							"name": "Failed ipg send",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"api_key\" : \"714e6f9c9fc38e37a5cb1b2f87b2c8a9a227324\",\n\t\"amount\"\t:\t100,\n\t\"callback_url\" : \"https://dash.paperpiano1.ir/callback\",\n\t\"mobile_number\" : \"09123456789\",\n\t\"factorNumber\" : \"12345\",\n\t\"description\" : \"description\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://vandar.io/api/ipg/send",
+									"protocol": "https",
+									"host": [
+										"vandar",
+										"io"
+									],
+									"path": [
+										"api",
+										"ipg",
+										"send"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 May 2020 10:48:51 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.3.13"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET, OPTIONS, PUT, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Server",
+									"value": "ArvanCloud"
+								},
+								{
+									"key": "AR-PoweredBy",
+									"value": "Arvan Cloud (arvancloud.com)"
+								},
+								{
+									"key": "AR-ATIME",
+									"value": "0.349"
+								},
+								{
+									"key": "AR-Request-ID",
+									"value": "8e8eacf8f96de43a4c5c0af7512267df"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 0,\n    \"errors\": [\n        \"آدرس بازگشتی معتبر نیست\",\n        \"amount نباید کوچکتر از 1000 باشد.\"\n    ]\n}"
+						},
 						{
 							"name": "Succeed ipg send",
 							"originalRequest": {
@@ -180,113 +287,6 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"status\": 1,\n    \"token\": \"4FFSKSZ9I3CJWOA\"\n}"
-						},
-						{
-							"name": "Failed ipg send",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n\t\"api_key\" : \"714e6f9c9fc38e37a5cb1b2f87b2c8a9a227324\",\n\t\"amount\"\t:\t100,\n\t\"callback_url\" : \"https://dash.paperpiano1.ir/callback\",\n\t\"mobile_number\" : \"09123456789\",\n\t\"factorNumber\" : \"12345\",\n\t\"description\" : \"description\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://vandar.io/api/ipg/send",
-									"protocol": "https",
-									"host": [
-										"vandar",
-										"io"
-									],
-									"path": [
-										"api",
-										"ipg",
-										"send"
-									]
-								}
-							},
-							"status": "Unprocessable Entity",
-							"code": 422,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 21 May 2020 10:48:51 GMT"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/7.3.13"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Access-Control-Allow-Methods",
-									"value": "POST, GET, OPTIONS, PUT, DELETE"
-								},
-								{
-									"key": "Access-Control-Allow-Headers",
-									"value": "*"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "58"
-								},
-								{
-									"key": "Server",
-									"value": "ArvanCloud"
-								},
-								{
-									"key": "AR-PoweredBy",
-									"value": "Arvan Cloud (arvancloud.com)"
-								},
-								{
-									"key": "AR-ATIME",
-									"value": "0.349"
-								},
-								{
-									"key": "AR-Request-ID",
-									"value": "8e8eacf8f96de43a4c5c0af7512267df"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"status\": 0,\n    \"errors\": [\n        \"آدرس بازگشتی معتبر نیست\",\n        \"amount نباید کوچکتر از 1000 باشد.\"\n    ]\n}"
 						}
 					]
 				},
@@ -1068,6 +1068,291 @@
 						}
 					},
 					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Direct Debit",
+			"item": [
+				{
+					"name": "Authorization",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/subscription/authorization",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"subscription",
+										"authorization"
+									]
+								},
+								"description": "get list of Authorization"
+							},
+							"response": []
+						},
+						{
+							"name": "store",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "bank_code",
+											"value": "062",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "091200000000",
+											"type": "text"
+										},
+										{
+											"key": "callback_url",
+											"value": "https://yourCallbaclkUrl.ir",
+											"type": "text"
+										},
+										{
+											"key": "count",
+											"value": "7",
+											"type": "text"
+										},
+										{
+											"key": "limit",
+											"value": "100000000",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "YourName",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "yourEmail@email.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/subscription/authorization/store",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"subscription",
+										"authorization",
+										"store"
+									]
+								},
+								"description": "store a new Authorization"
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/subscription/authorization/{token}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"subscription",
+										"authorization",
+										"{token}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "revoke",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/subscription/authorization/{token}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"subscription",
+										"authorization",
+										"{token}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Withdrawal",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/subscription/withdrawal",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"subscription",
+										"withdrawal"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "store",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "business_id",
+											"value": "20",
+											"type": "text"
+										},
+										{
+											"key": "authorization_id",
+											"value": "ab742b80-f71d-11ea-8755-4193ee95fd09",
+											"type": "text"
+										},
+										{
+											"key": "amount",
+											"value": "10000",
+											"type": "text"
+										},
+										{
+											"key": "withdrawal_date",
+											"value": "2020-09-16",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/subscription/withdrawal/store",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"subscription",
+										"withdrawal",
+										"store"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cancel",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/subscription/withdrawal/{id}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"subscription",
+										"withdrawal",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/subscription/withdrawal/{id}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"subscription",
+										"withdrawal",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				}
 			],
 			"protocolProfileBehavior": {}
