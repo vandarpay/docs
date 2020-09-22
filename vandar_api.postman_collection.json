@@ -1175,7 +1175,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "https://api.vandar.io/v2/business/{business}/subscription/authorization/{token}",
+									"raw": "https://api.vandar.io/v2/business/{business}/subscription/authorization/{id}",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -1188,7 +1188,7 @@
 										"{business}",
 										"subscription",
 										"authorization",
-										"{token}"
+										"{id}"
 									]
 								}
 							},
@@ -1200,7 +1200,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "https://api.vandar.io/v2/business/{business}/subscription/authorization/{token}",
+									"raw": "https://api.vandar.io/v2/business/{business}/subscription/authorization/{id}",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -1213,7 +1213,7 @@
 										"{business}",
 										"subscription",
 										"authorization",
-										"{token}"
+										"{id}"
 									]
 								}
 							},
@@ -1301,9 +1301,9 @@
 							"response": []
 						},
 						{
-							"name": "cancel",
+							"name": "show",
 							"request": {
-								"method": "PUT",
+								"method": "GET",
 								"header": [],
 								"url": {
 									"raw": "https://api.vandar.io/v2/business/{business}/subscription/withdrawal/{id}",
@@ -1326,9 +1326,9 @@
 							"response": []
 						},
 						{
-							"name": "show",
+							"name": "cancel",
 							"request": {
-								"method": "GET",
+								"method": "PUT",
 								"header": [],
 								"url": {
 									"raw": "https://api.vandar.io/v2/business/{business}/subscription/withdrawal/{id}",
