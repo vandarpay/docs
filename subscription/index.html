@@ -52,8 +52,8 @@
                 <div class="article" id="ipg">
                     <h2 class="article-header">مقدمه</h2>
                     <div>
-                        <h3 class="title">
-                            <strong>دایرکت دبیت یا سرویس اشتراک چیست:</strong>
+                        <h3 class="title" id="directdebit">
+                          <a href="#directdebit" > <strong>دایرکت دبیت یا سرویس اشتراک چیست:</strong></a>
                         </h3>
                         <p>سرویس اشتراک یا دایرکت دبیت سرویسی است که یک فرد وجوهی را از حساب بانکی شخص دیگری خارج میکند در واقع شما به بانک اجازه میدهید که مبلغی را مستقیما   از حسابتان کسر و در قبال آن خدماتی را به شما  ارایه دهد. به طور کلی دایرت دبیت برداشت مستقیم پول برای انجام معاملات مالی در صورت صدور مجوز توسط پرداخت کننده می باشد. این کار بیشتر زمانی انجام می شود که شما بخواهید اشتراک خود را تمدید کنید.
 
@@ -68,10 +68,13 @@
 <span class="key">Authorization</span> Bearer {Token}
                         </pre>
                         <br>
-                        <h2 class="article-header">سرویس دریافت توکن (AUTHORIZATION)</h2>
+                        <h2 class="article-header" id="get-token">
+                        <a href="#get-token">سرویس دریافت توکن (AUTHORIZATION)</a> </h2>
 
-                        <h3 class="title">
+                        <h3 class="title" id="subscription"><a href="#subscription">
                             ۱. ایجاد درخواست اشتراک:
+                        </a>
+
                         </h3>
                         <p>اولین مرحله از برای دریافت دسترسی به حساب بانکی و ایجاد یک اشتراک جدید. ثبت درخواست اشتراک است. لازم است که درخواست اشتراک خود را به آدرس زیر ارسال کنید.</p>
                         <pre>
@@ -257,8 +260,8 @@
                           <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
                           <li>errors: آرایه ای از خطا‌ها</li>
                         </ul>
-                      <h3 class="title">
-                        ۲. انتقال کاربر به صفحه بانک
+                      <h3 class="title" id="transfer">
+                       <a href="#transfer"> ۲. انتقال کاربر به صفحه بانک</a>
                       </h3>
                       <p>
                         در مرحله بعد token دریافتی از قسمت قبل را در انتهای 
@@ -273,8 +276,8 @@
 <img src="../images/authorize-intro.png" alt="صفحه ورود بانک">
 <p>با وارد کردن کد ملی و گذر واژه صحیح وارد صفحه زیر می شوید.</p>
 <img src="../images/authorize.png" alt="صفحه دسترسی">
-<h3 class="title">
-  ۳. دریافت کد اشتراک
+<h3 class="title" id="subscription-code">
+  <a href="#subscription-code">۳. دریافت کد اشتراک</a>
 </h3>
 <p>در صورتی که کاربر بر روی دکمه دسترسی دارد کلیک کند، وندار کاربر را به آدرس برگشتی که در مرحله اول ارسال کرده‌اید به همراه پارامتر token و status و authorization_id هدایت می‌کند.
 
@@ -290,8 +293,8 @@ https://yourdomain.com/callback?token=8cfd3e60-dc77-11ea-a593-15deb083f3e2&autho
 https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&status=FAILED
 </pre>
 
-<h3 class="title">
-  ۴. لیست اشتراک‌ها
+<h3 class="title" id="subscriptions">
+ <a href="#subscriptions"> ۴. لیست اشتراک‌ها</a>
 </h3>
 <p>در این بخش  شما می توانید لیست اشتراک های ایجاد شده را مشاهده کنید.</p>
 <pre>
@@ -397,8 +400,8 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
     <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
     <li>errors: آرایه ای از خطا‌ها</li>
   </ul>
-<h3 class="title">
-  ۵. نمایش یک اشتراک با id 
+<h3 class="title" id="show">
+<a href="#show">  ۵. نمایش یک اشتراک با id </a>
 </h3>
 <p>شما می توانید با این دستور جزییات یک اشتراک را با فرستادن id دریافت کنید.</p>
 <pre>
@@ -491,8 +494,8 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
 
 
 
-<h3 class="title">
-  ۶. پاک کردن یک اشتراک با استفاده از id 
+<h3 class="title" id="delete">
+ <a href="#delete">۶. پاک کردن یک اشتراک با استفاده از id</a>
 </h3>
 
 <pre>
@@ -565,7 +568,7 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
 
 <br>
 
-<h2 class="article-header">سرویس برداشت وجه  (Withdrawal)</h2>
+<h2 class="article-header" id="withdrawal"> <a href="#withdrawal"> سرویس برداشت وجه  (Withdrawal)</a></h2>
 
 <p>سرویس برداشت وجه از حساب دیگران، این سرویس هنگامی به کار می‌رود که شما قصد دارید از حساب مشتریان خود یکبار یا به صورت دوره‌ای وجهی را برداشت کنید.</p>
 
@@ -610,7 +613,11 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
     <td>string</td>
     <td>required</td>
   </tr>
-
+  <tr>
+      <td>is_instant</td>
+      <td>boolean</td>
+      <td>required</td>
+  </tr>
   </tbody>
 </table>
 
@@ -628,6 +635,9 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
   <li>withdrawal_date (اجباری): 
     تاریخی از امروز به بعد که می خواهید مبلغ در آن روز از حساب برداشت شود
   </li>
+    <li>is_instant (اجباری):
+        این پارامتر مشخص می‌کند که برداشت وجه در همین لحظه انجام شود یا در سیکل‌های مشخصی که توسط وندار کنترل می‌شوند.
+    </li>
 </ul>
 
 <h3 class="sub-title">
@@ -638,7 +648,8 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
 {
   "authorization_id": "dd205c00-b603-11ea-b6fc-ed9baa10357b",
   "amount": "10000",
-  "withdrawal_date": "2020-07-04"
+  "withdrawal_date": "2020-07-04",
+  "is_instant": true
 }
 </pre>
 
@@ -662,7 +673,8 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
       "payment_number": null,
       "status": "PENDING",
       "description": null,
-      "withdrawal_date": "1399\/05\/21"
+      "withdrawal_date": "1399\/05\/21",
+      "is_instant": true
     }
   }
 }
@@ -686,6 +698,7 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
           <li>status: وضعیت برداشت وجه که ۴ حالت PENDING, DONE, CANCELED, FAILED دارد.</li>
           <li>description: توضیحات </li>
           <li>withdrawal_date: تاریخ درخواست برداشت وجه ارسالی توسط شما</li>
+          <li>is_instant: برداشت وجه در لحظه بوده است یا خیر.</li>
         </ul>
       </li>
     </ul>
@@ -747,8 +760,8 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
 
 
 
-<h3 class="title">
-  ۲. لیست برداشت وجه های ثبت شده
+<h3 class="title" id="list-of-registered-funds"><a href="#list-of-registered-funds">  ۲. لیست برداشت وجه های ثبت شده
+</a>
 </h3>
 <p>با استفاده از api زیر می توانید تمام برداشت های وجه انجام شده تا کنون را مشاهده کنید. </p>
 <pre>
@@ -856,8 +869,9 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
 
 
 
-<h3 class="title">
+<h3 class="title" id="show-withdrawal"><a href="#show-withdrawal">
     ۳. نمایش یک برداشت وجه:
+</a>
 </h3>
 
 <pre>
@@ -934,8 +948,9 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
 
 
       
-          <h3 class="title">
+          <h3 class="title" id="cancel-withdrawal"><a href="#cancel-withdrawal">
               ۴. انصراف از برداشت وجه:
+          </a>
           </h3>
 
           <p>در صورتی که کاربر از برداشت وجه منصرف شود با صدا زدن متد زیر می تواند انصراف خود را اعلام کند.</p>
