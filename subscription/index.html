@@ -694,7 +694,12 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
   <tr>
       <td>is_instant</td>
       <td>boolean</td>
-      <td>required</td>
+      <td>optional</td>
+  </tr>
+  <tr>
+      <td>notify_url</td>
+      <td>string</td>
+      <td>optional</td>
   </tr>
   </tbody>
 </table>
@@ -713,8 +718,11 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
   <li>withdrawal_date (اجباری):
     تاریخی از امروز به بعد که می خواهید مبلغ در آن روز از حساب برداشت شود
   </li>
-    <li>is_instant (اجباری):
-        این پارامتر مشخص می‌کند که برداشت وجه در همین لحظه انجام شود یا در سیکل‌های مشخصی که توسط وندار کنترل می‌شوند.
+    <li>is_instant (اختیاری):
+        این پارامتر مشخص می‌کند که برداشت وجه در همین لحظه انجام شود یا در سیکل‌های مشخصی که توسط وندار کنترل می‌شوند. در صورت عدم ارسال، true در نظر گرفته می‌شود.
+    </li>
+    <li>notify_url (اختیاری):
+        آدرس وبهوکی که می‌توانید ارسال کنید تا از وضعیت نهایی این برداشت وجه مطلع شوید.
     </li>
 </ul>
 
@@ -727,7 +735,8 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
   "authorization_id": "dd205c00-b603-11ea-b6fc-ed9baa10357b",
   "amount": "10000",
   "withdrawal_date": "2020-07-04",
-  "is_instant": true
+  "is_instant": true,
+  "notify_url": "http://yourdomain.com/notify/me"
 }
 </pre>
 
@@ -752,7 +761,7 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
       "status": "PENDING",
       "description": null,
       "withdrawal_date": "1399\/05\/21",
-      "is_instant": true
+      "notify_url": "http://yourdomain.com/notify/me"
     }
   }
 }
@@ -776,7 +785,8 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
           <li>status: وضعیت برداشت وجه که ۴ حالت PENDING, DONE, CANCELED, FAILED دارد.</li>
           <li>description: توضیحات </li>
           <li>withdrawal_date: تاریخ درخواست برداشت وجه ارسالی توسط شما</li>
-          <li>is_instant: برداشت وجه در لحظه بوده است یا خیر.</li>
+          <li>is_instant: برداشت وجه به صورت آنی بوده است یا خیر. در صورت عدم ارسال این پارامتر، برداشت وجه آنی انجام می‌شود.</li>
+          <li>notify_url: آدرس وبهوکی که می‌توانید ارسال کنید تا از وضعیت نهایی این برداشت وجه مطلع شوید.</li>
         </ul>
       </li>
     </ul>
