@@ -309,7 +309,7 @@
 
                       <pre>
 <span class="key">METHOD:</span> POST
-<span class="key">URL:</span> https://api.vandar.io/v2.1/business/{business}/settlement/store
+<span class="key">URL:</span> https://api.vandar.io/v3/business/{business}/settlement/store
                       </pre>
 
                       <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد ثبت تسویه برای آن را دارید.</p>
@@ -337,6 +337,11 @@
                               <td>required</td>
                           </tr>
                           <tr>
+                              <td>track_id</td>
+                              <td>string</td>
+                              <td>required</td>
+                          </tr>
+                          <tr>
                               <td>payment_number</td>
                               <td>integer</td>
                               <td>optional</td>
@@ -360,7 +365,8 @@
                       <ul>
                           <li>amount (اجباری): مبلغ تراکنش به تومان و بزرگتر یا مساوی 5000 و کوچکتر یا مساوی مبلغ کیف پول</li>
                           <li>iban (اجباری): شماره شبا ای که می خواد پول به آن واریز شود</li>
-                          <li>payment_number (اختیاری): شناسه واریز شماره ای اختیاری است تا حداکثر ۱۵ رقم</li>
+                          <li>track_id (اجباری): رشته پیگیری که به ازای هر درخواست تسویه بایستی یکتا باشد. پیشنهاد ما استفاده از uuid برای این پارامتر است.</li>
+                          <li>payment_number (اختیاری): شناسه واریز شماره ای اختیاری است تا حداکثر ۱۵ رقم.</li>
                           <li>notify_url (اختیاری): بعد از مشخص شدن وضعیت تسویه این آدرس صدا زده می‌شود.</li>
                           <li>is_instant (اختیاری): اگر می‌خواهید تسویه در لحظه انجام شود مقدار true و در غیر این صورت مقدار false را ارسال کنید.</li>
                       </ul>
@@ -376,6 +382,7 @@
 {
 "<span class="key">amount</span>": 50000,
 "<span class="key">iban</span>": "IR430550011480005587452001",
+"<span class="key">track_id</span>": "6feb8114-25d5-372e-83e0-23ae783041a9",
 "<span class="key">payment_number</span>": "123456",
 "<span class="key">notify_url</span>": "https://yourdomain.com/nofiy_me",
 "<span class="key">is_instant</span>": false
