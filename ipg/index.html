@@ -248,12 +248,12 @@
                                     <td>optional</td>
                                 </tr>
                                 <tr>
-                                    <td>description</td>
+                                    <td>national_code</td>
                                     <td>String</td>
                                     <td>optional</td>
                                 </tr>
                                 <tr>
-                                    <td>description</td>
+                                    <td>valid_card_number</td>
                                     <td>String</td>
                                     <td>optional</td>
                                 </tr>
@@ -268,6 +268,8 @@
                                 <li>mobile_number (اختیاری): شماره موبایل (اختیاری، جهت نمایش کارت های خریدار به ایشان و نمایش درگاه موبایلی )</li>
                                 <li>factorNumber (اختیاری): شماره فاکتور شما (اختیاری)</li>
                                 <li>description (اختیاری): توضیحات (اختیاری، حداکثر 255 کاراکتر)</li>
+                                <li>national_code (اختیاری): کد ملی شما (اختیاری)</li>
+                                <li>valid_card_number (اختیاری): شماره کارت معتبر (اختیاری)</li>
                             </ul>
                             <h3 class="sub-title">
                                 نمونه json
@@ -280,6 +282,8 @@
     "<span class="key">mobile_number</span>": "09123456789",
     "<span class="key">factorNumber</span>": "12345",
     "<span class="key">description</span>": "توضیحات دلخواه",
+    "<span class="key">national_code</span>": "شماره ملی شما",
+    "<span class="key">valid_card_number</span>": "شماره کارت معتبر",
 }
                             </pre>
                             <div class="info">
@@ -317,6 +321,9 @@
         "وارد کردن amount الزامی است",
         "amount نباید کوچکتر از 1000 باشد",
         "amount باید عدد یا رشته‌ای از اعداد باشد",
+        "کد ملی قابل قبول نیست.",
+        "شماره کارت قابل قبول نیست.",
+        "شناسه ملی باید 10 رقم باشد.",
     ]
 }
                             </pre>
