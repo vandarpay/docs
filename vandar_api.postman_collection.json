@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "ccb9c4dd-21e7-4b2c-a825-8c82b58b7b36",
-		"name": "VandarAPI",
+		"_postman_id": "a4830fbc-c885-4995-bb53-2488ed38819b",
+		"name": "VandarAPI Copy 2",
 		"description": "The Vandar API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -35,15 +35,16 @@
 							}
 						},
 						"url": {
-							"raw": "https://vandar.io/api/ipg/send",
+							"raw": "https://ipg.vandar.io/api/v3/send",
 							"protocol": "https",
 							"host": [
+								"ipg",
 								"vandar",
 								"io"
 							],
 							"path": [
 								"api",
-								"ipg",
+								"v3",
 								"send"
 							]
 						},
@@ -316,11 +317,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://vandar.prg/api/ipg/2step/transaction",
-							"protocol": "http",
+							"raw": "https://vandar.io/api/ipg/2step/transaction",
+							"protocol": "https",
 							"host": [
 								"vandar",
-								"prg"
+								"io"
 							],
 							"path": [
 								"api",
@@ -358,15 +359,16 @@
 							}
 						},
 						"url": {
-							"raw": "https://vandar.io/api/ipg/verify",
+							"raw": "https://ipg.vandar.io/api/v3/verify",
 							"protocol": "https",
 							"host": [
+								"ipg",
 								"vandar",
 								"io"
 							],
 							"path": [
 								"api",
-								"ipg",
+								"v3",
 								"verify"
 							]
 						},

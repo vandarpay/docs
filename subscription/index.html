@@ -125,7 +125,7 @@
                 <div class="article" id="ipg">
 
                     <div>
-                        آخرین تغییرات: ۱۳۹۹/۰۷/۱۶
+                        آخرین تغییرات: ۱۳۹۹/۰۸/۰۸
                     </div>
 
                     <h2 class="article-header">مقدمه</h2>
@@ -694,7 +694,12 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
   <tr>
       <td>is_instant</td>
       <td>boolean</td>
-      <td>required</td>
+      <td>optional</td>
+  </tr>
+  <tr>
+      <td>notify_url</td>
+      <td>string</td>
+      <td>optional</td>
   </tr>
   </tbody>
 </table>
@@ -713,8 +718,11 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
   <li>withdrawal_date (اجباری):
     تاریخی از امروز به بعد که می خواهید مبلغ در آن روز از حساب برداشت شود
   </li>
-    <li>is_instant (اجباری):
-        این پارامتر مشخص می‌کند که برداشت وجه در همین لحظه انجام شود یا در سیکل‌های مشخصی که توسط وندار کنترل می‌شوند.
+    <li>is_instant (اختیاری):
+        این پارامتر مشخص می‌کند که برداشت وجه در همین لحظه انجام شود یا در سیکل‌های مشخصی که توسط وندار کنترل می‌شوند. در صورت عدم ارسال، true در نظر گرفته می‌شود.
+    </li>
+    <li>notify_url (اختیاری):
+        آدرس وبهوکی که می‌توانید ارسال کنید تا از وضعیت نهایی این برداشت وجه مطلع شوید.
     </li>
 </ul>
 
@@ -727,7 +735,8 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
   "authorization_id": "dd205c00-b603-11ea-b6fc-ed9baa10357b",
   "amount": "10000",
   "withdrawal_date": "2020-07-04",
-  "is_instant": true
+  "is_instant": true,
+  "notify_url": "http://yourdomain.com/notify/me"
 }
 </pre>
 
@@ -752,7 +761,8 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
       "status": "PENDING",
       "description": null,
       "withdrawal_date": "1399\/05\/21",
-      "is_instant": true
+      "notify_url": "http://yourdomain.com/notify/me",
+      "customer_info": "1740xxxx97"
     }
   }
 }
@@ -776,7 +786,8 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
           <li>status: وضعیت برداشت وجه که ۴ حالت PENDING, DONE, CANCELED, FAILED دارد.</li>
           <li>description: توضیحات </li>
           <li>withdrawal_date: تاریخ درخواست برداشت وجه ارسالی توسط شما</li>
-          <li>is_instant: برداشت وجه در لحظه بوده است یا خیر.</li>
+          <li>notify_url: آدرس وبهوکی که می‌توانید ارسال کنید تا از وضعیت نهایی این برداشت وجه مطلع شوید. لازم به ذکر است که متد POST برای ارسال به این آدرس در نظر گرفته شده است و فیلدهای withdrawal_id, authorization_id, gateway_transaction_id, status, amount و payment_number برای شما ارسال می‌شود.</li>
+          <li>customer_info: نام مشتری شما یا کد ملی او. مقدار این پارامتر بستگی به بانک شما دارد. در مورد بانک‌های آینده، سپه و ایران‌زمین این مقدار برابر با کد ملی مشتری شما خواهد بود و در مورد سایر بانک‌ها برابر با null خواهد بود چون اطلاعاتی از سمت بانک بازگردانده نمی‌شود. اگر مشتری شما در وندار حساب داشته باشد و با کد ملی خود ثبت‌نام کرده باشد، نام ثبت‌نامی او در وندار بازگردانده خواهد شد.</li>
         </ul>
       </li>
     </ul>
@@ -868,7 +879,8 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
       "status": "DONE",
       "description": null,
       "withdrawal_date": "1399\/04\/04",
-      "customer_info": "محمد محمدی"
+      "notify_url": "http://yourdomain.com/notify/me",
+      "customer_info": "1740xxxx97"
     },
     ...
   ],
@@ -904,7 +916,8 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
       <li>status: وضعیت برداشت وجه که ۴ حالت PENDING, DONE, CANCELED, FAILED دارد.</li>
       <li>description: توضیحات </li>
       <li>withdrawal_date: تاریخ درخواست برداشت وجه ارسالی توسط شما</li>
-      <li>customer_info: اطلاعات کاربر شما که درخواست برداشت وجه برای آن ثبت شده است</li>
+      <li>notify_url: آدرس وبهوکی که می‌توانید ارسال کنید تا از وضعیت نهایی این برداشت وجه مطلع شوید. لازم به ذکر است که متد POST برای ارسال به این آدرس در نظر گرفته شده است و فیلدهای withdrawal_id, authorization_id, gateway_transaction_id, status, amount و payment_number برای شما ارسال می‌شود.</li>
+      <li>customer_info: نام مشتری شما یا کد ملی او. مقدار این پارامتر بستگی به بانک شما دارد. در مورد بانک‌های آینده، سپه و ایران‌زمین این مقدار برابر با کد ملی مشتری شما خواهد بود و در مورد سایر بانک‌ها برابر با null خواهد بود چون اطلاعاتی از سمت بانک بازگردانده نمی‌شود. اگر مشتری شما در وندار حساب داشته باشد و با کد ملی خود ثبت‌نام کرده باشد، نام ثبت‌نامی او در وندار بازگردانده خواهد شد.</li>
     </ul>
   </li>
   <li>
@@ -980,6 +993,8 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
       "status": "DONE",
       "description": null,
       "withdrawal_date": "1399\/04\/04"
+      "notify_url": "http://yourdomain.com/notify/me",
+      "customer_info": "1740xxxx97"
       }
     },
   }
@@ -1003,6 +1018,8 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
           <li>status: وضعیت برداشت وجه که ۴ حالت PENDING, DONE, CANCELED, FAILED دارد.</li>
           <li>description: توضیحات </li>
           <li>withdrawal_date: تاریخ درخواست برداشت وجه ارسالی توسط شما</li>
+          <li>notify_url: آدرس وبهوکی که می‌توانید ارسال کنید تا از وضعیت نهایی این برداشت وجه مطلع شوید. لازم به ذکر است که متد POST برای ارسال به این آدرس در نظر گرفته شده است و فیلدهای withdrawal_id, authorization_id, gateway_transaction_id, status, amount و payment_number برای شما ارسال می‌شود.</li>
+          <li>customer_info: نام مشتری شما یا کد ملی او. مقدار این پارامتر بستگی به بانک شما دارد. در مورد بانک‌های آینده، سپه و ایران‌زمین این مقدار برابر با کد ملی مشتری شما خواهد بود و در مورد سایر بانک‌ها برابر با null خواهد بود چون اطلاعاتی از سمت بانک بازگردانده نمی‌شود. اگر مشتری شما در وندار حساب داشته باشد و با کد ملی خود ثبت‌نام کرده باشد، نام ثبت‌نامی او در وندار بازگردانده خواهد شد.</li>
         </ul>
       </li>
     </ul>
