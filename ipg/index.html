@@ -125,7 +125,7 @@
                 <article class="content">
 
                     <div>
-                        آخرین تغییرات: ۱۳۹۹/۰۷/۱۶
+                        آخرین تغییرات: ۱۳۹۹/۰۸/۲۱
                     </div>
 
                     <div class="article" id="ipg">
@@ -160,7 +160,7 @@
                         <p>اگر درگاه اشتراکی را انتخاب کردید فعال سازی تا ۱۲ ساعت زمان می‌برد و اگر اختصاصی باشد فعال سازی تا ۷۲ ساعت زمان می‌برد.</p>
                         <img src="../images/create-ipg-008.png" alt="">
                         <div class="info">
-                            <strong>نکته!</strong> 
+                            <strong>نکته!</strong>
                             اگر درگاه اشتراکی فعال دارید با تغییر به درگاه اختصاصی هیچ اختلالی در روند فعلی شما پیش <strong>نمی‌آید</strong>.
                         </div>
 
@@ -247,6 +247,16 @@
                                     <td>String</td>
                                     <td>optional</td>
                                 </tr>
+                                <tr>
+                                    <td>national_code</td>
+                                    <td>String</td>
+                                    <td>optional</td>
+                                </tr>
+                                <tr>
+                                    <td>valid_card_number</td>
+                                    <td>String</td>
+                                    <td>optional</td>
+                                </tr>
                             </table>
                             <h3 class="sub-title">
                                 توضیحات
@@ -258,6 +268,8 @@
                                 <li>mobile_number (اختیاری): شماره موبایل (اختیاری، جهت نمایش کارت های خریدار به ایشان و نمایش درگاه موبایلی )</li>
                                 <li>factorNumber (اختیاری): شماره فاکتور شما (اختیاری)</li>
                                 <li>description (اختیاری): توضیحات (اختیاری، حداکثر 255 کاراکتر)</li>
+                                <li>national_code (اختیاری): کد ملی شما (اختیاری)</li>
+                                <li>valid_card_number (اختیاری): شماره کارت معتبر (اختیاری)</li>
                             </ul>
                             <h3 class="sub-title">
                                 نمونه json
@@ -270,6 +282,8 @@
     "<span class="key">mobile_number</span>": "09123456789",
     "<span class="key">factorNumber</span>": "12345",
     "<span class="key">description</span>": "توضیحات دلخواه",
+    "<span class="key">national_code</span>": "شماره ملی شما",
+    "<span class="key">valid_card_number</span>": "شماره کارت معتبر",
 }
                             </pre>
                             <div class="info">
@@ -307,6 +321,9 @@
         "وارد کردن amount الزامی است",
         "amount نباید کوچکتر از 1000 باشد",
         "amount باید عدد یا رشته‌ای از اعداد باشد",
+        "کد ملی قابل قبول نیست.",
+        "شماره کارت قابل قبول نیست.",
+        "شناسه ملی باید 10 رقم باشد.",
     ]
 }
                             </pre>
@@ -340,7 +357,7 @@
 
                         </h3>
                         <p>با فراخوانی این سرویس همانطور که قبلا توضیح داده شده، شما اطلاعات تراکنش را دریافت می‌کنید و در صورت نیاز این اطلاعات را قبل تایید و نهایی شدن تراکنش صحت سنجی می‌کنید.</p>
-                        
+
                         <pre>
 <span class="key">METHOD:</span> post
 <span class="key">URL:</span> https://vandar.io/api/ipg/2step/transaction
@@ -436,7 +453,7 @@
 
                         </h3>
                         <p>آخرین مرحله و تمام کننده یک چرخه پرداخت در شبکه پرداخت وندار تایید تراکنش است. مهمترین نکته این مرحله این است که این سرویس به ازای هر تراکنش و برای جلوگیری از تکرار تراکنش <strong>فقط و فقط یک بار</strong> پاسخ می‌دهد.</p>
-                        
+
                         <pre>
 <span class="key">METHOD:</span> post
 <span class="key">URL:</span> https://ipg.vandar.io/api/v3/verify
