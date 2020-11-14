@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "ba91f003-c2d8-43b0-b0a2-64d00c0645fd",
-		"name": "VandarAPI",
+		"name": "VandarAPI_last_update_2020_11_14",
 		"description": "The Vandar API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -954,27 +954,11 @@
 							}
 						],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "amount",
-									"value": "amount",
-									"type": "text"
-								},
-								{
-									"key": "iban",
-									"value": "iban_number",
-									"type": "text"
-								},
-								{
-									"key": "payment_number",
-									"value": "123456",
-									"type": "text"
-								}
-							]
+							"mode": "raw",
+							"raw": "{\n\"amount\": 50000,\n\"iban\": \"IR430550011480005587452001\",\n\"track_id\": \"6feb8114-25d5-372e-83e0-23ae783041a9\",\n\"payment_number\": \"123456\",\n\"notify_url\": \"https://yourdomain.com/nofiy_me\",\n\"is_instant\": true\n}"
 						},
 						"url": {
-							"raw": "https://api.vandar.io/v2.1/business/{business}/settlement/store",
+							"raw": "https://api.vandar.io/v3/business/{business}/settlement/store",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -982,7 +966,7 @@
 								"io"
 							],
 							"path": [
-								"v2.1",
+								"v3",
 								"business",
 								"{business}",
 								"settlement",
