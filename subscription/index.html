@@ -762,7 +762,8 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
       "description": null,
       "withdrawal_date": "1399\/05\/21",
       "notify_url": "http://yourdomain.com/notify/me",
-      "customer_info": "1740xxxx97"
+      "is_instant": true,
+      "customer_info": "1740xxxx97",
     }
   }
 }
@@ -787,6 +788,7 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
           <li>description: توضیحات </li>
           <li>withdrawal_date: تاریخ درخواست برداشت وجه ارسالی توسط شما</li>
           <li>notify_url: آدرس وبهوکی که می‌توانید ارسال کنید تا از وضعیت نهایی این برداشت وجه مطلع شوید. لازم به ذکر است که متد POST برای ارسال به این آدرس در نظر گرفته شده است و فیلدهای withdrawal_id, authorization_id, gateway_transaction_id, status, amount و payment_number برای شما ارسال می‌شود.</li>
+          <li>is_instant: نشان دهنده این است که برداشت وجه به صورت آنی انجام شده است یا خیر</li>
           <li>customer_info: نام مشتری شما یا کد ملی او. مقدار این پارامتر بستگی به بانک شما دارد. در مورد بانک‌های آینده، سپه و ایران‌زمین این مقدار برابر با کد ملی مشتری شما خواهد بود و در مورد سایر بانک‌ها برابر با null خواهد بود چون اطلاعاتی از سمت بانک بازگردانده نمی‌شود. اگر مشتری شما در وندار حساب داشته باشد و با کد ملی خود ثبت‌نام کرده باشد، نام ثبت‌نامی او در وندار بازگردانده خواهد شد.</li>
         </ul>
       </li>
@@ -880,6 +882,7 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
       "description": null,
       "withdrawal_date": "1399\/04\/04",
       "notify_url": "http://yourdomain.com/notify/me",
+      "is_instant": true,
       "customer_info": "1740xxxx97"
     },
     ...
@@ -917,6 +920,7 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
       <li>description: توضیحات </li>
       <li>withdrawal_date: تاریخ درخواست برداشت وجه ارسالی توسط شما</li>
       <li>notify_url: آدرس وبهوکی که می‌توانید ارسال کنید تا از وضعیت نهایی این برداشت وجه مطلع شوید. لازم به ذکر است که متد POST برای ارسال به این آدرس در نظر گرفته شده است و فیلدهای withdrawal_id, authorization_id, gateway_transaction_id, status, amount و payment_number برای شما ارسال می‌شود.</li>
+      <li>is_instant: نشان دهنده این است که برداشت وجه به صورت آنی انجام شده است یا خیر</li>
       <li>customer_info: نام مشتری شما یا کد ملی او. مقدار این پارامتر بستگی به بانک شما دارد. در مورد بانک‌های آینده، سپه و ایران‌زمین این مقدار برابر با کد ملی مشتری شما خواهد بود و در مورد سایر بانک‌ها برابر با null خواهد بود چون اطلاعاتی از سمت بانک بازگردانده نمی‌شود. اگر مشتری شما در وندار حساب داشته باشد و با کد ملی خود ثبت‌نام کرده باشد، نام ثبت‌نامی او در وندار بازگردانده خواهد شد.</li>
     </ul>
   </li>
@@ -994,6 +998,7 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
       "description": null,
       "withdrawal_date": "1399\/04\/04"
       "notify_url": "http://yourdomain.com/notify/me",
+      "is_instant": true,
       "customer_info": "1740xxxx97"
       }
     },
@@ -1019,6 +1024,7 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
           <li>description: توضیحات </li>
           <li>withdrawal_date: تاریخ درخواست برداشت وجه ارسالی توسط شما</li>
           <li>notify_url: آدرس وبهوکی که می‌توانید ارسال کنید تا از وضعیت نهایی این برداشت وجه مطلع شوید. لازم به ذکر است که متد POST برای ارسال به این آدرس در نظر گرفته شده است و فیلدهای withdrawal_id, authorization_id, gateway_transaction_id, status, amount و payment_number برای شما ارسال می‌شود.</li>
+          <li>is_instant: نشان دهنده این است که برداشت وجه به صورت آنی انجام شده است یا خیر</li>
           <li>customer_info: نام مشتری شما یا کد ملی او. مقدار این پارامتر بستگی به بانک شما دارد. در مورد بانک‌های آینده، سپه و ایران‌زمین این مقدار برابر با کد ملی مشتری شما خواهد بود و در مورد سایر بانک‌ها برابر با null خواهد بود چون اطلاعاتی از سمت بانک بازگردانده نمی‌شود. اگر مشتری شما در وندار حساب داشته باشد و با کد ملی خود ثبت‌نام کرده باشد، نام ثبت‌نامی او در وندار بازگردانده خواهد شد.</li>
         </ul>
       </li>
