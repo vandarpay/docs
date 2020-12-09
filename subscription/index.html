@@ -784,7 +784,7 @@ https://yourdomain.com/callback?token=1be4da80-dc77-11ea-9a70-cf1039d4b64d&statu
           <li>amount: مبلغ برداشت وجه</li>
           <li>wage_amount: کارمزد </li>
           <li>payment_number: شناسه بانکی برداشت وجه</li>
-          <li>status: وضعیت برداشت وجه که ۴ حالت PENDING, DONE, CANCELED, FAILED دارد.</li>
+          <li>status: وضعیت برداشت وجه که ۴ حالت PENDING, INIT, DONE, CANCELED, FAILED دارد. وضعیت PENDING نشان‌دهنده‌ی این است که تراکنش در حالت انتظار است. INIT  نشان‌دهنده‌ی این است که تراکنش به سمت بانک فرستاده شده است. DONE نشان‌دهنده‌ی وضعیت موفقیت‌آمیز تراکنش است. FAILED تراکنش ناموفق را نشان می‌دهد. CANCELED تراکنشی را نشان می‌دهد که لغو شده است. لازم به ذکر است که امکان لغو تراکنش صرفاً برای تراکنش‌هایی امکان‌پذیر است که به صورت آنی انجام نشده باشند (is_instant: false).</li>
           <li>description: توضیحات </li>
           <li>withdrawal_date: تاریخ درخواست برداشت وجه ارسالی توسط شما</li>
           <li>notify_url: آدرس وبهوکی که می‌توانید ارسال کنید تا از وضعیت نهایی این برداشت وجه مطلع شوید. لازم به ذکر است که متد POST برای ارسال به این آدرس در نظر گرفته شده است و فیلدهای withdrawal_id, authorization_id, gateway_transaction_id, status, amount و payment_number برای شما ارسال می‌شود.</li>
