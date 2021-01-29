@@ -1,11 +1,107 @@
 {
 	"info": {
-		"_postman_id": "ba91f003-c2d8-43b0-b0a2-64d00c0645fd",
-		"name": "VandarAPI_last_update_2020_11_14",
+		"_postman_id": "83fb20fb-3909-43e7-8264-f9efee256675",
+		"name": "VandarAPI_last_update_2021_01_27",
 		"description": "The Vandar API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"mobile\" : \"\",\n\t\"password\" : \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.vandar.io/v3/login",
+							"protocol": "https",
+							"host": [
+								"api",
+								"vandar",
+								"io"
+							],
+							"path": [
+								"v3",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refreshtoken",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"refreshtoken\" : \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.vandar.io/v3/refreshtoken",
+							"protocol": "https",
+							"host": [
+								"api",
+								"vandar",
+								"io"
+							],
+							"path": [
+								"v3",
+								"refreshtoken"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImVhNzEzZDg4ZmNmZmM4YWRlZDZlNjA1NTJlZTVlNTg2OWQ0YzczZjA3NmQ3ZjlhYTA2NjBhOWU4NTAxZjRiNTU4MTIyMDdkOTU3Njk5NWE5In0.eyJhdWQiOiIyIiwianRpIjoiZWE3MTNkODhmY2ZmYzhhZGVkNmU2MDU1MmVlNWU1ODY5ZDRjNzNmMDc2ZDdmOWFhMDY2MGE5ZTg1MDFmNGI1NTgxMjIwN2Q5NTc2OTk1YTkiLCJpYXQiOjE2MDQ0ODYxODksIm5iZiI6MTYwNDQ4NjE4OSwiZXhwIjoxNjA0OTE4MTg5LCJzdWIiOiIyOSIsInNjb3BlcyI6WyIqIl19.Lm_J9BeWvipeOfe64QPMDzk0GX9V8eLDNJSgFGpka77C-5O1__24X1gxPpXc-PAVs7XaZtQiFXaJZlGbhJ9-P2nU80UbRw0yxsoZa_yaTuVLjIOfmXpqHe4ZNEaO5B6Ivs2TM6GPJWH3La0ntpttsXK9Vpc-zdsXs9BCaH-3XW0Dbq3zAxp4bSFvZI7qnFNQa23z-_IhTKSRV070X_R5fCovpSdnhaJzMZ-8AfAzywymJlXkxljL_J7hPzQQ4Guhf7pRCyhbAMxna2zRFGIMgQtP8m0zLLm-jTFfZDpU-iUQprEArjo6KhjL9rv_OzoikUiQgAd_tSqDV9UeLMlVAR4KIBLCbs9UZJ2i-REx2KqI9rn4s-EOKzzWLhCDazWBltl_01hDe3ZbTV0yQpJtqRYWtzZ0xoUIsSV5iXpam8VQ9gQ0hUlcrxZtiBqxB7hwC5Qc6hxc-8X9IgW9-iJxxoX8nBA3dbZ5udAWUVe19HbG9i6VdJpB6F7g9TcljGv6SbC_KBDhyhYrzWwbIv4sl_mfcLV6R8RLtuDpd6mv7dyEWc_tMz8rUxm4WVTnlA3Vipij1Qg4jClB9QD5uPYFGTHr4e7uiLhmuKcpI4TqcMEMdX56NmikKNGeGGHPxx9ZaIDdZr6ivjxSkwYx_K6HOCQDNrb-I6Fy0HJOhQr8iys",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.vandar.io/v3/logout",
+							"protocol": "https",
+							"host": [
+								"api",
+								"vandar",
+								"io"
+							],
+							"path": [
+								"v3",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
 		{
 			"name": "IPG",
 			"item": [
@@ -51,113 +147,6 @@
 						"description": "در مرحله اول شما می بایست پارامترهای موجود در جدول زیر رو با متد POST به آدرسی که مشخص شده ارسال کنید. به نوع داده ها و نام فیلد توجه کنید. در صورتی که برای فیلد شماره موبایل، شماره موبایل کاربر را به درگاه ارسال نمایید، بصورت اتوماتیک درگاه موبایلی نمایش داده می شود"
 					},
 					"response": [
-						{
-							"name": "Failed ipg send",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n\t\"api_key\" : \"714e6f9c9fc38e37a5cb1b2f87b2c8a9a227324\",\n\t\"amount\"\t:\t100,\n\t\"callback_url\" : \"https://dash.paperpiano1.ir/callback\",\n\t\"mobile_number\" : \"09123456789\",\n\t\"factorNumber\" : \"12345\",\n\t\"description\" : \"description\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://vandar.io/api/ipg/send",
-									"protocol": "https",
-									"host": [
-										"vandar",
-										"io"
-									],
-									"path": [
-										"api",
-										"ipg",
-										"send"
-									]
-								}
-							},
-							"status": "Unprocessable Entity",
-							"code": 422,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 21 May 2020 10:48:51 GMT"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/7.3.13"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Access-Control-Allow-Methods",
-									"value": "POST, GET, OPTIONS, PUT, DELETE"
-								},
-								{
-									"key": "Access-Control-Allow-Headers",
-									"value": "*"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "58"
-								},
-								{
-									"key": "Server",
-									"value": "ArvanCloud"
-								},
-								{
-									"key": "AR-PoweredBy",
-									"value": "Arvan Cloud (arvancloud.com)"
-								},
-								{
-									"key": "AR-ATIME",
-									"value": "0.349"
-								},
-								{
-									"key": "AR-Request-ID",
-									"value": "8e8eacf8f96de43a4c5c0af7512267df"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"status\": 0,\n    \"errors\": [\n        \"آدرس بازگشتی معتبر نیست\",\n        \"amount نباید کوچکتر از 1000 باشد.\"\n    ]\n}"
-						},
 						{
 							"name": "Succeed ipg send",
 							"originalRequest": {
@@ -288,6 +277,113 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"status\": 1,\n    \"token\": \"4FFSKSZ9I3CJWOA\"\n}"
+						},
+						{
+							"name": "Failed ipg send",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"api_key\" : \"714e6f9c9fc38e37a5cb1b2f87b2c8a9a227324\",\n\t\"amount\"\t:\t100,\n\t\"callback_url\" : \"https://dash.paperpiano1.ir/callback\",\n\t\"mobile_number\" : \"09123456789\",\n\t\"factorNumber\" : \"12345\",\n\t\"description\" : \"description\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://vandar.io/api/ipg/send",
+									"protocol": "https",
+									"host": [
+										"vandar",
+										"io"
+									],
+									"path": [
+										"api",
+										"ipg",
+										"send"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 May 2020 10:48:51 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.3.13"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET, OPTIONS, PUT, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Server",
+									"value": "ArvanCloud"
+								},
+								{
+									"key": "AR-PoweredBy",
+									"value": "Arvan Cloud (arvancloud.com)"
+								},
+								{
+									"key": "AR-ATIME",
+									"value": "0.349"
+								},
+								{
+									"key": "AR-Request-ID",
+									"value": "8e8eacf8f96de43a4c5c0af7512267df"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 0,\n    \"errors\": [\n        \"آدرس بازگشتی معتبر نیست\",\n        \"amount نباید کوچکتر از 1000 باشد.\"\n    ]\n}"
 						}
 					]
 				},
@@ -376,113 +472,6 @@
 					},
 					"response": [
 						{
-							"name": "Failed ipg send",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n\t\"api_key\" : \"714e6f9c9fc38e37a5cb1b2f87b2c8a9a227324\",\n\t\"amount\"\t:\t100,\n\t\"callback_url\" : \"https://dash.paperpiano1.ir/callback\",\n\t\"mobile_number\" : \"09123456789\",\n\t\"factorNumber\" : \"12345\",\n\t\"description\" : \"description\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://vandar.io/api/ipg/send",
-									"protocol": "https",
-									"host": [
-										"vandar",
-										"io"
-									],
-									"path": [
-										"api",
-										"ipg",
-										"send"
-									]
-								}
-							},
-							"status": "Unprocessable Entity",
-							"code": 422,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 21 May 2020 10:48:51 GMT"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/7.3.13"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Access-Control-Allow-Methods",
-									"value": "POST, GET, OPTIONS, PUT, DELETE"
-								},
-								{
-									"key": "Access-Control-Allow-Headers",
-									"value": "*"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "58"
-								},
-								{
-									"key": "Server",
-									"value": "ArvanCloud"
-								},
-								{
-									"key": "AR-PoweredBy",
-									"value": "Arvan Cloud (arvancloud.com)"
-								},
-								{
-									"key": "AR-ATIME",
-									"value": "0.349"
-								},
-								{
-									"key": "AR-Request-ID",
-									"value": "8e8eacf8f96de43a4c5c0af7512267df"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"status\": 0,\n    \"errors\": [\n        \"آدرس بازگشتی معتبر نیست\",\n        \"amount نباید کوچکتر از 1000 باشد.\"\n    ]\n}"
-						},
-						{
 							"name": "Succeed ipg send",
 							"originalRequest": {
 								"method": "POST",
@@ -612,59 +601,117 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"status\": 1,\n    \"token\": \"4FFSKSZ9I3CJWOA\"\n}"
+						},
+						{
+							"name": "Failed ipg send",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"api_key\" : \"714e6f9c9fc38e37a5cb1b2f87b2c8a9a227324\",\n\t\"amount\"\t:\t100,\n\t\"callback_url\" : \"https://dash.paperpiano1.ir/callback\",\n\t\"mobile_number\" : \"09123456789\",\n\t\"factorNumber\" : \"12345\",\n\t\"description\" : \"description\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://vandar.io/api/ipg/send",
+									"protocol": "https",
+									"host": [
+										"vandar",
+										"io"
+									],
+									"path": [
+										"api",
+										"ipg",
+										"send"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 May 2020 10:48:51 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.3.13"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET, OPTIONS, PUT, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Server",
+									"value": "ArvanCloud"
+								},
+								{
+									"key": "AR-PoweredBy",
+									"value": "Arvan Cloud (arvancloud.com)"
+								},
+								{
+									"key": "AR-ATIME",
+									"value": "0.349"
+								},
+								{
+									"key": "AR-Request-ID",
+									"value": "8e8eacf8f96de43a4c5c0af7512267df"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 0,\n    \"errors\": [\n        \"آدرس بازگشتی معتبر نیست\",\n        \"amount نباید کوچکتر از 1000 باشد.\"\n    ]\n}"
 						}
 					]
 				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "Auth",
-			"item": [
-				{
-					"name": "login",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "mobile",
-									"value": "09123456789",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "123456789",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "https://api.vandar.io/v2/login",
-							"protocol": "https",
-							"host": [
-								"api",
-								"vandar",
-								"io"
-							],
-							"path": [
-								"v2",
-								"login"
-							]
-						},
-						"description": "Display the specified user and get api token."
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Business",
@@ -774,8 +821,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Invoice",
@@ -886,8 +932,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Settlement By  IBAN",
@@ -1055,8 +1100,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Direct Debit",
@@ -1205,9 +1249,7 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Withdrawal",
@@ -1336,13 +1378,9 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

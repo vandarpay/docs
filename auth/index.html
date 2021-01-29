@@ -139,7 +139,7 @@
                             <p>برای فراخوانی دیگر متدهای وندار نیاز است که در اولین قدم باید ابتدا دریافت توکن را فراخوانی کرد، همچنین با توجه به عمر پنج روزه‌ی هر توکن توصیه می‌شود هر چهار روز یک بار دریافت توکن مجددا فراخوانی گردد. با فراخوانی این سرویس اطلاعات کاربری و توکن مورد نیاز برای استفاده در هدر دیگر سرویس‌ها، بازگردانده می‌شود.</p>
                             <pre>
 <span class="key">METHOD:</span> post
-<span class="key">URL:</span> https://api.vandar.io/v2/login
+<span class="key">URL:</span> https://api.vandar.io/v3/login
                             </pre>
                             <h3 class="sub-title">
                                 پارامترهای مجاز
@@ -183,198 +183,17 @@
                             <pre>
 <span class="key">HTTP/1.1</span> 200
 {
-    "<span class="key">status</span>": 1,
-    "<span class="key">data</span>": {
-        "<span class="key">token</span>": "توکن پرداختی که در مراحل بعدی مورد استفاده قرار می‌گیرد.",
-        "<span class="key">user</span>": {
-            "<span class="key">name</span>": "مریم نبیان",
-            "<span class="key">fname</span>": "مریم",
-            "<span class="key">lname</span>": "نبیان",
-            "<span class="key">email</span>": "maryam@example.com",
-            "<span class="key">national_code</span>": "0123456789",
-            "<span class="key">mobile</span>": "09123456789",
-            "<span class="key">avatar</span>": null,
-            "<span class="key">address</span>": null,
-            "<span class="key">postal_code</span>": "0123456789",
-            "<span class="key">phone_number</span>": null,
-            "<span class="key">wallet</span>": 0,
-            "<span class="key">blocked_amount</span>": 0,
-            "<span class="key">deductible_amount</span>": 0,
-            "<span class="key">birthdate</span>": "1372/7/8",
-            "<span class="key">birthdate_year</span>": 1372,
-            "<span class="key">birthdate_month</span>": 7,
-            "<span class="key">birthdate_day</span>": 8,
-            "<span class="key">telegram_chat_id</span>": 0,
-            "<span class="key">meta</span>": {
-                "<span class="key">onboarding</span>": false,
-                "<span class="key">notification</span>": {
-                    "<span class="key">transaction</span>": {
-                        "<span class="key">sms</span>": true,
-                        "<span class="key">email</span>": true,
-                        "<span class="key">telegram</span>": false,
-                        "<span class="key">notif</span>": true
-                    },
-                    "<span class="key">settlement</span>": {
-                        "<span class="key">sms</span>": true,
-                        "<span class="key">email</span>": true,
-                        "<span class="key">telegram</span>": false,
-                        "<span class="key">notif</span>": true
-                    },
-                    "<span class="key">ticket</span>": {
-                        "<span class="key">sms</span>": true,
-                        "<span class="key">email</span>": true,
-                        "<span class="key">telegram</span>": false,
-                        "<span class="key">notif</span>": true
-                    },
-                    "<span class="key">auth</span>": {
-                        "<span class="key">sms</span>": true,
-                        "<span class="key">email</span>": true,
-                        "<span class="key">telegram</span>": false,
-                        "<span class="key">notif</span>": true
-                    }
-                }
-            },
-            "<span class="key">statusBox</span>": {
-                "<span class="key">kyc</span>": true,
-                "<span class="key">shahkar</span>": false,
-                "<span class="key">mobile</span>": "accepted",
-                "<span class="key">email</span>": "accepted",
-                "<span class="key">personal_information</span>": "accepted",
-                "<span class="key">mobile_owner_national_card</span>": false
-            },
-            "<span class="key">invitation</span>": null,
-            "<span class="key">status</span>": 1,
-            "<span class="key">notification_count</span>": 6,
-            "<span class="key">is_whats_new_exists</span>": false,
-            "<span class="key">tools</span>": {
-                "<span class="key">requestMoney</span>": {
-                    "<span class="key">is_enabled</span>": true,
-                    "<span class="key">is_created</span>": false
-                }
-            },
-            "<span class="key">business_count</span>": 1,
-            "<span class="key">created_at</span>": {
-                "<span class="key">date</span>": "2020-05-10 11:59:43.000000",
-                "<span class="key">timezone_type</span>": 3,
-                "<span class="key">timezone</span>": "Asia/Tehran"
-            },
-            "<span class="key">updated_at</span>": {
-                "<span class="key">date</span>": "2020-05-10 12:12:08.000000",
-                "<span class="key">timezone_type</span>": 3,
-                "<span class="key">timezone</span>": "Asia/Tehran"
-            }
-        }
-    }
+    "token_type": "Bearer",
+    "expires_in": 432000,
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ***********2ZDRiMmY4YmU2MzNkNWIxYWI2NDVkZjBmIn0.eyJhdWQiOiIyIiwianRpIjoiYjlkODRhNjc1MmVhZWUxMzI1NTZjNTNhMzIwMThiNGNkMDk3MDY4NzJkNGZkMzJmNDJjOGQ1NzZkNGIyZjhiZTYzM2Q1YjFhYjY0NWRmMGYiLCJpYXQiOjE2MTE3NTQ5MjIsIm5iZiI6MTYxMTc1NDkyMiwiZXhwIjoxNjEyMTg2OTIyLCJzdWIiOiIyOSIsInNjb3BlcyI6WyIqIl19.KnGQQ73vXFgD6xDMN05za3xfXgRv5AlwGdvcCYsKGsDUbguByu6aP-1cAnX85DOyn_HNqrfsTEHQdf3Adf6aUs46MWDcGWd4bgo8S6EuUJ9ZACLtC4Yht_I5sWAyffiIZDLfzG-xiKljif1jGS7SLncysuud3dIJQ1EIInXU8-m-K7JC-jXl0TIgU9pDiCGljWPeEICTJQDrUUwHcOuXh3_hlxY096ui21s9EHdu8SiDzvR0Ipv-vSUigDdPVriqrXlPn3yNEUI2teFcDbyCOlGPJOvGAYx9AY1hgCc5IyyGhWD-QaZoCAmdSfw94cWiebSEQn18QEbia5mERj_68YN_vA9aAcjDVC92-GY-5wKcgR6VO7Xu-1m-plH8R15GBrE4vgx_uL-pM8e_D0fd6m6fws54JkqT7n7Ld-U9z4vZidkhndk1P3bnnLk1z50lNS8dlJzlOzfd6ZRTYhFqn2P5A7-Palt***************3CzA8Jnt7h3wNlLwThS_I_4BNkqBDEjPfZpiy-bPJO9cJLGRqClDadEua7ztoCLC5E",
+    "refresh_token": "def50200c4d2462d2de167da1*******c97ef04222fa3265036e8b4e36deec1d8c084df7230e34162aea05078d4e5b641cad508676cfbb9b6bdb7e2f2b861eb0e0c5b*********9e6ededc76d94f10c9b3363be7"
 }
                             </pre>
                             <ul>
-                                <li>status: مقدار 0 و 1 دارد که نشان دهنده موفقیت آمیز بودن درخواست است</li>
-                                <li>data:  
-                                    <li>token:  با استفاده از این توکن می‌توانید دیگر سرویس های وندار را فراخوانی کنید</li>
-                                    <li>user:  آبجکتی از اطلاعات کاربری شامل نام و نام خانوادگی، اطلاعات هویتی، تاریخ ثبت نام و ...
-                                        <!-- <ul>
-                                            <li>name: </li>
-                                            <li>fname: </li>
-                                            <li>lname:  </li>
-                                            <li>email:  </li>
-                                            <li>national_code:  </li>
-                                            <li>moblie:  </li>
-                                            <li>avatar:  </li>
-                                            <li>address:  </li>
-                                            <li>postal_code:  </li>
-                                            <li>phone_number:  </li>
-                                            <li>wallet:  </li>
-                                            <li>blocked_amount:  </li>
-                                            <li>deductible_amount:  </li>
-                                            <li>birthdate:  </li>
-                                            <li>birthdate_year:  </li>
-                                            <li>birthdate_month:  </li>
-                                            <li>birthdate_day:  </li>
-                                            <li>telegram_chat_id: </li>
-                                            <li>meta:  
-                                                <ul>
-                                                    <li>onboarding:  </li>
-                                                    <li>notification:  
-                                                        <ul>
-                                                            <li>transaction:  
-                                                                <ul>
-                                                                    <li>sms: </li>
-                                                                    <li>email: </li>
-                                                                    <li>telegram: </li>
-                                                                    <li>notif</li>
-                                                                </ul>
-                                                            </li>
-                                                            <li>settlement:  
-                                                                <ul>
-                                                                    <li>sms: </li>
-                                                                    <li>email: </li>
-                                                                    <li>telegram: </li>
-                                                                    <li>notif</li>
-                                                                </ul>
-                                                            </li>
-                                                            <li>ticket:  
-                                                                <ul>
-                                                                    <li>sms: </li>
-                                                                    <li>email: </li>
-                                                                    <li>telegram: </li>
-                                                                    <li>notif</li>
-                                                                </ul>
-                                                            </li>
-                                                            <li>auth:  
-                                                                <ul>
-                                                                    <li>sms: </li>
-                                                                    <li>email: </li>
-                                                                    <li>telegram: </li>
-                                                                    <li>notif</li>
-                                                                </ul>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>statusBox: 
-                                                <ul>
-                                                    <li>kyc: </li>
-                                                    <li>shahkar: </li>
-                                                    <li>mobile: </li>
-                                                    <li>email: </li>
-                                                    <li>personal_information: </li>
-                                                    <li>mobile_owner_national_card: </li>
-                                                </ul>
-                                            </li>
-                                            <li>invitation: 
-                                            <li>status: </li>
-                                            <li>notification_count: </li>
-                                            <li>is_whats_new_exists: </li>
-                                            <li>tools: 
-                                                <ul>
-                                                    <li>requestMoney: 
-                                                        <ul>
-                                                            <li>is_enabled:</li>
-                                                            <li>is_created:</li>
-                                                        </ul>
-                                                    </li>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>business_count: </li>
-                                            <li>created_at: 
-                                                <ul>
-                                                    <li>date: </li>
-                                                    <li>timezone_type: </li>
-                                                    <li>timezone</li>
-                                                </ul>
-                                            </li>
-                                            <li>updated_at: 
-                                                <ul>
-                                                    <li>date: </li>
-                                                    <li>timezone_type: </li>
-                                                    <li>timezone: </li>
-                                                </ul>
-                                            </li>
-                                        </ul>     -->
-                                    </li>
-                                </li>
+                                <li>token_type:  نوع توکن دریافتی</li>
+                                <li>expires_in:  زمان اعتبار توکن (ثانیه)</li>
+                                <li>token:  با استفاده از این توکن می‌توانید دیگر سرویس های وندار را فراخوانی کنید</li>
+                                <li>refresh_token:  با استفاده از این توکن می‌توانید توکن را با استفاده از متد رفرش توکن تمدید نمایید</li>
                             </ul>
                             <h3 class="sub-title">
                                 نمونه پاسخ دریافتی ناموفق
@@ -384,6 +203,72 @@
 {
     "<span class="key">status</span>": 0,
     "<span class="key">error</span>": "نام کاربری یا رمز عبور اشتباه وارد شده است"
+}
+                            </pre>
+                        </div>
+                        <div>
+                            <h3 class="title" id="step-1">
+                               <a href="#step-2"><strong>مرحله دوم:</strong> تمدید توکن</a>
+                            </h3>
+                            <p>از آنجاییکه عمر توکن ها محدود است و مقدار آن در فیلد expires_in همراه توکن ارسال شده است،‌ باید قبل از منقضی شدن توکن با ارسال رفرش توکن، توکن جدید را دریافت کنید.POSTبه آدرس زیر ارسال شود.</p>
+                            <pre>
+<span class="key">METHOD:</span> post
+<span class="key">URL:</span> https://api.vandar.io/v3/refreshtoken
+                            </pre>
+                            <h3 class="sub-title">
+                                پارامترهای مجاز
+                            </h3>
+                            <table>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Status</th>
+                                </tr>
+                                <tr>
+                                    <td>refreshtoken</td>
+                                    <td>string</td>
+                                    <td>required</td>
+                                </tr>
+                            </table>
+                            <h3 class="sub-title">
+                                توضیحات
+                            </h3>
+                            <ul>
+                                <li>refreshtoken (اجباری): مقداری که از فراخوانی متد قبل دریافت کرده‌اید.</li>
+                            </ul>
+                            <h3 class="sub-title">
+                                نمونه json
+                            </h3>
+                            <pre>
+{
+    "<span class="key">refreshtoken</span>": "def50200c4d2462d2de167da1*******c97ef04222fa3265036e8b4e36deec1d8c084df7230e34162aea05078d4e5b641cad508676cfbb9b6bdb7e2f2b861eb0e0c5b*********9e6ededc76d94f10c9b3363be7"
+}
+                            </pre>
+                            <h3 class="sub-title">
+                                نمونه پاسخ دریافتی موفق
+                            </h3>
+                            <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+    "token_type": "Bearer",
+    "expires_in": 432000,
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ***********2ZDRiMmY4YmU2MzNkNWIxYWI2NDVkZjBmIn0.eyJhdWQiOiIyIiwianRpIjoiYjlkODRhNjc1MmVhZWUxMzI1NTZjNTNhMzIwMThiNGNkMDk3MDY4NzJkNGZkMzJmNDJjOGQ1NzZkNGIyZjhiZTYzM2Q1YjFhYjY0NWRmMGYiLCJpYXQiOjE2MTE3NTQ5MjIsIm5iZiI6MTYxMTc1NDkyMiwiZXhwIjoxNjEyMTg2OTIyLCJzdWIiOiIyOSIsInNjb3BlcyI6WyIqIl19.KnGQQ73vXFgD6xDMN05za3xfXgRv5AlwGdvcCYsKGsDUbguByu6aP-1cAnX85DOyn_HNqrfsTEHQdf3Adf6aUs46MWDcGWd4bgo8S6EuUJ9ZACLtC4Yht_I5sWAyffiIZDLfzG-xiKljif1jGS7SLncysuud3dIJQ1EIInXU8-m-K7JC-jXl0TIgU9pDiCGljWPeEICTJQDrUUwHcOuXh3_hlxY096ui21s9EHdu8SiDzvR0Ipv-vSUigDdPVriqrXlPn3yNEUI2teFcDbyCOlGPJOvGAYx9AY1hgCc5IyyGhWD-QaZoCAmdSfw94cWiebSEQn18QEbia5mERj_68YN_vA9aAcjDVC92-GY-5wKcgR6VO7Xu-1m-plH8R15GBrE4vgx_uL-pM8e_D0fd6m6fws54JkqT7n7Ld-U9z4vZidkhndk1P3bnnLk1z50lNS8dlJzlOzfd6ZRTYhFqn2P5A7-Palt***************3CzA8Jnt7h3wNlLwThS_I_4BNkqBDEjPfZpiy-bPJO9cJLGRqClDadEua7ztoCLC5E",
+    "refresh_token": "def50200c4d2462d2de167da1*******c97ef04222fa3265036e8b4e36deec1d8c084df7230e34162aea05078d4e5b641cad508676cfbb9b6bdb7e2f2b861eb0e0c5b*********9e6ededc76d94f10c9b3363be7"
+}
+                            </pre>
+                            <ul>
+                                <li>token_type:  نوع توکن دریافتی</li>
+                                <li>expires_in:  زمان اعتبار توکن (ثانیه)</li>
+                                <li>token:  با استفاده از این توکن می‌توانید دیگر سرویس های وندار را فراخوانی کنید</li>
+                                <li>refresh_token:  با استفاده از این توکن می‌توانید توکن را با استفاده از متد رفرش توکن تمدید نمایید</li>
+                            </ul>
+                            <h3 class="sub-title">
+                                نمونه پاسخ دریافتی ناموفق
+                            </h3>
+                            <pre>
+<span class="key">HTTP/1.1</span> 401
+{
+    "unauthorized"
 }
                             </pre>
                         </div>
