@@ -412,22 +412,31 @@
                       <pre>
 <span class="key">HTTP/1.1</span> 200
 {
-"status": 1,
-"data": {
-  "settlement": [
-    {
-      "id": "b6c72d20-a4ba-11ea-8a6c-9dc8b4b708ac",
-      "iban_id": "b6b5c440-a4ba-11ea-837b-bf6e427ec6d0",
-      "transaction_id": 159100434426,
-      "amount": 50000,
-      "payment_number": null,
-      "status": "PENDING",
-      "wallet": 60985,
-      "settlement_date": "2020-06-02",
-      "settlement_date_jalali": "1399\/03\/13"
-    }
-  ]
-}
+  "status": 1,
+  "data": {
+    "settlement": [
+      {
+        "id": "c8cb0900-ab3a-11eb-b86c-570fe5ffc9f7",
+        "iban_id": "a9ac55e0-9452-11eb-b16b-e9557f9e6775",
+        "transaction_id": 161995545261,
+        "amount": 100000,
+        "amount_toman": 10000,
+        "wage_toman": 1000,
+        "payment_number": null,
+        "status": "PENDING",
+        "wallet": 364988,
+        "settlement_date": "2021-05-02",
+        "settlement_time": "16:07:32",
+        "settlement_date_jalali": "1400\/02\/12",
+        "is_instant": false,
+        "prediction": {
+          "date": "1400\/2\/12",
+          "time": "17:00:00",
+          "extra": "امروز"
+        }
+      }
+    ]
+  }
 }
                       </pre>
 
@@ -442,28 +451,19 @@
                         <li>
                           data:
                           <ul>
-                            <li>wallet: مبلغ کیف پول کاربر به تومان</li>
-                            <li>blocked_amount: مبلغی که به دستور احکام قضایی در حساب مسدود شده است.</li>
-                            <li>deductible_amount: مبلغ قابل برداشت امروز</li>
-                            <li>currency: </li>
-                            <li>settlements: 
-                              <ul>
-                                <li>
-                                  data:
-                                  <ul>
-                                    <li>id: شناسه تسویه</li>
-                                    <li>iban_id: شناسه یکتای شماره شبا که برای پیگیری شبا در وندار مورد استفاده قرار می گیرد</li>
-                                    <li>transaction_id: شناسه یکتای تسویه که برای پیگیری تسویه از وندار مورد استفاده قرار می‌گیرد.</li>
-                                    <li>amount: مبلغ تسویه به تومان</li>
-                                    <li>payment_number: شناسه واریز ثبت شده در هنگام ثبت تسویه</li>
-                                    <li>status: وضعیت تسویه</li>
-                                    <li>wallet: مبلغ کیف پول بعد از انجام این تسویه</li>
-                                    <li>settlement_date: (میلادی) تاریخ انجام تسویه</li>
-                                    <li>settlement_date_jalali: تاریخ انجام تسویه (شمسی)</li>
-                                  </ul>
-                                </li>
-                              </ul>
-                            </li>
+                            <li>id: شناسه یکتای تسویه</li>
+                            <li>iban_id: شناسه یکتای شماره شبا</li>
+                            <li>transaction_id:شناسه یکتای تراکنش در وندار</li>
+                            <li>amount: مبلغ تسویه به ریال</li>
+                            <li>amount_toman: مبلغ تسویه به تومان</li>
+                            <li>wage_toman:کارمزد مبلغ تسویه به تومان</li>
+                            <li>payment_number: شناسه پرداخت</li>
+                            <li>status: وضعیت تسویه</li>
+                            <li>wallet: مبلغ باقی مانده کیف پول بعد از تسویه</li>
+                            <li>settlement_date: تاریخ انجام تسویه</li>
+                            <li>settlement_time: زمان انجام تسویه</li>
+                            <li>settlement_date_jalali: تاریخ شمسی انجام تسویه </li>
+                            <li>prediction: تحمین زمان واریز </li>
                           </ul>
                         </li>
                       </ul>
