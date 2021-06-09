@@ -234,72 +234,23 @@
                                   پارامتر is_healthy_on_direct_debit: نشان‌دهنده‌ی این است که در آن لحظه‌ی خاص با توجه به وضعیت سلامت بانک مورد نظر، امکان ریدایرکت به صفحه‌ی بانک وجود دارد یا خیر.
                               </div>
                             <br>
-                            <table class="table" style="direction: rtl;">
-                                <thead>
-                                <tr>
-                                    <th>Bank</th>
-                                    <th>Code</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                      <td>آینده</td>
-                                      <td>062</td>
-                                  </tr>
-                                  <tr>
-                                    <td>بانک ایران زمین</td>
-                                    <td>069</td>
-                                  </tr>
-                                  <tr>
-                                    <td>بانک دی</td>
-                                    <td>066</td>
-                                  </tr>
-                                  <tr>
-                                    <td>بانک انصار</td>
-                                    <td>063</td>
-                                  </tr>
-                                  <tr>
-                                    <td>بانک شهر</td>
-                                    <td>061</td>
-                                  </tr>
-                                  <tr>
-                                    <td>بانک سرمایه</td>
-                                    <td>058</td>
-                                  </tr>
-                                  <tr>
-                                    <td>بانک سامان</td>
-                                    <td>056</td>
-                                  </tr>
-                                  <tr>
-                                    <td>بانک اقتصاد نوین</td>
-                                    <td>055</td>
-                                  </tr>
-                                  <tr>
-                                    <td>پست بانک ایران</td>
-                                    <td>021</td>
-                                  </tr>
-<!--                                  <tr>-->
-<!--                                    <td>بانک سپه</td>-->
-<!--                                    <td>015</td>-->
-<!--                                  </tr>-->
-                                  <tr>
-                                    <td>بانک کشاورزی</td>
-                                    <td>016</td>
-                                  </tr>
-                                  <tr>
-                                      <td>بانک ملت</td>
-                                      <td>012</td>
-                                  </tr>
-                                </tbody>
-                            </table>
+                                <table class="table" style="direction: rtl;" id="banks_table">
+                                    <thead>
+                                    <tr>
+                                        <th>Bank</th>
+                                        <th>Code</th>
+                                        <th>Current Health</th>
+                                    </tr>
+                                    </thead>
+                                </table>
                             <br>
                           </li>
                           <li>
-                            mobile (اجباری): شماره موبایل کاربر token دریافتی در این قسمت یکبار مصرف است و پس از ۲۰ دقیقه باطل می شود.
+                            mobile (اجباری): شماره موبایل کاربر. شماره موبایل بدون کد کشور و به فرمت 09123456789 باشد.
                           </li>
                           <div class="info">
                             <strong>نکته! </strong>
-                            دقت داشته باشید که در صورت منتقل شدن به صفحه‌ی بانک با این شماره موبایل، برای بانک‌هایی که برای ورود نیاز به کد ملی کاربر دارند، بایستی کد ملی و شماره موبایل مربوط به یک شخص باشند. در واقع بایستی شماره موبایل در هنگام خرید با استفاده از آن کد ملی خریداری شده باشد در غیر این صورت در صفحه‌ی بانک با پیغام خطا روبرو می‌شود و امکان ورود پیدا نمی‌کند.
+                            دقت داشته باشید که در صورت منتقل شدن به صفحه‌ی بانک با این شماره موبایل، برای بانک‌هایی که برای ورود نیاز به کد ملی کاربر دارند، <b>بایستی کد ملی و شماره موبایل متعلق به یک شخص باشند. </b> در غیر این صورت در صفحه‌ی بانک با پیغام خطا روبرو می‌شود و امکان ورود پیدا نمی‌کند.
                           </div>
                             <br>
                           <li>callback_url (اجباری): باید با آدرس درگاه پرداخت تایید شده در وندار بر روی یک دامنه باشد</li>
@@ -420,7 +371,10 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                             </li>
                         </ul>
                         <p>
-                            در صورتی که با موفقیت به صفحه‌ی بانک وارد شوید، پس از ورود اطلاعات بانکی با صفحه‌ای مشابه با صفحه‌ی زیر مواجه خواهید شد:
+                            در صورتی که با موفقیت به صفحه‌ی بانک وارد شوید، با صفحه‌ای مشابه با صفحه‌ی زیر مواجه خواهید شد:
+							در این مرحله اطلاعات حسابی که کاربر می خواهد بر روی آن دسترسی بدهد باید وارد شود. شماره موبایلی که در این قسمت ارسال می شود باید متعلق به صاحب حساب باشد.
+
+
                         </p>
 
 <img src="../images/authorize-intro.png" alt="صفحه ورود بانک">
@@ -833,6 +787,18 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
   توضیحات
 </h3>
 
+<h3 class="sub-title">
+  دو نوع برداشت امکان پذیر است. در همین لحظه (is_instant=1) و برداشت در آینده (is_instant=0):
+</h3>
+
+<p>
+در صورت برداشت آنی (is_instant=1) برداشت از حساب کاربر در همان لحظه انجام می شود. در این حالت ۲ پارامتر withdrawal_date و max_retry_count از درخواست شما محاسبه نمی شوند بلکه withdrawal_date همیشه برابر تاریخ امروز و max_retry_count همیشه برابر با ۱ در نظر گرفته می شوند. بودن یا نبودن این دو پارامتر در درخواست شما تغییری ایجاد نمی کند.
+</p>
+<p>
+در صورت برداشت در آینده (is_instant=0) برداشت از حساب کاربر زمانی در آینده رخ خواهد داد. این زمان را شما با پارامتر withdrawal_date تعیین می کنید و در حالت برداشت در آینده این پارامتر اجباری است و باید تاریخ صحیحی بعد از امروز باشد. در این حالت پارامتر max_retry_count اختیاری است و در صورت وجود نداشتن در در درخواست شما برابر با ۱ در نظر گرفته می شود. اما اگر عدد دیگری برای max_retry_count تعیین کنید، عدد در خواست شما برای این پارامتر منظور می شود.
+</p>
+ 
+
 <ul>
   <li>authorization_id (اجباری):
     آیدی دریافتی در بخش اشتراک که می خواهید مبلغ از آن دسترسی برداشت شود
@@ -840,11 +806,12 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
   <li>amount (اجباری):
     مبلغ برداشت وجه
   </li>
-  <li>withdrawal_date (اجباری):
-    تاریخی از امروز به بعد که می خواهید مبلغ در آن روز از حساب برداشت شود
+  <li>withdrawal_date (اجباری در حالت is_instant=0):
+    تاریخی که در آن روز از حساب برداشت شود. روز معین شده باید بعد از امروز باشد.
   </li>
     <li>is_instant (اختیاری):
-        این پارامتر مشخص می‌کند که برداشت وجه در همین لحظه انجام شود یا در سیکل‌های مشخصی که توسط وندار کنترل می‌شوند. مقدار این پارامتر می تواند 0 یا 1 باشد. 0 به این معنا که در سیکل‌های مشخصی که توسط وندار تعیین شده کنترل می شود و 1 به ای معنا که برداشت وجه در همین لحظه انجام می شود. در صورت عدم ارسال، 1 در نظر گرفته می‌شود.
+این پارامتر مشخص می‌کند که برداشت وجه در همین لحظه انجام شود یا در آینده. مقدار این پارامتر می تواند 0 یا 1 باشد. 1 به معنای این که برداشت در لحظه انجام شود و 0 به این معنا که برداشت در آینده انجام شود. در صورت عدم ارسال، 1 در نظر گرفته می‌شود.
+
     </li>
     <li>notify_url (اختیاری):
         آدرس وبهوکی که می‌توانید ارسال کنید تا از وضعیت نهایی این برداشت وجه مطلع شوید. در مواقع تست می‌توانید از وبسایت  <a target="_blank" href="https://webhook.site">webhook.site</a>استفاده کنید.
@@ -863,8 +830,17 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 {
   "authorization_id": "9f307e30-dc77-11ea-830e-7533ca1787c5",
   "amount": "10000",
+  "is_instant": 1,
+  "notify_url": "http://yourdomain.com/notify/me",
+}
+</pre>
+
+<pre>
+{
+  "authorization_id": "9f307e30-dc77-11ea-830e-7533ca1787c5",
+  "amount": "10000",
   "withdrawal_date": "2020-07-04",
-  "is_instant": true,
+  "is_instant": 0,
   "notify_url": "http://yourdomain.com/notify/me",
   "max_retry_count": 1
 }
@@ -1454,8 +1430,8 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 <span class="key">METHOD:</span> PUT
 <span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/subscription/withdrawal/{id}
 </pre>
-<p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد دارید یک برداشت وجه از آن را نمایش دهید.</p>
-<p>پارامتر {id} همان id مربوط به برداشت وجهی است که قصد نمایش آن را دارید.</p>
+<p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد دارید یک برداشت وجه از آن را لغو کنید.</p>
+<p>پارامتر {id} همان id مربوط به برداشت وجهی است که قصد لغو آن را دارید.</p>
 
 <h3 class="sub-title">
   نمونه پاسخ دریافتی موفق:
@@ -1584,5 +1560,34 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     }
+
+    fetch('https://health.vandar.io/subscription')
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(jsonResponse) {
+
+        var banksHealthResponse = jsonResponse;
+
+        var table = document.getElementById("banks_table");
+        var banks = banksHealthResponse["result"]["banks"];
+
+        for (var i = 0; i < banks.length ; i++)  {
+            if (banks[i]["is_healthy_on_direct_debit"]) {
+                var row = table.insertRow(-1);
+                var bankName = row.insertCell(0);
+                var bankCode = row.insertCell(1);
+                var bankIsHealthyDirectDebit = row.insertCell(2);
+
+                bankName.innerHTML = banks[i]["name"];
+                bankCode.innerHTML = banks[i]["code"];
+                bankIsHealthyDirectDebit.innerHTML = "سالم";
+                bankIsHealthyDirectDebit.style.color = "green";
+            }
+        }
+
+      });
+
+
 </script></body>
 </html>
