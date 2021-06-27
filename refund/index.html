@@ -113,7 +113,6 @@
                             <a href="https://vandarpay.github.io/docs/subscription/#withdrawal">سرویس برداشت وجه</a><br>
                             <a href="https://vandarpay.github.io/docs/subscription/#error">لیست خطاهای دریافتی</a><br>
 
-
                             <!--                        </div>-->
                         </div>
                     </li>
@@ -128,25 +127,45 @@
                     </li>
                 </ul>
             </div>
+
         </div>
         <div class="col-sm-9">
                 <article class="content">
 
                     <div>
-                        آخرین تغییرات: ۱۳۹۹/۱۱/۱۰
+                        آخرین تغییرات: ۱۴۰۰/۰۴/۰۶
                     </div>
 
-                    <div class="article" id="ipg">
-                        <h2 class="article-header" id="login"><a href="https://vandarpay.github.io/docs/auth#login" >لاگین </a></h2>
+                    <div class="article" id="refund">
+                        <h2 class="article-header" id="refund">
+                          <a href="#refund-">بازگشت وجه</a>
+                        </h2>
                         <div>
-                            <h3 class="title" id="step-1">
-                               <a href="#step-1"><strong>مرحله اول:</strong> ارسال اطلاعات و دریافت توکن</a>
-                            </h3>
-                            <p>برای فراخوانی دیگر متدهای وندار نیاز است که در اولین قدم باید ابتدا دریافت توکن را فراخوانی کرد، همچنین با توجه به عمر پنج روزه‌ی هر توکن توصیه می‌شود هر چهار روز یک بار دریافت توکن مجددا فراخوانی گردد. با فراخوانی این سرویس اطلاعات کاربری و توکن مورد نیاز برای استفاده در هدر دیگر سرویس‌ها، بازگردانده می‌شود.</p>
+                            <p>
+                              برای بازگرداندن مبلغ یک تراکنشِ موفقِ درگاه پرداخت، به شماره کارت پرداخت‌کننده می‌توان از ابزار بازگشت وجه استفاده کرد.
+                            </p>
+                            <h3>شرایط لازم برای بازگشت وجه:</h3>
+                            <ul>
+                              <li>فعال بودن ابزار بازگشت وجه</li>
+                              <li>موفق بودن تراکنش</li>
+                              <li>داشتن موجودی کافی در کیف‌پول</li>
+                            </ul>
+                            <h3>ثبت درخواست بازگشت وجه:</h3>
+                            <p>
+                              برای ثبت درخواست بازگشت وجه یک تراکنش موفق کافی‌ست نشانی زیر را صدا بزنید:
+                            </p>
                             <pre>
-<span class="key">METHOD:</span> post
-<span class="key">URL:</span> https://api.vandar.io/v3/login
-                            </pre>
+<span class="key">METHOD:</span> POST
+<span class="key">URL:</span> https://api.vandar.io/v2/business/{businessName}/transaction/{transaction_id}/refund
+<span class="key">Header:</span><br>Authorization : Bearer {token}<br>Accept : application/json<br>Content-Type : application/json</pre>
+                            
+                            <p>
+                              در این نشانی:
+                            </p>
+                            <ul>
+                              <li>businessName نام انگلیسی کسب‌وکار است که در هنگام ثبت کسب‌وکار به وندار ارائه‌ شده.</li>
+                              <li>transaction_id شناسه‌ی یکتای تراکنش در وندار است.</li>
+                            </ul>
                             <h3 class="sub-title">
                                 پارامترهای مجاز
                             </h3>
@@ -157,127 +176,98 @@
                                     <th>Status</th>
                                 </tr>
                                 <tr>
-                                    <td>mobile</td>
+                                    <td>payment_number</td>
                                     <td>string</td>
-                                    <td>required</td>
+                                    <td>optional</td>
                                 </tr>
                                 <tr>
-                                    <td>password</td>
+                                    <td>description</td>
                                     <td>string</td>
-                                    <td>required</td>
+                                    <td>optional</td>
                                 </tr>
                             </table>
                             <h3 class="sub-title">
                                 توضیحات
                             </h3>
                             <ul>
-                                <li>mobile (اجباری): شماره موبایل ثبت شده در وندار</li>
-                                <li>password (اجباری): رمز عبور حساب کاربری وندار</li>
+                                <li>Payment_number باید برای هر درخواست مقداری یکتا باشد.</li>
+                                <li>Description محل درج توضیحات است.</li>
                             </ul>
                             <h3 class="sub-title">
                                 نمونه json
                             </h3>
                             <pre>
 {
-    "<span class="key">mobile</span>": "09123456789",
-    "<span class="key">password</span>": Very-strong-pa$$w0rd
+    "<span class="key">payment_number</span>": "13456",
+    "<span class="key">description</span>": "160969188194 بازگشت وجه تراکنش "
 }
                             </pre>
-                            <h3 class="sub-title">
+
+<h3 class="sub-title">
                                 نمونه پاسخ دریافتی موفق
                             </h3>
                             <pre>
 <span class="key">HTTP/1.1</span> 200
 {
-    "token_type": "Bearer",
-    "expires_in": 432000,
-    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ***********2ZDRiMmY4YmU2MzNkNWIxYWI2NDVkZjBmIn0.eyJhdWQiOiIyIiwianRpIjoiYjlkODRhNjc1MmVhZWUxMzI1NTZjNTNhMzIwMThiNGNkMDk3MDY4NzJkNGZkMzJmNDJjOGQ1NzZkNGIyZjhiZTYzM2Q1YjFhYjY0NWRmMGYiLCJpYXQiOjE2MTE3NTQ5MjIsIm5iZiI6MTYxMTc1NDkyMiwiZXhwIjoxNjEyMTg2OTIyLCJzdWIiOiIyOSIsInNjb3BlcyI6WyIqIl19.KnGQQ73vXFgD6xDMN05za3xfXgRv5AlwGdvcCYsKGsDUbguByu6aP-1cAnX85DOyn_HNqrfsTEHQdf3Adf6aUs46MWDcGWd4bgo8S6EuUJ9ZACLtC4Yht_I5sWAyffiIZDLfzG-xiKljif1jGS7SLncysuud3dIJQ1EIInXU8-m-K7JC-jXl0TIgU9pDiCGljWPeEICTJQDrUUwHcOuXh3_hlxY096ui21s9EHdu8SiDzvR0Ipv-vSUigDdPVriqrXlPn3yNEUI2teFcDbyCOlGPJOvGAYx9AY1hgCc5IyyGhWD-QaZoCAmdSfw94cWiebSEQn18QEbia5mERj_68YN_vA9aAcjDVC92-GY-5wKcgR6VO7Xu-1m-plH8R15GBrE4vgx_uL-pM8e_D0fd6m6fws54JkqT7n7Ld-U9z4vZidkhndk1P3bnnLk1z50lNS8dlJzlOzfd6ZRTYhFqn2P5A7-Palt***************3CzA8Jnt7h3wNlLwThS_I_4BNkqBDEjPfZpiy-bPJO9cJLGRqClDadEua7ztoCLC5E",
-    "refresh_token": "def50200c4d2462d2de167da1*******c97ef04222fa3265036e8b4e36deec1d8c084df7230e34162aea05078d4e5b641cad508676cfbb9b6bdb7e2f2b861eb0e0c5b*********9e6ededc76d94f10c9b3363be7"
-}
-                            </pre>
-                            <ul>
-                                <li>token_type:  نوع توکن دریافتی</li>
-                                <li>expires_in:  زمان اعتبار توکن (ثانیه)</li>
-                                <li>token:  با استفاده از این توکن می‌توانید دیگر سرویس های وندار را فراخوانی کنید</li>
-                                <li>refresh_token:  با استفاده از این توکن می‌توانید توکن را با استفاده از متد رفرش توکن تمدید نمایید</li>
-                            </ul>
-                            <h3 class="sub-title">
-                                نمونه پاسخ دریافتی ناموفق
-                            </h3>
-                            <pre>
-<span class="key">HTTP/1.1</span> 400
-{
-    "<span class="key">status</span>": 0,
-    "<span class="key">error</span>": "نام کاربری یا رمز عبور اشتباه وارد شده است"
-}
-                            </pre>
-                        </div>
-                        <div>
-                            <h3 class="title" id="step-1">
-                               <a href="#step-2"><strong>مرحله دوم:</strong> تمدید توکن</a>
-                            </h3>
-                            <p>از آنجاییکه عمر توکن ها محدود است و مقدار آن در فیلد expires_in همراه توکن ارسال شده است،‌ باید قبل از منقضی شدن توکن با ارسال رفرش توکن، توکن جدید را دریافت کنید.POSTبه آدرس زیر ارسال شود.</p>
-                            <pre>
-<span class="key">METHOD:</span> post
-<span class="key">URL:</span> https://api.vandar.io/v3/refreshtoken
-                            </pre>
-                            <h3 class="sub-title">
-                                پارامترهای مجاز
-                            </h3>
-                            <table>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Status</th>
-                                </tr>
-                                <tr>
-                                    <td>refreshtoken</td>
-                                    <td>string</td>
-                                    <td>required</td>
-                                </tr>
-                            </table>
+    "<span class="key">status</span>": 1,
+    "<span class="key">data</span>": {
+        "<span class="key">message</span>": "  عملیات بازگشت وجه با موفقیت ثبت گردید. ",
+        "<span class="key">results</span>": {
+          "<span class="key">id</span>": "e2ee0fb0-c070-11eb-8d4b-f782f5608cc2",
+          "<span class="key">retry_count</span>": "01",
+          "<span class="key">user_id</span>": 29,
+          "<span class="key">business_id</span>": 20,
+          "<span class="key">gateway_transaction_id</span>": 162203075684,
+          "<span class="key">amount</span>": "50000.00",
+          "<span class="key">wage</span>": 0,
+          "<span class="key">payment_number</span>": null,
+          "<span class="key">status</span>": "PENDING",
+          "<span class="key">description</span>": "160969188194 بازگشت وجه تراکنش",
+          "<span class="key">wallet</span>": "99999889000",
+          "<span class="key">refund_date</span>": "1400/03/08 15:57:43",
+          "<span class="key">created_at</span>": "1400/03/08 15:57:44"
+        }
+    },
+}</pre>
+
                             <h3 class="sub-title">
                                 توضیحات
                             </h3>
                             <ul>
-                                <li>refreshtoken (اجباری): مقداری که از فراخوانی متد قبل دریافت کرده‌اید.</li>
+                                <li>Gateway_transaction_id شناسه تراکنش عملیات بازگشت وجه است.</li>
+                                <li>Amount مبلغ بازگردانده شده به تومان</li>
+                                <li>Wage کارمزد بازگشت وجه به تومان</li>
+                                <li>Status وضعیت تراکنش است که در زمان ثبت به صورت PENDING نمایش داده می‌شود. </li>
+                                <li>Wallet موجودی کیف‌پول پس از بازگشت وجه به تومان</li>
+                                <li>refund_date تاریخ و زمان انجام عملیات بازگشت وجه. این نخستین زمانی است که مبلغ قابل برداشت کیف‌پول برای انجام تراکنش بازگشت وجه کافی باشد (متناسب با زمان بروزرسانی مبلغ قابل برداشت کیف‌پول). در این زمان درخواست بازگشت وجه به بانک ارسال می‌شود.</li>
                             </ul>
-                            <h3 class="sub-title">
-                                نمونه json
-                            </h3>
-                            <pre>
-{
-    "<span class="key">refreshtoken</span>": "def50200c4d2462d2de167da1*******c97ef04222fa3265036e8b4e36deec1d8c084df7230e34162aea05078d4e5b641cad508676cfbb9b6bdb7e2f2b861eb0e0c5b*********9e6ededc76d94f10c9b3363be7"
-}
-                            </pre>
-                            <h3 class="sub-title">
-                                نمونه پاسخ دریافتی موفق
-                            </h3>
-                            <pre>
-<span class="key">HTTP/1.1</span> 200
-{
-    "token_type": "Bearer",
-    "expires_in": 432000,
-    "access_token": "bPJO9cJLGRqClDadEua7ztoCLC5E***********xYWI2NDVkZjBmIn02ZDRiMmY4YmU2MzNkNWI.eyJhdWQiOiIyKnGQQ73vXFd3dIJQ1EIInXU8-m-K7JC-jXl0TIgU9pDiCGljWPeEICTJQDrUUwHcOuXh3_hlxY096ui21s9EHdu8SiDIiwianRpIjoiYjl2teFcDbyCOlGPJOvGAYx9AY1hgCc5IyyGhWD-QaZoCAmdSfw94cWiebSEQegD6xDMN05za3xfXgRv5AlwGdvcCYsKGsDUbguByu6aP-1cAnX85DOyn_HNqrfsTEHQdf3Adf6aUs46MWDcGWd4bgo8S6EuUJ9ZACLtC4Yht_I5sWAyffikODRhNjc1MmVhZWUxMzI1NTZjNTNhMzIwMThiNGNkMDk3MDY4NzJkNGZkMzJmNDJjOGn18QEbia5mERj_68YN_vA9aAcjDVC92-GY-5wKcgR6VO7Xu-1m-plH8R15GBrE4vgx_uL-pM8e_D0fd6m6fws54JkqT7n7Ld-U9z4vZidkhndk1P3bnnLk1z50lNS8dlJzlOzfd6ZRTYhFqn2P5A7-Palt***************3CzA8Jnt7h3wNlLwThS_I_4BNkqBDEjPfZpiy-eyJ0Q1NzZkNGIyZjhiZTYzM2Q1YjFhYjY0NWRmMGYiLCJpYXQiOjE2MTE3NTQ5MjIsIm5iZiI6MTYxMTc1NDkyMiwiZXhwIjoxNjEyMTg2OTIyLCJzdWIiOiIyOSIsInNjb3BlcyI6WyIqIl19.zvR0Ipv-vSUigDdPVriqrXlPn3yNEUIIZDLfzG-xiKljif1jGS7SLncysuuXAiOiJKV1QiLCJhbGciOiJbPJO9cJLGRqClDadEua7ztoCLC5E",
-    "refresh_token": "def50200c4d2462d2de167da1*******c97ef04222fa3265036e8b4e36deec1d8c084df7230e34162aea05078d4e5b641cad508676cfbb9b6bdb7e2f2b861eb0e0c5b*********9e6ededc76d94f10c9b3363be7"
-}
-                            </pre>
-                            <ul>
-                                <li>token_type:  نوع توکن دریافتی</li>
-                                <li>expires_in:  زمان اعتبار توکن (ثانیه)</li>
-                                <li>token:  با استفاده از این توکن می‌توانید دیگر سرویس های وندار را فراخوانی کنید</li>
-                                <li>refresh_token:  با استفاده از این توکن می‌توانید توکن را با استفاده از متد رفرش توکن تمدید نمایید</li>
-                            </ul>
+
+                            <!-- <div class="info">
+                                <strong>نکته!</strong> واحد پول استفاده شده در وب‌سرویس وندار فقط تومان می‌باشد
+                            </div> -->
                             <h3 class="sub-title">
                                 نمونه پاسخ دریافتی ناموفق
                             </h3>
                             <pre>
 <span class="key">HTTP/1.1</span> 401
 {
-    "unauthorized"
-}
-                            </pre>
+    "<span class="key">status</span>": 0,
+    "<span class="key">error</span>": "Unauthenticated"
+}</pre>
+
+                            <h3 class="sub-title">
+                                توضیحات
+                            </h3>
+                            <ul>
+                                <li>status: درصورت ناموفق بودن درخواست این مقدار برابر با 0 می باشد</li>
+                                <li>error: در صورت منقضی شدن Token ارسالی در Header و یا اشتباه بودن Token با مقدار Unauthenticated برگشت داده می‌شود. </li>
+                            </ul>
+
+
+
                         </div>
+                        
+
                     </div>
                 </article>
         </div>
