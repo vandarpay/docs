@@ -162,7 +162,7 @@
                         </a>
 
                         </h3>
-                        <p>اولین مرحله از برای دریافت دسترسی به حساب بانکی و ایجاد یک اشتراک جدید. ثبت درخواست اشتراک است. لازم است که درخواست اشتراک خود را به آدرس زیر ارسال کنید.</p>
+                        <p>اولین مرحله برای دریافت دسترسی به حساب بانکی و ایجاد یک اشتراک جدید،ثبت درخواست اشتراک است. لازم است که درخواست اشتراک خود را به آدرس زیر ارسال کنید.</p>
                         <pre>
 <span class="key">Method:</span> POST
 <span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/subscription/authorization/store
@@ -318,7 +318,7 @@
                                 <br>
                                 0 به معنای این است که http response از خانواده‌ی ۴۰۰ یا ۵۰۰ است.
                             </li>
-                          <li>message: پیغام درخواست توکن با موفقیت ثبت شد</li>
+                          <li>message: پیغام درخواست توکن با موفقیت ثبت شد.</li>
                           <li>
                             result:
                             <ul>
@@ -491,12 +491,12 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
     meta:
     <ul>
       <li>current_page: آدرس همین صفحه</li>
-      <li>from: شماره اولین آیتم تسویه ای که در این صفحه آمده است </li>
-      <li>last_page: تعداد کل صفحات تسویه</li>
+      <li>from: شماره اولین آیتم که در این صفحه آمده است </li>
+      <li>last_page: تعداد کل صفحات</li>
       <li>path: آدرس خالص بدون صفحه بندی</li>
       <li>per_page: تعداد آیتم در هر صفحه</li>
-      <li>to: شماره آخرین آیتم تسویه ای که در این صفحه آمده است</li>
-      <li>total: تعداد کل آیتم های تسویه</li>
+      <li>to: شماره آخرین آیتمی که در این صفحه آمده است</li>
+      <li>total: تعداد کل آیتم ها</li>
     </ul>
   </li>
 </ul>
@@ -779,7 +779,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
   </tr>
   <tr>
       <td>amount</td>
-      <td>string</td>
+      <td>numeric</td>
       <td>required</td>
   </tr>
   <tr>
@@ -1193,12 +1193,12 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
     meta:
     <ul>
       <li>current_page: آدرس همین صفحه</li>
-      <li>from: شماره اولین آیتم تسویه ای که در این صفحه آمده است </li>
-      <li>last_page: تعداد کل صفحات تسویه</li>
+      <li>from: شماره اولین آیتمی که در این صفحه آمده است </li>
+      <li>last_page: تعداد کل صفحات</li>
       <li>path: آدرس خالص بدون صفحه بندی</li>
       <li>per_page: تعداد آیتم در هر صفحه</li>
-      <li>to: شماره آخرین آیتم تسویه ای که در این صفحه آمده است</li>
-      <li>total: تعداد کل آیتم های تسویه</li>
+      <li>to: شماره آخرین آیتمی که در این صفحه آمده است</li>
+      <li>total: تعداد کل آیتم ها</li>
     </ul>
   </li>
 </ul>
@@ -1270,7 +1270,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 }
 </pre>
                         <h3 class="sub-title">
-                            نمونه پاسخ دریافتی موفق برای برداشت وجه ناموفق:
+                            نمونه پاسخ دریافتی موفق برای برداشت وجه ناموفق: (error_code و error_message علت و کد خطا را نشان می دهد.)
                         </h3>
                         <pre>
 <span class="key">HTTP/1.1</span> 200
