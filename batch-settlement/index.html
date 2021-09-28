@@ -253,7 +253,11 @@
                         </li>
                       </ul>
 
-                      <pre>
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی ناموفق:
+                        </h3>
+
+                        <pre>
 <span class="key">HTTP/1.1</span> 4xx
 {
 "status": 0,
@@ -367,6 +371,10 @@
                             </li>
                         </ul>
 
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی ناموفق:
+                        </h3>
+
                         <pre>
 <span class="key">HTTP/1.1</span> 4xx
 {
@@ -432,13 +440,16 @@ hash('sha256', json_encode([
                             </li>
                         </ul>
 
-                        <h3 class="title" id="batch-settlement-health">
-                            <strong><a href="#batch-settlement-health">وضعیت سلامت بانک‌های سرویس تسویه</a></strong>
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی ناموفق:
                         </h3>
-                        <p>در این آدرس ‌می‌توانید از وضعیت سلامت بانک‌های سرویس تسویه مطلع شوید.</p>
+
                         <pre>
-<span class="key">METHOD:</span> GET
-<span class="key">URL:</span> https://health.vandar.io/settlement
+<span class="key">HTTP/1.1</span> 4xx
+{
+"status": 0,
+"error": "Unauthenticated"
+}
                       </pre>
 
                     </div>
