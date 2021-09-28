@@ -164,13 +164,12 @@
                         <h3 class="title" id="batch-settlements-index">
                             <strong><a href="#batch-settlements-index">لیست تسویه های گروهی ثبت شده</a></strong>
                         </h3>
-                        <p>در این بخش شما می‌توانید همه‌ی تسویه‌های گروهی را که تا به حال ثبت کرده‌اید، مشاهده نمایید.</p>
+                        <p>در این بخش شما می‌توانید لیست تسویه‌های گروهی را که تا به حال ثبت کرده‌اید، مشاهده نمایید.</p>
                         <pre>
 <span class="key">METHOD:</span> GET
 <span class="key">URL:</span> https://batch.vandar.io/api/v1/business/{business}/batches
                       </pre>
                       <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد مشاهده‌ی لیست تسویه های گروهی آن را دارید.</p>
-                        <p>per_page(اختیاری): تعداد رکورد اطلاعاتی درخواست تسویه را مشخص میکند </p>
                         <p>page(اختیاری): صفحه مورد نظر را مشخص می‌کند. </p>
 
 
@@ -280,11 +279,17 @@
                         <p>در این بخش شما می‌توانید جزییات یک تسویه‌ ی گروهی و تسویه های ثبت شده در آن مشاهده نمایید.</p>
                         <pre>
 <span class="key">METHOD:</span> GET
-<span class="key">URL:</span> https://batch.vandar.io/api/v1/business/{business}/batch-settlements/{batch_id}
+<span class="key">URL:</span> https://batch.vandar.io/api/v1/business/{business}/batch-settlements/{batch_id}?per_page=20&page=1&status=SUBMITTED
                       </pre>
                         <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد مشاهده‌ی لیست تسویه های گروهی آن را دارید.</p>
                         <p>پارامتر {batch_id} شناسه تسویه گروهی که در ثبت آن ارسال کرده اید.</p>
                         <p>per_page(اختیاری): تعداد رکورد اطلاعاتی درخواست تسویه را مشخص میکند </p>
+                        <ul>
+                            <li>INIT: در حال ارسال</li>
+                            <li>SUBMITTED: ارسال شده</li>
+                            <li>FAILED: ناموفق</li>
+                        </ul>
+                        <p> status(اختیاری): یکی از پارامتر های زیر را قبول می کند. و مشخص می کند چه نوع تسویه هایی در لیست جزییات تسویه گروهی نمایش داده شود. عدم ارسال این پارامتر باعث می شود تمام وضعیت ها در پاسخ نمایش داده شود.</p>
                         <p>page(اختیاری): صفحه مورد نظر را مشخص می‌کند. </p>
 
 
@@ -430,7 +435,7 @@ hash('sha256', json_encode([
                             <li>
                                 data:
                                 <ul>
-                                       <li>amount (اجباری): مبلغ تراکنش به تومان و بزرگتر یا مساوی 50,000 و کوچکتر یا مساوی 500,000,000 </li>
+                                       <li>amount (اجباری): مبلغ تراکنش به ریال و بزرگتر یا مساوی 50,000 و کوچکتر یا مساوی 500,000,000 </li>
                                         <li>iban (اجباری): شماره شبا ای که می خواد پول به آن واریز شود</li>
                                         <li>track_id (اجباری): رشته پیگیری که به ازای هر درخواست تسویه بایستی یکتا باشد. پیشنهاد ما استفاده از uuid برای این پارامتر است.</li>
                                         <li>payment_number (اختیاری): شناسه واریز شماره ای اختیاری است تا حداکثر 30 رقم.</li>
@@ -441,16 +446,55 @@ hash('sha256', json_encode([
                         </ul>
 
                         <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+      "batch_id": "900e69c676f67008de9bed005a014fb6e604222bb5e824ab65fc4153757cb640",
+      "status": {
+        "total_count": 1,
+        "init_count": 0,
+        "submitted_count": 1,
+        "failed_count": 0
+      },
+      "total_amount": 50000,
+      "created_at": 1629672276
+}
+                      </pre>
+
+                        <ul>
+                            <li>
+                                با ثبت موقث تسویه گروهی خورجی بالا با جزییات زیر نمایش داده می شود.
+                            </li>
+                            <ul>
+                                <li>batch_id: شناسه تسویه گروهی ثبت شده</li>
+                                <li>status: در این بخش جزییات کلی تسویه گروهی مشخص می شود. </li>
+                                <ul>
+                                    <li>total_count: تعداد کل تسویه گروهی ثبت شده</li>
+                                    <li>init_count: تعداد تسویه هایی که در حال ارسال هستند</li>
+                                    <li>submitted_count: تعداد تسویه هایی که ارسال شده اند</li>
+                                    <li>failed_count: تعداد تسویه هایی که با خطا مواجه شده اند</li>
+                                </ul>
+                                <li>total_amount: مبلغ کلی تسویه های گروهی</li>
+                                <li>created_at: تاریخ ایجاد تسویه گروهی (timestamp) </li>
+                            </ul>
+                        </ul>
+
+                        <h3 class="sub-title">
                             نمونه پاسخ دریافتی ناموفق:
                         </h3>
 
                         <pre>
 <span class="key">HTTP/1.1</span> 4xx
 {
-"status": 0,
-"error": "Unauthenticated"
+    "status": 0,
+    "error": "Unauthenticated"
 }
                       </pre>
+                        <br>
+                        <br>
 
                     </div>
                 </div>
