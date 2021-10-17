@@ -182,7 +182,7 @@
                         <p>در این بخش لیست مشتریان کسب‌و‌کار خود را مشاهده می‌کنید.</p>
                         <pre>
 <span class="key">Method:</span> GET
-<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers
+<span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/customers
                         </pre>
                         <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
                        
@@ -210,8 +210,8 @@
         }
     ],
     "links": {
-        "first": "https://customer.vandar.io/v2/business/hosting/customers?page=1",
-        "last": "https://customer.vandar.io/v2/business/hosting/customers?page=1",
+        "first": "https://customer.vandar.io/v3/business/hosting/customers?page=1",
+        "last": "https://customer.vandar.io/v3/business/hosting/customers?page=1",
         "prev": null,
         "next": null
     },
@@ -219,7 +219,7 @@
         "current_page": 1,
         "from": 1,
         "last_page": 1,
-        "path": "https://customer.vandar.io/v2/business/hosting/customers",
+        "path": "https://customer.vandar.io/v3/business/hosting/customers",
         "per_page": 10,
         "to": 2,
         "total": 2
@@ -282,7 +282,7 @@
                       </p>
                       <pre>
 <span class="key">METHOD:</span> POST
-<span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/customers
+<span class="key">URL:</span> https://api.vandar.io/v3/business/{business}/customers
                       </pre>
                       <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
                       <h3 class="sub-title">
@@ -453,7 +453,7 @@
                                 برای دریافت آیدی استان و شهر از سرویس زیر استفاده نمایید:
                             </p>
                             <p>
-                              https://api.vandar.io/v2/information/cities
+                              https://api.vandar.io/v3/information/cities
                             </p>
                           </li>
                           <li>
@@ -461,7 +461,7 @@
                                 برای دریافت آیدی اصناف از سرویس زیر استفاده نمایید:
                             </p>
                             <p>
-                                https://api.vandar.io/v2/information/mccs
+                                https://api.vandar.io/v3/information/mccs
                                                         </p>
                           </li>
                       </ul>
@@ -546,7 +546,7 @@
                        </p>
                        <pre>
  <span class="key">METHOD:</span> PUT
- <span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}
+ <span class="key">URL:</span> https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}
                        </pre>
                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل دسترسی می‌باشد.</p>
@@ -719,7 +719,7 @@
                               برای دریافت آیدی استان و شهر از سرویس زیر استفاده نمایید:
                           </p>
                           <p>
-                            https://api.vandar.io/v2/information/cities
+                            https://api.vandar.io/v3/information/cities
                           </p>
                         </li>
                         <li>
@@ -727,7 +727,7 @@
                                 برای دریافت آیدی اصناف از سرویس زیر استفاده نمایید:
                             </p>
                             <p>
-                                https://api.vandar.io/v2/information/mccs
+                                https://api.vandar.io/v3/information/mccs
                                                         </p>
                           </li>
                     </ul>
@@ -841,7 +841,7 @@
 <p>در صورت نیاز به حذف یک مشتری از این سرویس استفاده نمایید.</p>
 <pre>
 <span class="key">METHOD:</span> DELETE
-<span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}
+<span class="key">URL:</span> https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}
 </pre>
 <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
 <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل دسترسی می‌باشد.</p>
@@ -862,7 +862,7 @@
 <p>در این بخش امکان مشاهده اطلاعات یک مشتری را خواهید داشت.</p>
 <pre>
 <span class="key">Method:</span> GET
-<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}
+<span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}
 </pre>
 <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
 <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل دسترسی می‌باشد.</p>
@@ -910,7 +910,7 @@
 
 <pre>
 <span class="key">Method:</span> GET
-<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/wallet
+<span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}/wallet
 </pre>
 
 <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
@@ -948,7 +948,7 @@
 <p>در صورت نیاز به بالا بردن موجودی کیف پول مشتری می‌توانید با استفاده از این سرویس، یک تراکنش واریز به حساب، برای مشتری ثبت نمایید. </p>
                         <pre>
 <span class="key">Method:</span> POST
-<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/wallet/deposit
+<span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}/wallet/deposit
 </pre>
 
 <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
@@ -974,6 +974,11 @@
       <td>comment</td>
       <td>string</td>
       <td>optional</td>
+  </tr>
+  <tr>
+      <td>track_id</td>
+      <td>string</td>
+      <td>required شماره پیگیری یکتا</td>
   </tr>
   </tbody>
 </table>
@@ -985,6 +990,7 @@
     <ul>
       <li>amount (اجباری): مبلغی که می‌خواهید به کیف پول مشتری اضافه شود.</li>
       <li>comment (اختیاری): توضیحات مربوط به تراکنش واریزی</li>
+      <li>track_id (اجباری): شماره پیگیری غیرتکراری</li>
     </ul>
   </li>
 </ul>
@@ -995,10 +1001,12 @@
                         <pre>
 <span class="key">HTTP/1.1</span> 200
 {
+  "id": "0cf235d0-d48b-11ea-86cd-298ec898a9bd",
   "status": 1,
   "message": "واریز با موفقیت انجام شد",
   "balance": 1000,
-  "currency": "RIAL"
+  "currency": "RIAL",
+  "comment": "comment",
 }
 </pre>
 
@@ -1008,7 +1016,7 @@
 <p>در صورت نیاز به پایین آرودن موجودی کیف پول مشتری می‌توانید با استفاده از این سرویس، یک تراکنش برداشت از کیف پول مشتری ثبت نمایید. </p>
                         <pre>
 <span class="key">Method:</span> POST
-<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/wallet/withdraw
+<span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}/wallet/withdraw
 </pre>
 
 <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
@@ -1035,6 +1043,11 @@
       <td>string</td>
       <td>optional</td>
   </tr>
+  <tr>
+      <td>track_id</td>
+      <td>string</td>
+      <td>required شماره پیگیری یکتا</td>
+  </tr>
   </tbody>
 </table>
 
@@ -1045,6 +1058,7 @@
     <ul>
       <li>amount (اجباری): مبلغی که می‌خواهید از کیف پول مشتری کم شود.</li>
       <li>comment (اختیاری): توضیحات مربوط به تراکنش برداشتی</li>
+      <li>track_id (اجباری): شماره پیگیری غیرتکراری</li>
     </ul>
   </li>
 </ul>
@@ -1055,6 +1069,7 @@
                         <pre>
 <span class="key">HTTP/1.1</span> 200
 {
+  "id": "0cf235d0-d48b-11ea-86cd-298ec898a9bd",
   "status": 1,
   "message": "برداشت با موفقیت انجام شد",
   "balance": 1000,
@@ -1074,7 +1089,7 @@
 
 <pre>
 <span class="key">Method:</span> GET
-<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/transactions
+<span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}/transactions
 </pre>
 
 <h3 class="sub-title">
@@ -1114,8 +1129,8 @@
       }
   ],
   "links": {
-      "first": "https://customer.vandar.io/v2/business/hosting/customers/394dd280-210f-11ec-96d5-95b80dce5a5a/transactions?page=1",
-      "last": "https://customer.vandar.io/v2/business/hosting/customers/394dd280-210f-11ec-96d5-95b80dce5a5a/transactions?page=1",
+      "first": "https://customer.vandar.io/v3/business/hosting/customers/394dd280-210f-11ec-96d5-95b80dce5a5a/transactions?page=1",
+      "last": "https://customer.vandar.io/v3/business/hosting/customers/394dd280-210f-11ec-96d5-95b80dce5a5a/transactions?page=1",
       "prev": null,
       "next": null
   },
@@ -1123,7 +1138,7 @@
       "current_page": 1,
       "from": 1,
       "last_page": 1,
-      "path": "https://customer.vandar.io/v2/business/hosting/customers/394dd280-210f-11ec-96d5-95b80dce5a5a/transactions",
+      "path": "https://customer.vandar.io/v3/business/hosting/customers/394dd280-210f-11ec-96d5-95b80dce5a5a/transactions",
       "per_page": 20,
       "to": 3,
       "total": 3
@@ -1177,7 +1192,7 @@
 <p>با اسفاده از این سوریس می‌توانید برای مشتری شماره شبا ثبت نمایید. </p>
                         <pre>
 <span class="key">Method:</span> POST
-<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/ibans
+<span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}/ibans
 </pre>
 
 <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
@@ -1243,7 +1258,7 @@
   
   <pre>
   <span class="key">Method:</span> GET
-  <span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/ibans
+  <span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}/ibans
   </pre>
   
   <h3 class="sub-title">
@@ -1270,12 +1285,12 @@
             "bank_name": "آینده"
         }
     ],
-    "first_page_url": "https://customer.vandar.io/v2/business/hosting/customers/394dd280-210f-11ec-96d5-95b80dce5a5a/ibans?page=1",
+    "first_page_url": "https://customer.vandar.io/v3/business/hosting/customers/394dd280-210f-11ec-96d5-95b80dce5a5a/ibans?page=1",
     "from": 1,
     "last_page": 1,
-    "last_page_url": "https://customer.vandar.io/v2/business/hosting/customers/394dd280-210f-11ec-96d5-95b80dce5a5a/ibans?page=1",
+    "last_page_url": "https://customer.vandar.io/v3/business/hosting/customers/394dd280-210f-11ec-96d5-95b80dce5a5a/ibans?page=1",
     "next_page_url": null,
-    "path": "https://customer.vandar.io/v2/business/hosting/customers/394dd280-210f-11ec-96d5-95b80dce5a5a/ibans",
+    "path": "https://customer.vandar.io/v3/business/hosting/customers/394dd280-210f-11ec-96d5-95b80dce5a5a/ibans",
     "per_page": 20,
     "prev_page_url": null,
     "to": 1,
@@ -1290,7 +1305,7 @@
    <p>در صورت نیاز می‌توانید از این بخش شماره شبا مربوط به مشتری را حدف نمایید.</p>
    <pre>
    <span class="key">METHOD:</span> DELETE
-   <span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/ibans/{iban_id}
+   <span class="key">URL:</span> https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}/ibans/{iban_id}
    </pre>
    <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
    <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل دسترسی می‌باشد.</p>
