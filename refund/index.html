@@ -159,7 +159,7 @@
                 <article class="content">
 
                     <div>
-                        آخرین تغییرات: ۱۴۰۰/۰۴/۰۶
+                        آخرین تغییرات: 1400/08/01
                     </div>
 
                     <div class="article" id="refund">
@@ -182,7 +182,7 @@
                             </p>
                             <pre>
 <span class="key">METHOD:</span> POST
-<span class="key">URL:</span> https://api.vandar.io/v2/business/{businessName}/transaction/{transaction_id}/refund
+<span class="key">URL:</span> https://api.vandar.io/v3/business/{businessName}/transaction/{transaction_id}/refund
 <span class="key">Header:</span><br>Authorization : Bearer {token}<br>Accept : application/json<br>Content-Type : application/json</pre>
                             
                             <p>
@@ -238,21 +238,34 @@
     "<span class="key">status</span>": 1,
     "<span class="key">data</span>": {
         "<span class="key">message</span>": "  عملیات بازگشت وجه با موفقیت ثبت گردید. ",
-        "<span class="key">results</span>": {
+        "<span class="key">results</span>": [
+        {
           "<span class="key">id</span>": "e2ee0fb0-c070-11eb-8d4b-f782f5608cc2",
           "<span class="key">retry_count</span>": "01",
-          "<span class="key">user_id</span>": 29,
-          "<span class="key">business_id</span>": 20,
           "<span class="key">gateway_transaction_id</span>": 162203075684,
-          "<span class="key">amount</span>": "50000.00",
-          "<span class="key">wage</span>": 0,
+          "<span class="key">amount</span>": "1500000000",
+          "<span class="key">wage</span>": 1000,
           "<span class="key">payment_number</span>": null,
           "<span class="key">status</span>": "PENDING",
           "<span class="key">description</span>": "160969188194 بازگشت وجه تراکنش",
           "<span class="key">wallet</span>": "99999889000",
           "<span class="key">refund_date</span>": "1400/03/08 15:57:43",
           "<span class="key">created_at</span>": "1400/03/08 15:57:44"
-        }
+        },
+        {
+          "<span class="key">id</span>": "e2ee0fb0-c070-11eb-8d4b-f782f5608cc3",
+          "<span class="key">retry_count</span>": "01",
+          "<span class="key">gateway_transaction_id</span>": 162203075685,
+          "<span class="key">amount</span>": "500000000",
+          "<span class="key">wage</span>": 1000,
+          "<span class="key">payment_number</span>": null,
+          "<span class="key">status</span>": "PENDING",
+          "<span class="key">description</span>": "160969188194 بازگشت وجه تراکنش",
+          "<span class="key">wallet</span>": "99999889000",
+          "<span class="key">refund_date</span>": "1400/03/08 15:57:43",
+          "<span class="key">created_at</span>": "1400/03/08 15:57:44"
+        },
+        ]
     },
 }</pre>
 
@@ -260,6 +273,7 @@
                                 توضیحات
                             </h3>
                             <ul>
+                                <li>results آرایه ای از تراکنش های بازگشتی است. به ازای هر ۱۵ میلیون تومان از مبلغ بازگشت وجه یک تراکنش ایجاد می شود. </li>
                                 <li>Gateway_transaction_id شناسه تراکنش عملیات بازگشت وجه است.</li>
                                 <li>Amount مبلغ بازگردانده شده به ریال</li>
                                 <li>Wage کارمزد بازگشت وجه به ریال</li>
