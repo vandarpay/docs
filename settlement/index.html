@@ -461,32 +461,33 @@
                       <pre>
 <span class="key">HTTP/1.1</span> 200
 {
-  "status": 1,
-  "data": {
-    "settlement": [
-      {
-        "id": "c8cb0900-ab3a-11eb-b86c-570fe5ffc9f7",
-        "iban_id": "a9ac55e0-9452-11eb-b16b-e9557f9e6775",
-        "transaction_id": 161995545261,
-        "amount": 100000,
-        "amount_toman": 10000,
-        "wage_toman": 1000,
-        "payment_number": null,
-        "status": "PENDING",
-        "wallet": 364988,
-        "settlement_date": "2021-05-02",
-        "settlement_time": "16:07:32",
-        "settlement_date_jalali": "1400\/02\/12",
-        "is_instant": false,
-        "description": "توضیحات",
-        "prediction": {
-          "date": "1400\/2\/12",
-          "time": "17:00:00",
-          "extra": "امروز"
-        }
-      }
-    ]
-  }
+   "status":1,
+   "data":{
+      "settlement":[
+         {
+            "id":"406f20d0-397a-11ec-b752-6b667e3fe6ba",
+            "iban_id":"083510a0-f998-11eb-8c11-27d425426e06",
+            "transaction_id":163559577615,
+            "amount":50000,
+            "amount_toman":5000,
+            "wage_toman":0,
+            "payment_number":null,
+            "status":"PENDING",
+            "wallet":"221500",
+            "description":"تسویه حساب وندار",
+            "settlement_date":"2021-10-30",
+            "settlement_time":"15:39:36",
+            "settlement_date_jalali":"1400\/08\/08",
+            "settlement_done_time_prediction":"1400\/08\/08 16:00:00",
+            "is_instant":false,
+            "prediction":{
+               "date":"1400\/8\/8",
+               "time":"16:00:00",
+               "extra":"امروز"
+            }
+         }
+      ]
+   }
 }
                       </pre>
 
@@ -513,6 +514,7 @@
                             <li>settlement_date: تاریخ انجام تسویه</li>
                             <li>settlement_time: زمان انجام تسویه</li>
                             <li>settlement_date_jalali: تاریخ شمسی انجام تسویه </li>
+                            <li>settlement_done_time_prediction: زمان تخمینی واریز به حساب مقصد </li>
                             <li>prediction: تحمین زمان واریز </li>
                             <li>description: توضیحات </li>
                           </ul>
