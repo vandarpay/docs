@@ -591,14 +591,14 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             <div class="info">
                 چنانچه کسب‌وکار شما از <strong>نسخه ۲</strong> APIهای وندار بهره می‌برد، تا ۱ اسفند ۱۴۰۰ نیازی به پیاده‌سازی این قدم نخواهید داشت.
             </div>
-            <p>درصورتی که کاربر اجازه دسترسی به مجوز را صادر کرده باشد، باید مجوز ایجاد شده را از طریق ارسال authorization_id به وندار تایید کنید. کسب‌وکارهای قدیمی که از نسخه ۲ این API استفاده می‌کردند نیازی به انجام این قدم ندارند.</p>
+            <p>درصورتی که کاربر اجازه دسترسی به مجوز را صادر کرده باشد، باید مجوز ایجاد شده را از طریق ارسال authorization_id به وندار تایید کنید. برای جلوگیری از تغییر وضعیت مجوزهای پیشین، وندار تنها یک بار اجازه تایید مجوز را به API می‌دهد.</p>
             <pre>
 <span class="key">Method:</span> PATCH
 <span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/subscription/authorization/{authorization}/verify</pre>
           </pre>
           <div class="info">
             <strong>نکته! </strong>
-            وندار به جهت جلوگیری از ایجاد مجوز رهاشده، مجوزهایی که پس از ۲۰ دقیقه تایید نشوند را به شکل خودکار لغو می‌کند.
+             وندار به جهت جلوگیری از ایجاد مجوز رهاشده، مجوزهایی که پس از ۲۰ دقیقه تایید نشوند را به شکل خودکار لغو می‌کند.
           </div>
             <h3 class="sub-title">
               نمونه پاسخ دریافتی موفق:
@@ -606,24 +606,19 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
             <pre>
 <span class="key">HTTP/1.1</span> 200
-[
-    'message' => 'مجوز با موفقیت تایید شد.',
-]
+{
+    'message' => 'مجوز با موفقیت تایید شد.'
+}
             </pre>
-            <div class="info">
-              <strong>نکته! </strong>
-              برای جلوگیری از تغییر وضعیت مجوزهای پیشین، وندار تنها یک بار اجازه تایید مجوز را به API می‌دهد.
-            </div>
           <h3 class="sub-title">
             نمونه پاسخ دریافتی نا موفق:
           </h3>
           <pre>
 <span class="key">HTTP/1.1</span> 422
 {
-"message": "مجوز پیش از این تایید شده است."
+    'message': 'مجوز پیش از این تایید شده است.'
 }
             </pre>
-
 <h3 class="title" id="subscriptions">
  <a href="#subscriptions"> ۵. لیست اشتراک‌ها</a>
 </h3>
