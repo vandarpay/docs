@@ -158,7 +158,20 @@
                 <div class="article" id="ipg">
 
                     <div>
-                        آخرین تغییرات: ۱۴۰۰/۰۴/۰۸
+                        آخرین تغییرات: ۱۴۰۰/۰۸/۲۳
+                    </div>
+                    <div>
+                        <ul style="margin-right: 1rem; list-style-type: none;">
+                            <li><strong>نسخه ۳.۰</strong> <span style="font-size: small">(۱۴۰۰/۰۸/۲۳)</span>
+                                <ul style="margin-right: 1rem; margin-top: 0;">
+                                    <li>الزامی شدن پارامتر expiration_date هنگام ایجاد اشتراک جدید.</li>
+                                    <li>اضافه شدن قدم الزامی «<a href="#subscription-verify">تایید تراکنش</a>»</li>
+                                    <li>فیلد status .در پاسخ‌های دریافتی که مقدار ۰ یا ۱ بر پایه وضعیت به خود می‌گرفت منسوخ شده و در به‌روزرسانی‌های بعدی نسخه ۳ وجود نخواهد داشت. راه‌حل جایگزین بررسی کد وضعیت HTTP بازگردانده شده از سوی وندار است.</li>
+                                    <li>فیلد status هنگام نمایش اشتراک‌ها اضافه شده است که می‌تواند یکی از مقادیر ACTIVE یا PENDING_VERIFY را داشته باشد.</li>
+                                    <li style="list-style-type: none; margin-right: -1rem;">نکته: تمامی APIهای نسخه ۲ تا ۱ اسفند ۱۴۰۰ در دسترس خواهند بود.</li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
 
                     <h2 class="article-header">مقدمه</h2>
@@ -190,7 +203,7 @@
                         <p>اولین مرحله برای دریافت دسترسی به حساب بانکی و ایجاد یک اشتراک جدید،ثبت درخواست اشتراک است. لازم است که درخواست اشتراک خود را به آدرس زیر ارسال کنید.</p>
                         <pre>
 <span class="key">Method:</span> POST
-<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/subscription/authorization/store
+<span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/subscription/authorization/store
                         </pre>
                         <h3 class="sub-title">
                           پارامترهای مجاز
@@ -230,6 +243,11 @@
                             <td>required</td>
                           </tr>
                           <tr>
+                            <td>expiration_date</td>
+                            <td>date</td>
+                            <td>required (optional on version 2)</td>
+                          </tr>
+                          <tr>
                             <td>name</td>
                             <td>string</td>
                             <td>optional</td>
@@ -238,11 +256,6 @@
                             <td>email</td>
                             <td>string</td>
                             <td>optional</td>
-                          </tr>
-                          <tr>
-                              <td>expiration_date</td>
-                              <td>date</td>
-                              <td>optional</td>
                           </tr>
                           <tr>
                               <td>wage_type</td>
@@ -285,9 +298,13 @@
                           <li>callback_url (اجباری): باید با آدرس درگاه پرداخت تایید شده در وندار بر روی یک دامنه باشد</li>
                           <li>count (اجباری): حداکثر تعداد دفعاتی که در یک ماه می‌توان با این مجوز، برداشت وجه موفق انجام داد.</li>
                           <li>limit (اجباری):  حداکثر مبلغ قابل برداشت وجه در برداشت وجه‌های مربوط به این مجوز. واحد پول ریال است.</li>
+                          <li>expiration_date (اجباری): تاریخ انقضای اشتراک. این تاریخ می‌تواند تاریخ امروز یا بعد از آن باشد و به صورت میلادی وارد می‌شود.</li>
+                            <div class="info">
+                                <strong>نکته! </strong>
+                                این مقدار در نسخه ۲ APIهای وندار اجباری نبوده و در صورت عدم وجود به شکل پیش‌فرض ۳ سال از زمان حال در نظر گرفته می‌شود.
+                            </div>
                           <li>name (اختیاری): نام کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
                           <li>email (اختیاری): ایمیل کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود.</li>
-                          <li>expiration_date (اختیاری): تاریخ انقضای اشتراک. این تاریخ می‌تواند تاریخ امروز یا بعد از آن باشد و به صورت میلادی وارد می‌شود. در صورتی که ارسال نشود، تاریخ سه سال بعد در نظر گرفته می‌شود.</li>
                           <li>wage_type (اختیاری): میزان کارمزد ، که میتواند دو مقدار APPLICATION_USER یا APPLICATION_SELF باشد اگر این مقدار را برابر با APPLICATION_SELF قرار دهید میزان کارمزد از شما کسر میشود و اگر برابر با APPLICATION_USER قرار دهید این مقدار از کاربر کسر میشود .</li>
                             <div class="info">
                                 <strong>نکته! </strong>
@@ -337,7 +354,7 @@
                         </div>
                         <ul>
                             <li>
-                                status: ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
+                                status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
                                 <br>
                                 1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
                                 <br>
@@ -368,7 +385,7 @@
 
                         <ul>
                             <li>
-                                status: ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
+                                status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
                                 <br>
                                 1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
                                 <br>
@@ -568,14 +585,49 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
               </table>
 
 
+              <h3 class="title" id="subscription-verify"><a href="#subscription-verify">
+                ۴. تایید اشتراک
+            </a>
 
+            </h3>
+            <div class="info">
+                چنانچه کسب‌وکار شما از <strong>نسخه ۲</strong> APIهای وندار بهره می‌برد، تا ۱ اسفند ۱۴۰۰ نیازی به پیاده‌سازی این قدم نخواهید داشت.
+            </div>
+            <p>درصورتی که کاربر اجازه دسترسی به مجوز را صادر کرده باشد، باید مجوز ایجاد شده را از طریق ارسال authorization_id به وندار تایید کنید. برای جلوگیری از تغییر وضعیت مجوزهای پیشین، وندار تنها یک بار اجازه تایید مجوز را به API می‌دهد.</p>
+            <pre>
+<span class="key">Method:</span> PATCH
+<span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/subscription/authorization/{authorization}/verify</pre>
+          </pre>
+          <div class="info">
+            <strong>نکته! </strong>
+             وندار به جهت جلوگیری از ایجاد مجوز رهاشده، مجوزهایی که پس از ۲۰ دقیقه تایید نشوند را به شکل خودکار لغو می‌کند.
+          </div>
+            <h3 class="sub-title">
+              نمونه پاسخ دریافتی موفق:
+            </h3>
+
+            <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+    'message' => 'مجوز با موفقیت تایید شد.'
+}
+            </pre>
+          <h3 class="sub-title">
+            نمونه پاسخ دریافتی نا موفق:
+          </h3>
+          <pre>
+<span class="key">HTTP/1.1</span> 422
+{
+    'message': 'مجوز پیش از این تایید شده است.'
+}
+            </pre>
 <h3 class="title" id="subscriptions">
- <a href="#subscriptions"> ۴. لیست اشتراک‌ها</a>
+ <a href="#subscriptions"> ۵. لیست اشتراک‌ها</a>
 </h3>
 <p>در این بخش  شما می توانید لیست اشتراک های ایجاد شده را مشاهده کنید.</p>
 <pre>
 <span class="key">METHOD:</span> GET
-<span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/subscription/authorization
+<span class="key">URL:</span> https://api.vandar.io/v3/business/{business}/subscription/authorization
 </pre>
 <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد مشاهده‌ی اشتراک‌های آن را دارید.</p>
 <h3 class="sub-title">
@@ -598,13 +650,14 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
       "email": "customer.email@gmail.com",
       "national_code": "2993968416",
       "expiration_date": "1400\/04\/04 14:47:09",
+      "status": "ACTIVE",
       "created_at": "1399\/04\/04 14:47:09"
     },
     ...
   ],
   "links": {
-    "first": "https://api.vandar.io/v2/business/vandario/subscription/authorization?page=1",
-    "last": "https://api.vandar.io/v2/business/vandario/subscription/authorization?page=1",
+    "first": "https://api.vandar.io/v3/business/vandario/subscription/authorization?page=1",
+    "last": "https://api.vandar.io/v3/business/vandario/subscription/authorization?page=1",
     "prev": null,
     "next": null
   },
@@ -612,7 +665,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
     "current_page": 1,
     "from": 1,
     "last_page": 1,
-    "path": "https://api.vandar.io/v2/business/vandario/subscription/authorization",
+    "path": "https://api.vandar.io/v3/business/vandario/subscription/authorization",
     "per_page": 20,
     "to": 3,
     "total": 3
@@ -634,9 +687,11 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
       <li>name: نام کاربر اگر در مرحله قبل ارسال کردید</li>
       <li>email: ایمیل کاربر اگر در مرحله قبل ارسال کردید</li>
       <li>national_code: کدملی کاربر در صورتی که بانک به وندار برگردانده باشد</li>
-      <li>expiration_date (اختیاری): تاریخ انقضای اشتراک. این تاریخ می‌تواند تاریخ امروز یا بعد از آن باشد و به
-            صورت میلادی وارد می‌شود. در صورتی که ارسال نشود، تاریخ سه سال بعد در نظر گرفته می‌شود.
-      </li>      <li>created_at: زمان ساخت اشتراک</li>
+      <li>expiration_date: تاریخ انقضای اشتراک. این تاریخ می‌تواند تاریخ امروز یا بعد از آن باشد و به
+            صورت میلادی وارد می‌شود.
+      </li>
+      <li>status: وضعیت اشتراک که می‌تواند ACTIVE و یا PENDING_VERIFY باشد.</li>
+      <li>created_at: زمان ساخت اشتراک</li>
     </ul>
   </li>
   <li>
@@ -677,7 +732,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
   </pre>
   <ul>
       <li>
-          status: ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
+          status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
           <br>
           1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
           <br>
@@ -686,12 +741,12 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
     <li>errors: آرایه ای از خطا‌ها</li>
   </ul>
 <h3 class="title" id="show">
-<a href="#show">  ۵. نمایش یک اشتراک با id </a>
+<a href="#show">  ۶. نمایش یک اشتراک با id </a>
 </h3>
 <p>شما می توانید با این دستور جزییات یک اشتراک را با فرستادن id دریافت کنید.</p>
 <pre>
 <span class="key">Method:</span> GET
-<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/subscription/authorization/{id}
+<span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/subscription/authorization/{id}
 </pre>
 <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد مشاهده یکی از اشتراک های آن را دارید.</p>
 <h3 class="sub-title">
@@ -716,6 +771,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
       "email": "customer.email@gmail.com",
       "national_code": "2993968416",
       "expiration_date": "1400\/04\/04 14:47:09",
+      "status": "ACTIVE",
       "created_at": "1399\/04\/04 14:47:09"
     }
   }
@@ -723,7 +779,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 </pre>
 <ul>
     <li>
-        status: ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
+        status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
         <br>
         1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
         <br>
@@ -746,9 +802,10 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
           <li>name: نام کاربر اگر در مرحله قبل ارسال کردید</li>
           <li>email: ایمیل کاربر اگر در مرحله قبل ارسال کردید</li>
           <li>national_code: کدملی کاربر در صورتی که بانک به وندار برگردانده باشد</li>
-            <li>expiration_date (اختیاری): تاریخ انقضای اشتراک. این تاریخ می‌تواند تاریخ امروز یا بعد از آن باشد و به
-                صورت میلادی وارد می‌شود. در صورتی که ارسال نشود، تاریخ سه سال بعد در نظر گرفته می‌شود.
+            <li>expiration_date: تاریخ انقضای اشتراک. این تاریخ می‌تواند تاریخ امروز یا بعد از آن باشد و به
+                صورت میلادی وارد می‌شود. این مورد ممکن است در اشتراک‌های ایجاد شده با نسخه ۲ API وجود نداشته باشد.
             </li>
+          <li>status: وضعیت فعلی اشتراک که می‌تواند ACTIVE یا PENDING_VERIFY باشد.</li>
           <li>created_at: زمان ساخت اشتراک</li>
         </ul>
       </li>
@@ -800,7 +857,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
                           <ul>
                               <li>
-                                  status: ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
+                                  status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
                                   <br>
                                   1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
                                   <br>
@@ -812,12 +869,12 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
 
 <h3 class="title" id="delete">
- <a href="#delete">۶. پاک کردن یک اشتراک با استفاده از id</a>
+ <a href="#delete">۷. پاک کردن یک اشتراک با استفاده از id</a>
 </h3>
 
 <pre>
 <span class="key">Method:</span> DELETE
-<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/subscription/authorization/{id}
+<span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/subscription/authorization/{id}
 </pre>
 
 <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد حذف یکی از اشتراک های آن را دارید.</p>
@@ -840,7 +897,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 </pre>
 <ul>
     <li>
-        status: ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
+        status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
         <br>
         1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
         <br>
@@ -872,7 +929,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
                           <ul>
                               <li>
-                                  status: ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
+                                  status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
                                   <br>
                                   1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
                                   <br>
@@ -892,7 +949,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
                           <ul>
                               <li>
-                                  status: ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
+                                  status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
                                   <br>
                                   1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
                                   <br>
@@ -915,7 +972,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
 <pre>
 <span class="key">Method:</span> POST
-<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/subscription/withdrawal/store
+<span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/subscription/withdrawal/store
 </pre>
 
 <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد برداشت وجه از اشتراک آن را دارید.</p>
@@ -1071,7 +1128,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
 <ul>
     <li>
-        status: ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
+        status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
         <br>
         1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
         <br>
@@ -1178,7 +1235,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 </pre>
 <ul>
     <li>
-        status: ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
+        status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
         <br>
         1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
         <br>
@@ -1202,7 +1259,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
                           <ul>
                               <li>
-                                  status: ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛
+                                  status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛
                                   درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن
                                   منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به
                                   شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا
@@ -1226,7 +1283,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
                         <ul>
                             <li>
-                                status: ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛
+                                status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛
                                 درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن
                                 منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به
                                 شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا
@@ -1249,7 +1306,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 <p>با استفاده از api زیر می توانید تمام برداشت های وجه انجام شده تا کنون را مشاهده کنید. </p>
                         <pre>
 <span class="key">Method:</span> GET
-<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/subscription/withdrawal
+<span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/subscription/withdrawal
 </pre>
                         <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد نمایش لیست برداشت وجه از اشتراک آن
                             را دارید.</p>
@@ -1300,16 +1357,16 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
     ...
   ],
   "links": {
-    "first": "https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=1",
-    "last": "https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=33",
+    "first": "https://api.vandar.io/v3/business/vandario/subscription/withdrawal?page=1",
+    "last": "https://api.vandar.io/v3/business/vandario/subscription/withdrawal?page=33",
     "prev": null,
-    "next": "https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=2"
+    "next": "https://api.vandar.io/v3/business/vandario/subscription/withdrawal?page=2"
   },
   "meta": {
     "current_page": 1,
     "from": 1,
     "last_page": 33,
-    "path": "https://api.vandar.io/v2/business/vandario/subscription/withdrawal",
+    "path": "https://api.vandar.io/v3/business/vandario/subscription/withdrawal",
     "per_page": 20,
     "to": 20,
     "total": 656
@@ -1376,7 +1433,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 </pre>
 <ul>
     <li>
-        status: ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
+        status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
         <br>
         1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
         <br>
@@ -1394,7 +1451,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
 <pre>
 <span class="key">METHOD:</span> GET
-<span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/subscription/withdrawal/{id}
+<span class="key">URL:</span> https://api.vandar.io/v3/business/{business}/subscription/withdrawal/{id}
 </pre>
 <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد دارید یک برداشت وجه از آن را نمایش دهید.</p>
 <p>پارامتر {id} همان id مربوط به برداشت وجهی است که قصد نمایش آن را دارید.</p>
@@ -1464,7 +1521,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                         </div>
                         <ul>
                             <li>
-                                status: ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛
+                                status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛
                                 درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن
                                 منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به
                                 شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا
@@ -1531,7 +1588,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
                         <ul>
                             <li>
-                                status: ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛
+                                status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛
                                 درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن
                                 منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به
                                 شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا
@@ -1555,7 +1612,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
 <pre>
 <span class="key">METHOD:</span> PUT
-<span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/subscription/withdrawal/{id}
+<span class="key">URL:</span> https://api.vandar.io/v3/business/{business}/subscription/withdrawal/{id}
 </pre>
 <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد دارید یک برداشت وجه از آن را لغو کنید.</p>
 <p>پارامتر {id} همان id مربوط به برداشت وجهی است که قصد لغو آن را دارید.</p>
@@ -1579,7 +1636,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
   <ul>
       <li>
-          status: ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
+          status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
           <br>
           1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
           <br>
@@ -1611,7 +1668,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
       <ul>
           <li>
-              status: ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
+              status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
               <br>
               1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
               <br>
