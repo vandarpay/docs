@@ -1,32 +1,14 @@
 {
 	"info": {
-		"_postman_id": "ec98e918-8efa-4a61-8a2f-e44b8de9cc60",
+		"_postman_id": "f1a48f00-193b-4447-8b03-91c900c17372",
 		"name": "VandarAPI_last_update_2021_09-25",
 		"description": "The Vandar API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Auth",
 			"item": [
-				{
-					"name": "login",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"mobile\" : \"\",\n\t\"password\" : \"\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "https://api.vandar.io/v3/login"
-					},
-					"response": []
-				},
 				{
 					"name": "refreshtoken",
 					"request": {
@@ -41,7 +23,19 @@
 								}
 							}
 						},
-						"url": "https://api.vandar.io/v3/refreshtoken"
+						"url": {
+							"raw": "https://api.vandar.io/v3/refreshtoken",
+							"protocol": "https",
+							"host": [
+								"api",
+								"vandar",
+								"io"
+							],
+							"path": [
+								"v3",
+								"refreshtoken"
+							]
+						}
 					},
 					"response": []
 				},
@@ -50,13 +44,29 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": {
-								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImVhNzEzZDg4ZmNmZmM4YWRlZDZlNjA1NTJlZTVlNTg2OWQ0YzczZjA3NmQ3ZjlhYTA2NjBhOWU4NTAxZjRiNTU4MTIyMDdkOTU3Njk5NWE5In0.eyJhdWQiOiIyIiwianRpIjoiZWE3MTNkODhmY2ZmYzhhZGVkNmU2MDU1MmVlNWU1ODY5ZDRjNzNmMDc2ZDdmOWFhMDY2MGE5ZTg1MDFmNGI1NTgxMjIwN2Q5NTc2OTk1YTkiLCJpYXQiOjE2MDQ0ODYxODksIm5iZiI6MTYwNDQ4NjE4OSwiZXhwIjoxNjA0OTE4MTg5LCJzdWIiOiIyOSIsInNjb3BlcyI6WyIqIl19.Lm_J9BeWvipeOfe64QPMDzk0GX9V8eLDNJSgFGpka77C-5O1__24X1gxPpXc-PAVs7XaZtQiFXaJZlGbhJ9-P2nU80UbRw0yxsoZa_yaTuVLjIOfmXpqHe4ZNEaO5B6Ivs2TM6GPJWH3La0ntpttsXK9Vpc-zdsXs9BCaH-3XW0Dbq3zAxp4bSFvZI7qnFNQa23z-_IhTKSRV070X_R5fCovpSdnhaJzMZ-8AfAzywymJlXkxljL_J7hPzQQ4Guhf7pRCyhbAMxna2zRFGIMgQtP8m0zLLm-jTFfZDpU-iUQprEArjo6KhjL9rv_OzoikUiQgAd_tSqDV9UeLMlVAR4KIBLCbs9UZJ2i-REx2KqI9rn4s-EOKzzWLhCDazWBltl_01hDe3ZbTV0yQpJtqRYWtzZ0xoUIsSV5iXpam8VQ9gQ0hUlcrxZtiBqxB7hwC5Qc6hxc-8X9IgW9-iJxxoX8nBA3dbZ5udAWUVe19HbG9i6VdJpB6F7g9TcljGv6SbC_KBDhyhYrzWwbIv4sl_mfcLV6R8RLtuDpd6mv7dyEWc_tMz8rUxm4WVTnlA3Vipij1Qg4jClB9QD5uPYFGTHr4e7uiLhmuKcpI4TqcMEMdX56NmikKNGeGGHPxx9ZaIDdZr6ivjxSkwYx_K6HOCQDNrb-I6Fy0HJOhQr8iys"
-							}
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImVhNzEzZDg4ZmNmZmM4YWRlZDZlNjA1NTJlZTVlNTg2OWQ0YzczZjA3NmQ3ZjlhYTA2NjBhOWU4NTAxZjRiNTU4MTIyMDdkOTU3Njk5NWE5In0.eyJhdWQiOiIyIiwianRpIjoiZWE3MTNkODhmY2ZmYzhhZGVkNmU2MDU1MmVlNWU1ODY5ZDRjNzNmMDc2ZDdmOWFhMDY2MGE5ZTg1MDFmNGI1NTgxMjIwN2Q5NTc2OTk1YTkiLCJpYXQiOjE2MDQ0ODYxODksIm5iZiI6MTYwNDQ4NjE4OSwiZXhwIjoxNjA0OTE4MTg5LCJzdWIiOiIyOSIsInNjb3BlcyI6WyIqIl19.Lm_J9BeWvipeOfe64QPMDzk0GX9V8eLDNJSgFGpka77C-5O1__24X1gxPpXc-PAVs7XaZtQiFXaJZlGbhJ9-P2nU80UbRw0yxsoZa_yaTuVLjIOfmXpqHe4ZNEaO5B6Ivs2TM6GPJWH3La0ntpttsXK9Vpc-zdsXs9BCaH-3XW0Dbq3zAxp4bSFvZI7qnFNQa23z-_IhTKSRV070X_R5fCovpSdnhaJzMZ-8AfAzywymJlXkxljL_J7hPzQQ4Guhf7pRCyhbAMxna2zRFGIMgQtP8m0zLLm-jTFfZDpU-iUQprEArjo6KhjL9rv_OzoikUiQgAd_tSqDV9UeLMlVAR4KIBLCbs9UZJ2i-REx2KqI9rn4s-EOKzzWLhCDazWBltl_01hDe3ZbTV0yQpJtqRYWtzZ0xoUIsSV5iXpam8VQ9gQ0hUlcrxZtiBqxB7hwC5Qc6hxc-8X9IgW9-iJxxoX8nBA3dbZ5udAWUVe19HbG9i6VdJpB6F7g9TcljGv6SbC_KBDhyhYrzWwbIv4sl_mfcLV6R8RLtuDpd6mv7dyEWc_tMz8rUxm4WVTnlA3Vipij1Qg4jClB9QD5uPYFGTHr4e7uiLhmuKcpI4TqcMEMdX56NmikKNGeGGHPxx9ZaIDdZr6ivjxSkwYx_K6HOCQDNrb-I6Fy0HJOhQr8iys",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [],
-						"url": "https://api.vandar.io/v3/logout"
+						"url": {
+							"raw": "https://api.vandar.io/v3/logout",
+							"protocol": "https",
+							"host": [
+								"api",
+								"vandar",
+								"io"
+							],
+							"path": [
+								"v3",
+								"logout"
+							]
+						}
 					},
 					"response": []
 				}
@@ -90,7 +100,20 @@
 								}
 							}
 						},
-						"url": "https://ipg.vandar.io/api/v3/send",
+						"url": {
+							"raw": "https://ipg.vandar.io/api/v3/send",
+							"protocol": "https",
+							"host": [
+								"ipg",
+								"vandar",
+								"io"
+							],
+							"path": [
+								"api",
+								"v3",
+								"send"
+							]
+						},
 						"description": "در مرحله اول شما می بایست پارامترهای موجود در جدول زیر رو با متد POST به آدرسی که مشخص شده ارسال کنید. به نوع داده ها و نام فیلد توجه کنید. در صورتی که برای فیلد شماره موبایل، شماره موبایل کاربر را به درگاه ارسال نمایید، بصورت اتوماتیک درگاه موبایلی نمایش داده می شود"
 					},
 					"response": [
@@ -119,7 +142,19 @@
 										}
 									}
 								},
-								"url": "https://vandar.io/api/ipg/send"
+								"url": {
+									"raw": "https://vandar.io/api/ipg/send",
+									"protocol": "https",
+									"host": [
+										"vandar",
+										"io"
+									],
+									"path": [
+										"api",
+										"ipg",
+										"send"
+									]
+								}
 							},
 							"status": "OK",
 							"code": 200,
@@ -238,7 +273,19 @@
 										}
 									}
 								},
-								"url": "https://vandar.io/api/ipg/send"
+								"url": {
+									"raw": "https://vandar.io/api/ipg/send",
+									"protocol": "https",
+									"host": [
+										"vandar",
+										"io"
+									],
+									"path": [
+										"api",
+										"ipg",
+										"send"
+									]
+								}
 							},
 							"status": "Unprocessable Entity",
 							"code": 422,
@@ -335,7 +382,20 @@
 								}
 							}
 						},
-						"url": "https://vandar.io/api/ipg/2step/transaction"
+						"url": {
+							"raw": "https://vandar.io/api/ipg/2step/transaction",
+							"protocol": "https",
+							"host": [
+								"vandar",
+								"io"
+							],
+							"path": [
+								"api",
+								"ipg",
+								"2step",
+								"transaction"
+							]
+						}
 					},
 					"response": []
 				},
@@ -364,7 +424,20 @@
 								}
 							}
 						},
-						"url": "https://ipg.vandar.io/api/v3/verify",
+						"url": {
+							"raw": "https://ipg.vandar.io/api/v3/verify",
+							"protocol": "https",
+							"host": [
+								"ipg",
+								"vandar",
+								"io"
+							],
+							"path": [
+								"api",
+								"v3",
+								"verify"
+							]
+						},
 						"description": "در مرحله اول شما می بایست پارامترهای موجود در جدول زیر رو با متد POST به آدرسی که مشخص شده ارسال کنید. به نوع داده ها و نام فیلد توجه کنید. در صورتی که برای فیلد شماره موبایل، شماره موبایل کاربر را به درگاه ارسال نمایید، بصورت اتوماتیک درگاه موبایلی نمایش داده می شود"
 					},
 					"response": [
@@ -393,7 +466,19 @@
 										}
 									}
 								},
-								"url": "https://vandar.io/api/ipg/send"
+								"url": {
+									"raw": "https://vandar.io/api/ipg/send",
+									"protocol": "https",
+									"host": [
+										"vandar",
+										"io"
+									],
+									"path": [
+										"api",
+										"ipg",
+										"send"
+									]
+								}
 							},
 							"status": "OK",
 							"code": 200,
@@ -512,7 +597,19 @@
 										}
 									}
 								},
-								"url": "https://vandar.io/api/ipg/send"
+								"url": {
+									"raw": "https://vandar.io/api/ipg/send",
+									"protocol": "https",
+									"host": [
+										"vandar",
+										"io"
+									],
+									"path": [
+										"api",
+										"ipg",
+										"send"
+									]
+								}
 							},
 							"status": "Unprocessable Entity",
 							"code": 422,
@@ -607,7 +704,19 @@
 								"value": "application/json"
 							}
 						],
-						"url": "https://api.vandar.io/v2/business"
+						"url": {
+							"raw": "https://api.vandar.io/v2/business",
+							"protocol": "https",
+							"host": [
+								"api",
+								"vandar",
+								"io"
+							],
+							"path": [
+								"v2",
+								"business"
+							]
+						}
 					},
 					"response": []
 				},
@@ -629,7 +738,20 @@
 								"value": "application/json"
 							}
 						],
-						"url": "https://api.vandar.io/v2/business/{business}"
+						"url": {
+							"raw": "https://api.vandar.io/v2/business/{business}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"vandar",
+								"io"
+							],
+							"path": [
+								"v2",
+								"business",
+								"{business}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -651,7 +773,21 @@
 								"value": "application/json"
 							}
 						],
-						"url": "https://api.vandar.io/v2/business/{business}/iam"
+						"url": {
+							"raw": "https://api.vandar.io/v2/business/{business}/iam",
+							"protocol": "https",
+							"host": [
+								"api",
+								"vandar",
+								"io"
+							],
+							"path": [
+								"v2",
+								"business",
+								"{business}",
+								"iam"
+							]
+						}
 					},
 					"response": []
 				}
@@ -678,7 +814,21 @@
 								"value": "application/json"
 							}
 						],
-						"url": "https://api.vandar.io/v2/business/{business}/balance"
+						"url": {
+							"raw": "https://api.vandar.io/v2/business/{business}/balance",
+							"protocol": "https",
+							"host": [
+								"api",
+								"vandar",
+								"io"
+							],
+							"path": [
+								"v2",
+								"business",
+								"{business}",
+								"balance"
+							]
+						}
 					},
 					"response": []
 				},
@@ -778,7 +928,21 @@
 								"type": "text"
 							}
 						],
-						"url": "https://api.vandar.io/v2.1/business/{business}/settlement"
+						"url": {
+							"raw": "https://api.vandar.io/v2.1/business/{business}/settlement",
+							"protocol": "https",
+							"host": [
+								"api",
+								"vandar",
+								"io"
+							],
+							"path": [
+								"v2.1",
+								"business",
+								"{business}",
+								"settlement"
+							]
+						}
 					},
 					"response": []
 				},
@@ -808,7 +972,22 @@
 							"mode": "raw",
 							"raw": "{\n\"amount\": 50000,\n\"iban\": \"IR430550011480005587452001\",\n\"track_id\": \"6feb8114-25d5-372e-83e0-23ae783041a9\",\n\"payment_number\": \"123456\",\n\"notify_url\": \"https://yourdomain.com/nofiy_me\",\n\"is_instant\": true\n}"
 						},
-						"url": "https://api.vandar.io/v3/business/{business}/settlement/store"
+						"url": {
+							"raw": "https://api.vandar.io/v3/business/{business}/settlement/store",
+							"protocol": "https",
+							"host": [
+								"api",
+								"vandar",
+								"io"
+							],
+							"path": [
+								"v3",
+								"business",
+								"{business}",
+								"settlement",
+								"store"
+							]
+						}
 					},
 					"response": []
 				},
@@ -833,7 +1012,22 @@
 								"type": "text"
 							}
 						],
-						"url": "https://api.vandar.io/v2.1/business/{business}/settlement/{id}"
+						"url": {
+							"raw": "https://api.vandar.io/v2.1/business/{business}/settlement/{id}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"vandar",
+								"io"
+							],
+							"path": [
+								"v2.1",
+								"business",
+								"{business}",
+								"settlement",
+								"{id}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -858,7 +1052,21 @@
 								"type": "text"
 							}
 						],
-						"url": "https://api.vandar.io/v2.1/business{business}/settlement/{transaction_id}"
+						"url": {
+							"raw": "https://api.vandar.io/v2.1/business{business}/settlement/{transaction_id}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"vandar",
+								"io"
+							],
+							"path": [
+								"v2.1",
+								"business{business}",
+								"settlement",
+								"{transaction_id}"
+							]
+						}
 					},
 					"response": []
 				}
@@ -891,7 +1099,22 @@
 										"type": "text"
 									}
 								],
-								"url": "https://api.vandar.io/v2/business/{business}/subscription/authorization",
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/subscription/authorization",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"subscription",
+										"authorization"
+									]
+								},
 								"description": "# Get list of authorizations\n\n**sample success response:**\n```\nHTTP/1.1 200\n{\n  \"data\": [\n    {\n      \"id\": \"b4d32590-d426-11ea-b5b5-0b0e1f82ac3c\",\n      \"customer_uuid\": \"b4d1e440-d426-11ea-a9d3-051cbf7b8f81\",\n      \"token\": \"96ff2c90-d426-11ea-b499-6ddbc3441df4\",\n      \"bank_code\": \"062\",\n      \"callback_url\": \"http:\\/\\/vandar.ui\\/dd\\/callback.php\",\n      \"count\": 7,\n      \"limit\": \"10200\",\n      \"mobile\": \"09129311989\",\n      \"name\": \"محمد مقصودی\",\n      \"email\": \"customer.email@gmail.com\",\n      \"national_code\": \"2993968416\",\n      \"created_at\": \"1399\\/04\\/04 14:47:09\"\n    },\n    ...\n  ],\n  \"links\": {\n    \"first\": \"https://api.vandar.io/v2/business/vandario/subscription/authorization?page=1\",\n    \"last\": \"https://api.vandar.io/v2/business/vandario/subscription/authorization?page=1\",\n    \"prev\": null,\n    \"next\": null\n  },\n  \"meta\": {\n    \"current_page\": 1,\n    \"from\": 1,\n    \"last_page\": 1,\n    \"path\": \"https://api.vandar.io/v2/business/vandario/subscription/authorization\",\n    \"per_page\": 20,\n    \"to\": 3,\n    \"total\": 3\n  }\n}\n```\n\n**sample unsuccess response:**\n```\nHTTP/1.1 401\n{\n\"status\": 0,\n\"error\": \"Unauthenticated\"\n}\n```  \n"
 							},
 							"response": []
@@ -926,7 +1149,23 @@
 										}
 									}
 								},
-								"url": "https://api.vandar.io/v2/business/{business}/subscription/authorization/store",
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/subscription/authorization/store",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"subscription",
+										"authorization",
+										"store"
+									]
+								},
 								"description": "# Store a new authorizations\n\n**sample success response:**\n```\nHTTP/1.1 200\n{\n  \"status\": 1,\n  \"message\": \"درخواست توکن با موفقیت ثبت شد.\",\n  \"result\": {\n    \"authorization\": {\n      \"token\": \"0cf235d0-d48b-11ea-86cd-298ec898a9bd\"\n    }\n  }\n}\n```\n\n**sample unsuccess response:**\n```\nHTTP/1.1 401\n{\n  \"status\": 0,\n  \"error\": \"Unauthenticated\"\n}\n```\n        "
 							},
 							"response": []
@@ -952,7 +1191,23 @@
 										"type": "text"
 									}
 								],
-								"url": "https://api.vandar.io/v2/business/{business}/subscription/authorization/{id}",
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/subscription/authorization/{id}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"subscription",
+										"authorization",
+										"{id}"
+									]
+								},
 								"description": "# Show one authorizations\n\n**sample success response:**\n```\nHTTP/1.1 200\n{\n  \"status\": 1,\n  \"message\": \"مجوز با موفقیت به نمایش در آمد.\",\n  \"result\": {\n    \"authorizations\": {\n      \"id\": \"b4d32590-d426-11ea-b5b5-0b0e1f82ac3c\",\n      \"customer_uuid\": \"b4d1e440-d426-11ea-a9d3-051cbf7b8f81\",\n      \"token\": \"96ff2c90-d426-11ea-b499-6ddbc3441df4\",\n      \"bank_code\": \"062\",\n      \"callback_url\": \"http:\\/\\/vandar.ui\\/dd\\/callback.php\",\n      \"count\": 7,\n      \"limit\": \"10200\",\n      \"mobile\": \"09129311989\",\n      \"name\": \"محمد مقصودی\",\n      \"email\": \"customer.email@gmail.com\",\n      \"national_code\": \"2993968416\",\n      \"created_at\": \"1399\\/04\\/04 14:47:09\"\n    }\n  }\n}\n```\n\n**sample unsuccess response:**\n```\n1)\nHTTP/1.1 401\n{\n  \"status\": 0,\n  \"error\": \"Unauthenticated\"\n}\n\n2)\nHTTP/1.1 404\n{\n  \"status\": 0,\n  \"message\": \"برنامه کاربردی با این شناسه کاربری یافت نشد\"\n}\n```"
 							},
 							"response": []
@@ -978,7 +1233,23 @@
 										"type": "text"
 									}
 								],
-								"url": "https://api.vandar.io/v2/business/{business}/subscription/authorization/{id}",
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/subscription/authorization/{id}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"subscription",
+										"authorization",
+										"{id}"
+									]
+								},
 								"description": "# Revoke one authorizations\n\n**sample success response:**\n```\nHTTP/1.1 200\n{\n  \"status\": 1,\n  \"message\": \"مجوز با موفقیت لغو گردید.\",\n  \"result\": {\n    \"authorizations\": {\n      \"id\": \"0cf235d0-d48b-11ea-86cd-298ec898a9bd\"\n    }\n  }\n}\n```\n\n**sample unsuccess response:**\n```\n1)\nHTTP/1.1 401\n{\n  \"status\": 0,\n  \"error\": \"Unauthenticated\"\n}\n\n2)\nHTTP/1.1 404\n{\n  \"status\": 0,\n  \"message\": \"خطای ۴۰۴ رخ داده است\"\n}\n```"
 							},
 							"response": []
@@ -1009,7 +1280,22 @@
 										"type": "text"
 									}
 								],
-								"url": "https://api.vandar.io/v2/business/{business}/subscription/withdrawal",
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/subscription/withdrawal",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"subscription",
+										"withdrawal"
+									]
+								},
 								"description": "# Get list of withdrawals\n\n**sample success response:**\n```\nHTTP/1.1 200\n\n{\n  \"data\": [\n    {\n      \"id\": \"f3d084e0-b603-11ea-94ad-ebc7f5bf8e12\",\n      \"authorization_id\": \"dd205c00-b603-11ea-b6fc-ed9baa10357b\",\n      \"retry_count\": 1,\n      \"gateway_transaction_id\": 159281892196,\n      \"amount\": 10000,\n      \"wage_amount\": \"200.00\",\n      \"payment_number\": null,\n      \"status\": \"DONE\",\n      \"description\": null,\n      \"withdrawal_date\": \"1399\\/04\\/04\",\n      \"notify_url\": \"http://yourdomain.com/notify/me\",\n      \"is_instant\": true\n    },\n    ...\n  ],\n  \"links\": {\n    \"first\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=1\",\n    \"last\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=33\",\n    \"prev\": null,\n    \"next\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=2\"\n  },\n  \"meta\": {\n    \"current_page\": 1,\n    \"from\": 1,\n    \"last_page\": 33,\n    \"path\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal\",\n    \"per_page\": 20,\n    \"to\": 20,\n    \"total\": 656\n  }\n}\n```\n\n**sample unsuccess response:**\n```\nHTTP/1.1 401\n{\n  \"status\": 0,\n  \"error\": \"Unauthenticated\"\n}\n```"
 							},
 							"response": []
@@ -1044,7 +1330,23 @@
 										}
 									}
 								},
-								"url": "https://api.vandar.io/v2/business/{business}/subscription/withdrawal/store",
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/subscription/withdrawal/store",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"subscription",
+										"withdrawal",
+										"store"
+									]
+								},
 								"description": "# Store a new withdrawal\n\n**sample success response:**\n```\nHTTP/1.1 200\n{\n  \"status\": 1,\n  \"message\": \"درخواست برداشت وجه با موفقیت ثبت شد.\",\n  \"result\": {\n    \"withdrawal\": {\n      \"id\": \"8c6e27c0-dbbd-11ea-a2f6-e9c8bf97463f\",\n      \"authorization_id\": \"2866fa80-dbbd-11ea-a0f9-d19612a00c59\",\n      \"retry_count\": 1,\n      \"max_retry_count\": 1,\n      \"gateway_transaction_id\": \"159714176734\",\n      \"amount\": \"10000\",\n      \"wage_amount\": 200,\n      \"payment_number\": null,\n      \"status\": \"PENDING\",\n      \"description\": null,\n      \"withdrawal_date\": \"1399\\/05\\/21\",\n      \"notify_url\": \"http://yourdomain.com/notify/me\",\n      \"is_instant\": true\n    }\n  }\n}\n```\n\n**sample unsuccess response:**\n```\n1)\nHTTP/1.1 422\n{\n  \"status\": 0,\n  \"errors\": {\n    \"authorization_id\": \"ذخیره برداشت وجه به دلیل رسیدن به حداکثر تعداد برداشت در ماه، امکان پذیر نیست.\"\n  }\n}\n\n2)\nHTTP/1.1 401\n{\n  \"status\": 0,\n  \"error\": \"Unauthenticated\"\n}\n\n3)\nHTTP/1.1 404\n{\n  \"status\": 0,\n  \"error\": \"کسب و کار وجود ندارد\"\n}\n```"
 							},
 							"response": []
@@ -1070,7 +1372,23 @@
 										"type": "text"
 									}
 								],
-								"url": "https://api.vandar.io/v2/business/{business}/subscription/withdrawal/{id}",
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/subscription/withdrawal/{id}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"subscription",
+										"withdrawal",
+										"{id}"
+									]
+								},
 								"description": "# Show one withdrawal\n\n**sample success response:**\n```\nHTTP/1.1 200\n{\n  \"status\": 1,\n  \"message\": \"برداشت وجه با موفقیت به نمایش درآمد.\",\n  \"result\": {\n    \"withdrawal\": {\n      \"id\": \"f3d084e0-b603-11ea-94ad-ebc7f5bf8e12\",\n      \"authorization_id\": \"dd205c00-b603-11ea-b6fc-ed9baa10357b\",\n      \"retry_count\": 1,\n      \"max_retry_count\": 1,\n      \"gateway_transaction_id\": 159281892196,\n      \"amount\": 10000,\n      \"wage_amount\": \"200.00\",\n      \"payment_number\": null,\n      \"status\": \"DONE\",\n      \"description\": null,\n      \"withdrawal_date\": \"1399\\/04\\/04\"\n      \"notify_url\": \"http://yourdomain.com/notify/me\",\n      \"is_instant\": true\n      }\n    },\n  }\n}\n```\n\n**sample unsuccess response:**\n```\nHTTP/1.1 401\n{\n  \"status\": 0,\n  \"error\": \"Unauthenticated\"\n}\n```"
 							},
 							"response": []
@@ -1096,7 +1414,23 @@
 										"type": "text"
 									}
 								],
-								"url": "https://api.vandar.io/v2/business/{business}/subscription/withdrawal/{id}",
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/subscription/withdrawal/{id}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"subscription",
+										"withdrawal",
+										"{id}"
+									]
+								},
 								"description": "# Cancel one withdrawal\n\n**sample success response:**\n```\n  HTTP/1.1 200\n{\n  \"status\": 1,\n  \"message\": \"برداشت وجه با موفقیت لغو گردید.\",\n  \"result\": {\n    \"withdrawal\": {\n      \"id\": \"8c6e27c0-dbbd-11ea-a2f6-e9c8bf97463f\"\n    }\n  }\n}\n```\n\n**sample unsuccess response:**\n```\nHTTP/1.1 401\n{\n  \"status\": 0,\n  \"error\": \"Unauthenticated\"\n}\n```\n"
 							},
 							"response": []
@@ -1132,7 +1466,23 @@
 										"value": "application/json"
 									}
 								],
-								"url": "https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/ibans",
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/ibans",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"customers",
+										"{customer_uuid}",
+										"ibans"
+									]
+								},
 								"description": "# Get list of withdrawals\n\n**sample success response:**\n```\nHTTP/1.1 200\n\n{\n  \"data\": [\n    {\n      \"id\": \"f3d084e0-b603-11ea-94ad-ebc7f5bf8e12\",\n      \"authorization_id\": \"dd205c00-b603-11ea-b6fc-ed9baa10357b\",\n      \"retry_count\": 1,\n      \"gateway_transaction_id\": 159281892196,\n      \"amount\": 10000,\n      \"wage_amount\": \"200.00\",\n      \"payment_number\": null,\n      \"status\": \"DONE\",\n      \"description\": null,\n      \"withdrawal_date\": \"1399\\/04\\/04\",\n      \"notify_url\": \"http://yourdomain.com/notify/me\",\n      \"is_instant\": true\n    },\n    ...\n  ],\n  \"links\": {\n    \"first\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=1\",\n    \"last\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=33\",\n    \"prev\": null,\n    \"next\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=2\"\n  },\n  \"meta\": {\n    \"current_page\": 1,\n    \"from\": 1,\n    \"last_page\": 33,\n    \"path\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal\",\n    \"per_page\": 20,\n    \"to\": 20,\n    \"total\": 656\n  }\n}\n```\n\n**sample unsuccess response:**\n```\nHTTP/1.1 401\n{\n  \"status\": 0,\n  \"error\": \"Unauthenticated\"\n}\n```"
 							},
 							"response": []
@@ -1162,7 +1512,23 @@
 									"mode": "raw",
 									"raw": "{\n\t\"iban\": \"IR640610000000700805493254\"\n}"
 								},
-								"url": "https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/ibans",
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/ibans",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"customers",
+										"{customer_uuid}",
+										"ibans"
+									]
+								},
 								"description": "# Get list of withdrawals\n\n**sample success response:**\n```\nHTTP/1.1 200\n\n{\n  \"data\": [\n    {\n      \"id\": \"f3d084e0-b603-11ea-94ad-ebc7f5bf8e12\",\n      \"authorization_id\": \"dd205c00-b603-11ea-b6fc-ed9baa10357b\",\n      \"retry_count\": 1,\n      \"gateway_transaction_id\": 159281892196,\n      \"amount\": 10000,\n      \"wage_amount\": \"200.00\",\n      \"payment_number\": null,\n      \"status\": \"DONE\",\n      \"description\": null,\n      \"withdrawal_date\": \"1399\\/04\\/04\",\n      \"notify_url\": \"http://yourdomain.com/notify/me\",\n      \"is_instant\": true\n    },\n    ...\n  ],\n  \"links\": {\n    \"first\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=1\",\n    \"last\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=33\",\n    \"prev\": null,\n    \"next\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=2\"\n  },\n  \"meta\": {\n    \"current_page\": 1,\n    \"from\": 1,\n    \"last_page\": 33,\n    \"path\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal\",\n    \"per_page\": 20,\n    \"to\": 20,\n    \"total\": 656\n  }\n}\n```\n\n**sample unsuccess response:**\n```\nHTTP/1.1 401\n{\n  \"status\": 0,\n  \"error\": \"Unauthenticated\"\n}\n```"
 							},
 							"response": []
@@ -1188,7 +1554,24 @@
 										"value": "application/json"
 									}
 								],
-								"url": "https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/ibans/{iban_id}",
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/ibans/{iban_id}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"customers",
+										"{customer_uuid}",
+										"ibans",
+										"{iban_id}"
+									]
+								},
 								"description": "# Get list of withdrawals\n\n**sample success response:**\n```\nHTTP/1.1 200\n\n{\n  \"data\": [\n    {\n      \"id\": \"f3d084e0-b603-11ea-94ad-ebc7f5bf8e12\",\n      \"authorization_id\": \"dd205c00-b603-11ea-b6fc-ed9baa10357b\",\n      \"retry_count\": 1,\n      \"gateway_transaction_id\": 159281892196,\n      \"amount\": 10000,\n      \"wage_amount\": \"200.00\",\n      \"payment_number\": null,\n      \"status\": \"DONE\",\n      \"description\": null,\n      \"withdrawal_date\": \"1399\\/04\\/04\",\n      \"notify_url\": \"http://yourdomain.com/notify/me\",\n      \"is_instant\": true\n    },\n    ...\n  ],\n  \"links\": {\n    \"first\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=1\",\n    \"last\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=33\",\n    \"prev\": null,\n    \"next\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=2\"\n  },\n  \"meta\": {\n    \"current_page\": 1,\n    \"from\": 1,\n    \"last_page\": 33,\n    \"path\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal\",\n    \"per_page\": 20,\n    \"to\": 20,\n    \"total\": 656\n  }\n}\n```\n\n**sample unsuccess response:**\n```\nHTTP/1.1 401\n{\n  \"status\": 0,\n  \"error\": \"Unauthenticated\"\n}\n```"
 							},
 							"response": []
@@ -1219,7 +1602,23 @@
 										"value": "application/json"
 									}
 								],
-								"url": "https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/transactions",
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/transactions",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"customers",
+										"{customer_uuid}",
+										"transactions"
+									]
+								},
 								"description": "# Get list of withdrawals\n\n**sample success response:**\n```\nHTTP/1.1 200\n\n{\n  \"data\": [\n    {\n      \"id\": \"f3d084e0-b603-11ea-94ad-ebc7f5bf8e12\",\n      \"authorization_id\": \"dd205c00-b603-11ea-b6fc-ed9baa10357b\",\n      \"retry_count\": 1,\n      \"gateway_transaction_id\": 159281892196,\n      \"amount\": 10000,\n      \"wage_amount\": \"200.00\",\n      \"payment_number\": null,\n      \"status\": \"DONE\",\n      \"description\": null,\n      \"withdrawal_date\": \"1399\\/04\\/04\",\n      \"notify_url\": \"http://yourdomain.com/notify/me\",\n      \"is_instant\": true\n    },\n    ...\n  ],\n  \"links\": {\n    \"first\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=1\",\n    \"last\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=33\",\n    \"prev\": null,\n    \"next\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=2\"\n  },\n  \"meta\": {\n    \"current_page\": 1,\n    \"from\": 1,\n    \"last_page\": 33,\n    \"path\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal\",\n    \"per_page\": 20,\n    \"to\": 20,\n    \"total\": 656\n  }\n}\n```\n\n**sample unsuccess response:**\n```\nHTTP/1.1 401\n{\n  \"status\": 0,\n  \"error\": \"Unauthenticated\"\n}\n```"
 							},
 							"response": []
@@ -1250,7 +1649,23 @@
 										"value": "application/json"
 									}
 								],
-								"url": "https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/wallet",
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/wallet",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"customers",
+										"{customer_uuid}",
+										"wallet"
+									]
+								},
 								"description": "# Get list of withdrawals\n\n**sample success response:**\n```\nHTTP/1.1 200\n\n{\n  \"data\": [\n    {\n      \"id\": \"f3d084e0-b603-11ea-94ad-ebc7f5bf8e12\",\n      \"authorization_id\": \"dd205c00-b603-11ea-b6fc-ed9baa10357b\",\n      \"retry_count\": 1,\n      \"gateway_transaction_id\": 159281892196,\n      \"amount\": 10000,\n      \"wage_amount\": \"200.00\",\n      \"payment_number\": null,\n      \"status\": \"DONE\",\n      \"description\": null,\n      \"withdrawal_date\": \"1399\\/04\\/04\",\n      \"notify_url\": \"http://yourdomain.com/notify/me\",\n      \"is_instant\": true\n    },\n    ...\n  ],\n  \"links\": {\n    \"first\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=1\",\n    \"last\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=33\",\n    \"prev\": null,\n    \"next\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=2\"\n  },\n  \"meta\": {\n    \"current_page\": 1,\n    \"from\": 1,\n    \"last_page\": 33,\n    \"path\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal\",\n    \"per_page\": 20,\n    \"to\": 20,\n    \"total\": 656\n  }\n}\n```\n\n**sample unsuccess response:**\n```\nHTTP/1.1 401\n{\n  \"status\": 0,\n  \"error\": \"Unauthenticated\"\n}\n```"
 							},
 							"response": []
@@ -1280,7 +1695,24 @@
 									"mode": "raw",
 									"raw": "{\n\t\"amount\":\"1000\",\n    \"comment\":\"comment\"\n}"
 								},
-								"url": "https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/wallet/withdraw",
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/wallet/withdraw",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"customers",
+										"{customer_uuid}",
+										"wallet",
+										"withdraw"
+									]
+								},
 								"description": "# Get list of withdrawals\n\n**sample success response:**\n```\nHTTP/1.1 200\n\n{\n  \"data\": [\n    {\n      \"id\": \"f3d084e0-b603-11ea-94ad-ebc7f5bf8e12\",\n      \"authorization_id\": \"dd205c00-b603-11ea-b6fc-ed9baa10357b\",\n      \"retry_count\": 1,\n      \"gateway_transaction_id\": 159281892196,\n      \"amount\": 10000,\n      \"wage_amount\": \"200.00\",\n      \"payment_number\": null,\n      \"status\": \"DONE\",\n      \"description\": null,\n      \"withdrawal_date\": \"1399\\/04\\/04\",\n      \"notify_url\": \"http://yourdomain.com/notify/me\",\n      \"is_instant\": true\n    },\n    ...\n  ],\n  \"links\": {\n    \"first\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=1\",\n    \"last\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=33\",\n    \"prev\": null,\n    \"next\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=2\"\n  },\n  \"meta\": {\n    \"current_page\": 1,\n    \"from\": 1,\n    \"last_page\": 33,\n    \"path\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal\",\n    \"per_page\": 20,\n    \"to\": 20,\n    \"total\": 656\n  }\n}\n```\n\n**sample unsuccess response:**\n```\nHTTP/1.1 401\n{\n  \"status\": 0,\n  \"error\": \"Unauthenticated\"\n}\n```"
 							},
 							"response": []
@@ -1310,7 +1742,24 @@
 									"mode": "raw",
 									"raw": "{\n\t\"amount\":\"1000\",\n    \"comment\":\"comment\"\n}"
 								},
-								"url": "https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/wallet/deposit",
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/wallet/deposit",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"customers",
+										"{customer_uuid}",
+										"wallet",
+										"deposit"
+									]
+								},
 								"description": "# Get list of withdrawals\n\n**sample success response:**\n```\nHTTP/1.1 200\n\n{\n  \"data\": [\n    {\n      \"id\": \"f3d084e0-b603-11ea-94ad-ebc7f5bf8e12\",\n      \"authorization_id\": \"dd205c00-b603-11ea-b6fc-ed9baa10357b\",\n      \"retry_count\": 1,\n      \"gateway_transaction_id\": 159281892196,\n      \"amount\": 10000,\n      \"wage_amount\": \"200.00\",\n      \"payment_number\": null,\n      \"status\": \"DONE\",\n      \"description\": null,\n      \"withdrawal_date\": \"1399\\/04\\/04\",\n      \"notify_url\": \"http://yourdomain.com/notify/me\",\n      \"is_instant\": true\n    },\n    ...\n  ],\n  \"links\": {\n    \"first\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=1\",\n    \"last\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=33\",\n    \"prev\": null,\n    \"next\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=2\"\n  },\n  \"meta\": {\n    \"current_page\": 1,\n    \"from\": 1,\n    \"last_page\": 33,\n    \"path\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal\",\n    \"per_page\": 20,\n    \"to\": 20,\n    \"total\": 656\n  }\n}\n```\n\n**sample unsuccess response:**\n```\nHTTP/1.1 401\n{\n  \"status\": 0,\n  \"error\": \"Unauthenticated\"\n}\n```"
 							},
 							"response": []
@@ -1341,7 +1790,21 @@
 										"value": "application/json"
 									}
 								],
-								"url": "https://api.vandar.io/v2/business/{business}/customers",
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/customers",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"customers"
+									]
+								},
 								"description": "# Get list of withdrawals\n\n**sample success response:**\n```\nHTTP/1.1 200\n\n{\n  \"data\": [\n    {\n      \"id\": \"f3d084e0-b603-11ea-94ad-ebc7f5bf8e12\",\n      \"authorization_id\": \"dd205c00-b603-11ea-b6fc-ed9baa10357b\",\n      \"retry_count\": 1,\n      \"gateway_transaction_id\": 159281892196,\n      \"amount\": 10000,\n      \"wage_amount\": \"200.00\",\n      \"payment_number\": null,\n      \"status\": \"DONE\",\n      \"description\": null,\n      \"withdrawal_date\": \"1399\\/04\\/04\",\n      \"notify_url\": \"http://yourdomain.com/notify/me\",\n      \"is_instant\": true\n    },\n    ...\n  ],\n  \"links\": {\n    \"first\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=1\",\n    \"last\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=33\",\n    \"prev\": null,\n    \"next\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=2\"\n  },\n  \"meta\": {\n    \"current_page\": 1,\n    \"from\": 1,\n    \"last_page\": 33,\n    \"path\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal\",\n    \"per_page\": 20,\n    \"to\": 20,\n    \"total\": 656\n  }\n}\n```\n\n**sample unsuccess response:**\n```\nHTTP/1.1 401\n{\n  \"status\": 0,\n  \"error\": \"Unauthenticated\"\n}\n```"
 							},
 							"response": []
@@ -1371,7 +1834,21 @@
 									"mode": "raw",
 									"raw": "{\n\t\"business_id\": \"700\",\n\t\"first_name\": \"مجید\",\n\t\"last_name\": \"علائی‌نیا\",\n\t\"legal_name\": \"\",\n\t\"agent_name\": \"\",\n\t\"type\": \"INDIVIDUAL\",\n\t\"mobile\": \"09353917307\",\n\t\"agent_mobile\": \"09381201127\",\n\t\"telephone\": \"02177556149\",\n\t\"individual_national_code\": \"2993968416\",\n\t\"province_id\": \"13\",\n\t\"city_id\": \"539\",\n\t\"address\": \"تهران - نظام‌آباد - خیابان شهید مدنی - \",\n\t\"postal_code\": \"\"\n}"
 								},
-								"url": "https://api.vandar.io/v2/business/{business}/customers",
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/customers",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"customers"
+									]
+								},
 								"description": "# Get list of withdrawals\n\n**sample success response:**\n```\nHTTP/1.1 200\n\n{\n  \"data\": [\n    {\n      \"id\": \"f3d084e0-b603-11ea-94ad-ebc7f5bf8e12\",\n      \"authorization_id\": \"dd205c00-b603-11ea-b6fc-ed9baa10357b\",\n      \"retry_count\": 1,\n      \"gateway_transaction_id\": 159281892196,\n      \"amount\": 10000,\n      \"wage_amount\": \"200.00\",\n      \"payment_number\": null,\n      \"status\": \"DONE\",\n      \"description\": null,\n      \"withdrawal_date\": \"1399\\/04\\/04\",\n      \"notify_url\": \"http://yourdomain.com/notify/me\",\n      \"is_instant\": true\n    },\n    ...\n  ],\n  \"links\": {\n    \"first\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=1\",\n    \"last\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=33\",\n    \"prev\": null,\n    \"next\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=2\"\n  },\n  \"meta\": {\n    \"current_page\": 1,\n    \"from\": 1,\n    \"last_page\": 33,\n    \"path\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal\",\n    \"per_page\": 20,\n    \"to\": 20,\n    \"total\": 656\n  }\n}\n```\n\n**sample unsuccess response:**\n```\nHTTP/1.1 401\n{\n  \"status\": 0,\n  \"error\": \"Unauthenticated\"\n}\n```"
 							},
 							"response": []
@@ -1401,7 +1878,22 @@
 									"mode": "raw",
 									"raw": "{\n\t\"business_id\": \"700\",\n\t\"first_name\": \"مجید\",\n\t\"last_name\": \"علائی‌نیا\",\n\t\"legal_name\": \"\",\n\t\"agent_name\": \"\",\n\t\"type\": \"INDIVIDUAL\",\n\t\"mobile\": \"09353917307\",\n\t\"agent_mobile\": \"09381201127\",\n\t\"telephone\": \"02177556149\",\n\t\"individual_national_code\": \"2993968416\",\n\t\"province_id\": \"13\",\n\t\"city_id\": \"539\",\n\t\"address\": \"تهران - نظام‌آباد - خیابان شهید مدنی - \",\n\t\"postal_code\": \"\"\n}"
 								},
-								"url": "https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}",
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"customers",
+										"{customer_uuid}"
+									]
+								},
 								"description": "# Get list of withdrawals\n\n**sample success response:**\n```\nHTTP/1.1 200\n\n{\n  \"data\": [\n    {\n      \"id\": \"f3d084e0-b603-11ea-94ad-ebc7f5bf8e12\",\n      \"authorization_id\": \"dd205c00-b603-11ea-b6fc-ed9baa10357b\",\n      \"retry_count\": 1,\n      \"gateway_transaction_id\": 159281892196,\n      \"amount\": 10000,\n      \"wage_amount\": \"200.00\",\n      \"payment_number\": null,\n      \"status\": \"DONE\",\n      \"description\": null,\n      \"withdrawal_date\": \"1399\\/04\\/04\",\n      \"notify_url\": \"http://yourdomain.com/notify/me\",\n      \"is_instant\": true\n    },\n    ...\n  ],\n  \"links\": {\n    \"first\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=1\",\n    \"last\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=33\",\n    \"prev\": null,\n    \"next\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=2\"\n  },\n  \"meta\": {\n    \"current_page\": 1,\n    \"from\": 1,\n    \"last_page\": 33,\n    \"path\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal\",\n    \"per_page\": 20,\n    \"to\": 20,\n    \"total\": 656\n  }\n}\n```\n\n**sample unsuccess response:**\n```\nHTTP/1.1 401\n{\n  \"status\": 0,\n  \"error\": \"Unauthenticated\"\n}\n```"
 							},
 							"response": []
@@ -1427,7 +1919,22 @@
 										"value": "application/json"
 									}
 								],
-								"url": "https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}",
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"customers",
+										"{customer_uuid}"
+									]
+								},
 								"description": "# Get list of withdrawals\n\n**sample success response:**\n```\nHTTP/1.1 200\n\n{\n  \"data\": [\n    {\n      \"id\": \"f3d084e0-b603-11ea-94ad-ebc7f5bf8e12\",\n      \"authorization_id\": \"dd205c00-b603-11ea-b6fc-ed9baa10357b\",\n      \"retry_count\": 1,\n      \"gateway_transaction_id\": 159281892196,\n      \"amount\": 10000,\n      \"wage_amount\": \"200.00\",\n      \"payment_number\": null,\n      \"status\": \"DONE\",\n      \"description\": null,\n      \"withdrawal_date\": \"1399\\/04\\/04\",\n      \"notify_url\": \"http://yourdomain.com/notify/me\",\n      \"is_instant\": true\n    },\n    ...\n  ],\n  \"links\": {\n    \"first\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=1\",\n    \"last\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=33\",\n    \"prev\": null,\n    \"next\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=2\"\n  },\n  \"meta\": {\n    \"current_page\": 1,\n    \"from\": 1,\n    \"last_page\": 33,\n    \"path\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal\",\n    \"per_page\": 20,\n    \"to\": 20,\n    \"total\": 656\n  }\n}\n```\n\n**sample unsuccess response:**\n```\nHTTP/1.1 401\n{\n  \"status\": 0,\n  \"error\": \"Unauthenticated\"\n}\n```"
 							},
 							"response": []
@@ -1453,7 +1960,22 @@
 										"value": "application/json"
 									}
 								],
-								"url": "https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}",
+								"url": {
+									"raw": "https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v2",
+										"business",
+										"{business}",
+										"customers",
+										"{customer_uuid}"
+									]
+								},
 								"description": "# Get list of withdrawals\n\n**sample success response:**\n```\nHTTP/1.1 200\n\n{\n  \"data\": [\n    {\n      \"id\": \"f3d084e0-b603-11ea-94ad-ebc7f5bf8e12\",\n      \"authorization_id\": \"dd205c00-b603-11ea-b6fc-ed9baa10357b\",\n      \"retry_count\": 1,\n      \"gateway_transaction_id\": 159281892196,\n      \"amount\": 10000,\n      \"wage_amount\": \"200.00\",\n      \"payment_number\": null,\n      \"status\": \"DONE\",\n      \"description\": null,\n      \"withdrawal_date\": \"1399\\/04\\/04\",\n      \"notify_url\": \"http://yourdomain.com/notify/me\",\n      \"is_instant\": true\n    },\n    ...\n  ],\n  \"links\": {\n    \"first\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=1\",\n    \"last\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=33\",\n    \"prev\": null,\n    \"next\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal?page=2\"\n  },\n  \"meta\": {\n    \"current_page\": 1,\n    \"from\": 1,\n    \"last_page\": 33,\n    \"path\": \"https://api.vandar.io/v2/business/vandario/subscription/withdrawal\",\n    \"per_page\": 20,\n    \"to\": 20,\n    \"total\": 656\n  }\n}\n```\n\n**sample unsuccess response:**\n```\nHTTP/1.1 401\n{\n  \"status\": 0,\n  \"error\": \"Unauthenticated\"\n}\n```"
 							},
 							"response": []

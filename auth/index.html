@@ -56,7 +56,7 @@
                         </div>
                     </li>
                     <li>
-                        <button class="dropdown-btn">لاگین
+                        <button class="dropdown-btn">دریافت توکن
                             <br>
                             <i class="fa fa-caret-down"></i>
                         </button>
@@ -163,54 +163,20 @@
                     </div>
 
                     <div class="article" id="ipg">
-                        <h2 class="article-header" id="login"><a href="https://vandarpay.github.io/docs/auth#login" >لاگین </a></h2>
+                        <h2 class="article-header" id="login"><a href="https://vandarpay.github.io/docs/auth#login" >دریافت توکن</a></h2>
                         <div>
                             <h3 class="title" id="step-1">
-                               <a href="#step-1"><strong>مرحله اول:</strong> ارسال اطلاعات و دریافت توکن</a>
+                               <a href="#step-1"><strong>مرحله اول:</strong>دریافت توکن و رفرش توکن</a>
                             </h3>
-                            <p>برای فراخوانی دیگر متدهای وندار نیاز است که در اولین قدم باید ابتدا دریافت توکن را فراخوانی کرد، همچنین با توجه به عمر پنج روزه‌ی هر توکن توصیه می‌شود هر چهار روز یک بار دریافت توکن مجددا فراخوانی گردد. با فراخوانی این سرویس اطلاعات کاربری و توکن مورد نیاز برای استفاده در هدر دیگر سرویس‌ها، بازگردانده می‌شود.</p>
-                            <pre>
-<span class="key">METHOD:</span> post
-<span class="key">URL:</span> https://api.vandar.io/v3/login
-                            </pre>
+                            <p>برای دریافت توکن و رفرش توکن اولیه مالک یا مدیر کسب و کار می تواند وارد داشبورد وندار شود و کسب و کار خود را انتخاب کند. و از منوی تنظیمات بخش تنظیمات مدیریت حساب، توکن ها را انتخاب کنید. و با زدن دکمه افزودن توکن جدید، و وارد کردن یک نام برای توکن، وارد کردن رمز عبور حساب کاربری خود یک توکن و رفرش توکن در یافت کنید.</p>
+
+                            <div class="info">
+                                <img src="../images/token-step1.png" alt="دریافت توکن مرحله ۱">
+                                <img src="../images/token-step2.png" alt="دریافت توکن مرحله ۲">
+                                <img src="../images/token-step-3.png" alt="دریافت توکن مرحله 3">
+                            </div>
                             <h3 class="sub-title">
-                                پارامترهای مجاز
-                            </h3>
-                            <table>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Status</th>
-                                </tr>
-                                <tr>
-                                    <td>mobile</td>
-                                    <td>string</td>
-                                    <td>required</td>
-                                </tr>
-                                <tr>
-                                    <td>password</td>
-                                    <td>string</td>
-                                    <td>required</td>
-                                </tr>
-                            </table>
-                            <h3 class="sub-title">
-                                توضیحات
-                            </h3>
-                            <ul>
-                                <li>mobile (اجباری): شماره موبایل ثبت شده در وندار</li>
-                                <li>password (اجباری): رمز عبور حساب کاربری وندار</li>
-                            </ul>
-                            <h3 class="sub-title">
-                                نمونه json
-                            </h3>
-                            <pre>
-{
-    "<span class="key">mobile</span>": "09123456789",
-    "<span class="key">password</span>": Very-strong-pa$$w0rd
-}
-                            </pre>
-                            <h3 class="sub-title">
-                                نمونه پاسخ دریافتی موفق
+                                نمونه پاسخ
                             </h3>
                             <pre>
 <span class="key">HTTP/1.1</span> 200
@@ -227,16 +193,6 @@
                                 <li>token:  با استفاده از این توکن می‌توانید دیگر سرویس های وندار را فراخوانی کنید</li>
                                 <li>refresh_token:  با استفاده از این توکن می‌توانید توکن را با استفاده از متد رفرش توکن تمدید نمایید</li>
                             </ul>
-                            <h3 class="sub-title">
-                                نمونه پاسخ دریافتی ناموفق
-                            </h3>
-                            <pre>
-<span class="key">HTTP/1.1</span> 400
-{
-    "<span class="key">status</span>": 0,
-    "<span class="key">error</span>": "نام کاربری یا رمز عبور اشتباه وارد شده است"
-}
-                            </pre>
                         </div>
                         <div>
                             <h3 class="title" id="step-1">
