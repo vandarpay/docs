@@ -276,12 +276,12 @@
                                   پارامتر is_healthy_on_direct_debit: نشان‌دهنده‌ی این است که در آن لحظه‌ی خاص با توجه به وضعیت سلامت بانک مورد نظر، امکان ریدایرکت به صفحه‌ی بانک وجود دارد یا خیر.
                               </div>
                             <br>
-                                <table class="table" style="direction: rtl;" id="banks_table">
+                                <table class="table" style="direction: ltr;" id="banks_table">
                                     <thead>
                                     <tr>
-                                        <th>Bank</th>
-                                        <th>Code</th>
-                                        <th>Current Health</th>
+                                        <th style="text-align: center;">Bank</th>
+                                        <th style="text-align: center;">Code</th>
+                                        <th style="text-align: center;">Current Health</th>
                                     </tr>
                                     </thead>
                                 </table>
@@ -453,7 +453,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                 </li>
         </ul>
 
-<table class="table" style="direction: rtl;">
+<!-- <table class="table" style="direction: rtl;">
 							<thead>
 							<tr>
 								<th>description</th>
@@ -582,8 +582,16 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 								<td>29</td>
 							</tr>
               </tbody>
-              </table>
+              </table> -->
 
+              <table class="table" style="direction: ltr;" id="tempAuthorization_errors_table">
+                                    <thead>
+                                    <tr>
+                                        <th style="text-align: center;">error_code</th>
+                                        <th style="text-align: center;">error_message</th>
+                                    </tr>
+                                    </thead>
+                                </table>
 
               <h3 class="title" id="subscription-verify"><a href="#subscription-verify">
                 ۴. تایید اشتراک
@@ -1693,7 +1701,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                             <a href="#error"> نمونه خطاهای دریافتی هنگام برداشت وجه ناموفق:</a>
                         </h2>
 
-                        <table class="table">
+                        <!-- <table class="table">
                             <thead>
                             <tr>
                                 <th>Error Code</th>
@@ -1836,8 +1844,15 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                                 <td>خطای برداشت مستقیم رخ داده است</td>
                             </tr>
                             </tbody>
-                        </table>
-
+                        </table> -->
+                        <table class="table" style="direction: ltr;" id="withdrawal_errors_table">
+                          <thead>
+                          <tr>
+                              <th style="text-align: center;">error_code</th>
+                              <th style="text-align: center;">error_message</th>
+                          </tr>
+                          </thead>
+                      </table>
                     </div>
                     </article>
               </div>
@@ -1918,6 +1933,46 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                 bankCode.innerHTML = banks[i]["code"];
                 bankIsHealthyDirectDebit.innerHTML = "سالم";
                 bankIsHealthyDirectDebit.style.color = "green";
+                bankName.style['text-align'] = 'center';
+                bankCode.style['text-align'] = 'center';
+                bankIsHealthyDirectDebit.style['text-align'] = 'center';
+            }
+        }
+
+      });
+
+      fetch('https://health.vandar.io/subscription/errors')
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(jsonResponse) {
+
+        var errorsResponse = jsonResponse;
+
+        var withdrawalErrorsTable = document.getElementById("withdrawal_errors_table");
+        var tempAuthorizationErrorsTable = document.getElementById("tempAuthorization_errors_table");
+        var errors = errorsResponse["data"];
+
+        for (var i = 0; i < errors.length ; i++)  {
+            if (errors[i]["type"] == 'withdrawal') {
+                var row = withdrawalErrorsTable.insertRow(-1);
+                var error_code = row.insertCell(0);
+                var error_message = row.insertCell(1);
+
+                error_code.innerHTML = errors[i]["error_code"];
+                error_code.style['text-align'] = 'center';
+                error_message.innerHTML = errors[i]["error_message"];
+                error_message.style['text-align'] = 'right';
+            }
+            else if (errors[i]["type"] == 'tempAuthorization') {
+                var row = tempAuthorizationErrorsTable.insertRow(-1);
+                var error_code = row.insertCell(0);
+                var error_message = row.insertCell(1);
+
+                error_code.innerHTML = errors[i]["error_code"];
+                error_code.style['text-align'] = 'center';
+                error_message.innerHTML = errors[i]["error_message"];
+                error_message.style['text-align'] = 'right';
             }
         }
 
