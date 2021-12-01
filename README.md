@@ -1,7 +1,7 @@
 # Vandar Documentation
 [![Documentation](https://img.shields.io/badge/Documentation-Latest-brightgreen)](https://docs.vandar.io)
 [![GitHub issues](https://img.shields.io/github/issues/vandarpay/docs)](https://github.com/vandarpay/docs/issues)
-![GitHub last commit](https://img.shields.io/github/last-commit/vandarpay/docs)
+[![GitHub last commit](https://img.shields.io/github/last-commit/vandarpay/docs)](https://github.com/vandarpay/docs/commits/master)
 
 This repository hosts Vandar API Documentation, a live version of it can be seen [here](https://docs.vandar.io).
 
