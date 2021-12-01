@@ -1,5 +1,5 @@
 # Vandar Documentation
-[![Documentation](https://img.shields.io/badge/Documentation-Latest-brightgreen)](https://vandarpay.github.io/docs)
+[![Documentation](https://img.shields.io/badge/Documentation-Latest-brightgreen)](https://docs.vandar.io)
 [![GitHub issues](https://img.shields.io/github/issues/vandarpay/docs)](https://github.com/vandarpay/docs/issues)
 ![GitHub last commit](https://img.shields.io/github/last-commit/vandarpay/docs)
 
