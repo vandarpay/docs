@@ -1100,7 +1100,7 @@
                   }
                 ],
                 "url": {
-                  "raw": "https://api.vandar.io/v2/business/{business}/subscription/authorization",
+                  "raw": "https://api.vandar.io/v3/business/{business}/subscription/authorization",
                   "protocol": "https",
                   "host": [
                     "api",
@@ -1150,7 +1150,7 @@
                   }
                 },
                 "url": {
-                  "raw": "https://api.vandar.io/v2/business/{business}/subscription/authorization/store",
+                  "raw": "https://api.vandar.io/v3/business/{business}/subscription/authorization/store",
                   "protocol": "https",
                   "host": [
                     "api",
@@ -1167,6 +1167,49 @@
                   ]
                 },
                 "description": "# Store a new authorizations\n\n**sample success response:**\n```\nHTTP/1.1 200\n{\n  \"status\": 1,\n  \"message\": \"درخواست توکن با موفقیت ثبت شد.\",\n  \"result\": {\n    \"authorization\": {\n      \"token\": \"0cf235d0-d48b-11ea-86cd-298ec898a9bd\"\n    }\n  }\n}\n```\n\n**sample unsuccess response:**\n```\nHTTP/1.1 401\n{\n  \"status\": 0,\n  \"error\": \"Unauthenticated\"\n}\n```\n        "
+              },
+              "response": []
+            },
+            {
+              "name": "verify",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "https://api.vandar.io/v3/business/{business}/subscription/authorization/{authorization}/verify",
+                  "protocol": "https",
+                  "host": [
+                    "api",
+                    "vandar",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "business",
+                    "{business}",
+                    "subscription",
+                    "authorization",
+                    "{authorization}",
+                    "verify"
+                  ]
+                },
+                "description": "# Verify a received authorization."
               },
               "response": []
             },
@@ -1192,7 +1235,7 @@
                   }
                 ],
                 "url": {
-                  "raw": "https://api.vandar.io/v2/business/{business}/subscription/authorization/{id}",
+                  "raw": "https://api.vandar.io/v3/business/{business}/subscription/authorization/{id}",
                   "protocol": "https",
                   "host": [
                     "api",
@@ -1234,7 +1277,7 @@
                   }
                 ],
                 "url": {
-                  "raw": "https://api.vandar.io/v2/business/{business}/subscription/authorization/{id}",
+                  "raw": "https://api.vandar.io/v3/business/{business}/subscription/authorization/{id}",
                   "protocol": "https",
                   "host": [
                     "api",
@@ -1281,7 +1324,7 @@
                   }
                 ],
                 "url": {
-                  "raw": "https://api.vandar.io/v2/business/{business}/subscription/withdrawal",
+                  "raw": "https://api.vandar.io/v3/business/{business}/subscription/withdrawal",
                   "protocol": "https",
                   "host": [
                     "api",
@@ -1331,7 +1374,7 @@
                   }
                 },
                 "url": {
-                  "raw": "https://api.vandar.io/v2/business/{business}/subscription/withdrawal/store",
+                  "raw": "https://api.vandar.io/v3/business/{business}/subscription/withdrawal/store",
                   "protocol": "https",
                   "host": [
                     "api",
@@ -1373,7 +1416,7 @@
                   }
                 ],
                 "url": {
-                  "raw": "https://api.vandar.io/v2/business/{business}/subscription/withdrawal/{id}",
+                  "raw": "https://api.vandar.io/v3/business/{business}/subscription/withdrawal/{id}",
                   "protocol": "https",
                   "host": [
                     "api",
@@ -1415,7 +1458,7 @@
                   }
                 ],
                 "url": {
-                  "raw": "https://api.vandar.io/v2/business/{business}/subscription/withdrawal/{id}",
+                  "raw": "https://api.vandar.io/v3/business/{business}/subscription/withdrawal/{id}",
                   "protocol": "https",
                   "host": [
                     "api",
