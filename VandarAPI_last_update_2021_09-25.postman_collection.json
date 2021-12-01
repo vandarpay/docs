@@ -687,40 +687,6 @@
       "name": "Business",
       "item": [
         {
-          "name": "List\nDisplay a listing of the businesses.",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {token}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "https://api.vandar.io/v2/business",
-              "protocol": "https",
-              "host": [
-                "api",
-                "vandar",
-                "io"
-              ],
-              "path": [
-                "v2",
-                "business"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "name": "Info\nDisplay the specified business.",
           "request": {
             "method": "GET",
