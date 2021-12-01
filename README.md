@@ -1,3 +1,9 @@
-## Welcome to Vandar docs
+# Vandar Documentation
+[![Documentation](https://img.shields.io/badge/Documentation-Latest-brightgreen)](https://vandarpay.github.io/docs)
+[![GitHub issues](https://img.shields.io/github/issues/vandarpay/docs)](https://)
+![GitHub last commit](https://img.shields.io/github/last-commit/vandarpay/docs)
 
-[Documentation](https://vandarpay.github.io/docs)
+This repository hosts Vandar API Documentation, a live version of it can be seen [here](https://docs.vandar.io).
+
+## Contributions
+We welcome fixes and improvements to our documentations. if you've found an error, file an issue or file a pull request!
