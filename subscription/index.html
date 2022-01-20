@@ -1973,7 +1973,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                 error_message.innerHTML = errors[i]["error_message"];
                 error_message.style['text-align'] = 'right';
             }
-            else if (errors[i]["type"] == 'tempAuthorization') {
+            else if (errors[i]["type"] == 'tempMandate') {
                 var row = tempAuthorizationErrorsTable.insertRow(-1);
                 var error_code = row.insertCell(0);
                 var error_message = row.insertCell(1);
