@@ -442,8 +442,8 @@
                           <li>iban (اجباری): شماره شبا ای که می خواد پول به آن واریز شود</li>
                           <li>track_id (اجباری): رشته پیگیری که به ازای هر درخواست تسویه بایستی یکتا باشد. پیشنهاد ما استفاده از uuid برای این پارامتر است.</li>
                           <li>payment_number (اختیاری): شناسه واریز شماره ای اختیاری است تا حداکثر ۱۵ رقم.</li>
+                          <li>notify_url (اختیاری): بعد از مشخص شدن وضعیت تسویه این آدرس صدا زده می‌شود.</li>
                           <li>description (اختیاری): ارسال توضیحات با محدودیت حداکثر256 کاراکتر.</li>
-<!--                          <li>notify_url (اختیاری): بعد از مشخص شدن وضعیت تسویه این آدرس صدا زده می‌شود.</li>-->
 <!--                          <li>is_instant (اختیاری): اگر می‌خواهید تسویه در لحظه انجام شود مقدار true و در غیر این صورت مقدار false را ارسال کنید.</li>-->
                       </ul>
 
@@ -461,10 +461,9 @@
 "<span class="key">track_id</span>": "6feb8114-25d5-372e-83e0-23ae783041a9",
 "<span class="key">payment_number</span>": "123456",
 }
-<!--"<span class="key">notify_url</span>": "https://yourdomain.com/nofiy_me",-->
-<!--"<span class="key">is_instant</span>": false-->
-
                     </pre>
+                        <!--"<span class="key">notify_url</span>": "https://yourdomain.com/nofiy_me",-->
+                        <!--"<span class="key">is_instant</span>": false-->
 
                       <h3 class="sub-title">
                         نمونه پاسخ دریافتی موفق:
@@ -535,19 +534,55 @@
                         </li>
                       </ul>
 
+                        <br>
+                        <div class="info">
+                            <strong>نکته! </strong>
+                            <br>
+                            در صورتی که مقدار پارامتر notify_url تکمیل شود، پس از انجام تراکنش تسویه، وبهوکی با فرمت زیر به آدرس ثبت شده ارسال خواهد شد
+                        </div>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+    "id": "865e9d07-2c96-41ef-8f61-30de27fb9954"
+    "iban_id": "72a8aab1-04c9-417e-9971-2f7bfe121b53"
+    "transaction_id": "164258101221"
+    "amount": "2500000"
+    "payment_number": "123456"
+    "status": "DONE"
+    "settlement_date": "2022-01-19"
+    "settlement_date_jalali": "1400/10/29"
+    "revised_transaction_id": ""
+    "ref_code": "140010290622047785"
+}</pre>
+
+                        <ul>
+                            <li>id: شناسه یکتای تسویه</li>
+                            <li>iban_id: شناسه یکتای شماره شبا</li>
+                            <li>transaction_id:شناسه یکتای تراکنش در وندار</li>
+                            <li>amount: مبلغ تسویه به ریال</li>
+                            <li>payment_number: شناسه پرداخت</li>
+                            <li>status: وضعیت تسویه</li>
+                            <li>settlement_date: تاریخ انجام تسویه (میلادی)</li>
+                            <li>settlement_date_jalali:تاریخ انجام تسویه (شمسی)</li>
+                            <li>revised_transaction_id: شناسه یکتای تراکنش اصلاحی برای تسویه های کنسل شده </li>
+                            <li>ref_code: (یا همان کد RRN) شناسه یکتای مرجع تسویه انجام شده برای تسویه های موفق</li>
+                        </ul>
+
+                        <br><br>
+
                       <h3 class="sub-title">
                         نمونه پاسخ دریافتی ناموفق:
                       </h3>
 
-                      <pre>
-<span class="key">HTTP/1.1</span> 4xx
+
+<pre><span class="key">HTTP/1.1</span> 4xx
 {
 "status": 0,
 "error": "Unauthenticated"
-}
-                      </pre>
+}</pre>
 
-                      <ul>
+                        <ul>
                       <li>
                           status: ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
                           <br>
@@ -564,6 +599,7 @@
 سایر خطاهای ممکن
 }
                       </pre>-->
+
 
                         <h3 class="title" id="settlement-details">
                            <a href="#settlement-details"><strong>نمایش جزییات یک تسویه</strong></a>
