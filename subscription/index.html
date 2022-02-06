@@ -677,18 +677,55 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
   ],
   "links": {
     "first": "https://api.vandar.io/v3/business/vandario/subscription/authorization?page=1",
-    "last": "https://api.vandar.io/v3/business/vandario/subscription/authorization?page=1",
+    "last": "https://api.vandar.io/v3/business/vandario/subscription/authorization?page=134",
     "prev": null,
     "next": null
   },
   "meta": {
     "current_page": 1,
     "from": 1,
-    "last_page": 1,
+    "last_page": 134,
+    "links": [
+			{
+				"url": null,
+				"label": "&laquo; قبلی",
+				"active": false
+			},
+			{
+				"url": "https://api.vandar.io/v3/business/vandario/subscription/authorization?page=1",
+				"label": "1",
+				"active": true
+			},
+			{
+				"url": "https://api.vandar.io/v3/business/vandario/subscription/authorization?page=2",
+				"label": "2",
+				"active": false
+			},
+			{
+				"url": null,
+				"label": "...",
+				"active": false
+			},
+			{
+				"url": "https://api.vandar.io/v3/business/vandario/subscription/authorization?page=133",
+				"label": "133",
+				"active": false
+			},
+			{
+				"url": "https://api.vandar.io/v3/business/vandario/subscription/authorization?page=134",
+				"label": "134",
+				"active": false
+			},
+			{
+				"url": "https://api.vandar.io/v3/business/vandario/subscription/authorization?page=2",
+				"label": "بعدی &raquo;",
+				"active": false
+			}
+		],
     "path": "https://api.vandar.io/v3/business/vandario/subscription/authorization",
     "per_page": 20,
-    "to": 3,
-    "total": 3
+    "to": 20,
+    "total": 2675
   }
 }
 </pre>
@@ -729,6 +766,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
       <li>current_page: آدرس همین صفحه</li>
       <li>from: شماره اولین آیتم که در این صفحه آمده است </li>
       <li>last_page: تعداد کل صفحات</li>
+      <li>links: آرایه ای قابل استفاده برای نمایش pagination</li>
       <li>path: آدرس خالص بدون صفحه بندی</li>
       <li>per_page: تعداد آیتم در هر صفحه</li>
       <li>to: شماره آخرین آیتمی که در این صفحه آمده است</li>
@@ -909,7 +947,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
   "status": 1,
   "message": "مجوز با موفقیت لغو گردید.",
   "result": {
-    "authorizations": {
+    "authorization": {
       "id": "9f307e30-dc77-11ea-830e-7533ca1787c5"
     }
   }
@@ -1388,6 +1426,43 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
     "current_page": 1,
     "from": 1,
     "last_page": 33,
+    "links": [
+			{
+				"url": null,
+				"label": "&laquo; قبلی",
+				"active": false
+			},
+			{
+				"url": "https://api.vandar.io/v3/business/vandario/subscription/withdrawal?page=1",
+				"label": "1",
+				"active": true
+			},
+			{
+				"url": "https://api.vandar.io/v3/business/vandario/subscription/withdrawal?page=2",
+				"label": "2",
+				"active": false
+			},
+			{
+				"url": null,
+				"label": "...",
+				"active": false
+			},
+			{
+				"url": "https://api.vandar.io/v3/business/vandario/subscription/withdrawal?page=32",
+				"label": "32",
+				"active": false
+			},
+			{
+				"url": "https://api.vandar.io/v3/business/vandario/subscription/withdrawal?page=33",
+				"label": "33",
+				"active": false
+			},
+			{
+				"url": "https://api.vandar.io/v3/business/vandario/subscription/withdrawal?page=2",
+				"label": "بعدی &raquo;",
+				"active": false
+			}
+		],
     "path": "https://api.vandar.io/v3/business/vandario/subscription/withdrawal",
     "per_page": 20,
     "to": 20,
@@ -1435,6 +1510,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
       <li>current_page: آدرس همین صفحه</li>
       <li>from: شماره اولین آیتمی که در این صفحه آمده است </li>
       <li>last_page: تعداد کل صفحات</li>
+      <li>links: آرایه ای قابل استفاده برای نمایش pagination</li>
       <li>path: آدرس خالص بدون صفحه بندی</li>
       <li>per_page: تعداد آیتم در هر صفحه</li>
       <li>to: شماره آخرین آیتمی که در این صفحه آمده است</li>
@@ -1698,6 +1774,11 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
           </li>
         <li>errors: آرایه ای از خطا‌ها</li>
       </ul>
+
+      <div class="info">
+        <strong>نکته! </strong>
+        بعد از لغو یک مجوز این مجوز از خروجی لیست مجوزها حذف شده و اگر درخواست نمایش مجوز با آیدی را صدا بزنید خطای ۴۲۲ با متن مجوز باطل شده است را دریافت می کنید.
+      </div>
 
                         <h3 class="title" id="health">
                             <strong><a href="#health">وضعیت سلامت بانک‌های سرویس اشتراک</a></strong>
