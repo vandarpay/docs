@@ -128,18 +128,18 @@
                             <a href="https://vandarpay.github.io/docs/customers/#sheba">شبا</a><br>
                         </div>
                     </li>
-					<li>
-						<button class="dropdown-btn">ابزار واریز بانکی
-							<br>
-							<i class="fa fa-caret-down"></i>
-						</button>
-						<div class="dropdown-container">
-							<a href="https://vandarpay.github.io/docs/cash-in/#intro">مقدمه</a><br>
-							<a href="https://vandarpay.github.io/docs/cash-in/#ibans-list">لیست شماره شباها</a><br>
-							<a href="https://vandarpay.github.io/docs/cash-in/#get-balance">دریافت موجودی حساب</a><br>
-							<a href="https://vandarpay.github.io/docs/cash-in/#deposit">درخواست واریز</a><br>
-						</div>
-					</li>
+                    <li>
+                        <button class="dropdown-btn">ابزار واریز بانکی
+                            <br>
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-container">
+                            <a href="https://vandarpay.github.io/docs/cash-in/#intro">مقدمه</a><br>
+                            <a href="https://vandarpay.github.io/docs/cash-in/#ibans-list">لیست شماره شباها</a><br>
+                            <a href="https://vandarpay.github.io/docs/cash-in/#get-balance">دریافت موجودی حساب</a><br>
+                            <a href="https://vandarpay.github.io/docs/cash-in/#deposit">درخواست واریز</a><br>
+                        </div>
+                    </li>
                     <li>
                         <a href="https://vandarpay.github.io/docs/refund">بازگشت وجه</a>
                     </li>
@@ -163,25 +163,25 @@
                     <h2 class="article-header">مقدمه</h2>
                     <div>
                         <h3 class="title" id="customers">
-                          <a href="#customers" > <strong>سرویس مشتریان چیست:</strong></a>
+                            <a href="#customers" > <strong>سرویس مشتریان چیست:</strong></a>
                         </h3>
                         <p>
-                            سرویس مشتریان جهت مدیریت طرف‌حساب‌های پذیرندگان وندار ارائه شده است که توسط این سرویس، پذیرندگان می‌توانند اطلاعات هویتی، کیف پول، شبا، اشتراک‌ها و تراکنش‌های مشتریان خود را مدیریت کنند.  
-                            </p>
-                            <h3 class="sub-title">
-                                توضیحات
-                              </h3>
+                            سرویس مشتریان جهت مدیریت طرف‌حساب‌های پذیرندگان وندار ارائه شده است که توسط این سرویس، پذیرندگان می‌توانند اطلاعات هویتی، کیف پول، شبا، اشتراک‌ها و تراکنش‌های مشتریان خود را مدیریت کنند.
+                        </p>
+                        <h3 class="sub-title">
+                            توضیحات
+                        </h3>
                         <p>
                             برای تمامی درخواست های ارسالی باید مقادیر زیر در هدر ارسال شوند:
                             توکن همان کلید API یی است که از وندار دریافت کرده اید.
-                            </p>
+                        </p>
                         <pre>
 <span class="key">Accept:</span> application/json
 <span class="key">Authorization</span> Bearer {Token}
                         </pre>
                         <br>
                         <h2 class="article-header" id="base">
-                        <a href="#base">مشتریان</a> </h2>
+                            <a href="#base">مشتریان</a> </h2>
                         <p>
                             در این بخش سرویس‌های ثبت مشتری، مشاهده لیست مشتریان، ویرایش اطلاعات مشتری، حذف مشتری و مشاهده اطلاعات یک مشتری ارائه می‌شوند.
                         </p>
@@ -197,9 +197,9 @@
 <span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers
                         </pre>
                         <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
-                       
+
                         <h3 class="sub-title">
-                          نمونه پاسخ دریافتی موفق:
+                            نمونه پاسخ دریافتی موفق:
                         </h3>
 
                         <pre>
@@ -238,47 +238,47 @@
     }
 }
                         </pre>
-                       
+
                         <ul>
                             <li>
                                 status: ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره.
                             </li>
-                          <li>
-                            data:
-                            <ul>
-                                  <li>id: شناسه یکتای مشتری</li>
-                                  <li>name: نام مشتری که برای مشتری حقیقی نام و نام خانوادگی مشتری و برای مشتری حقوقی نام نماینده می‌باشد.</li>
-                                  <li>balance: موجودی کیف پول مشتری</li>
-                                  <li>created_at: تاریخ ثبت مشتری</li>
-                                  <li>mobile: شماره موبایل مشتری</li>
-                            </ul>
-                          </li>
-                          <li>
-                            links:
-                            <ul>
-                              <li>first: آدرس اولین صفحه</li>
-                              <li>last: آدرس آخرین صفحه</li>
-                              <li>prev: آدرس صفحه قبل</li>
-                              <li>next: آدرس صفحه بعد</li>
-                            </ul>
-                          </li>
-                          <li>
-                            meta:
-                            <ul>
-                              <li>current_page: آدرس همین صفحه</li>
-                              <li>from: شماره اولین آیتمی که در این صفحه آمده است </li>
-                              <li>last_page: تعداد کل صفحات</li>
-                              <li>path: آدرس خالص بدون صفحه بندی</li>
-                              <li>per_page: تعداد آیتم در هر صفحه</li>
-                              <li>to: شماره آخرین آیتمی که در این صفحه آمده است</li>
-                              <li>total: تعداد کل آیتم ها</li>
-                            </ul>
-                          </li>
+                            <li>
+                                data:
+                                <ul>
+                                    <li>id: شناسه یکتای مشتری</li>
+                                    <li>name: نام مشتری که برای مشتری حقیقی نام و نام خانوادگی مشتری و برای مشتری حقوقی نام نماینده می‌باشد.</li>
+                                    <li>balance: موجودی کیف پول مشتری</li>
+                                    <li>created_at: تاریخ ثبت مشتری</li>
+                                    <li>mobile: شماره موبایل مشتری</li>
+                                </ul>
+                            </li>
+                            <li>
+                                links:
+                                <ul>
+                                    <li>first: آدرس اولین صفحه</li>
+                                    <li>last: آدرس آخرین صفحه</li>
+                                    <li>prev: آدرس صفحه قبل</li>
+                                    <li>next: آدرس صفحه بعد</li>
+                                </ul>
+                            </li>
+                            <li>
+                                meta:
+                                <ul>
+                                    <li>current_page: آدرس همین صفحه</li>
+                                    <li>from: شماره اولین آیتمی که در این صفحه آمده است </li>
+                                    <li>last_page: تعداد کل صفحات</li>
+                                    <li>path: آدرس خالص بدون صفحه بندی</li>
+                                    <li>per_page: تعداد آیتم در هر صفحه</li>
+                                    <li>to: شماره آخرین آیتمی که در این صفحه آمده است</li>
+                                    <li>total: تعداد کل آیتم ها</li>
+                                </ul>
+                            </li>
                         </ul>
-                      <h3 class="sub-title">
-                        نمونه پاسخ دریافتی نا موفق:
-                      </h3>
-                      <pre>
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی نا موفق:
+                        </h3>
+                        <pre>
 <span class="key">HTTP/1.1</span> 401
 {
   "status": 0,
@@ -286,205 +286,196 @@
 }
                         </pre>
 
-                      <h3 class="title" id="base-store">
-                       <a href="#base-store"> ۲. ثبت مشتری جدید</a>
-                      </h3>
-                      <p>
-                        با استفاده از این سرویس می‌توانید یک مشتری جدید ثبت نمایید.
-                      </p>
-                      <pre>
+                        <h3 class="title" id="base-store">
+                            <a href="#base-store"> ۲. ثبت مشتری جدید</a>
+                        </h3>
+                        <p>
+                            با استفاده از این سرویس می‌توانید یک مشتری جدید ثبت نمایید.
+                        </p>
+                        <pre>
 <span class="key">METHOD:</span> POST
 <span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/customers
                       </pre>
-                      <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
-                      <h3 class="sub-title">
-                        پارامترهای مجاز
-                    </h3>
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <h3 class="sub-title">
+                            پارامترهای مجاز
+                        </h3>
 
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>name</th>
-                            <th>Type</th>
-                            <th>Status</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>business_id</td>
-                            <td>string</td>
-                            <td>required</td>
-                        </tr>
-                        <tr>
-                            <td>first_name</td>
-                            <td>string</td>
-                            <td>optional</td>
-                        </tr>
-                        <tr>
-                            <td>last_name</td>
-                            <td>string</td>
-                            <td>optional</td>
-                        </tr>
-                        <tr>
-                            <td>legal_name</td>
-                            <td>string</td>
-                            <td>optional</td>
-                        </tr>
-                        <tr>
-                            <td>agent_name</td>
-                            <td>string</td>
-                            <td>optional</td>
-                        </tr>
-                        <tr>
-                            <td>type</td>
-                            <td>string</td>
-                            <td>required in:INDIVIDUAL,LEGAL</td>
-                        </tr>
-                        <tr>
-                            <td>mobile</td>
-                            <td>string</td>
-                            <td>required if type=INDIVIDUAL</td>
-                        </tr>
-                        <tr>
-                            <td>agent_mobile</td>
-                            <td>string</td>
-                            <td>required if type=LEGAL</td>
-                        </tr>
-                        <tr>
-                            <td>telephone</td>
-                            <td>string</td>
-                            <td>optional</td>
-                        </tr>
-                        <tr>
-                            <td>individual_national_code</td>
-                            <td>string</td>
-                            <td>required if type=INDIVIDUAL</td>
-                        </tr>
-                        <tr>
-                            <td>legal_national_code</td>
-                            <td>string</td>
-                            <td>required if type=LEGAL</td>
-                        </tr>
-                        <tr>
-                            <td>province_id</td>
-                            <td>string</td>
-                            <td>optional</td>
-                        </tr>
-                        <tr>
-                            <td>city_id</td>
-                            <td>string</td>
-                            <td>optional</td>
-                        </tr>
-                        <tr>
-                            <td>address</td>
-                            <td>string</td>
-                            <td>optional</td>
-                        </tr>
-                        <tr>
-                            <td>postal_code</td>
-                            <td>string</td>
-                            <td>optional</td>
-                        </tr>
-                        <tr>
-                            <td>mcc_code</td>
-                            <td>string</td>
-                            <td>optional</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <h3 class="sub-title">
-                        توضیحات
-                      </h3>
-                      <ul>
-                        <li>business_id (اجباری):
-                          آیدی کسب و کار 
-                        </li>
-                        <li>first_name (اختیاری):
-                          نام مشتری در صورتی که نوع مشتری حقیقی باشد.
-                        </li>
-                        <li>last_name (اختیاری):
-                            نام خانوادگی مشتری در صورتی که نوع مشتری حقیقی باشد.
-                        </li>
-                          <li>legal_name (اختیاری):
-                      نام حقوقی در صورتیکه مشتری حقوقی باشد.
-                      
-                          </li>
-                          <li>agent_name (اختیاری):
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>first_name</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>last_name</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>legal_name</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>agent_name</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>type</td>
+                                <td>string</td>
+                                <td>required in:INDIVIDUAL,LEGAL</td>
+                            </tr>
+                            <tr>
+                                <td>mobile</td>
+                                <td>string</td>
+                                <td>required if type=INDIVIDUAL</td>
+                            </tr>
+                            <tr>
+                                <td>agent_mobile</td>
+                                <td>string</td>
+                                <td>required if type=LEGAL</td>
+                            </tr>
+                            <tr>
+                                <td>telephone</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>individual_national_code</td>
+                                <td>string</td>
+                                <td>required if type=INDIVIDUAL</td>
+                            </tr>
+                            <tr>
+                                <td>legal_national_code</td>
+                                <td>string</td>
+                                <td>required if type=LEGAL</td>
+                            </tr>
+                            <tr>
+                                <td>province_id</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>city_id</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>address</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>postal_code</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>mcc_code</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="sub-title">
+                            توضیحات
+                        </h3>
+                        <ul>
+                            <li>first_name (اختیاری):
+                                نام مشتری در صورتی که نوع مشتری حقیقی باشد.
+                            </li>
+                            <li>last_name (اختیاری):
+                                نام خانوادگی مشتری در صورتی که نوع مشتری حقیقی باشد.
+                            </li>
+                            <li>legal_name (اختیاری):
+                                نام حقوقی در صورتیکه مشتری حقوقی باشد.
+
+                            </li>
+                            <li>agent_name (اختیاری):
                                 نام نماینده شرکت در صورتی که مشتری حقوقی باشد.
-                          </li>
-                          <li>type (اجباری):
-                              نوع مشتری که شامل حقیقی (INDIVIDUAL) و حقوقی (LEGAL) می‌باشد.
-                          </li>
-                          <li>
-                              mobile (اجباری برای مشتری حقیقی):
-                               شماره موبایل مشتری در صورتی که نوع مشتری حقیقی باشد.
-                          </li>
-                          <li>
-                            agent_mobile (اجباری برای مشتری حقوقی):
-                             شماره موبایل مشتری در صورتی که نوع مشتری حقوقی باشد.
-                          </li>
-                          <li>
-                            telephone (اختیاری):
-                            شماره تلفن ثابت.
-                        </li>
-                        <li>
-                            individual_national_code (اجباری برای مشتری حقیقی):
-                             کد ملی مشتری در صورتی که نوع مشتری حقوقی باشد.
-                        </li>
-                        <li>
-                            legal_national_code (اجباری برای مشتری حقوقی):
-                             کد ملی مشتری در صورتی که نوع مشتری حقوقی باشد.
-                        </li>
-                        <li>
-                            province_id (اختیاری):
-                             آیدی استان محل سکونت مشتری.
-                        </li>
-                        <li>
-                            city_id (اختیاری):
-                            آیدی شهر محل سکونت مشتری.
-                        </li>
-                        <li>
-                            address (اختیاری):
-                            آدرس محل سکونت مشتری.
-                        </li>
-                        <li>
-                            postal_code (اختیاری):
-                            کدپستی محل سکونت مشتری.
-                        </li>
-                        <li>
-                            mcc_code (اختیاری برای مشتری حقوقی):
-                            کد صنف مشتری.
-                        </li>
-                      </ul>
-                      <h3 class="sub-title">
-                          نکته
-                      </h3>
-                      <ul>
-                          <li>
-                            <p>
-                                برای دریافت آیدی استان و شهر از سرویس زیر استفاده نمایید:
-                            </p>
-                            <p>
-                              https://api.vandar.io/v2/information/cities
-                            </p>
-                          </li>
-                          <li>
-                            <p>
-                                برای دریافت آیدی اصناف از سرویس زیر استفاده نمایید:
-                            </p>
-                            <p>
-                                https://api.vandar.io/v2/information/mccs
-                                                        </p>
-                          </li>
-                      </ul>
-                     
+                            </li>
+                            <li>type (اجباری):
+                                نوع مشتری که شامل حقیقی (INDIVIDUAL) و حقوقی (LEGAL) می‌باشد.
+                            </li>
+                            <li>
+                                mobile (اجباری برای مشتری حقیقی):
+                                شماره موبایل مشتری در صورتی که نوع مشتری حقیقی باشد.
+                            </li>
+                            <li>
+                                agent_mobile (اجباری برای مشتری حقوقی):
+                                شماره موبایل مشتری در صورتی که نوع مشتری حقوقی باشد.
+                            </li>
+                            <li>
+                                telephone (اختیاری):
+                                شماره تلفن ثابت.
+                            </li>
+                            <li>
+                                individual_national_code (اجباری برای مشتری حقیقی):
+                                کد ملی مشتری در صورتی که نوع مشتری حقوقی باشد.
+                            </li>
+                            <li>
+                                legal_national_code (اجباری برای مشتری حقوقی):
+                                کد ملی مشتری در صورتی که نوع مشتری حقوقی باشد.
+                            </li>
+                            <li>
+                                province_id (اختیاری):
+                                آیدی استان محل سکونت مشتری.
+                            </li>
+                            <li>
+                                city_id (اختیاری):
+                                آیدی شهر محل سکونت مشتری.
+                            </li>
+                            <li>
+                                address (اختیاری):
+                                آدرس محل سکونت مشتری.
+                            </li>
+                            <li>
+                                postal_code (اختیاری):
+                                کدپستی محل سکونت مشتری.
+                            </li>
+                            <li>
+                                mcc_code (اختیاری برای مشتری حقوقی):
+                                کد صنف مشتری.
+                            </li>
+                        </ul>
+                        <h3 class="sub-title">
+                            نکته
+                        </h3>
+                        <ul>
+                            <li>
+                                <p>
+                                    برای دریافت آیدی استان و شهر از سرویس زیر استفاده نمایید:
+                                </p>
+                                <p>
+                                    https://api.vandar.io/v2/information/cities
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    برای دریافت آیدی اصناف از سرویس زیر استفاده نمایید:
+                                </p>
+                                <p>
+                                    https://api.vandar.io/v2/information/mccs
+                                </p>
+                            </li>
+                        </ul>
 
-                      <h3 class="sub-title">
-                        نمونه json برای ثبت نام مشتری حقیقی
-                      </h3>
-                      <pre>
+
+                        <h3 class="sub-title">
+                            نمونه json برای ثبت نام مشتری حقیقی
+                        </h3>
+                        <pre>
 {
-    "business_id": "20",
     "first_name": "الناز",
     "last_name": "نوروزی",
     "type": "INDIVIDUAL",
@@ -497,11 +488,11 @@
     "postal_code": ""
 }
                       </pre>
-                      <h3 class="sub-title">
-                        نمونه پاسخ دریافتی موفق:
-                      </h3>
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
 
-                      <pre>
+                        <pre>
 <span class="key">HTTP/1.1</span> 200
 {
     "status": "1",
@@ -514,12 +505,11 @@
 }
                       </pre>
 
-                      <h3 class="sub-title">
-                        نمونه json برای ثبت نام مشتری حقوقی
-                      </h3>
-                      <pre>
+                        <h3 class="sub-title">
+                            نمونه json برای ثبت نام مشتری حقوقی
+                        </h3>
+                        <pre>
 {
-    "business_id": "20",
     "legal_name": "تست",
     "agent_name": "نوروزی",
     "type": "LEGAL",
@@ -533,11 +523,11 @@
     "mcc_code": ""
 }
                       </pre>
-                      <h3 class="sub-title">
-                        نمونه پاسخ دریافتی موفق:
-                      </h3>
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
 
-                      <pre>
+                        <pre>
 <span class="key">HTTP/1.1</span> 200
 {
     "status": "1",
@@ -550,206 +540,197 @@
 }
                       </pre>
 
-                      <h3 class="title" id="base-update">
-                        <a href="#base-update"> ۳. ویرایش اطلاعات مشتری</a>
-                       </h3>
-                       <p>
-                         با استفاده از این سرویس می‌توانید اطلاعات مشتری را ویراش نمایید.
-                       </p>
-                       <pre>
+                        <h3 class="title" id="base-update">
+                            <a href="#base-update"> ۳. ویرایش اطلاعات مشتری</a>
+                        </h3>
+                        <p>
+                            با استفاده از این سرویس می‌توانید اطلاعات مشتری را ویراش نمایید.
+                        </p>
+                        <pre>
  <span class="key">METHOD:</span> PUT
  <span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}
                        </pre>
-                       <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
-                       <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل دسترسی می‌باشد.</p>
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل دسترسی می‌باشد.</p>
 
-                       <h3 class="sub-title">
-                         پارامترهای مجاز
-                     </h3>
- 
-                     <table class="table">
-                         <thead>
-                         <tr>
-                             <th>name</th>
-                             <th>Type</th>
-                             <th>Status</th>
-                         </tr>
-                         </thead>
-                         <tbody>
-                         <tr>
-                             <td>business_id</td>
-                             <td>string</td>
-                             <td>required</td>
-                         </tr>
-                         <tr>
-                             <td>first_name</td>
-                             <td>string</td>
-                             <td>optional</td>
-                         </tr>
-                         <tr>
-                             <td>last_name</td>
-                             <td>string</td>
-                             <td>optional</td>
-                         </tr>
-                         <tr>
-                             <td>legal_name</td>
-                             <td>string</td>
-                             <td>optional</td>
-                         </tr>
-                         <tr>
-                             <td>agent_name</td>
-                             <td>string</td>
-                             <td>optional</td>
-                         </tr>
-                         <tr>
-                             <td>type</td>
-                             <td>string</td>
-                             <td>required in:INDIVIDUAL,LEGAL</td>
-                         </tr>
-                         <tr>
-                             <td>mobile</td>
-                             <td>string</td>
-                             <td>optional</td>
-                         </tr>
-                         <tr>
-                             <td>agent_mobile</td>
-                             <td>string</td>
-                             <td>optional</td>
-                         </tr>
-                         <tr>
-                             <td>telephone</td>
-                             <td>string</td>
-                             <td>optional</td>
-                         </tr>
-                         <tr>
-                             <td>individual_national_code</td>
-                             <td>string</td>
-                             <td>optional</td>
-                         </tr>
-                         <tr>
-                             <td>legal_national_code</td>
-                             <td>string</td>
-                             <td>optional</td>
-                         </tr>
-                         <tr>
-                             <td>province_id</td>
-                             <td>string</td>
-                             <td>required if city_id is set</td>
-                         </tr>
-                         <tr>
-                             <td>city_id</td>
-                             <td>string</td>
-                             <td>required if province_id is set</td>
-                         </tr>
-                         <tr>
-                             <td>address</td>
-                             <td>string</td>
-                             <td>optional</td>
-                         </tr>
-                         <tr>
-                             <td>postal_code</td>
-                             <td>string</td>
-                             <td>optional</td>
-                         </tr>
-                         <tr>
-                             <td>mcc_code</td>
-                             <td>string</td>
-                             <td>optional</td>
-                         </tr>
-                         </tbody>
-                     </table>
-                     <h3 class="sub-title">
-                         توضیحات
-                       </h3>
-                       <ul>
-                         <li>business_id (اجباری):
-                           آیدی کسب و کار 
-                         </li>
-                         <li>first_name (اختیاری):
-                           نام مشتری در صورتی که نوع مشتری حقیقی باشد.
-                         </li>
-                         <li>last_name (اختیاری):
-                             نام خانوادگی مشتری در صورتی که نوع مشتری حقیقی باشد.
-                         </li>
-                           <li>legal_name (اختیاری):
-                       نام حقوقی در صورتیکه مشتری حقوقی باشد.
-                       
-                           </li>
-                           <li>agent_name (اختیاری):
-                                 نام نماینده شرکت در صورتی که مشتری حقوقی باشد.
-                           </li>
-                           <li>type (اجباری):
-                               نوع مشتری که شامل حقیقی (INDIVIDUAL) و حقوقی (LEGAL) می‌باشد.
-                           </li>
-                           <li>
-                               mobile (اختیاری برای مشتری حقیقی):
+                        <h3 class="sub-title">
+                            پارامترهای مجاز
+                        </h3>
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>first_name</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>last_name</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>legal_name</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>agent_name</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>type</td>
+                                <td>string</td>
+                                <td>required in:INDIVIDUAL,LEGAL</td>
+                            </tr>
+                            <tr>
+                                <td>mobile</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>agent_mobile</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>telephone</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>individual_national_code</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>legal_national_code</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>province_id</td>
+                                <td>string</td>
+                                <td>required if city_id is set</td>
+                            </tr>
+                            <tr>
+                                <td>city_id</td>
+                                <td>string</td>
+                                <td>required if province_id is set</td>
+                            </tr>
+                            <tr>
+                                <td>address</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>postal_code</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>mcc_code</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="sub-title">
+                            توضیحات
+                        </h3>
+                        <ul>
+                            <li>first_name (اختیاری):
+                                نام مشتری در صورتی که نوع مشتری حقیقی باشد.
+                            </li>
+                            <li>last_name (اختیاری):
+                                نام خانوادگی مشتری در صورتی که نوع مشتری حقیقی باشد.
+                            </li>
+                            <li>legal_name (اختیاری):
+                                نام حقوقی در صورتیکه مشتری حقوقی باشد.
+
+                            </li>
+                            <li>agent_name (اختیاری):
+                                نام نماینده شرکت در صورتی که مشتری حقوقی باشد.
+                            </li>
+                            <li>type (اجباری):
+                                نوع مشتری که شامل حقیقی (INDIVIDUAL) و حقوقی (LEGAL) می‌باشد.
+                            </li>
+                            <li>
+                                mobile (اختیاری برای مشتری حقیقی):
                                 شماره موبایل مشتری در صورتی که نوع مشتری حقیقی باشد.
-                           </li>
-                           <li>
-                             agent_mobile (اختیاری برای مشتری حقوقی):
-                              شماره موبایل مشتری در صورتی که نوع مشتری حقوقی باشد.
-                           </li>
-                           <li>
-                             telephone (اختیاری):
-                             شماره تلفن ثابت.
-                         </li>
-                         <li>
-                             individual_national_code (اختیاری برای مشتری حقیقی):
-                              کد ملی مشتری در صورتی که نوع مشتری حقوقی باشد.
-                         </li>
-                         <li>
-                             legal_national_code (اختیاری برای مشتری حقوقی):
-                              کد ملی مشتری در صورتی که نوع مشتری حقوقی باشد.
-                         </li>
-                         <li>
-                             province_id (اختیاری):
-                              آیدی استان محل سکونت مشتری.
-                         </li>
-                         <li>
-                             city_id (اختیاری):
-                             آیدی شهر محل سکونت مشتری.
-                         </li>
-                         <li>
-                             address (اختیاری):
-                             آدرس محل سکونت مشتری.
-                         </li>
-                         <li>
-                             postal_code (اختیاری):
-                             کدپستی محل سکونت مشتری.
-                         </li>
-                         <li>
-                            mcc_code (اختیاری):
-                            کدپستی محل سکونت مشتری.
-                        </li>
-                       </ul>
-                       <h3 class="sub-title">
-                        نکته
-                    </h3>
-                    <ul>
-                        <li>
-                          <p>
-                              برای دریافت آیدی استان و شهر از سرویس زیر استفاده نمایید:
-                          </p>
-                          <p>
-                            https://api.vandar.io/v2/information/cities
-                          </p>
-                        </li>
-                        <li>
-                            <p>
-                                برای دریافت آیدی اصناف از سرویس زیر استفاده نمایید:
-                            </p>
-                            <p>
-                                https://api.vandar.io/v2/information/mccs
-                                                        </p>
-                          </li>
-                    </ul>
- 
-                       <h3 class="sub-title">
-                         نمونه json برای ثبت نام مشتری حقیقی
-                       </h3>
-                       <pre>
+                            </li>
+                            <li>
+                                agent_mobile (اختیاری برای مشتری حقوقی):
+                                شماره موبایل مشتری در صورتی که نوع مشتری حقوقی باشد.
+                            </li>
+                            <li>
+                                telephone (اختیاری):
+                                شماره تلفن ثابت.
+                            </li>
+                            <li>
+                                individual_national_code (اختیاری برای مشتری حقیقی):
+                                کد ملی مشتری در صورتی که نوع مشتری حقوقی باشد.
+                            </li>
+                            <li>
+                                legal_national_code (اختیاری برای مشتری حقوقی):
+                                کد ملی مشتری در صورتی که نوع مشتری حقوقی باشد.
+                            </li>
+                            <li>
+                                province_id (اختیاری):
+                                آیدی استان محل سکونت مشتری.
+                            </li>
+                            <li>
+                                city_id (اختیاری):
+                                آیدی شهر محل سکونت مشتری.
+                            </li>
+                            <li>
+                                address (اختیاری):
+                                آدرس محل سکونت مشتری.
+                            </li>
+                            <li>
+                                postal_code (اختیاری):
+                                کدپستی محل سکونت مشتری.
+                            </li>
+                            <li>
+                                mcc_code (اختیاری):
+                                کدپستی محل سکونت مشتری.
+                            </li>
+                        </ul>
+                        <h3 class="sub-title">
+                            نکته
+                        </h3>
+                        <ul>
+                            <li>
+                                <p>
+                                    برای دریافت آیدی استان و شهر از سرویس زیر استفاده نمایید:
+                                </p>
+                                <p>
+                                    https://api.vandar.io/v2/information/cities
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    برای دریافت آیدی اصناف از سرویس زیر استفاده نمایید:
+                                </p>
+                                <p>
+                                    https://api.vandar.io/v2/information/mccs
+                                </p>
+                            </li>
+                        </ul>
+
+                        <h3 class="sub-title">
+                            نمونه json برای ثبت نام مشتری حقیقی
+                        </h3>
+                        <pre>
  {
-     "business_id": "20",
      "first_name": "الناز",
      "last_name": "نوروزی",
      "type": "INDIVIDUAL",
@@ -762,11 +743,11 @@
      "postal_code": "1234567890"
  }
                        </pre>
-                       <h3 class="sub-title">
-                         نمونه پاسخ دریافتی موفق:
-                       </h3>
- 
-                       <pre>
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
  <span class="key">HTTP/1.1</span> 200
  {
   "message": "مخاطب با موفقیت به‌روزرسانی شد.",
@@ -794,13 +775,12 @@
   }
 }
                        </pre>
- 
-                       <h3 class="sub-title">
-                         نمونه json برای ثبت نام مشتری حقوقی
-                       </h3>
-                       <pre>
+
+                        <h3 class="sub-title">
+                            نمونه json برای ثبت نام مشتری حقوقی
+                        </h3>
+                        <pre>
  {
-     "business_id": "20",
      "legal_name": "تست",
      "agent_name": "نوروزی",
      "type": "LEGAL",
@@ -813,11 +793,11 @@
      "postal_code": ""
  }
                        </pre>
-                       <h3 class="sub-title">
-                         نمونه پاسخ دریافتی موفق:
-                       </h3>
- 
-                       <pre>
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
  <span class="key">HTTP/1.1</span> 200
  {
   "message": "مخاطب با موفقیت به‌روزرسانی شد.",
@@ -845,43 +825,43 @@
   }
 }
                        </pre>
- 
 
-<h3 class="title" id="base-delete">
- <a href="#base-delete"> ۴. حذف مشتری</a>
-</h3>
-<p>در صورت نیاز به حذف یک مشتری از این سرویس استفاده نمایید.</p>
-<pre>
+
+                        <h3 class="title" id="base-delete">
+                            <a href="#base-delete"> ۴. حذف مشتری</a>
+                        </h3>
+                        <p>در صورت نیاز به حذف یک مشتری از این سرویس استفاده نمایید.</p>
+                        <pre>
 <span class="key">METHOD:</span> DELETE
 <span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}
 </pre>
-<p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
-<p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل دسترسی می‌باشد.</p>
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل دسترسی می‌باشد.</p>
 
-<h3 class="sub-title">
-  نمونه پاسخ دریافتی موفق:
-</h3>
-<pre>
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+                        <pre>
 <span class="key">HTTP/1.1</span> 200
 {
   "status": 1,
   "message": "مخاطب با موفقیت حذف گردید."
 }
 </pre>
-<h3 class="title" id="base-show">
-<a href="#base-show">  ۵. نمایش اطلاعات مشتری</a>
-</h3>
-<p>در این بخش امکان مشاهده اطلاعات یک مشتری را خواهید داشت.</p>
-<pre>
+                        <h3 class="title" id="base-show">
+                            <a href="#base-show">  ۵. نمایش اطلاعات مشتری</a>
+                        </h3>
+                        <p>در این بخش امکان مشاهده اطلاعات یک مشتری را خواهید داشت.</p>
+                        <pre>
 <span class="key">Method:</span> GET
 <span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}
 </pre>
-<p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
-<p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل دسترسی می‌باشد.</p>
-<h3 class="sub-title">
-  نمونه پاسخ دریافتی موفق:
-</h3>
-<pre>
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل دسترسی می‌باشد.</p>
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+                        <pre>
 <span class="key">HTTP/1.1</span> 200
 {
   "customer": {
@@ -909,30 +889,30 @@
 }
 </pre>
 
-<h2 class="article-header" id="wallet"> <a href="#wallet"> کیف پول</a></h2>
-<p>
-    در این بخش مدیریت کیف پول مشتریان که شامل واریز، برداشت و مشاهده موجودی کیف پول مشتری می‌باشد، صورت می‌گیرد.
-</p>
+                        <h2 class="article-header" id="wallet"> <a href="#wallet"> کیف پول</a></h2>
+                        <p>
+                            در این بخش مدیریت کیف پول مشتریان که شامل واریز، برداشت و مشاهده موجودی کیف پول مشتری می‌باشد، صورت می‌گیرد.
+                        </p>
 
-<h3 class="title" id="wallet-balance">
-    <a href="#wallet-balance">۱. موجودی کیف پول</a>
-</h3>
+                        <h3 class="title" id="wallet-balance">
+                            <a href="#wallet-balance">۱. موجودی کیف پول</a>
+                        </h3>
 
-<p>در این یخش امکان مشاهده موجدی کیف پول مشتری را خواهید داشت.</p>
+                        <p>در این یخش امکان مشاهده موجدی کیف پول مشتری را خواهید داشت.</p>
 
-<pre>
+                        <pre>
 <span class="key">Method:</span> GET
 <span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/wallet
 </pre>
 
-<p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
-<p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل دسترسی می‌باشد.</p>
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل دسترسی می‌باشد.</p>
 
-<h3 class="sub-title">
-  نمونه پاسخ دریافتی موفق:
-</h3>
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
 
-<pre>
+                        <pre>
 <span class="key">HTTP/1.1</span> 200
 {
   "status": 1,
@@ -941,12 +921,12 @@
 }
 </pre>
 
-<h3 class="sub-title">
-  نمونه پاسخ دریافتی ناموفق:
-</h3>
-<p>
-در صورتی که شناسه مشتری به اشتباه داده شود خطای ۴۰۴ دریافت می‌کنید.</p>
-<pre>
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی ناموفق:
+                        </h3>
+                        <p>
+                            در صورتی که شناسه مشتری به اشتباه داده شود خطای ۴۰۴ دریافت می‌کنید.</p>
+                        <pre>
 <span class="key">HTTP/1.1</span> 422
 {
   "status": 0,
@@ -955,57 +935,57 @@
 </pre>
 
 
-<h3 class="title" id="wallet-deposit"><a href="#wallet-deposit"> ۲. واریز به کیف پول</a>
-</h3>
-<p>در صورت نیاز به بالا بردن موجودی کیف پول مشتری می‌توانید با استفاده از این سرویس، یک تراکنش واریز به حساب، برای مشتری ثبت نمایید. </p>
+                        <h3 class="title" id="wallet-deposit"><a href="#wallet-deposit"> ۲. واریز به کیف پول</a>
+                        </h3>
+                        <p>در صورت نیاز به بالا بردن موجودی کیف پول مشتری می‌توانید با استفاده از این سرویس، یک تراکنش واریز به حساب، برای مشتری ثبت نمایید. </p>
                         <pre>
 <span class="key">Method:</span> POST
 <span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/wallet/deposit
 </pre>
 
-<p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
-<p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل دسترسی می‌باشد.</p>
-<h3 class="sub-title">
-  پارامترهای مجاز
-</h3>
-<table class="table">
-  <thead>
-  <tr>
-      <th>name</th>
-      <th>Type</th>
-      <th>Status</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-      <td>amount</td>
-      <td>integer</td>
-      <td>required min=1</td>
-  </tr>
-  <tr>
-      <td>comment</td>
-      <td>string</td>
-      <td>optional</td>
-  </tr>
-  <tr>
-      <td>track_id</td>
-      <td>string</td>
-      <td>required</td>
-  </tr>
-  </tbody>
-</table>
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل دسترسی می‌باشد.</p>
+                        <h3 class="sub-title">
+                            پارامترهای مجاز
+                        </h3>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>amount</td>
+                                <td>integer</td>
+                                <td>required min=1</td>
+                            </tr>
+                            <tr>
+                                <td>comment</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>track_id</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            </tbody>
+                        </table>
 
 
-<ul>
-  <li>
-    توضیحات:
-    <ul>
-      <li>amount (اجباری): مبلغی که می‌خواهید به کیف پول مشتری اضافه شود.</li>
-      <li>comment (اختیاری): توضیحات مربوط به تراکنش واریزی</li>
-      <li>track_id (اجباری): شماره پیگیری غیرتکراری</li>
-    </ul>
-  </li>
-</ul>
+                        <ul>
+                            <li>
+                                توضیحات:
+                                <ul>
+                                    <li>amount (اجباری): مبلغی که می‌خواهید به کیف پول مشتری اضافه شود.</li>
+                                    <li>comment (اختیاری): توضیحات مربوط به تراکنش واریزی</li>
+                                    <li>track_id (اجباری): شماره پیگیری غیرتکراری</li>
+                                </ul>
+                            </li>
+                        </ul>
                         <h3 class="sub-title">
                             نمونه پاسخ دریافتی موفق:
                         </h3>
@@ -1024,57 +1004,57 @@
 </pre>
 
 
-<h3 class="title" id="wallet-withdrawal"><a href="#wallet-withdrawal"> ۲. برداشت از کیف پول</a>
-</h3>
-<p>در صورت نیاز به پایین آرودن موجودی کیف پول مشتری می‌توانید با استفاده از این سرویس، یک تراکنش برداشت از کیف پول مشتری ثبت نمایید. </p>
+                        <h3 class="title" id="wallet-withdrawal"><a href="#wallet-withdrawal"> ۲. برداشت از کیف پول</a>
+                        </h3>
+                        <p>در صورت نیاز به پایین آرودن موجودی کیف پول مشتری می‌توانید با استفاده از این سرویس، یک تراکنش برداشت از کیف پول مشتری ثبت نمایید. </p>
                         <pre>
 <span class="key">Method:</span> POST
 <span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/wallet/withdraw
 </pre>
 
-<p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
-<p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل دسترسی می‌باشد.</p>
-<h3 class="sub-title">
-  پارامترهای مجاز
-</h3>
-<table class="table">
-  <thead>
-  <tr>
-      <th>name</th>
-      <th>Type</th>
-      <th>Status</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-      <td>amount</td>
-      <td>integer</td>
-      <td>required min=1</td>
-  </tr>
-  <tr>
-      <td>comment</td>
-      <td>string</td>
-      <td>optional</td>
-  </tr>
-  <tr>
-      <td>track_id</td>
-      <td>string</td>
-      <td>required</td>
-  </tr>
-  </tbody>
-</table>
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل دسترسی می‌باشد.</p>
+                        <h3 class="sub-title">
+                            پارامترهای مجاز
+                        </h3>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>amount</td>
+                                <td>integer</td>
+                                <td>required min=1</td>
+                            </tr>
+                            <tr>
+                                <td>comment</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>track_id</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            </tbody>
+                        </table>
 
 
-<ul>
-  <li>
-    توضیحات:
-    <ul>
-      <li>amount (اجباری): مبلغی که می‌خواهید از کیف پول مشتری کم شود.</li>
-      <li>comment (اختیاری): توضیحات مربوط به تراکنش برداشتی</li>
-      <li>track_id (اجباری): شماره پیگیری غیرتکراری</li>
-    </ul>
-  </li>
-</ul>
+                        <ul>
+                            <li>
+                                توضیحات:
+                                <ul>
+                                    <li>amount (اجباری): مبلغی که می‌خواهید از کیف پول مشتری کم شود.</li>
+                                    <li>comment (اختیاری): توضیحات مربوط به تراکنش برداشتی</li>
+                                    <li>track_id (اجباری): شماره پیگیری غیرتکراری</li>
+                                </ul>
+                            </li>
+                        </ul>
                         <h3 class="sub-title">
                             نمونه پاسخ دریافتی موفق:
                         </h3>
@@ -1093,24 +1073,24 @@
 </pre>
 
 
-<h2 class="article-header" id="transactions"> <a href="#transactions"> تراکنش</a></h2>
-<p>در این بخش اطلاعات تراکنش‌های مشتریان قابل مشاهده می‌باشد.</p>
-<h3 class="title" id="transactions-index"><a href="#transactions-index">
-  ۱. لیست تراکنش‌ها
-</h3>
+                        <h2 class="article-header" id="transactions"> <a href="#transactions"> تراکنش</a></h2>
+                        <p>در این بخش اطلاعات تراکنش‌های مشتریان قابل مشاهده می‌باشد.</p>
+                        <h3 class="title" id="transactions-index"><a href="#transactions-index">
+                            ۱. لیست تراکنش‌ها
+                        </h3>
 
-<p>با استفاده از این سرویس، لیست همه تراکنش های مشتری شامل واریز و برداشت را مشاهده می‌کنید.</p>
+                        <p>با استفاده از این سرویس، لیست همه تراکنش های مشتری شامل واریز و برداشت را مشاهده می‌کنید.</p>
 
-<pre>
+                        <pre>
 <span class="key">Method:</span> GET
 <span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/transactions
 </pre>
 
-<h3 class="sub-title">
-  نمونه پاسخ دریافتی موفق:
-</h3>
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
 
-<pre>
+                        <pre>
 <span class="key">HTTP/1.1</span> 200
 {
   "data": [
@@ -1160,86 +1140,86 @@
   "status": 1
 }
 </pre>
- 
-<ul>
-  <li>
-    data:
-    <ul>
-          <li>uuid: شناسه یکتای مشتری</li>
-          <li>type: نوع تراکنش که شامل واریز(deposit) و برداشت (withdraw) می‌باشد</li>
-          <li>amount: مبلغ تراکنش</li>
-          <li>comment: توضیحات تکمیلی تراکنش</li>
-          <li>balance: موجودی کیف پول مشتری بعد از انجام آن تراکنش</li>
-          <li>created_at: تاریخ انجام تراکنش</li>
-          <li>updated_at: تاریخ ویراش تراکنش</li>
+
+                        <ul>
+                            <li>
+                                data:
+                                <ul>
+                                    <li>uuid: شناسه یکتای مشتری</li>
+                                    <li>type: نوع تراکنش که شامل واریز(deposit) و برداشت (withdraw) می‌باشد</li>
+                                    <li>amount: مبلغ تراکنش</li>
+                                    <li>comment: توضیحات تکمیلی تراکنش</li>
+                                    <li>balance: موجودی کیف پول مشتری بعد از انجام آن تراکنش</li>
+                                    <li>created_at: تاریخ انجام تراکنش</li>
+                                    <li>updated_at: تاریخ ویراش تراکنش</li>
 
 
-    </ul>
-  </li>
-  <li>
-    links:
-    <ul>
-      <li>first: آدرس اولین صفحه</li>
-      <li>last: آدرس آخرین صفحه</li>
-      <li>prev: آدرس صفحه قبل</li>
-      <li>next: آدرس صفحه بعد</li>
-    </ul>
-  </li>
-  <li>
-    meta:
-    <ul>
-      <li>current_page: آدرس همین صفحه</li>
-      <li>from: شماره اولین آیتمی که در این صفحه آمده است </li>
-      <li>last_page: تعداد کل صفحات</li>
-      <li>path: آدرس خالص بدون صفحه بندی</li>
-      <li>per_page: تعداد آیتم در هر صفحه</li>
-      <li>to: شماره آخرین آیتمی که در این صفحه آمده است</li>
-      <li>total: تعداد کل آیتم ها</li>
-    </ul>
-  </li>
-</ul>
+                                </ul>
+                            </li>
+                            <li>
+                                links:
+                                <ul>
+                                    <li>first: آدرس اولین صفحه</li>
+                                    <li>last: آدرس آخرین صفحه</li>
+                                    <li>prev: آدرس صفحه قبل</li>
+                                    <li>next: آدرس صفحه بعد</li>
+                                </ul>
+                            </li>
+                            <li>
+                                meta:
+                                <ul>
+                                    <li>current_page: آدرس همین صفحه</li>
+                                    <li>from: شماره اولین آیتمی که در این صفحه آمده است </li>
+                                    <li>last_page: تعداد کل صفحات</li>
+                                    <li>path: آدرس خالص بدون صفحه بندی</li>
+                                    <li>per_page: تعداد آیتم در هر صفحه</li>
+                                    <li>to: شماره آخرین آیتمی که در این صفحه آمده است</li>
+                                    <li>total: تعداد کل آیتم ها</li>
+                                </ul>
+                            </li>
+                        </ul>
 
-<h2 class="article-header" id="sheba">
-    <a href="#sheba">شبا</a> </h2>
-<h3 class="title" id="sheba-store"><a href="#sheba-store"> ۱. ثبت شماره شبا</a>
-</h3>
-<p>با اسفاده از این سوریس می‌توانید برای مشتری شماره شبا ثبت نمایید. </p>
+                        <h2 class="article-header" id="sheba">
+                            <a href="#sheba">شبا</a> </h2>
+                        <h3 class="title" id="sheba-store"><a href="#sheba-store"> ۱. ثبت شماره شبا</a>
+                        </h3>
+                        <p>با اسفاده از این سوریس می‌توانید برای مشتری شماره شبا ثبت نمایید. </p>
                         <pre>
 <span class="key">Method:</span> POST
 <span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/ibans
 </pre>
 
-<p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
-<p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل دسترسی می‌باشد.</p>
-<h3 class="sub-title">
-  پارامترهای مجاز
-</h3>
-<table class="table">
-  <thead>
-  <tr>
-      <th>name</th>
-      <th>Type</th>
-      <th>Status</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-      <td>iban</td>
-      <td>string</td>
-      <td>required</td>
-  </tr>
-  </tbody>
-</table>
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل دسترسی می‌باشد.</p>
+                        <h3 class="sub-title">
+                            پارامترهای مجاز
+                        </h3>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>iban</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            </tbody>
+                        </table>
 
 
-<ul>
-  <li>
-    توضیحات:
-    <ul>
-      <li>iban (اجباری): شماره شبا مشتری.</li>
-    </ul>
-  </li>
-</ul>
+                        <ul>
+                            <li>
+                                توضیحات:
+                                <ul>
+                                    <li>iban (اجباری): شماره شبا مشتری.</li>
+                                </ul>
+                            </li>
+                        </ul>
                         <h3 class="sub-title">
                             نمونه پاسخ دریافتی موفق:
                         </h3>
@@ -1265,21 +1245,21 @@
 }
 </pre>
 
-  <h3 class="title" id="sheba-index"><a href="#sheba-index"> ۲. لیست شماره شباها</a>
-  </h3>
-  
-  <p>در این بخش لیست شماره شباهای ثبت شده برای هر مشتری را مشاهده خواهید کرد.</p>
-  
-  <pre>
+                        <h3 class="title" id="sheba-index"><a href="#sheba-index"> ۲. لیست شماره شباها</a>
+                        </h3>
+
+                        <p>در این بخش لیست شماره شباهای ثبت شده برای هر مشتری را مشاهده خواهید کرد.</p>
+
+                        <pre>
   <span class="key">Method:</span> GET
   <span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/ibans
   </pre>
-  
-  <h3 class="sub-title">
-    نمونه پاسخ دریافتی موفق:
-  </h3>
-  
-  <pre>
+
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
   <span class="key">HTTP/1.1</span> 200
   {
     "current_page": 1,
@@ -1313,21 +1293,21 @@
   </pre>
 
 
-<h3 class="title" id="sheba-delete">
-    <a href="#sheba-delete"> ۳. حذف شماره شبا</a>
-   </h3>
-   <p>در صورت نیاز می‌توانید از این بخش شماره شبا مربوط به مشتری را حدف نمایید.</p>
-   <pre>
+                        <h3 class="title" id="sheba-delete">
+                            <a href="#sheba-delete"> ۳. حذف شماره شبا</a>
+                        </h3>
+                        <p>در صورت نیاز می‌توانید از این بخش شماره شبا مربوط به مشتری را حدف نمایید.</p>
+                        <pre>
    <span class="key">METHOD:</span> DELETE
    <span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/ibans/{iban_id}
    </pre>
-   <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
-   <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل دسترسی می‌باشد.</p>
-   
-   <h3 class="sub-title">
-     نمونه پاسخ دریافتی موفق:
-   </h3>
-   <pre>
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل دسترسی می‌باشد.</p>
+
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+                        <pre>
    <span class="key">HTTP/1.1</span> 200
 {
     "status": 1,
@@ -1337,14 +1317,14 @@
 }
    </pre>
 
-<br>
+                        <br>
 
                     </div>
-                    </article>
-              </div>
-          </div>
-      </div>
-  <footer id="footer">
+            </article>
+        </div>
+    </div>
+</div>
+<footer id="footer">
     <div class="container">
         <div class="row" style="text-align: center">
             <div class="col-sm-8 col-xs-6 no-padding-bottom">
@@ -1398,31 +1378,31 @@
     }
 
     fetch('https://health.vandar.io/subscription')
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(jsonResponse) {
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(jsonResponse) {
 
-        var banksHealthResponse = jsonResponse;
+            var banksHealthResponse = jsonResponse;
 
-        var table = document.getElementById("banks_table");
-        var banks = banksHealthResponse["result"]["banks"];
+            var table = document.getElementById("banks_table");
+            var banks = banksHealthResponse["result"]["banks"];
 
-        for (var i = 0; i < banks.length ; i++)  {
-            if (banks[i]["is_healthy_on_direct_debit"]) {
-                var row = table.insertRow(-1);
-                var bankName = row.insertCell(0);
-                var bankCode = row.insertCell(1);
-                var bankIsHealthyDirectDebit = row.insertCell(2);
+            for (var i = 0; i < banks.length ; i++)  {
+                if (banks[i]["is_healthy_on_direct_debit"]) {
+                    var row = table.insertRow(-1);
+                    var bankName = row.insertCell(0);
+                    var bankCode = row.insertCell(1);
+                    var bankIsHealthyDirectDebit = row.insertCell(2);
 
-                bankName.innerHTML = banks[i]["name"];
-                bankCode.innerHTML = banks[i]["code"];
-                bankIsHealthyDirectDebit.innerHTML = "سالم";
-                bankIsHealthyDirectDebit.style.color = "green";
+                    bankName.innerHTML = banks[i]["name"];
+                    bankCode.innerHTML = banks[i]["code"];
+                    bankIsHealthyDirectDebit.innerHTML = "سالم";
+                    bankIsHealthyDirectDebit.style.color = "green";
+                }
             }
-        }
 
-      });
+        });
 
 
 </script></body>
