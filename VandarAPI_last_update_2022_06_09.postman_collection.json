@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "6ae82b03-f67a-4ade-af82-5aeafce42050",
+		"_postman_id": "702a62fa-7970-414a-b8a2-112f2cd73811",
 		"name": "VandarAPI_last_update_2022_03_28",
 		"description": "The Vandar API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -1108,7 +1108,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"bank_code\": \"062\",\n    \"mobile\": \"09123456789\",\n    \"callback_url\": \"https://paperpiano.ir/subscription/callback\",\n    \"count\": 7,\n    \"limit\": 10000,\n    \"name\": \"محمد مقصودی\",\n    \"email\": \"yourcustomer@gmail.com\"\n}",
+									"raw": "{\n    \"bank_code\": \"062\",\n    \"mobile\": \"09123456789\",\n    \"callback_url\": \"https://paperpiano.ir/subscription/callback\",\n    \"count\": 7,\n    \"limit\": 10000,\n    \"expiration_date\": \"2023-06-09\",\n    \"name\": \"محمد مقصودی\",\n    \"email\": \"yourcustomer@gmail.com\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1841,7 +1841,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"business_id\": \"700\",\n\t\"first_name\": \"مجید\",\n\t\"last_name\": \"علائی‌نیا\",\n\t\"legal_name\": \"\",\n\t\"agent_name\": \"\",\n\t\"type\": \"INDIVIDUAL\",\n\t\"mobile\": \"09353917307\",\n\t\"agent_mobile\": \"09381201127\",\n\t\"telephone\": \"02177556149\",\n\t\"individual_national_code\": \"2993968416\",\n\t\"province_id\": \"13\",\n\t\"city_id\": \"539\",\n\t\"address\": \"تهران - نظام‌آباد - خیابان شهید مدنی - \",\n\t\"postal_code\": \"\"\n}"
+									"raw": "{\n\t\"first_name\": \"محمد\",\n\t\"last_name\": \"مقصودی\",\n\t\"legal_name\": \"\",\n\t\"agent_name\": \"\",\n\t\"type\": \"INDIVIDUAL\",\n\t\"mobile\": \"09121234567\",\n\t\"agent_mobile\": \"\",\n\t\"telephone\": \"02177556149\",\n\t\"individual_national_code\": \"1234567985\",\n\t\"province_id\": \"13\",\n\t\"city_id\": \"539\",\n\t\"address\": \"تهران - نظام‌آباد - خیابان شهید مدنی - \",\n\t\"postal_code\": \"\"\n}"
 								},
 								"url": {
 									"raw": "https://api.vandar.io/v2/business/{business}/customers",
@@ -1885,7 +1885,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"business_id\": \"700\",\n\t\"first_name\": \"مجید\",\n\t\"last_name\": \"علائی‌نیا\",\n\t\"legal_name\": \"\",\n\t\"agent_name\": \"\",\n\t\"type\": \"INDIVIDUAL\",\n\t\"mobile\": \"09353917307\",\n\t\"agent_mobile\": \"09381201127\",\n\t\"telephone\": \"02177556149\",\n\t\"individual_national_code\": \"2993968416\",\n\t\"province_id\": \"13\",\n\t\"city_id\": \"539\",\n\t\"address\": \"تهران - نظام‌آباد - خیابان شهید مدنی - \",\n\t\"postal_code\": \"\"\n}"
+									"raw": "{\n\t\"first_name\": \"محمد\",\n\t\"last_name\": \"مقصودی\",\n\t\"legal_name\": \"\",\n\t\"agent_name\": \"\",\n\t\"type\": \"INDIVIDUAL\",\n\t\"mobile\": \"09121234567\",\n\t\"agent_mobile\": \"\",\n\t\"telephone\": \"02177556149\",\n\t\"individual_national_code\": \"1234567985\",\n\t\"province_id\": \"13\",\n\t\"city_id\": \"539\",\n\t\"address\": \"تهران - نظام‌آباد - خیابان شهید مدنی - \",\n\t\"postal_code\": \"\"\n}"
 								},
 								"url": {
 									"raw": "https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}",
