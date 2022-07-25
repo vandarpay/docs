@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "702a62fa-7970-414a-b8a2-112f2cd73811",
-		"name": "VandarAPI_last_update_2022_06_09",
+		"_postman_id": "5eb8ca96-4934-4e5c-98e2-9e2198cf1de0",
+		"name": "VandarAPI_last_update_2022_07_25",
 		"description": "The Vandar API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -2010,6 +2010,140 @@
 							}
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "PayByVandar",
+			"item": [
+				{
+					"name": "Send",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{api_key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"checkout_number\": \"\",\n    \"mobile\": \"\", \n    \"amount\": \"10000\",\n    \"callback_url\": \"https://google.com\",\n    \"description\": \"\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.vandar.io/pbv/v1/send",
+							"protocol": "https",
+							"host": [
+								"api",
+								"vandar",
+								"io"
+							],
+							"path": [
+								"pbv",
+								"v1",
+								"send"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{api_key}}",
+								"description": "required",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"checkout_id\":\"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.vandar.io/pbv/v1/verify",
+							"protocol": "https",
+							"host": [
+								"api",
+								"vandar",
+								"io"
+							],
+							"path": [
+								"pbv",
+								"v1",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inquiry",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{api_key}}",
+								"description": "required",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.vandar.io/pbv/v1/checkouts/{{checkout_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"vandar",
+								"io"
+							],
+							"path": [
+								"pbv",
+								"v1",
+								"checkouts",
+								"{{checkout_id}}"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
