@@ -322,34 +322,42 @@
                             </ul>
 
 
-                            <h3 class="sub-title">نمونه اطلاعات ارسال شده در notify_url: این اطلاعات به صورت form_params ارسال می شوند
-                            </h3>
+                            <br>
+                            <div class="info">
+                                <strong>نکته! </strong>
+                                <br>
+                                در صورتی که مقدار پارامتر notify_url تکمیل شود، پس از انجام تراکنش تسویه، وبهوکی با فرمت زیر به آدرس ثبت شده ارسال خواهد شد
+                            </div>
+
                             <pre>
-<span class="key">HTTP/1.1</span> 401
+<span class="key">HTTP/1.1</span> 200
 {
-    "<span class="key">id</span>": =c689a190-0c9c-11ed-9da7-0340eb56fdb2,
-    "<span class="key">transaction_id</span>": 165873811814
-    "<span class="key">amount</span>": 50000
-    "<span class="key">payment_number</span>": 12346
-    "<span class="key">status</span>": DONE
-    "<span class="key">settlement_date</span>": 2022-07-26
-    "<span class="key">settlement_date_jalali</span>": 1401/05/04
-    "<span class="key">ref_code</span>": 010504090903KZ074763
+    "id": "865e9d07-2c96-41ef-8f61-30de27fb9954"
+    "iban_id": "72a8aab1-04c9-417e-9971-2f7bfe121b53"
+    "transaction_id": "164258101221"
+    "amount": "2500000"
+    "payment_number": "123456"
+    "status": "DONE"
+    "settlement_date": "2022-01-19"
+    "settlement_date_jalali": "1400/10/29"
+    "revised_transaction_id": ""
+    "ref_code": "140010290622047785"
 }</pre>
 
-                            <h3 class="sub-title">
-                                توضیحات
-                            </h3>
                             <ul>
-                                <li>id: uuid یکتای بازگشت وجه</li>
-                                <li>transaction_id: شناسه تراکنش وندار بازگشت وجه</li>
-                                <li>amount: مبلع به ریال</li>
-                                <li>payment_number: شناسه پرداخت که در مزان ثبت ارسال کرده اید</li>
-                                <li>status: وضعیت بازگشت وجه که یکی از وضعیت های DONE یا FAILED را دارد.</li>
-                                <li>settlement_date: تاریخ ارسال بازگشت وجه میلادی</li>
-                                <li>settlement_date_jalali: تاریخ ارسال بازگشت وجه شمسی</li>
-                                <li>ref_code: کد رهگیری</li>
-                                  </ul>
+                                <li>id: شناسه یکتای تسویه</li>
+                                <li>iban_id: شناسه یکتای شماره شبا</li>
+                                <li>transaction_id:شناسه یکتای تراکنش در وندار</li>
+                                <li>amount: مبلغ تسویه به ریال</li>
+                                <li>payment_number: شناسه پرداخت</li>
+                                <li>status: وضعیت تسویه</li>
+                                <li>settlement_date: تاریخ انجام تسویه (میلادی)</li>
+                                <li>settlement_date_jalali:تاریخ انجام تسویه (شمسی)</li>
+                                <li>revised_transaction_id: شناسه یکتای تراکنش اصلاحی برای تسویه های کنسل شده </li>
+                                <li>ref_code: (یا همان کد RRN) شناسه یکتای مرجع تسویه انجام شده برای تسویه های موفق</li>
+                            </ul>
+
+                            <br><br>
                         </div>
                         
 
