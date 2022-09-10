@@ -121,6 +121,7 @@
                         </button>
                         <div class="dropdown-container">
                             <a href="https://vandarpay.github.io/docs/subscription/#directdebit">مقدمه</a><br>
+                            <a href="https://vandarpay.github.io/docs/subscription/#banks">دریافت لیست بانک‌ها</a><br>
                             <a href="https://vandarpay.github.io/docs/subscription/#get-token">سرویس دریافت توکن</a><br>
                             <a href="https://vandarpay.github.io/docs/subscription/#withdrawal">سرویس برداشت وجه</a><br>
                             <a href="https://vandarpay.github.io/docs/subscription/#error">لیست خطاهای دریافتی</a><br>
@@ -215,6 +216,180 @@
                         <pre>
 <span class="key">Accept:</span> application/json
 <span class="key">Authorization</span> Bearer {Token}
+                        </pre>
+                        <br>
+                        <h2 class="article-header" id="banks">
+                            <a href="#banks">دریافت لیست بانک‌ها</a> </h2>
+                        <p>لیست بانک‌هایی که در حال حاضر امکان سرویس دایرکت‌دبیت را پشتیبانی می‌کنند از این بخش قابل دسترس می‌باشد.
+                            می‌توانید بر اساس نیازمندی کسب‌وکار خود کلیه بانک‌های فعال را به کاربران ارائه دهید و یا در صورت نیاز یک لیست شخصی‌سازی شده برای کسب‌وکار خود ایجاد کنید و لیست تعیین شده‌ای از از بانک‌ها را در اختیار کاربران خود قرار دهید.
+                        </p>
+                        <h3 class="title" id="custome-banks"><a href="#custome-banks">
+                            ۱. لیست شخصی‌سازی شده بانک‌ها
+                        </a>
+                        </h3>
+                        <p>
+                            این امکان برای شما وجود دارد که از میان همه بانک‌هایی که در حال حاضر قابلیت ارائه سرویس دایرکت‌دبیت دارند، بر اساس نیاز خود، بانکی را فعال یا غیرفعال کنید.
+                            بصورت پیش‌فرض کلیه بانک‌ها برای کسب‌وکار شما فعال می‌باشند و با فراخوانی سرویس لیست بانک‌ها می‌توانید اطلاعات بانک و همچنین وضعیت در دسترس بودن بانک ها را دریافت نمایید.
+                            در صورتی که بخواهید بانکی را از لیست بانک‌های دریافتی حذف نمایید می‌توانید از طریق داشبورد وندار، بخش پرداخت خودکار اقدام نمایید.
+                            <img src="../images/active-direct-debit-banks.png" alt="لیست بانک‌ها">
+                        </p>
+                        </br>
+                        <p>
+                            جهت فعال یا غیرفعال‌سازی بانک‌ها می‌توانید از بخش مدیریت اقدام نمایید.
+                        </p>
+                        <img src="../images/manage-direct-debit-banks.png" alt="مدیریت لیست بانک‌ها">
+
+                        <p>
+                            جهت فراخوانی سرویسی که لیست بانک‌های فعال کسب‌وکار شما را نمایش می‌دهد، آدرس زیر را فراخوانی کنید.
+                        </p>
+                        <pre>
+<span class="key">Method:</span>  GET
+<span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/subscription/banks/actives
+                        </pre>
+                        </br>
+
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+    "status": 1,
+    "message": "وضعیت بانک‌ها در حال حاضر به این صورت است.",
+    "result": {
+        "banks": [
+            {
+                "code": "012",
+                "name": "بانک ملت",
+                "has_direct_debit_ability": true,
+                "is_healthy_on_direct_debit": true,
+                "logo": "https://vandar.io/assets/img/banks/12.svg"
+            },
+            {
+                "code": "017",
+                "name": "بانک ملی ایران",
+                "has_direct_debit_ability": true,
+                "is_healthy_on_direct_debit": true,
+                "logo": "https://vandar.io/assets/img/banks/17.svg"
+            },
+            {
+                "code": "055",
+                "name": "بانک اقتصاد نوین",
+                "has_direct_debit_ability": true,
+                "is_healthy_on_direct_debit": true,
+                "logo": "https://vandar.io/assets/img/banks/55.svg"
+            },
+            {
+                "code": "056",
+                "name": "بانک سامان",
+                "has_direct_debit_ability": true,
+                "is_healthy_on_direct_debit": true,
+                "logo": "https://vandar.io/assets/img/banks/56.svg"
+            },
+            {
+                "code": "062",
+                "name": "بانک آینده",
+                "has_direct_debit_ability": true,
+                "is_healthy_on_direct_debit": true,
+                "logo": "https://vandar.io/assets/img/banks/62.svg"
+            },
+            {
+                "code": "066",
+                "name": "بانک دی",
+                "has_direct_debit_ability": true,
+                "is_healthy_on_direct_debit": true,
+                "logo": "https://vandar.io/assets/img/banks/66.svg"
+            },
+            {
+                "code": "103",
+                "name": "حساب دیجیتال پاسارگاد",
+                "has_direct_debit_ability": true,
+                "is_healthy_on_direct_debit": true,
+                "logo": "https://vandar.io/assets/img/banks/103.svg"
+            }
+        ]
+    }
+}
+                        </pre>
+
+                        </p>
+                            <h3 class="title" id="all-banks"><a href="#all-banks">
+                                ۲. لیست عمومی بانک‌ها
+                            </a>
+                                <p>
+                                    جهت اطلاع از وضعیت کلیه بانک‌ها می‌توانید از آدرس زیر استفاده نمایید
+                                </p>
+                        </h3>
+                        <pre>
+<span class="key">Method:</span>  GET
+<span class="key">Address:</span> https://health.vandar.io/subscription
+                        </pre>
+                        </br>
+
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+    "status": 1,
+    "message": "وضعیت بانک‌ها در حال حاضر به این صورت است.",
+    "result": {
+        "banks": [
+            {
+                "code": "012",
+                "name": "بانک ملت",
+                "has_direct_debit_ability": true,
+                "is_healthy_on_direct_debit": true,
+                "logo": "https://vandar.io/assets/img/banks/12.svg"
+            },
+            {
+                "code": "017",
+                "name": "بانک ملی ایران",
+                "has_direct_debit_ability": true,
+                "is_healthy_on_direct_debit": true,
+                "logo": "https://vandar.io/assets/img/banks/17.svg"
+            },
+            {
+                "code": "055",
+                "name": "بانک اقتصاد نوین",
+                "has_direct_debit_ability": true,
+                "is_healthy_on_direct_debit": true,
+                "logo": "https://vandar.io/assets/img/banks/55.svg"
+            },
+            {
+                "code": "056",
+                "name": "بانک سامان",
+                "has_direct_debit_ability": true,
+                "is_healthy_on_direct_debit": true,
+                "logo": "https://vandar.io/assets/img/banks/56.svg"
+            },
+            {
+                "code": "062",
+                "name": "بانک آینده",
+                "has_direct_debit_ability": true,
+                "is_healthy_on_direct_debit": true,
+                "logo": "https://vandar.io/assets/img/banks/62.svg"
+            },
+            {
+                "code": "066",
+                "name": "بانک دی",
+                "has_direct_debit_ability": true,
+                "is_healthy_on_direct_debit": true,
+                "logo": "https://vandar.io/assets/img/banks/66.svg"
+            },
+            {
+                "code": "103",
+                "name": "حساب دیجیتال پاسارگاد",
+                "has_direct_debit_ability": true,
+                "is_healthy_on_direct_debit": true,
+                "logo": "https://vandar.io/assets/img/banks/103.svg"
+            }
+        ]
+    }
+}
                         </pre>
                         <br>
                         <h2 class="article-header" id="get-token">
