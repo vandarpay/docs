@@ -190,7 +190,7 @@
                 <div class="article" id="ipg">
 
                     <div>
-                        آخرین تغییرات: ۱۴۰۱/۰۷/۰۴
+                        آخرین تغییرات: ۱۴۰۱/۰۷/۱۹
                     </div>
 
                     <h2 class="article-header">مقدمه</h2>
@@ -245,11 +245,9 @@
 <span class="key">Method:</span> POST
 <span class="key">Address:</span> https://api.vandar.io/miando/api/v1/customers
                         </pre>
-
                         <h3 class="sub-title">
                             پارامترهای مجاز
                         </h3>
-
                         <table class="table">
                             <thead>
                             <tr>
@@ -286,11 +284,9 @@
                             </tr>
                             </tbody>
                         </table>
-
                         <h3 class="sub-title">
                             نمونه درخواست با فرمت صحیح:
                         </h3>
-
                         <pre>
 {
     "first_name" : "رضا",
@@ -300,43 +296,29 @@
     "birth_date": "13700502"
 }
                         </pre>
-
                         <h3 class="sub-title">
                             نمونه پاسخ دریافتی موفق:
                         </h3>
-
                         <pre>
 <span class="key">HTTP/1.1</span> 201
 {
-    "data": [],
     "message": "اطلاعات شما با موفقیت ثبت شد و در دست بررسی است."
 }
                         </pre>
-
                         <h3 class="sub-title">
                             نمونه پاسخ دریافتی ناموفق:
                         </h3>
                         <pre>
 <span class="key">HTTP/1.1</span> 422
 {
-    "code": 422,
-    "message": "مقادیر ورودی صحیح نیستند",
+    "message": "مقادیر ورودی صحیح نیستند.",
+    "code": "validation_error",
     "errors": {
-        "first_name": [
-            "فیلد نام الزامی است"
-        ],
-        "last_name": [
-            "فیلد نام خانوادگی الزامی است"
-        ],
-        "national_code": [
-            "فیلد کدملی الزامی است"
-        ],
-        "mobile": [
-            "فیلد موبایل الزامی است"
-        ],
-        "birth_date": [
-            "فیلد تاریخ تولد الزامی است"
-        ]
+        "first_name": "فیلد نام الزامی است",
+        "last_name": "فیلد نام خانوادگی الزامی است",
+        "national_code": "فیلد کدملی الزامی است",
+        "mobile": "فیلد موبایل الزامی است",
+        "birth_date": "فیلد تاریخ تولد الزامی است"
     }
 }
                         </pre>
@@ -352,14 +334,13 @@
 <span class="key">URL:</span> https://api.vandar.io/miando/api/v1/customers/{customer_uid}
                         </pre>
                         <p>پارامتر {customer_uid} شناسه مشتری می‌باشد.</p>
-
                         <h3 class="sub-title">
                             نمونه پاسخ دریافتی موفق:
                         </h3>
-
                         <pre>
 <span class="key">HTTP/1.1</span> 200
 {
+    "message": "نمایش موفق اطلاعات مشتری",
     "data": {
         "uid": 152790245,
         "first_name" : "رضا",
@@ -369,16 +350,14 @@
     }
 }
                         </pre>
-
-
                         <h3 class="sub-title">
                             نمونه پاسخ دریافتی ناموفق:
                         </h3>
                         <pre>
 <span class="key">HTTP/1.1</span> 400
 {
-    "code": 4002,
-    "message": "اطلاعات کاربر در سیستم موجود نیست."
+    "message": "اطلاعات کاربر در سیستم موجود نیست.",
+    "code": "user_not_found"
 }
                         </pre>
 
@@ -392,39 +371,65 @@
 <span class="key">METHOD:</span> GET
 <span class="key">URL:</span> https://api.vandar.io/miando/api/v1/customers
                         </pre>
-
                         <h3 class="sub-title">
                             نمونه پاسخ دریافتی موفق:
                         </h3>
-
                         <pre>
 <span class="key">HTTP/1.1</span> 200
 {
-    "data": {
-        "items": [
+    "data": [
+        {
+            "uid": 152777442,
+            "first_name" : "رضا",
+            "last_name": "رضایی",
+            "national_code": "1271234567",
+            "mobile": "09123456789",
+        },
+        {
+            "uid": 1633644556,
+            "first_name": "محمد",
+            "last_name": "محمدی",
+            "national_code": "1167723051",
+            "mobile": "09023456789"
+        }
+    ],
+    "links": {
+        "first": "http://escrow.vandar.local/api/v1/customers?page=1",
+        "last": "http://escrow.vandar.local/api/v1/customers?page=1",
+        "prev": null,
+        "next": null
+    },
+    "meta": {
+        "current_page": 1,
+        "from": 1,
+        "last_page": 1,
+        "links": [
             {
-                "uid": 152777442,
-                "first_name" : "رضا",
-                "last_name": "رضایی",
-                "national_code": "1271234567",
-                "mobile": "09123456789",
+                "url": null,
+                "label": "pagination.previous",
+                "active": false
             },
             {
-                "uid": 1633644556,
-                "first_name": "محمد",
-                "last_name": "محمدی",
-                "national_code": "1167723051",
-                "mobile": "09023456789"
+                "url": "http://escrow.vandar.local/api/v1/customers?page=1",
+                "label": "1",
+                "active": true
+            },
+            {
+                "url": null,
+                "label": "pagination.next",
+                "active": false
             }
         ],
-        "total": 2,
+        "path": "http://escrow.vandar.local/api/v1/customers",
         "per_page": 15,
-        "current_page": 1,
-        "next_page": null,
-        "prev_page": null
-    }
+        "to": 2,
+        "total": 2
+    },
+    "message": "نمایش موفق اطلاعات مشتریان"
 }
                         </pre>
+
+                        <br>
 
                         <h2 class="article-header" id="agreements">
                             <a href="#agreements">معاملات</a></h2>
@@ -442,11 +447,9 @@
 <span class="key">Method:</span> POST
 <span class="key">Address:</span> https://api.vandar.io/miando/api/v1/agreements
                         </pre>
-
                         <h3 class="sub-title">
                             پارامترهای مجاز
                         </h3>
-
                         <table class="table">
                             <thead>
                             <tr>
@@ -548,7 +551,6 @@
                             </tr>
                             </tbody>
                         </table>
-
                         <h3 class="sub-title">
                             توضیحات
                         </h3>
@@ -587,6 +589,14 @@
                             <li>
                                 items.*.category (اجباری):
                                 دسته‌بندی کالا.
+                                <br>
+                                <div class="info">
+                                    اسلاگ‌های مجاز جهت انتخاب دسته‌بندی:
+                                    <br>
+                                    general: عمومی
+                                    <br>
+                                    digital: دیجیتال
+                                </div>
                             </li>
                             <li>
                                 items.*.description (اختیاری):
@@ -602,7 +612,7 @@
                             </li>
                             <li>
                                 items.*.payer (اجباری):
-                                نقش پرداخت‌کننده هزینه مربوط به کالا.
+                                نقش پرداخت‌کننده هزینه مربوط به کالا (in:buyer,seller).
                             </li>
                             <li>
                                 items.*.quantity (اجباری):
@@ -613,11 +623,9 @@
                                 عکس‌های مربوط به کالا.
                             </li>
                         </ul>
-
                         <h3 class="sub-title">
                             نمونه درخواست با فرمت صحیح:
                         </h3>
-
                         <pre>
 {
   "trace_id": "89fa2150-c976-44ed-87d1-2037abf51821",
@@ -654,14 +662,13 @@
   ]
 }
                         </pre>
-
                         <h3 class="sub-title">
                             نمونه پاسخ دریافتی موفق:
                         </h3>
-
                         <pre>
 <span class="key">HTTP/1.1</span> 201
 {
+    "message": "معامله با موفقیت ایجاد شد",
     "data": {
         "tracking_code": "2075222800",
         "trace_id": "408ce627-d220-4658-9fca-0403ed46f1a7",
@@ -693,11 +700,9 @@
 <span class="key">URL:</span> https://api.vandar.io/miando/api/v1/agreements/{tracking_code}
                         </pre>
                         <p>پارامتر {tracking_code} کد رهگیری معامله می‌باشد.</p>
-
                         <h3 class="sub-title">
                             پارامترهای مجاز
                         </h3>
-
                         <table class="table">
                             <thead>
                             <tr>
@@ -719,7 +724,6 @@
                             </tr>
                             </tbody>
                         </table>
-
                         <h3 class="sub-title">
                             توضیحات
                         </h3>
@@ -731,43 +735,36 @@
                                 کدملی کاربر درخواست‌دهنده.
                             </li>
                         </ul>
-
                         <h3 class="sub-title">
                             نمونه درخواست با فرمت صحیح:
                         </h3>
-
                         <pre>
 {
   "action": "agree",
   "applicant_national_code": "1167723051"
 }
                         </pre>
-
                         <h3 class="sub-title">
                             نمونه پاسخ دریافتی موفق به ازای تایید پیش‌نویس:
                         </h3>
-
                         <pre>
 <span class="key">HTTP/1.1</span> 200
 {
+    "message": "درخواست ایجاد معامله تایید شد.",
     "data": {
         "web_view_link": "https://vandar.io/minado/payment/review/104148740"
     }
 }
                         </pre>
-
                         <h3 class="sub-title">
                             نمونه پاسخ دریافتی موفق به ازای رد پیش‌نویس:
                         </h3>
-
                         <pre>
 <span class="key">HTTP/1.1</span> 200
 {
-    "data": [],
-    "message": "پیش‌نویس رد شد."
+     "message": "درخواست ایجاد معامله رد شد."
 }
                         </pre>
-
                         <h3 class="sub-title">
                             نمونه پاسخ دریافتی ناموفق:
                         </h3>
@@ -777,24 +774,19 @@
     "code": 422,
     "message": "مقادیر ورودی صحیح نیستند",
     "errors": {
-        "action": [
-            "فیلد نوع درخواست الزامی است"
-        ],
-        "applicant_national_code": [
-            "فیلد کدملی تایید کننده الزامی است"
-        ]
+        "action": "فیلد نوع درخواست الزامی است",
+        "applicant_national_code": "فیلد کدملی تایید کننده الزامی است"
     }
 }
                         </pre>
-
                         <h3 class="sub-title">
                             نمونه پاسخ دریافتی ناموفق به ازای وضعیت نامعتبر قرارداد:
                         </h3>
                         <pre>
 <span class="key">HTTP/1.1</span> 400
 {
-    "code": 1003,
-    "message": "وضعیت قرارداد نامعتبر است!"
+    "message": "وضعیت قرارداد نامعتبر است!",
+    "code": "invalid_state_agreement"
 }
                         </pre>
 
@@ -809,14 +801,13 @@
 <span class="key">URL:</span> https://api.vandar.io/miando/api/v1/agreements/{tracking_code}
                         </pre>
                         <p>پارامتر {tracking_code} کد رهگیری معامله می‌باشد.</p>
-
                         <h3 class="sub-title">
                             نمونه پاسخ دریافتی موفق:
                         </h3>
-
                         <pre>
 <span class="key">HTTP/1.1</span> 200
 {
+    "message": "نمایش موفق اطلاعات معامله",
     "data": {
         "tracking_code": "2051291079",
         "trace_id": "ee6b9100-a0a4-478d-8535-9eecff8af4b6",
@@ -847,7 +838,6 @@
     }
 }
                         </pre>
-
                         <h3 class="title" id="agreements-index">
                             <a href="#agreements-index"> ۴. لیست معاملات</a>
                         </h3>
@@ -858,82 +848,271 @@
 <span class="key">METHOD:</span> GET
 <span class="key">URL:</span> https://api.vandar.io/miando/api/v1/agreements
                         </pre>
-
                         <h3 class="sub-title">
                             نمونه پاسخ دریافتی موفق:
                         </h3>
-
                         <pre>
 <span class="key">HTTP/1.1</span> 200
 {
-    "data": {
-        "items": [
+    "data": [
+        {
+            "tracking_code": "896770185",
+            "trace_id": "68112b4f-9a93-4f2b-93db-070331fe3b74",
+            "description": "iphone 11",
+            "parties": [
+                {
+                    "role": "buyer",
+                    "state": "accepted"
+                },
+                {
+                    "role": "seller",
+                    "state": "pending"
+                }
+            ],
+            "items": [
+                {
+                    "title": "phone 11",
+                    "description": "در حد نو",
+                    "quantity": 1,
+                    "link": "https://example.ir/v/gYoSNB1z",
+                    "category": "digital"
+                }
+            ],
+            "amount": 418000,
+            "state": "draft",
+            "created_at": "2022-09-24T07:54:18.000000Z"
+        },
+        {
+            "tracking_code": "1678531126",
+            "trace_id": "d86452f4-9dcc-461d-aa0d-0542e0dbefda",
+            "description": "موبایل y8s",
+            "parties": [
+                {
+                    "role": "buyer",
+                    "state": "accepted"
+                },
+                {
+                    "role": "seller",
+                    "state": "accepted"
+                }
+            ],
+            "items": [
+                {
+                    "title": "موبایل y8s",
+                    "description": "در حد نو",
+                    "quantity": 1,
+                    "link": "https://example.ir/v/gYoSNB1z",
+                    "category": "digital"
+                }
+            ],
+            "amount": 418000,
+            "state": "contract",
+            "created_at": "2022-09-24T11:18:13.000000Z"
+        }
+    ],
+    "links": {
+        "first": "http://escrow.vandar.local/api/v1/agreements?page=1",
+        "last": "http://escrow.vandar.local/api/v1/agreements?page=1",
+        "prev": null,
+        "next": null
+    },
+    "meta": {
+        "current_page": 1,
+        "from": 1,
+        "last_page": 1,
+        "links": [
             {
-                "tracking_code": "896770185",
-                "trace_id": "68112b4f-9a93-4f2b-93db-070331fe3b74",
-                "description": "iphone 11",
-                "parties": [
-                    {
-                        "role": "buyer",
-                        "state": "accepted"
-                    },
-                    {
-                        "role": "seller",
-                        "state": "pending"
-                    }
-                ],
-                "items": [
-                    {
-                        "title": "phone 11",
-                        "description": "در حد نو",
-                        "quantity": 1,
-                        "link": "https://example.ir/v/gYoSNB1z",
-                        "category": "digital"
-                    }
-                ],
-                "amount": 418000,
-                "state": "draft",
-                "created_at": "2022-09-24T07:54:18.000000Z"
+                "url": null,
+                "label": "pagination.previous",
+                "active": false
             },
             {
-                "tracking_code": "1678531126",
-                "trace_id": "d86452f4-9dcc-461d-aa0d-0542e0dbefda",
-                "description": "موبایل y8s",
-                "parties": [
-                    {
-                        "role": "buyer",
-                        "state": "accepted"
-                    },
-                    {
-                        "role": "seller",
-                        "state": "accepted"
-                    }
-                ],
-                "items": [
-                    {
-                        "title": "موبایل y8s",
-                        "description": "در حد نو",
-                        "quantity": 1,
-                        "link": "https://example.ir/v/gYoSNB1z",
-                        "category": "digital"
-                    }
-                ],
-                "amount": 418000,
-                "state": "contract",
-                "created_at": "2022-09-24T11:18:13.000000Z"
+                "url": "http://escrow.vandar.local/api/v1/agreements?page=1",
+                "label": "1",
+                "active": true
+            },
+            {
+                "url": null,
+                "label": "pagination.next",
+                "active": false
             }
         ],
-        "total": 2,
+        "path": "http://escrow.vandar.local/api/v1/agreements",
         "per_page": 15,
-        "current_page": 1,
-        "next_page": null,
-        "prev_page": null
+        "to": 2,
+        "total": 2
+    },
+    "message": "نمایش موفق اطلاعات معاملات"
+}
+                        </pre>
+
+                        <br>
+
+                        <h2 class="article-header" id="tickets">
+                            <a href="#tickets">تیکت‌ها</a></h2>
+                        <p>
+                            اگر در روند معامله مشکلی پیش آمد می‌توانید با ثبت تیکت مشکل خود را بیان کنید.
+                        </p>
+
+                        <h3 class="title" id="tickets-store"><a href="#tickets-store">
+                            ۱. ایجاد تیکت:
+                        </a>
+
+                        </h3>
+                        <p>در این بخش می‌توانید تیکت ایجاد کنید.</p>
+                        <pre>
+<span class="key">Method:</span> POST
+<span class="key">Address:</span> https://api.vandar.io/miando/api/v1/tickets
+                        </pre>
+                        <h3 class="sub-title">
+                            پارامترهای مجاز
+                        </h3>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>agreement_tracking_code</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
+                                <td>reporter</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
+                                <td>ticket_type_slug</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
+                                <td>redirect_url</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
+                                <td>callback</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
+                                <td>description</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
+                                <td>attachments</td>
+                                <td>array</td>
+                                <td>optional</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="sub-title">
+                            توضیحات
+                        </h3>
+                        <ul>
+                            <li>agreement_tracking_code (اجباری):
+                                کد رهگیری معامله.
+                            </li>
+                            <li>reporter (اجباری):
+                                کدملی شخص.
+                            </li>
+                            <li>ticket_type_slug (اجباری):
+                                نوع تیکت.
+                                <br>
+                                <div class="info">
+                                    اسلاگ‌های مجاز جهت انتخاب نوع تیکت:
+                                    <br>
+                                    <ul>
+                                        <li>
+                                            dont_access_to_seller: به فروشنده دسترسی ندارم
+                                            <br>
+                                            نقش ثبت کننده تیکت: buyer
+                                        </li>
+                                        <li>
+                                            dispute_with_seller: با فروشنده اختلاف دارم
+                                            <br>
+                                            نقش ثبت کننده تیکت: buyer
+                                        </li>
+                                        <li>
+                                            stop_buying: از خرید منصرف شدم
+                                            <br>
+                                            نقش ثبت کننده تیکت: buyer
+                                        </li>
+                                        <li>
+                                            dont_access_to_buyer: به خریدار دسترسی ندارم
+                                            <br>
+                                            نقش ثبت کننده تیکت: seller
+                                        </li>
+                                        <li>
+                                            dispute_with_buyer: با خریدار اختلاف دارم
+                                            <br>
+                                            نقش ثبت کننده تیکت: seller
+                                        </li>
+                                        <li>
+                                            stop_selling: از فروش منصرف شدم
+                                            <br>
+                                            نقش ثبت کننده تیکت: seller
+                                        </li>
+                                        <li>
+                                            commodity_delivered_buyer_not_end_transaction: کالا را تحویل داده‌ام ولی خریدار پایان معامله را اعلام نمی‌کند
+                                            <br>
+                                            نقش ثبت کننده تیکت: seller
+                                        </li>
+                                        <li>
+                                            other_cases: سایر موارد
+                                            <br>
+                                            نقش ثبت کننده تیکت: seller,buyer
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>redirect_url (اجباری):
+                                لینک بازگشت به کسب و کار پس از ثبت مشکل.
+                            </li>
+                            <li>
+                                description (اجباری):
+                                توضیحات.
+                            </li>
+                        </ul>
+                        <h3 class="sub-title">
+                            نمونه درخواست با فرمت صحیح:
+                        </h3>
+                        <pre>
+{
+  "agreement_tracking_code": "1005544572",
+  "ticket_type_slug": "dont_access_to_seller",
+  "description": "توضیحات مربوط به شکایت",
+  "reporter": "1167723051",
+  "redirect_url": "http://redirect.url"
+}
+                        </pre>
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+                        <pre>
+<span class="key">HTTP/1.1</span> 201
+{
+    "message": "تیکت با موفقیت ایجاد شد",
+    "data": {
+        "ticket_uid": 888143355,
+        "button": {
+            "type": "redirect_url",
+            "link": "http://redirect.url",
+            "text": "بازگشت"
+        }
     }
 }
                         </pre>
-                        <br>
 
                     </div>
+                </div>
             </article>
         </div>
     </div>
