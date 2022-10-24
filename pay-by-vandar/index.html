@@ -103,6 +103,7 @@
                             <a href="https://vandarpay.github.io/docs/settlement/#request-settlement">ثبت درخواست تسویه</a><br>
                             <a href="https://vandarpay.github.io/docs/settlement/#settlement-details">نمایش جزییات یک تسویه</a><br>
                             <a href="https://vandarpay.github.io/docs/settlement/#cancel">لغو یک تسویه</a><br>
+                            <a href="https://vandarpay.github.io/docs/settlement/#health">لیست بانک های تسویه</a><br>
                             <!--                        </div>-->
                         </div>
                     </li>
@@ -301,6 +302,11 @@
                                 <td>optional</td>
                             </tr>
                             <tr>
+                                <td>national_code</td>
+                                <td>String</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
                                 <td>checkout_number</td>
                                 <td>String</td>
                                 <td>optional</td>
@@ -319,6 +325,7 @@
                             <li>amount (اجباری): مبلغ صورتحساب به صورت ریالی و بزرگتر یا مساوی 10000</li>
                             <li>callback_url (اجباری): باید با دامنه ثبت شده در وندار مطابقت داشته باشد</li>
                             <li>mobile (اختیاری): شماره موبایل کاربر سرویس شما</li>
+                            <li>national_code (اختیاری): کدملی کاربر سرویس شما</li>
                             <li>checkout_number (اختیاری): شماره صورتحساب سرویس شما که رشته‌ای از اعداد به طول حداقل ۱ و حداکثر ۳۲ کاراکتر می‌تواند باشد</li>
                             <li>description (اختیاری): توضیحات (حداکثر 255 کاراکتر)</li>
                         </ul>
@@ -331,6 +338,7 @@
     "<span class="key">amount</span>": 10000,
     "<span class="key">callback_url</span>": "https://example.com/callback",
     "<span class="key">mobile</span>": "09123456789",
+    "<span class="key">national_code</span>": "0123456789",
     "<span class="key">checkout_number</span>": "12345",
     "<span class="key">description</span>": "توضیحات دلخواه",
 }

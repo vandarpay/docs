@@ -99,7 +99,7 @@
                             <a href="https://vandarpay.github.io/docs/settlement/#request-settlement">ثبت درخواست تسویه</a><br>
                             <a href="https://vandarpay.github.io/docs/settlement/#settlement-details">نمایش جزییات یک تسویه</a><br>
                             <a href="https://vandarpay.github.io/docs/settlement/#cancel">لغو یک تسویه</a><br>
-                            <!--                        </div>-->
+                            <a href="https://vandarpay.github.io/docs/settlement/#health">لیست بانک های تسویه</a><br>
                         </div>
                     </li>
                     <li>
@@ -199,7 +199,7 @@
                 <div class="article" id="ipg">
 
                     <div>
-                        آخرین تغییرات: ۱۳۹۹/۱۱/۱۰
+                        آخرین تغییرات: ١۴۰١/۰۷/۲۵
                     </div>
 
                     <h2 class="article-header" id="settlement">
@@ -453,11 +453,16 @@
                               <td>string</td>
                               <td>optional</td>
                           </tr>
-<!--                          <tr>-->
-<!--                            <td>is_instant</td>-->
-<!--                            <td>boolean</td>-->
-<!--                            <td>optional</td>-->
-<!--                          </tr>-->
+                          <tr>
+                              <td>is_instant</td>
+                              <td>boolean</td>
+                              <td>optional</td>
+                          </tr>
+                          <tr>
+                              <td>type</td>
+                              <td>string</td>
+                              <td>optional</td>
+                          </tr>
                           </tbody>
                       </table>
 
@@ -472,12 +477,20 @@
                           <li>payment_number (اختیاری): شناسه واریز شماره ای اختیاری است.</li>
                           <li>notify_url (اختیاری): بعد از مشخص شدن وضعیت تسویه این آدرس صدا زده می‌شود.</li>
                           <li>description (اختیاری): ارسال توضیحات با محدودیت حداکثر256 کاراکتر.</li>
-<!--                          <li>is_instant (اختیاری): اگر می‌خواهید تسویه در لحظه انجام شود مقدار true و در غیر این صورت مقدار false را ارسال کنید.</li>-->
+                          <li>is_instant (اختیاری): اگر می‌خواهید درخواست ثبت تسویه در لحظه به بانک ارسال شود، مقدار true و در غیر این صورت مقدار false را ارسال کنید.</li>
+                          <div class="info">
+                              <strong>نکته!</strong>  تسویه های ثبت شده در وندار، با ارسال به بانک در بازه های 30 دقیقه ای، امکان لغو کردن تسویه را به کاربران می دهند. چنانچه شما تصمیم دارید تا درخواست ثبت تسویه، سریع تر (به صورت لحظه ای) به بانک ارسال شود، میتوانید برای پارامتر is_instant، مقدار true را ارسال کنید.
+                          </div>
+                          <li>type (اختیاری): اگر میخواهید تسویه خود به صورت حساب به حساب انجام شود، A2A و در غیراینصورت مقدار ACH را میتوانید ارسال کنید </li>
+                          <div class="info">
+                              <strong>نکته!</strong> تمامی تسویه ها در وندار به طور پیشفرض به صورت ACH و در زمان های واریز پایا انجام می شود.
+                              <br> چنانچه می خواهید تسویه شما بدون درنظرگرفته شدن زمان های واریزی پایا و به صورت حساب به حساب انجام شود، میتوانید با: <br>
+                              1. <a href="https://dash.vandar.io"><u>فعال کردن ابزار حساب به حساب در داشبورد وندار</u></a> و<br>
+                              2. ارسال مقدار A2A برای پارامتر type <br>
+                              از این امکان استفاده کنید.<br>
+                              بدیهی است باوجود فعال داشتن ابزار حساب به حساب، در صورت عدم ارسال A2A برای این پارامتر، مقدار پیشفرض(ACH) برای آن در نظر گرفته شده و تسویه به صورت پایا انجام خواهد شد.
+                          </div>
                       </ul>
-
-<!--                      <div class="info">-->
-<!--                        <strong>نکته!</strong> دو پارامتر notify_url و is_instant با هماهنگی فعال خواهند شد.-->
-<!--                      </div>-->
 
                       <h3 class="sub-title">
                         نمونه json 
@@ -488,10 +501,10 @@
 "<span class="key">iban</span>": "IR430550011480005587452001",
 "<span class="key">track_id</span>": "6feb8114-25d5-372e-83e0-23ae783041a9",
 "<span class="key">payment_number</span>": "123456",
+"<span class="key">is_instant</span>": false,
+"<span class="key">type</span>": "A2A",
 }
                     </pre>
-                        <!--"<span class="key">notify_url</span>": "https://yourdomain.com/nofiy_me",-->
-                        <!--"<span class="key">is_instant</span>": false-->
 
                       <h3 class="sub-title">
                         نمونه پاسخ دریافتی موفق:
@@ -524,7 +537,8 @@
                "time":"16:00:00",
                "extra":"امروز"
             },
-            "receipt_url": "https:\/\/vand.ar\/Mcz6C"
+            "receipt_url": "https:\/\/vand.ar\/Mcz6C",
+            "type" : "A2A",
          }
       ]
    }
@@ -558,9 +572,10 @@
                             <li>prediction: تحمین زمان واریز </li>
                             <li>description: توضیحات </li>
                             <li>receipt_url: لینک رسید تسویه. در این لینک جزییات ثبت تسویه از جمله زمان ثبت تسویه، واریز کننده، دریافت کننده، زمان تخمینی واریز کد رهگیری و مبلغ و ... قابل مشاهده است.  </li>
-                          </ul>
-                        </li>
-                      </ul>
+                            <li>type: نحوه انجام تسویه به صورت پایا(ACH) و یا حساب به حساب(A2A) است که براساس type ارسالی در درخواست، مشخص می شود. </li>
+                        </ul>
+                    </li>
+                </ul>
 
                         <br>
                         <div class="info">
@@ -787,22 +802,741 @@
                         <p>در این آدرس ‌می‌توانید از وضعیت سلامت بانک‌های سرویس تسویه مطلع شوید.</p>
                         <pre>
 <span class="key">METHOD:</span> GET
-<span class="key">URL:</span> https://health.vandar.io/settlement
+<span class="key">URL:</span> https://api.vandar.io/v3/business/{business}/settlement/banks
                       </pre>
 
-<!--                        <pre>
-<span style="color: orange">// 4xx status code</span> &lt;!&ndash;TODO: Other possible errors (4xx family).&ndash;&gt;
+                        <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد بررسی سلامت بانک ها برای آن را دارید.</p>
+                        <h3 class="sub-title">
+                            پارامترهای مجاز
+                        </h3>
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>has_a2a_bank_ability</td>
+                                <td>boolean</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>is_a2a_bank_healthy</td>
+                                <td>boolean</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>is_a2a_bank_active</td>
+                                <td>boolean</td>
+                                <td>optional</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 class="sub-title">
+                            توضیحات
+                        </h3>
+                        <ul>
+                            <li>has_a2a_bank_ability (اختیاری): لیست بانک هایی که وندار سرویس انتقال حساب به حساب برای آنها ارائه می کند را نمایش می دهد.</li>
+                            <li>is_a2a_bank_healthy (اختیاری): لیست بانک هایی که سرویس انتقال حساب به حساب آنها دارای صحت و سلامت هستند و امکان ثبت تسویه حساب به حساب برای آنها وجود دارد را نمایش می دهد. </li>
+                            <li>is_a2a_bank_active (اختیاری): لیست بانک هایی که در ابزار حساب به حساب فعال کرده اید را نمایش می دهد. </li>
+                        </ul>
+
+                        <h3 class="sub-title ">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
 {
-سایر خطاهای ممکن
+{
+"message": "وضعیت بانک‌ها در حال حاضر به این صورت است.",
+"data": [
+    {
+        "name": "بانک مرکزی",
+        "code": "010",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "صنعت و معدن",
+        "code": "011",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "ملت",
+        "code": "012",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 10000000,
+                    "used": 0,
+                    "remained": 10000000
+                }
+            },
+            "is_active": true,
+            "has_ability": true,
+            "is_healthy": true
+        }
+    },
+    {
+        "name": "رفاه",
+        "code": "013",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "مسکن",
+        "code": "014",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "سپه",
+        "code": "015",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "کشاورزی",
+        "code": "016",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "ملی",
+        "code": "017",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 235000,
+                    "used": 0,
+                    "remained": 235000
+                }
+            },
+            "is_active": true,
+            "has_ability": true,
+            "is_healthy": true
+        }
+    },
+    {
+        "name": "تجارت",
+        "code": "018",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "صادرات",
+        "code": "019",
+        "a2a": {
+            "limit": {
+                "time_limit": [
+                    {
+                        "start_time": "23:30",
+                        "end_time": "06:00"
+                    }
+                ],
+                "amount_limit": {
+                    "total": 25000000,
+                    "used": 0,
+                    "remained": 25000000
+                }
+            },
+            "is_active": true,
+            "has_ability": true,
+            "is_healthy": true
+        }
+    },
+    {
+        "name": "توسعه صادرات",
+        "code": "020",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "پست بانک",
+        "code": "021",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "توسعه تعاون",
+        "code": "022",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "اعتباری توسعه",
+        "code": "051",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "قوامین",
+        "code": "052",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "کارآفرین",
+        "code": "053",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "پارسیان",
+        "code": "054",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "اقتصاد نوین",
+        "code": "055",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "سامان",
+        "code": "056",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "پاسارگاد",
+        "code": "057",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "سرمایه",
+        "code": "058",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "سینا",
+        "code": "059",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "شهر",
+        "code": "061",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "آینده",
+        "code": "062",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "انصار",
+        "code": "063",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "گردشگری",
+        "code": "064",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "حکمت ایرانیان",
+        "code": "065",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "دی",
+        "code": "066",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "ایران زمین",
+        "code": "069",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "رسالت",
+        "code": "070",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "ایران و ونزوئلا",
+        "code": "095",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "مهر ایران",
+        "code": "060",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "ملل",
+        "code": "075",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "نور",
+        "code": "080",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "کوثر",
+        "code": "073",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "خاورمیانه",
+        "code": "078",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    },
+    {
+        "name": "مهر اقتصاد",
+        "code": "079",
+        "a2a": {
+            "limit": {
+                "time_limit": [],
+                "amount_limit": {
+                    "total": 0,
+                    "used": 0,
+                    "remained": 0
+                }
+            },
+            "is_active": false,
+            "has_ability": false,
+            "is_healthy": false
+        }
+    }
+]
 }
-                      </pre>-->
+}
+                      </pre>
+
+                        <ul>
+                            <li>name: نام بانک</li>
+                            <li>code: کد بانک</li>
+                            <li> a2a:
+                                <ul>
+                                    <li>limit:  لیستی از محدودیت های ارائه سرویس</li>
+                                    <ul>
+                                        <li>time_limit: لیستی از محدودیت های زمانی برای ارائه سرویس
+                                            <ul>
+                                                <li>start_time: زمان شروع محدودیت ارائه سرویس</li>
+                                                <li>end_time: زمان پایان محدودیت ارائه سرویس</li>
+                                            </ul>
+                                        </li>
+                                        <li>amount_limit: محدودیت مبلغی استفاده از سرویس
+                                            <ul>
+                                                <li>total: مبلغ کلی محدودیت روزانه استفاده از سرویس (ریال)</li>
+                                                <li>used: مبلغ مصرف شده در روز برای انتقال حساب به حساب (ریال)</li>
+                                                <li>remained: مبلغ باقی مانده برای استفاده از انتقال حساب به حساب (ریال)</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                    <li>is_active: وضعیت فعال بودن بانک در ابزار حساب به حساب</li>
+                                    <li>has_ability:  وضعیت ارائه سرویس حساب به حساب برای بانک توسط وندار</li>
+                                    <li>is_healthy: وضعیت سلامت ارائه سرویس حساب به حساب برای بانک</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <!--                        <pre>
+                        <span style="color: orange">// 4xx status code</span> &lt;!&ndash;TODO: Other possible errors (4xx family).&ndash;&gt;
+                        {
+                        سایر خطاهای ممکن
+                        }
+                                              </pre>-->
                     </div>
                 </div>
-                  </article>
-            </div>
+            </article>
         </div>
-      </div>
-  <footer id="footer">
+    </div>
+</div>
+<footer id="footer">
     <div class="container">
         <div class="row" style="text-align: center">
             <div class="col-sm-8 col-xs-6 no-padding-bottom">
