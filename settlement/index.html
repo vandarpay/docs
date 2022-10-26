@@ -97,7 +97,6 @@
                         <div class="dropdown-container">
                             <a href="https://vandarpay.github.io/docs/settlement/#settlements">لیست تسویه ها</a><br>
                             <a href="https://vandarpay.github.io/docs/settlement/#request-settlement">ثبت درخواست تسویه</a><br>
-                            <a href="https://vandarpay.github.io/docs/settlement/#settlement-details">نمایش جزییات یک تسویه</a><br>
                             <a href="https://vandarpay.github.io/docs/settlement/#cancel">لغو یک تسویه</a><br>
                             <a href="https://vandarpay.github.io/docs/settlement/#health">لیست بانک های تسویه</a><br>
                         </div>
@@ -378,14 +377,7 @@
                         <li>errors: آرایه ای از خطا‌ها</li>
                       </ul>
 
-                      <!--<pre>
-                      <span style="color: orange">// 4xx status code</span> &lt;!&ndash;TODO: Other possible errors (4xx family).&ndash;&gt;
-                      {
-                        سایر خطاهای ممکن
-                      }
-                      </pre>-->
-
-
+                        <br>
                         <h3 class="title" id="request-settlement">
                             <strong><a href="#request-settlement">ثبت درخواست تسویه</a></strong>
                         </h3>
@@ -624,115 +616,7 @@
                         <li>errors: آرایه ای از خطا‌ها</li>
                       </ul>
 
-<!--                        <pre>
-<span style="color: orange">// 4xx status code</span> &lt;!&ndash;TODO: Other possible errors (4xx family).&ndash;&gt;
-{
-سایر خطاهای ممکن
-}
-                      </pre>-->
-
-
-                        <h3 class="title" id="settlement-details">
-                           <a href="#settlement-details"><strong>نمایش جزییات یک تسویه</strong></a>
-                        </h3>
-                        <p>در این بخش شما می‌توانید یک درخواست تسویه را نمایش دهید.</p>
-
-                      <pre>
-<span class="key">METHOD:</span> GET
-<span class="key">URL:</span> https://api.vandar.io/v2.1/business/{business}/settlement/{id}
-                      </pre>
-
-                      <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد دارید یک تسویه از آن را نمایش دهید.</p>
-                      <p>پارامتر {id} همان id مربوط به تسویه‌ای است که قصد نمایش آن را دارید.</p>
-
-                      <h3 class="sub-title">
-                        نمونه پاسخ دریافتی موفق:
-                      </h3>
-
-                      <pre>
-<span class="key">HTTP/1.1</span> 200
-{
-  "status": 1,
-  "data": {
-    "settlement": {
-      "id": "8edaa0a0-a33f-11ea-838d-676dce32760e",
-      "iban_id": 22822,
-      "gateway_transaction_id": 159024236678,
-      "amount": 100000,
-      "payment_number": null,
-      "status": "CANCELED",
-      "wallet": 160985,
-      "settlement_date": "2020-05-31",
-      "description": "توضیحات",
-    }
-  }
-}
-                      </pre>
-
-                      <ul>
-                      <li>
-                          status: ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
-                          <br>
-                          1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
-                          <br>
-                          0 به معنای این است که http response از خانواده‌ی ۴۰۰ یا ۵۰۰ است.
-                      </li>
-                        <li>
-                          data:
-                          <ul>
-                            <li>wallet: مبلغ کیف پول کاربر به تومان</li>
-                            <li>blocked_amount: مبلغی که به دستور احکام قضایی در حساب مسدود شده است.</li>
-                            <li>deductible_amount: مبلغ قابل برداشت امروز</li>
-                            <li>currency: </li>
-                            <li>settlements: 
-                              <ul>
-                                <li>
-                                  data:
-                                  <ul>
-                                    <li>id: شناسه تسویه</li>
-                                    <li>iban_id: شناسه یکتای شماره شبا که برای پیگیری شبا در وندار مورد استفاده قرار می گیرد</li>
-                                    <li>gateway_transaction_id: شناسه یکتای تسویه که برای پیگیری تسویه از وندار مورد استفاده قرار می‌گیرد.</li>
-                                    <li>amount: مبلغ تسویه به تومان</li>
-                                    <li>payment_number: شناسه واریز ثبت شده در هنگام ثبت تسویه</li>
-                                    <li>status: وضعیت تسویه</li>
-                                    <li>wallet: مبلغ کیف پول بعد از انجام این تسویه</li>
-                                    <li>settlement_date: تاریخ انجام تسویه (میلادی)</li>
-                                    <li>description: توضیحاتی که در هنگام ثبت تسویه ارسال شده است.</li>
-                                  </ul>
-                                </li>
-                              </ul>
-                            </li>
-                          </ul>
-                        </li>
-                      </ul>
-
-                      <pre>
-<span class="key">HTTP/1.1</span> 4xx
-{
-"status": 0,
-"error": "Unauthenticated"
-}
-                      </pre>
-
-                      <ul>
-                          <li>
-                              status: ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
-                              <br>
-                              1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
-                              <br>
-                              0 به معنای این است که http response از خانواده‌ی ۴۰۰ یا ۵۰۰ است.
-                          </li>
-                        <li>errors: آرایه ای از خطا‌ها</li>
-                      </ul>
-
-<!--                        <pre>
-<span style="color: orange">// 4xx status code</span> &lt;!&ndash;TODO: Other possible errors (4xx family).&ndash;&gt;
-{
-سایر خطاهای ممکن
-}
-                      </pre>-->
-
-
+                        <br>
                         <h3 class="title" id="cancel">
                             <strong><a href="#cancel">لغو یک تسویه</a></strong>
                         </h3>
