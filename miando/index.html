@@ -189,7 +189,7 @@
         </div>
         <div class="col-sm-9">
             <article class="content">
-                <div class="article" id="ipg">
+                <div class="article" id="miando">
 
                     <div>
                         آخرین تغییرات: ۱۴۰۱/۰۷/۱۹
@@ -197,35 +197,40 @@
 
                     <h2 class="article-header">مقدمه</h2>
                     <div>
-                        <h3 class="title" id="intro">
-                            <a href="#intro"> <strong>سرویس معاملات امن چیست:</strong></a>
+                        <h3 class="title" id="intro1">
+                            <a href="#intro1"> <strong>سرویس معاملات امن چیست:</strong></a>
                         </h3>
                         <p>
                             میاندو برای خریدار هویت فروشنده و برای فروشنده، پرداخت مبلغ از سوی خریدار را تضمین می‌کند.
                             خریدار مبلغ معامله را نزد میاندو به امانت می‌گذارد تا پس از ارائه کالا یا خدمت و تایید
                             خریدار، این مبلغ برای فروشنده آزاد شود.
                         </p>
-                        <h3 class="title" id="intro">
-                            <a href="#intro"> <strong>نحوه فعالسازی:</strong></a>
+                        <h3 class="title" id="activation">
+                            <a href="#activation"> <strong>نحوه فعالسازی:</strong></a>
                         </h3>
                         <p>
-                            شما برای استفاده از سرویس پرداخت امن میاندو نیاز دارید که در ابتدا برای کسب و کار خود درخواست فعالسازی ابزار پرداخت امن را ثبت کنید تا پشتیبانی بعد از تایید آن را برای شما فعال کند.
+                            شما برای استفاده از سرویس پرداخت امن میاندو نیاز دارید که در ابتدا برای کسب و کار خود
+                            درخواست فعالسازی ابزار پرداخت امن را ثبت کنید تا پشتیبانی بعد از تایید آن را برای شما فعال
+                            کند.
                             در غیر این صورت شما نمیتوانید از سرویس پرداخت امن در کسب و کار خود استفاده کنید.
                         </p>
                         <p>
-                            پس از فعالسازی به دو مقدار client_id و client_secret دسترسی پیدا خواهید کرد که با استفاده از این مقادیر میتوانید جهت دریافت توکن کسب و کار خود اقدام کنید.
+                            پس از فعالسازی به دو مقدار client_id و client_secret دسترسی پیدا خواهید کرد که با استفاده از
+                            این مقادیر میتوانید جهت دریافت توکن کسب و کار خود اقدام کنید.
                         </p>
 
-                        <h3 class="title" id="intro">
-                            <a href="#intro"> <strong>احراز هویت درخواست ها: </strong></a>
+                        <h3 class="title" id="authorization">
+                            <a href="#authorization"> <strong>احراز هویت درخواست ها: </strong></a>
                         </h3>
                         <p>
-                            همانطور که گفته شد تمامی درخواست های ارسالی به OpenAPI ابزار پرداخت امن وندار نیازمند یک توکن است که مربوط به کسب و کار شماست.
+                            همانطور که گفته شد تمامی درخواست های ارسالی به OpenAPI ابزار پرداخت امن وندار نیازمند یک
+                            توکن است که مربوط به کسب و کار شماست.
                         </p>
                         <p>
-                            برای دریافت توکن شما میتوانید درخواست زیر را به سرویس SSO وندار ارسال کنید تا توکن مربوطه را دریافت کنید.
+                            برای دریافت توکن شما میتوانید درخواست زیر را به سرویس SSO وندار ارسال کنید تا توکن مربوطه را
+                            دریافت کنید.
                         </p>
-<pre>
+                        <pre>
 <span class="key">Method:</span> POST
 <span class="key">Address:</span> https://api.vandar.io/sso/oauth/token
 </pre>
@@ -271,7 +276,7 @@
                         <h3 class="sub-title">
                             نمونه پاسخ دریافتی موفق:
                         </h3>
-<pre>
+                        <pre>
 <span class="key">HTTP/1.1</span> 201
 {
     "token_type": "Bearer",
@@ -279,9 +284,11 @@
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI3NSIsImp0aSI6ImEyYmQzY2Y5MDAxZDMwMGUyY2VhNzAxMjBhZTYzMjVlYmE1MmU2OTlhNmY1MzJiY2Q4OTFjMTk3OThjNGFmZjYxMjZjYTZmY2QwMDhhNTRkIiwiaWF0IjoxNjY2NTQ2NTY0LjA4NTY4OSwibmJmIjoxNjY2NTQ2NTY0LjA4NTY5MiwiZXhwIjoxNjk4MDgyNTY0LjA3NjQ4LCJzdWIiOiIiLCJzY29wZXMiOlsicGFydG5lciJdfQ.PWInLbjoC2MkhXxgGsqA5LfQkSnQEVXEARw2nJGEiFlz3a-c7pi12UVe-1hNm0IOcSW6NZXd7oKOyFxqhBl5WgAWPaAbM3WEy4R3Va-fo7ikmr77Xu1RcPqJwqRS3Dkyf4Ug-8sd9FSabGafCt6jfG163b-5bdqwV9WQJIbbSNuXMuQmuil2qK5F4kBLgUQaWGC170cNBSQCWVcyuFRc7-qYLYQqz08y2a6rcC2xkR7F3UmjSqU35eWGyhqRsy5iijtEZ-mZlVs2OSEbyNSylkKPSE0Z2r4gwKVbw-Qbx1iZchhSfalLhlbJGvNIcOhXGqYQCJyru2PVeP4zaG34TRccGwTmAR-Yx1hat2VBclK3Tzc6f9wqzSkhaTDwkLKGVwNrrKALf84fbGz14yC_LY6PL-atdS1RbHHkDb_Gl0WuPNeW4aNbpxHIqflOJjh6pVPuejAYIi-fomiRt7SQwwSFxeEKlvHNjIBZqecIKmfAYYNTdHTq4k91kH8LxKo4U4lXMIsvhh9uDszX9yMXwAivRX4F8AzI4sERrx51cosZ0vzrJUdg_nlKMIOGW2hIM9pCxZSekEr7PDgq5dKqDbcjnUegnPLJcc-1UdnUlOtwa005VRrs-2NdkdEAWy7oTSDFjqd3D5ItZ7sLhCZLnjtOPJ_fbpk4Ov95zwrgidsao"
 }
 </pre>
-<div class="info">
-    <strong>نکته!</strong> توکن دریافت شده یکسال اعتبار دارد که درصورت منقضی شدن آن میتوانید مجددا نسبت به دریافت آن اقدام کنید (زمان انقضای توکن متغیر است و بسته به مقدار expires_in ممکن است تغییر کند).
-</div>
+                        <div class="info">
+                            <strong>نکته!</strong> توکن دریافت شده یکسال اعتبار دارد که درصورت منقضی شدن آن میتوانید
+                            مجددا نسبت به دریافت آن اقدام کنید (زمان انقضای توکن متغیر است و بسته به مقدار expires_in
+                            ممکن است تغییر کند).
+                        </div>
 
                         <p>
                             برای تمامی درخواست های ارسالی باید مقادیر زیر در هدر ارسال شوند.
@@ -289,7 +296,7 @@
                         <pre>
 <span class="key">Accept:</span> application/json
 <span class="key">Authorization:</span> Bearer {access_token}</pre>
-<br>
+                        <br>
                         <h3 class="sub-title">
                             نمونه پاسخ دریافتی در صورت عدم احراز هویت:
                         </h3>
@@ -303,7 +310,8 @@
                         <h2 class="article-header" id="customers">
                             <a href="#customers">مشتریان</a></h2>
                         <p>
-                            مشریان در میاندو به اشخاصی اطلاق می‌شود که به عنوان طرفین معامله (خریدار، فروشنده) به خرید و فروش می‌پردازند.
+                            مشریان در میاندو به اشخاصی اطلاق می‌شود که به عنوان طرفین معامله (خریدار، فروشنده) به خرید و
+                            فروش می‌پردازند.
                         </p>
 
                         <h3 class="title" id="customers-store"><a href="#customers-store">
@@ -312,7 +320,7 @@
 
                         </h3>
                         <p>در این بخش می‌توانید یک مشتری ایجاد کنید که بتواند در یک معامله شرکت کند.</p>
-<pre>
+                        <pre>
 <span class="key">Method:</span> POST
 <span class="key">Address:</span> https://api.vandar.io/miando/api/v1/customers
 </pre>
@@ -514,7 +522,8 @@
 
                         </h3>
                         <p>در این بخش می‌توانید یک پیش‌نویس معامله ایجاد کنید.</p>
-                        <p>پیش‌نویس معامله به این معناست که فقط طرف سازنده معامله را تایید کرده است و دیگر اشخاص حاضر در معامله هنوز معامله را تایید نکرده اند.</p>
+                        <p>پیش‌نویس معامله به این معناست که فقط طرف سازنده معامله را تایید کرده است و دیگر اشخاص حاضر در
+                            معامله هنوز معامله را تایید نکرده اند.</p>
                         <pre>
 <span class="key">Method:</span> POST
 <span class="key">Address:</span> https://api.vandar.io/miando/api/v1/agreements
@@ -648,7 +657,7 @@
                             </li>
                             <li>
                                 parties.*.mobile (اجباری):
-                                 موبایل طرف معامله.
+                                موبایل طرف معامله.
                                 <div class="info">
                                     کاربر باید از قبل توسط شما به لیست مشتری ها اضافه شده باشد.
                                 </div>
@@ -777,7 +786,8 @@
                             با استفاده از این سرویس می‌توانید یک معامله را تایید یا رد کنید.
                         </p>
                         <p>
-                            پس از تایید معامله توسط خریدار/فروشنده، لینک پرداخت جهت پرداخت مبلغ معامله توسط خریدار برگشت داده میشود که شما میتوانید از آن استفاده کنید.
+                            پس از تایید معامله توسط خریدار/فروشنده، لینک پرداخت جهت پرداخت مبلغ معامله توسط خریدار برگشت
+                            داده میشود که شما میتوانید از آن استفاده کنید.
                         </p>
                         <pre>
 <span class="key">METHOD:</span> POST
@@ -876,13 +886,14 @@
 
                         <br>
 
-                        <h3 class="title" id="agreements-agreeing">
-                            <a href="#agreements-agreeing"> ۳. نهایی سازی معامله</a>
+                        <h3 class="title" id="agreements-finalize">
+                            <a href="#agreements-finalize"> ۳. نهایی سازی معامله</a>
                         </h3>
                         <p>
                             شما با استفاده از این سرویس میتوانید معامله را نهایی کنید.
                         </p>
-                        <p>نهایی شدن معامله به این معناست که خریدار کالا را تحویل گرفته و مبلغ معامله باید به حساب فروشنده واریز شود.</p>
+                        <p>نهایی شدن معامله به این معناست که خریدار کالا را تحویل گرفته و مبلغ معامله باید به حساب
+                            فروشنده واریز شود.</p>
                         <p>تنها قراردادهایی که پرداخت آن ها با موفقیت انجام شده است قابلیت نهایی شدن را دارند.</p>
                         <pre>
 <span class="key">METHOD:</span> POST
@@ -936,7 +947,7 @@
     }
 }
 </pre>
-                        
+
                         <h3 class="sub-title">
                             نمونه پاسخ دریافتی ناموفق:
                         </h3>
@@ -963,17 +974,20 @@
 
                         <br>
 
-                        <h3 class="title" id="agreements-agreeing">
-                            <a href="#agreements-agreeing"> ۴. لغو معامله</a>
+                        <h3 class="title" id="agreements-cancel">
+                            <a href="#agreements-cancel"> ۴. لغو معامله</a>
                         </h3>
                         <p>
                             شما با استفاده از این سرویس میتوانید یک معامله را لغو کنید.
                         </p>
-                        <p>خریدار فقط میتواند معامله ای را لغو کند که یا پیش نویس باشد یا طرفین معامله آن را تایید کرده باشند، این در صورتی است که فرشونده بعد از پرداخت خریدار یا در حالت ثبت مشکل نیز میتواند یک معامله را لغو کند.</p>
-                        <p>در صورتی که خریدار مبلغی را پرداخت کرده باشد، بعد از لغو شدن معامله مبلغ معامله به حساب خریدار برگشت داده میشود.</p>
+                        <p>خریدار فقط میتواند معامله ای را لغو کند که یا پیش نویس باشد یا طرفین معامله آن را تایید کرده
+                            باشند، این در صورتی است که فروشنده بعد از پرداخت خریدار یا در حالت ثبت مشکل نیز میتواند یک
+                            معامله را لغو کند.</p>
+                        <p>در صورتی که خریدار مبلغی را پرداخت کرده باشد، بعد از لغو شدن معامله مبلغ معامله به حساب
+                            خریدار برگشت داده میشود.</p>
                         <pre>
 <span class="key">METHOD:</span> POST
-<span class="key">URL:</span> https://api.vandar.io/miando/api/v1/agreements/{tracking_code}/finalize
+<span class="key">URL:</span> https://api.vandar.io/miando/api/v1/agreements/{tracking_code}/cancel
 </pre>
                         <p>پارامتر {tracking_code} کد رهگیری معامله می‌باشد.</p>
                         <h3 class="sub-title">
@@ -1000,7 +1014,7 @@
                         </h3>
                         <ul>
                             <li>buyer_mobile (اجباری):
-                                 موبایل کاربر درخواست‌دهنده.
+                                موبایل کاربر درخواست‌دهنده.
                             </li>
                         </ul>
                         <h3 class="sub-title">
@@ -1023,7 +1037,7 @@
     }
 }
 </pre>
-                        
+
                         <h3 class="sub-title">
                             نمونه پاسخ دریافتی ناموفق:
                         </h3>
@@ -1051,7 +1065,7 @@
                         <br>
 
                         <h3 class="title" id="agreements-show">
-                            <a href="#agreements-index"> ۵. نمایش معامله</a>
+                            <a href="#agreements-show"> ۵. نمایش معامله</a>
                         </h3>
                         <p>
                             با استفاده از این سرویس می‌توانید اطلاعات یک معامله را مشاهده نمایید.
@@ -1102,11 +1116,15 @@
     }
 }
 </pre>
+
+                        <br>
+
                         <h3 class="title" id="agreements-index">
                             <a href="#agreements-index"> ۶. لیست معاملات</a>
                         </h3>
                         <p>
-                            با استفاده از این سرویس می‌توانید لیست معاملات ساخته شده را مشاهده نمایید (اطلاعات در این صفحه بصورت صفحه بندی شده نمایش داده میشوند).
+                            با استفاده از این سرویس می‌توانید لیست معاملات ساخته شده را مشاهده نمایید (اطلاعات در این
+                            صفحه بصورت صفحه بندی شده نمایش داده میشوند).
                         </p>
                         <pre>
 <span class="key">METHOD:</span> GET
@@ -1333,7 +1351,8 @@
                                             نقش ثبت کننده تیکت: seller
                                         </li>
                                         <li>
-                                            commodity_delivered_buyer_not_end_transaction: کالا را تحویل داده‌ام ولی خریدار پایان معامله را اعلام نمی‌کند
+                                            commodity_delivered_buyer_not_end_transaction: کالا را تحویل داده‌ام ولی
+                                            خریدار پایان معامله را اعلام نمی‌کند
                                             <br>
                                             نقش ثبت کننده تیکت: seller
                                         </li>
@@ -1388,15 +1407,21 @@
                         <h2 class="article-header" id="webhooks">
                             <a href="#webhooks">وبهوک</a></h2>
                         <p>
-                            شما با استفاده از سرویس وبهوک میاندو میتوانید در لحظه از اتفاقاتی که برای کاربرانتان در طول پروسه‌ی پرداخت امن رخ میدهد مطلع شوید و از تغییرات اتفاق افتاده در سیستم آگاه باشید.
+                            شما با استفاده از سرویس وبهوک میاندو میتوانید در لحظه از اتفاقاتی که برای کاربرانتان در طول
+                            پروسه‌ی پرداخت امن رخ میدهد مطلع شوید و از تغییرات اتفاق افتاده در سیستم آگاه باشید.
                         </p>
 
                         <h3 class="title" id="webhooks-store"><a href="#webhooks-store">
-                            ۱. فعالسازی سرویس وبهوک:
+                            ۱. ایجاد وبهوک:
                         </a>
 
                         </h3>
-                        <p>در این قسمت شما میتوانید با معرفی آدرس وبهوک و لیست وبهوک های مورد نیازتان، سرویس وبهوک را فعالسازی کنید تا از رخداد های جدید مطلع شوید.</p>
+                        <p>در این قسمت شما میتوانید با معرفی آدرس وبهوک و لیست رویدادهای مورد نیازتان، وبهوکتان را ابجاد
+                            کنبد.</p>
+                        <div class="info">
+                            <strong>نکته!</strong> توجه داشته باشید که رویدادهای مجزایی را می‌توان برای هر ادرس تنظیم
+                            کرد و فقط یک رویداد یرای هر ادرس قابل تعریف می‌باشد.
+                        </div>
                         <pre>
 <span class="key">Method:</span> POST
 <span class="key">Address:</span> https://api.vandar.io/miando/api/v1/webhooks</pre>
@@ -1443,70 +1468,7 @@
                                 لیست وبهوک های مورد نیاز.
                                 <br>
                                 <div class="info">
-                                    اسلاگ‌های مجاز جهت انتخاب نوع وبهوک:
-                                    <br>
-                                    <ul>
-                                        <li>
-                                            <b>agreement: کل وبهوک های مربوط به قرارداد                                            </b>
-                                        </li>
-                                        <li>
-                                            agreement_created: معامله ایجاد شد
-                                        </li>
-                                        <li>
-                                            seller_agreed_agreement: فروشنده معامله را پذیرفت
-                                        </li>
-                                        <li>
-                                            seller_rejected_agreement: فرشونده معامله را رد کرد
-                                        </li>
-                                        <li>
-                                            buyer_paid_agreement: خریدار پرداخت را انجام داد
-                                        </li>
-                                        <li>
-                                            buyer_payment_expired: مهلت پرداخت خریدار به اتمام رسید
-                                        </li>
-                                        <li>
-                                            agreement_paid: معامله پرداخت شد
-                                        </li>
-                                        <li>
-                                            payment_refunded_to_buyer: مبلغ پرداختی به خریدار حساب بازگشت
-                                        </li>
-                                        <li>
-                                            payment_failed: پرداخت ناموفق بود.
-                                        </li>
-                                        <li>
-                                            seller_sent_product: فروشنده محصول را ارسال کرد
-                                        </li>
-                                        <li>
-                                            buyer_received_product: خریدار محصول را دریافت کرد
-                                        </li>
-                                        <li>
-                                            buyer_accepted_product: خریدار محصول را تایید کرد
-                                        </li>
-                                        <li>
-                                            buyer_submitted_ticket: خریدار شکایت ثبت کرد
-                                        </li>
-                                        <li>
-                                            buyer_refunded_received_product: خریدار محصول دریافتی را برگشت داد
-                                        </li>
-                                        <li>
-                                            seller_received_refunded_product: فروشنده محصول برگشتی را دریافت کرد
-                                        </li>
-                                        <li>
-                                            seller_accepted_refunded_product: فروشنده محصول برگشتی را تایید کرد
-                                        </li>
-                                        <li>
-                                            seller_submitted_ticket: فروشنده ثبت شکایت کرد
-                                        </li>
-                                        <li>
-                                            seller_checked_out: فروشنده تسویه حساب کرد
-                                        </li>
-                                        <li>
-                                            agreement_finalized: معامله نهایی شد.
-                                        </li>
-                                        <li>
-                                            agreement_cancelled: معامله لغو شد.
-                                        </li>
-                                    </ul>
+                                    جهت مشاهده اسلاگ‌های مجاز به <a href="#events-list" style="color: red">لیست رویدادها</a> مراجعه کنید
                                 </div>
                             </li>
                         </ul>
@@ -1519,7 +1481,7 @@
     "events" : [
         "agreement_created",
         "agreement_finalized",
-        "seller_accepted_refunded_product"
+        "seller_agreed_agreement"
     ]
 }
 </pre>
@@ -1529,7 +1491,26 @@
                         <pre>
 <span class="key">HTTP/1.1</span> 201
 {
-    "message": "اطلاعات وبهوک با موفقیت ثبت شد."
+    "message": "اطلاعات وبهوک با موفقیت ثبت شد.",
+    "data": {
+        "id": 1,
+        "url": "https://vandar.io/miando/webhook",
+        "is_active": true,
+        "events": [
+            {
+                "slug": "agreement_created",
+                "title": "معامله جدید ساخته شد"
+            },
+            {
+                "slug": "agreement_finalized",
+                "title": "معامله با موفقیت به پایان رسید"
+            },
+            {
+                "slug": "seller_agreed_agreement",
+                "title": "فروشنده معامله را پذیرفت"
+            }
+        ]
+    }
 }
 </pre>
                         <h3 class="sub-title">
@@ -1552,10 +1533,12 @@
                         </a>
 
                         </h3>
-                        <p>شما با استفاده از این سرویس میتوانید وضعیت سرویس وبهوک خود را فعال یا غیرفعال کنید، آدرس وبهوک و لیست رویداد های مورد نیاز را نیز ویرایش کنید.</p>
+                        <p>شما با استفاده از این درخواست می‌توانید وضعیت را فعال و غیرفعال کنید، آدرس وبهوک و لیست
+                            رویدادهای مورد نیاز را نیز ویرایش کنید.</p>
                         <pre>
 <span class="key">Method:</span> PUT
-<span class="key">Address:</span> https://api.vandar.io/miando/api/v1/webhooks</pre>
+<span class="key">Address:</span> https://api.vandar.io/miando/api/v1/webhooks/{webhook_id}</pre>
+                        <p>پارامتر {webhook_id} شناسه وبهوک می‌باشد.</p>
                         <h3 class="sub-title">
                             پارامترهای مجاز
                         </h3>
@@ -1568,11 +1551,6 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>url</td>
-                                <td>string</td>
-                                <td>required</td>
-                            </tr>
                             <tr>
                                 <td>url</td>
                                 <td>string</td>
@@ -1610,70 +1588,7 @@
                                 لیست وبهوک های مورد نیاز.
                                 <br>
                                 <div class="info">
-                                    اسلاگ‌های مجاز جهت انتخاب نوع وبهوک:
-                                    <br>
-                                    <ul>
-                                        <li>
-                                            <b>agreement: کل وبهوک های مربوط به قرارداد                                            </b>
-                                        </li>
-                                        <li>
-                                            agreement_created: معامله ایجاد شد
-                                        </li>
-                                        <li>
-                                            seller_agreed_agreement: فروشنده معامله را پذیرفت
-                                        </li>
-                                        <li>
-                                            seller_rejected_agreement: فرشونده معامله را رد کرد
-                                        </li>
-                                        <li>
-                                            buyer_paid_agreement: خریدار پرداخت را انجام داد
-                                        </li>
-                                        <li>
-                                            buyer_payment_expired: مهلت پرداخت خریدار به اتمام رسید
-                                        </li>
-                                        <li>
-                                            agreement_paid: معامله پرداخت شد
-                                        </li>
-                                        <li>
-                                            payment_refunded_to_buyer: مبلغ پرداختی به خریدار حساب بازگشت
-                                        </li>
-                                        <li>
-                                            payment_failed: پرداخت ناموفق بود.
-                                        </li>
-                                        <li>
-                                            seller_sent_product: فروشنده محصول را ارسال کرد
-                                        </li>
-                                        <li>
-                                            buyer_received_product: خریدار محصول را دریافت کرد
-                                        </li>
-                                        <li>
-                                            buyer_accepted_product: خریدار محصول را تایید کرد
-                                        </li>
-                                        <li>
-                                            buyer_submitted_ticket: خریدار شکایت ثبت کرد
-                                        </li>
-                                        <li>
-                                            buyer_refunded_received_product: خریدار محصول دریافتی را برگشت داد
-                                        </li>
-                                        <li>
-                                            seller_received_refunded_product: فروشنده محصول برگشتی را دریافت کرد
-                                        </li>
-                                        <li>
-                                            seller_accepted_refunded_product: فروشنده محصول برگشتی را تایید کرد
-                                        </li>
-                                        <li>
-                                            seller_submitted_ticket: فروشنده ثبت شکایت کرد
-                                        </li>
-                                        <li>
-                                            seller_checked_out: فروشنده تسویه حساب کرد
-                                        </li>
-                                        <li>
-                                            agreement_finalized: معامله نهایی شد.
-                                        </li>
-                                        <li>
-                                            agreement_cancelled: معامله لغو شد.
-                                        </li>
-                                    </ul>
+                                    جهت مشاهده اسلاگ‌های مجاز به <a href="#events-list" style="color: red">لیست رویدادها</a> مراجعه کنید
                                 </div>
                             </li>
                         </ul>
@@ -1682,11 +1597,12 @@
                         </h3>
                         <pre>
 {
-    "url" : "https://vandar.io/miando/webhook",
-    "is_active": false,
-    "events" : [
-        "agreement"
-    ]
+    "url": "https://shyepoortest.ir/webhook",
+    "events": [
+        "seller_agreed_agreement",
+        "agreement_finalized"
+    ],
+    "is_active": true
 }
 </pre>
                         <h3 class="sub-title">
@@ -1695,7 +1611,12 @@
                         <pre>
 <span class="key">HTTP/1.1</span> 200
 {
-    "message": "بروزرسانی وبهوک با موفقیت انجام شد."
+    "url": "https://shyepoortest.ir/webhook",
+    "events": [
+        "seller_agreed_agreement",
+        "agreement_finalized"
+    ],
+    "is_active": true
 }
 </pre>
                         <h3 class="sub-title">
@@ -1716,12 +1637,121 @@
 
                         <br>
 
-                        <h3 class="title" id="webhooks-update"><a href="#webhooks-update">
-                            ۳. دریافت وبهوک:
+                        <h3 class="title" id="webhook-show">
+                            <a href="#webhook-show"> ۳. نمایش وبهوک</a>
+                        </h3>
+                        <p>
+                            با استفاده از این درخواست می‌توانید اطلاعات یک وبهوک را مشاهده نمایید.
+                        </p>
+                        <pre>
+<span class="key">METHOD:</span> GET
+<span class="key">URL:</span> https://api.vandar.io/miando/api/v1/webhooks/{webhook_id}
+</pre>
+                        <p>پارامتر {webhook_id} شناسه وبهوک می‌باشد.</p>
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+    "message": "نمایش اطلاعات وبهوک با موفقیت انجام شد.",
+    "data": {
+        "id": 1,
+        "url": "https://shyepoortest.ir/webhook",
+        "is_active": true,
+        "events": [
+            {
+                "slug": "seller_agreed_agreement",
+                "title": "فروشنده معامله را پذیرفت"
+            },
+            {
+                "slug": "agreement_finalized",
+                "title": "معامله با موفقیت به پایان رسید"
+            }
+        ]
+    }
+}
+</pre>
+
+                        <br>
+
+                        <h3 class="title" id="webhooks-index"><a href="#webhooks-index">
+                            ۴. لیست وبهوک‌ها:
                         </a>
 
                         </h3>
-                        <p>تمامی وبهوک های ارسالی به سمت لینک تنظیم شده شما در قالب زیر بصورت یک درخواست POST ارسال خواهند شد.</p>
+                        <p>شما با استفاده از این درخواست می‌توانید لیست وبهوک‌های خود را دریافت کنید.</p>
+                        <pre>
+<span class="key">Method:</span> GET
+<span class="key">Address:</span> https://api.vandar.io/miando/api/v1/webhooks</pre>
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+    "message": "نمایش اطلاعات وبهوک با موفقیت انجام شد.",
+    "data": [
+        {
+            "id": 1,
+            "url": "https://shyepoortest.ir/webhook",
+            "is_active": true,
+            "events": [
+                {
+                    "slug": "seller_agreed_agreement",
+                    "title": "فروشنده معامله را پذیرفت"
+                },
+                {
+                    "slug": "agreement_finalized",
+                    "title": "معامله با موفقیت به پایان رسید"
+                }
+            ]
+        }
+    ]
+}
+</pre>
+
+                        <br>
+
+                        <h3 class="title" id="webhook-delete">
+                            <a href="#webhook-delete"> ۳. حذف وبهوک</a>
+                        </h3>
+                        <p>
+                            با استفاده از این درخواست می‌توانید اطلاعات یک وبهوک را حذف نمایید.
+                        </p>
+                        <pre>
+<span class="key">METHOD:</span> DELETE
+<span class="key">URL:</span> https://api.vandar.io/miando/api/v1/webhooks/{webhook_id}
+</pre>
+                        <p>پارامتر {webhook_id} شناسه وبهوک می‌باشد.</p>
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+    "message": "وبهوک با موفقیت حذف شد."
+}
+</pre>
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی ناموفق:
+                        </h3>
+                        <pre>
+<span class="key">HTTP/1.1</span> 404
+{
+    "message": "موردی یافت نشد",
+    "code": "not_found_error"
+}
+</pre>
+
+                        <br>
+
+                        <h3 class="title" id="webhooks-send">
+                            <a href="#webhooks-send"> <strong>دریافت وبهوک:</strong></a>
+                        </h3>
+
+                        <p>تمامی وبهوک‌های ارسالی به سمت لینک تنظیم شده شما در قالب زیر به صورت یک درخواست POST ارسال
+                            خواهند شد.</p>
                         <pre>
 {
     "created": 1666468058,
@@ -1731,20 +1761,23 @@
     }
 }
 </pre>
-                        <p>در تمامی وبهوک های مربوط به قرار داد شما tracking_code مربوط به قرار داد را دریافت خواهید کرد.</p>
+                        <p>در تمامی وبهوک های مربوط به قرار داد شما tracking_code مربوط به قرار داد را دریافت خواهید
+                            کرد.</p>
                         <div class="info">
-                            در این قسمت درصورت موفقیت آمیز بودن وبهوک شما باید HTTP Status Code 200 را خروجی دهید، در غیر این صورت وبهوک مربوطه ناموفق تلقی میشود و مجددا سعی در ارسال آن میشود.
+                            در این قسمت درصورت موفقیت آمیز بودن وبهوک شما باید HTTP Status Code 200 را خروجی دهید، در
+                            غیر این صورت وبهوک مربوطه ناموفق تلقی میشود و مجددا سعی در ارسال آن میشود.
                         </div>
 
                         <br>
 
-                        <h3 class="title" id="webhooks-update"><a href="#webhooks-update">
-                            ۴. احراز هویت وبهوک های دریافتی:
-                        </a>
-
+                        <h3 class="title" id="webhooks-signature">
+                            <a href="#webhooks-signature"> <strong>احراز هویت وبهوک های دریافتی:</strong></a>
                         </h3>
-                        <p>بدلیل مسائل امنیتی تمامی وبهوک های ارسالی بهتر است از سمت دریافت کننده نیز احراز هویت شوند، به همین دلیل تمامی وبهوک های ارسالی از سمت میاندو دارای هدر X-Signature هستند که از یک الگوی مشخص برای رمز نگاری استفاده میکند که شما نیز باید در سمت خود این رمزنگاری را بررسی کنید و درصورت صحیح بودن این الگو از وبهوک استفاده کنید.</p>
-                        
+                        <p>بدلیل مسائل امنیتی تمامی وبهوک های ارسالی بهتر است از سمت دریافت کننده نیز احراز هویت شوند،
+                            به همین دلیل تمامی وبهوک های ارسالی از سمت میاندو دارای هدر X-Signature هستند که از یک الگوی
+                            مشخص برای رمز نگاری استفاده میکند که شما نیز باید در سمت خود این رمزنگاری را بررسی کنید و
+                            درصورت صحیح بودن این الگو از وبهوک استفاده کنید.</p>
+
                         <p>نمونه هدر ارسالی:</p>
                         <pre>
 "X-Signature": "nbSOn\/WUA6lvhrkxv+QsTi9iCxhLskr8i4yz2rikj9I="
@@ -1764,9 +1797,215 @@ if(hash_equals($hmac_header, $calculated_hmac)) {
 } else {
     // It's invalid
 }</pre>
-                        <p>در این قسمت شما نیاز است که با استفاده از داده دریافتی از سمت میاندو با الگوریتم داده شده مقدار هش شده را بسازید و سپس با مقدار دریافتی از هدر بررسی کنید ، درصورت برابر بودن این دومقدار میتوان نتیجه گرفت که هدر ارسالی هدر درست و معتبری است.</p>
+                        <p>در این قسمت شما نیاز است که با استفاده از داده دریافتی از سمت میاندو با الگوریتم داده شده
+                            مقدار هش شده را بسازید و سپس با مقدار دریافتی از هدر بررسی کنید ، درصورت برابر بودن این
+                            دومقدار میتوان نتیجه گرفت که هدر ارسالی هدر درست و معتبری است.</p>
 
-                        <p>در مرحله اول نیاز است که شما داده ارسالی از سمت میاندو را که در فرمت Json است را با استفاده از الگوریتم هش SHA256 تولید کنید، در این قسمت از اسلاگ بیزنس شما (BUSINESS_SLUG) به جهت اعتبارسنجی مطمئن تر استفاده شده که همان نام انگلیسی بیزنس شما در وندار است.</p>
+                        <p>در مرحله اول نیاز است که شما داده ارسالی از سمت میاندو را که در فرمت Json است را با استفاده
+                            از الگوریتم هش SHA256 تولید کنید، در این قسمت از اسلاگ بیزنس شما (BUSINESS_SLUG) به جهت
+                            اعتبارسنجی مطمئن تر استفاده شده که همان نام انگلیسی بیزنس شما در وندار است.</p>
+
+                        <h3 class="title" id="events-list">
+                            <a href="#events-list"> <strong>لیست رویدادها و دیتای ارسالی:</strong></a>
+                        </h3>
+
+                        <ul style="font-size: large">
+                            <li>
+                                <b>agreement: کل وبهوک های مربوط به قرارداد </b>
+                            </li>
+                            <li>
+                                agreement_created: معامله ایجاد شد
+                                <br>
+                                <h4 class="sub-title">
+                                    نمونه دیتای ارسالی:
+                                </h4>
+                                <pre>
+<span class="key">HTTP/1.1</span> 404
+{
+    "tracking_code": "87441125",
+    "creator_role": "buyer",
+    "created_at": "2022-11-05 18:08:43",
+    "creator_mobile": "09123456789"
+}
+</pre>
+                            </li>
+                            <li>
+                                seller_agreed_agreement: فروشنده معامله را پذیرفت
+                                <br>
+                                <h4 class="sub-title">
+                                    نمونه دیتای ارسالی:
+                                </h4>
+                                <pre>
+<span class="key">HTTP/1.1</span> 404
+{
+    "tracking_code": "87441125",
+    "applicant_mobile": "09123456789"
+}
+</pre>
+                            </li>
+                            <li>
+                                seller_rejected_agreement: فروشنده معامله را رد کرد
+                                <br>
+                                <h4 class="sub-title">
+                                    نمونه دیتای ارسالی:
+                                </h4>
+                                <pre>
+<span class="key">HTTP/1.1</span> 404
+{
+    "tracking_code": "87441125",
+}
+</pre>
+                            </li>
+                            <li>
+                                buyer_agreed_agreement: خریدار معامله را پذیرفت
+                                <br>
+                                <h4 class="sub-title">
+                                    نمونه دیتای ارسالی:
+                                </h4>
+                                <pre>
+<span class="key">HTTP/1.1</span> 404
+{
+    "tracking_code": "87441125",
+    "applicant_mobile": "09123456789"
+}
+</pre>
+                            </li>
+                            <li>
+                                buyer_rejected_agreement: خریدار معامله را رد کرد
+                                <br>
+                                <h4 class="sub-title">
+                                    نمونه دیتای ارسالی:
+                                </h4>
+                                <pre>
+<span class="key">HTTP/1.1</span> 404
+{
+    "tracking_code": "87441125",
+}
+</pre>
+                            </li>
+                            <li>
+                                agreement_change_state_from_investigation: تغییر وضعیت معامله از معامله دارای مشکل
+                                <br>
+                                <h4 class="sub-title">
+                                    نمونه دیتای ارسالی:
+                                </h4>
+                                <pre>
+<span class="key">HTTP/1.1</span> 404
+{
+    "tracking_code": "87441125",
+    "trace_id": "ee6b9100-a0a4-478d-8535-9eecff8af4b6",
+    "state": "finalize",
+}
+</pre>
+                            </li>
+                            <li>
+                                agreement_finalized: معامله نهایی شد.
+                                <br>
+                                <h4 class="sub-title">
+                                    نمونه دیتای ارسالی:
+                                </h4>
+                                <pre>
+<span class="key">HTTP/1.1</span> 404
+{
+    "tracking_code": "87441125",
+}
+</pre>
+                            </li>
+                            <li>
+                                agreement_cancelled: معامله لغو شد.
+                                <br>
+                                <h4 class="sub-title">
+                                    نمونه دیتای ارسالی:
+                                </h4>
+                                <pre>
+<span class="key">HTTP/1.1</span> 404
+{
+    "tracking_code": "87441125",
+}
+</pre>
+                            </li>
+                            <li>
+                                <b>payment: کل وبهوک های مربوط به پرداخت </b>
+                            </li>
+                            <li>
+                                buyer_paid_agreement: خریدار مبلغ را به حساب امانی میاندو واریز کرد
+                                <br>
+                                <h4 class="sub-title">
+                                    نمونه دیتای ارسالی:
+                                </h4>
+                                <pre>
+<span class="key">HTTP/1.1</span> 404
+{
+    "tracking_code": "87441125",
+    "trace_id": "ee6b9100-a0a4-478d-8535-9eecff8af4b6",
+    "transaction_ref_id": "548784521254",
+    "payer_mobile": "09123456789",
+    "amount": "4000000",
+}
+</pre>
+                            </li>
+                            <li>
+                                payment_refunded_to_buyer: میاندو مبلغ پرداخت شده توسط خریدار را به حساب او بازگرداند.
+                                <br>
+                                <h4 class="sub-title">
+                                    نمونه دیتای ارسالی:
+                                </h4>
+                                <pre>
+<span class="key">HTTP/1.1</span> 404
+{
+    "tracking_code": "87441125",
+    "amount": "4000000",
+}
+</pre>
+                            </li>
+                            <li>
+                                seller_checked_out: مبلغ معامله به حساب فروشنده واریز شد
+                                <br>
+                                <h4 class="sub-title">
+                                    نمونه دیتای ارسالی:
+                                </h4>
+                                <pre>
+<span class="key">HTTP/1.1</span> 404
+{
+    "tracking_code": "87441125",
+    "amount": "4000000",
+}
+</pre>
+                            </li>
+                            <li>
+                                <b>ticket: کل وبهوک های مربوط به تیکت </b>
+                            </li>
+                            <li>
+                                buyer_submitted_ticket: خریدار مشکل ثبت کرد
+                                <br>
+                                <h4 class="sub-title">
+                                    نمونه دیتای ارسالی:
+                                </h4>
+                                <pre>
+<span class="key">HTTP/1.1</span> 404
+{
+    "tracking_code": "87441125",
+    "trace_id": "ee6b9100-a0a4-478d-8535-9eecff8af4b6",
+    "reporter_mobile": "09123456789",
+}
+</pre>
+                            </li>
+                            <li>
+                                seller_submitted_ticket: فروشنده مشکل ثبت کرد
+                                <br>
+                                <h4 class="sub-title">
+                                    نمونه دیتای ارسالی:
+                                </h4>
+                                <pre>
+<span class="key">HTTP/1.1</span> 404
+{
+    "tracking_code": "87441125",
+    "trace_id": "ee6b9100-a0a4-478d-8535-9eecff8af4b6",
+    "reporter_mobile": "09123456789",
+}
+</pre>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </article>
