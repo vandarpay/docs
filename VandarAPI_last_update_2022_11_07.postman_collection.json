@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "5eb8ca96-4934-4e5c-98e2-9e2198cf1de0",
+		"_postman_id": "f8f7fb3c-a7e3-44d8-9f58-e52db6b29709",
 		"name": "VandarAPI_last_update_2022_07_25",
 		"description": "The Vandar API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14750655"
 	},
 	"item": [
 		{
@@ -1396,6 +1397,49 @@
 										"subscription",
 										"withdrawal",
 										"{id}"
+									]
+								},
+								"description": "# Show one withdrawal\n\n**sample success response:**\n```\nHTTP/1.1 200\n{\n  \"status\": 1,\n  \"message\": \"برداشت وجه با موفقیت به نمایش درآمد.\",\n  \"result\": {\n    \"withdrawal\": {\n      \"id\": \"f3d084e0-b603-11ea-94ad-ebc7f5bf8e12\",\n      \"authorization_id\": \"dd205c00-b603-11ea-b6fc-ed9baa10357b\",\n      \"retry_count\": 1,\n      \"max_retry_count\": 1,\n      \"gateway_transaction_id\": 159281892196,\n      \"amount\": 10000,\n      \"wage_amount\": \"200.00\",\n      \"payment_number\": null,\n      \"status\": \"DONE\",\n      \"description\": null,\n      \"withdrawal_date\": \"1399\\/04\\/04\"\n      \"notify_url\": \"http://yourdomain.com/notify/me\",\n      \"is_instant\": true\n      }\n    },\n  }\n}\n```\n\n**sample unsuccess response:**\n```\nHTTP/1.1 401\n{\n  \"status\": 0,\n  \"error\": \"Unauthenticated\"\n}\n```"
+							},
+							"response": []
+						},
+						{
+							"name": "show by track id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api.vandar.io/v3/business/{business}/subscription/withdrawal/track-id/{track-id}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v3",
+										"business",
+										"{business}",
+										"subscription",
+										"withdrawal",
+										"track-id",
+										"{track-id}"
 									]
 								},
 								"description": "# Show one withdrawal\n\n**sample success response:**\n```\nHTTP/1.1 200\n{\n  \"status\": 1,\n  \"message\": \"برداشت وجه با موفقیت به نمایش درآمد.\",\n  \"result\": {\n    \"withdrawal\": {\n      \"id\": \"f3d084e0-b603-11ea-94ad-ebc7f5bf8e12\",\n      \"authorization_id\": \"dd205c00-b603-11ea-b6fc-ed9baa10357b\",\n      \"retry_count\": 1,\n      \"max_retry_count\": 1,\n      \"gateway_transaction_id\": 159281892196,\n      \"amount\": 10000,\n      \"wage_amount\": \"200.00\",\n      \"payment_number\": null,\n      \"status\": \"DONE\",\n      \"description\": null,\n      \"withdrawal_date\": \"1399\\/04\\/04\"\n      \"notify_url\": \"http://yourdomain.com/notify/me\",\n      \"is_instant\": true\n      }\n    },\n  }\n}\n```\n\n**sample unsuccess response:**\n```\nHTTP/1.1 401\n{\n  \"status\": 0,\n  \"error\": \"Unauthenticated\"\n}\n```"
