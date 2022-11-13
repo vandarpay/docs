@@ -192,7 +192,7 @@
                 <div class="article" id="miando">
 
                     <div>
-                        آخرین تغییرات: ۱۴۰۱/۰۷/۱۹
+                        آخرین تغییرات: ۱۴۰۱/۰۸/۲۲
                     </div>
 
                     <h2 class="article-header">مقدمه</h2>
@@ -611,12 +611,22 @@
                                 <td>optional</td>
                             </tr>
                             <tr>
+                                <td>items.*.item_price</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
                                 <td>items.*.price</td>
                                 <td>string</td>
                                 <td>required</td>
                             </tr>
                             <tr>
                                 <td>items.*.payer</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
+                                <td>items.*.payment_method</td>
                                 <td>string</td>
                                 <td>required</td>
                             </tr>
@@ -691,12 +701,20 @@
                                 لینک توضیحات مربوط به کالا.
                             </li>
                             <li>
+                                items.*.item_price (اجباری):
+                                مبلغ کل کالا.
+                            </li>
+                            <li>
                                 items.*.price (اجباری):
-                                مبلغ کالا.
+                                مبلغ بیعانه کالا.
                             </li>
                             <li>
                                 items.*.payer (اجباری):
                                 نقش پرداخت‌کننده هزینه مربوط به کالا (in:buyer,seller).
+                            </li>
+                            <li>
+                                items.*.payment_method (اجباری):
+                                نوع پرداخت: پرداخت کامل، پیش پرداخت (in:full-pay,pre-pay).
                             </li>
                             <li>
                                 items.*.quantity (اجباری):
@@ -735,8 +753,10 @@
       "category": "digital",
       "description": "در حد نو",
       "link": "https://divar.ir/v/gYoSNB1z",
+      "item_price": "200000",
       "price": "200000",
       "payer": "buyer",
+      "payment_method": "full-pay",
       "quantity": 1,
       "attachments": [
         "https://vandar.io/assets/img/home/dashboard-full.png",
