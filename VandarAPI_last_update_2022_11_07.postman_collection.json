@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "f8f7fb3c-a7e3-44d8-9f58-e52db6b29709",
-		"name": "VandarAPI_last_update_2022_07_25",
+		"_postman_id": "5a711595-1ee1-45bb-80a6-d902c9353733",
+		"name": "VandarAPI_last_update_2022_11_07",
 		"description": "The Vandar API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "14750655"
+		"_exporter_id": "24148547"
 	},
 	"item": [
 		{
@@ -2184,6 +2184,45 @@
 								"v1",
 								"checkouts",
 								"{{checkout_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Refund",
+			"item": [
+				{
+					"name": "Refund",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"payment_number\": \"\",\n    \"description\": \"\",\n    \"notify_url\": \"\",\n    \"amount\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.vandar.io/v3/business/{business}/transaction/{transaction_id}/refund",
+							"protocol": "https",
+							"host": [
+								"api",
+								"vandar",
+								"io"
+							],
+							"path": [
+								"v3",
+								"business",
+								"{business}",
+								"transaction",
+								"{transaction_id}",
+								"refund"
 							]
 						}
 					},
