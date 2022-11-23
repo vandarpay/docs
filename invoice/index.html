@@ -198,7 +198,7 @@
                 <article class="content">
 
                     <div>
-                        آخرین تغییرات: ۱۳۹۹/۱۱/۱۰
+                        آخرین تغییرات: ۱۴۰۱/۰۹/۰۲
                     </div>
 
                     <div class="article" id="invoice">
@@ -267,14 +267,15 @@
 
 
                         </div>
+
                         <div>
                             <h3 class="title" id="transactions">
-                             <a href="#transactions"><strong>صورت حساب: </strong>دریافت لیست تراکنش‌ها و تسویه‌ها</a>
+                                <a href="#transactions"><strong>صورت حساب: </strong>دریافت لیست تراکنش‌ها و تسویه‌ها</a>
                             </h3>
                             <p>این وب‌سرویس جهت دریافت گزارش و لیست تراکنش‌ها و تسویه‌های انجام شده در وندار مورد استفاده قرار می‌گیرد.</p>
                             <pre>
 <span class="key">METHOD:</span> GET
-<span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/transaction?per_page=10&page=1
+<span class="key">URL:</span> https://api.vandar.io/v3/business/{business}/transaction
 <span class="key">Header:</span> authorization : Bearer {token}</pre>
 
 
@@ -332,11 +333,6 @@
                                 </tr>
 
                                 <tr>
-                                    <td>per_page</td>
-                                    <td>String</td>
-                                    <td>optional</td>
-                                </tr>
-                                <tr>
                                     <td>id</td>
                                     <td>String</td>
                                     <td>optional</td>
@@ -347,11 +343,24 @@
                                     <td>String</td>
                                     <td>optional</td>
                                 </tr>
-								<tr>
-									<td>factor_number</td>
-									<td>String</td>
-									<td>optional</td>
-								</tr>
+                                <tr>
+                                    <td>factor_number</td>
+                                    <td>String</td>
+                                    <td>optional</td>
+                                </tr>
+
+                                <tr>
+                                    <td>per_page</td>
+                                    <td>String</td>
+                                    <td>optional</td>
+                                </tr>
+
+                                <tr>
+                                    <td>start_after</td>
+                                    <td>String</td>
+                                    <td>optional</td>
+                                </tr>
+
                                 <tr>
                                     <td>q</td>
                                     <td>String</td>
@@ -390,11 +399,11 @@
                                 <li>formId (اختیاری): شناسه فرم پرداخت </li>
                                 <li>ref_id (اختیاری): این پارامتر جستجو بر اساس کد مرجع را فراهم می‌سازد</li>
                                 <li>tracking_code (اختیاری): این پارامتر جستجو بر اساس کد پیگیری را فراهم می‌سازد</li>
-                                <li>per_page(اختیاری): تعداد رکورد اطلاعاتی درخواست صورت حساب را مشخص میکند </li>
-                                <li>page(اختیاری): با توجه به pagination، صفحه مورد نظر را مشخص می‌کند. </li>
                                 <li>id(اختیاری): شناسه یکتای تراکنش  </li>
-                                <li>factor_number(اختیاری): شماره فاکتور که در زمان ایجاد تراکنش درگاه پرداخت ارسال می شود </li>
                                 <li>track_id(اختیاری): کد رهگیری در زمان ثبت تسویه </li>
+                                <li>factor_number(اختیاری): شماره فاکتور که در زمان ایجاد تراکنش درگاه پرداخت ارسال می شود </li>
+                                <li>per_page(اختیاری): تعداد رکورد اطلاعاتی درخواست صورت حساب را مشخص میکند </li>
+                                <li>start_after(اختیاری): این پارامتر مشخص میکند که تراکنش های بعد از این تراکنش در لیست خروجی بازگردانده شوند. برای دریافت صفحه های بعدی میتوانید ایدی اخرین تراکنش را در این پارامتر ارسال کنید. تا لیست جدید را دریافت کنید. </li>
                                 <li>q(اختیاری): مقدار موجود در این پارامتر در  فیلدهای تراکنش و فرم و ... جستجو می شود </li>
                             </ul>
 
@@ -405,75 +414,90 @@
 <span class="key">HTTP/1.1</span> 200
 {
     "<span class="key">status</span>": 1,
+    "<span class="key">has_more</span>": true,
     "<span class="key">data</span>": {
-        "<span class="key">current_page</span>": 1,
-        "<span class="key">data</span>": [
-          {
-            "<span class="key">id</span>": 158935723830,
-            "<span class="key">uuid</span>": "4db0d000-cf14-11ea-a8b4-a7b522e6c1f0",
-            "<span class="key">amount</span>": 5000,
-            "<span class="key">wage</span>": 0,
-            "<span class="key">status</span>": 1,
-            "<span class="key">ref_id</span>": "GmshtyjwKStPuEvcEcbWlni0iEEYteNlgq2ZuVucO9",
-            "<span class="key">tracking_code</span>": "",
-            "<span class="key">card_number</span>": "",
-            "<span class="key">cid</span>": "",
-            "<span class="key">verified</span>": 0,
-            "<span class="key">channel</span>": "پرداخت اینترنتی",
-            "<span class="key">payment_date</span>": "11:07:11 - 1399\/5\/3",
-            "<span class="key">receipt_url</span>": "https://receipt.vandar.io/4db0d000-cf14-11ea-a8b4-a7b522e6c1f0",
-            "<span class="key">created_at</span>": "11:06:44 - 1399\/5\/3",
-            "<span class="key">wallet</span>": "100000",
-            "<span class="key">result</span>": "تراکنش موفق",
-            "<span class="key">description</span>": "Lorem ipsom .....",
-            "<span class="key">factorNumber</span>": "00120",
-            "<span class="key">mobile</span>": "",
-            "<span class="key">callback_url</span>": "http:\/\/vandar.ui\/ipg-v3\/verify.php",
-            "<span class="key">form_title</span>": "",
-            "<span class="key">settlement</span>": "",
+            "<span class="key">id</span>":  165374316188,
+            "<span class="key">uuid</span>":  "73b82710-de88-11ec-ae19-47c5d7c58ae4",
+            "<span class="key">amount</span>":  1650000,
+            "<span class="key">wage</span>":  0,
+            "<span class="key">status</span>":  -1,
+            "<span class="key">ref_id</span>":  null,
+            "<span class="key">tracking_code</span>":  null,
+            "<span class="key">card_number</span>":  null,
+            "<span class="key">cid</span>":  null,
+            "<span class="key">verified</span>":  0,
+            "<span class="key">channel</span>":  "پرداخت اینترنتی",
+            "<span class="key">payment_date</span>":  null,
+            "<span class="key">payment_number</span>":  null,
+            "<span class="key">created_at</span>":  "17:46:57 - 1401/3/7",
+            "<span class="key">updated_at</span>":  "17:46:58 - 1401/3/7",
+            "<span class="key">wallet</span>":  0,
+            "<span class="key">result</span>":  null,
+            "<span class="key">description</span> "خرید به شماره سفارش : 91 | محصولات - تست (165)" ,
+            "<span class="key">factorNumber</span>":  null,
+            "<span class="key">mobile</span>":  null,
+            "<span class="key">callback_url</span>": "http://wordpress.local/?wc-api=WC_Vandar&wc_order=91",
+            "<span class="key">form_title</span>": null,
+            "<span class="key">settlement</span>": null,
+            "<span class="key">settlement_port</span>": null,
+            "<span class="key">comments</span>": [],
+            "<span class="key">api_token</span>": "QRI4AZLY17SCG",
+            "<span class="key">logs</span>": {
+                "<span class="key">transaction_id</span>": 165374316188,
+                "<span class="key">result_code</span>": "-2",
+                "<span class="key">result_message</span>": "کاربر صفحه پرداخت را ترک کرده است.",
+                "<span class="key">log_date</span>": "1401-03-07 18:20:48",
+                "<span class="key">group</span>": "خطای کاربر"
+             },
+            "<span class="key">revised_transaction_id</span>":  null,
+            "<span class="key">refund</span>":  null,
+            "<span class="key">refund_detail_ids</span>":  [],
             "<span class="key">payer</span>": {
-                "<span class="key">ip</span>": "89.196.230.198",
-                "<span class="key">name</span>": "",
-                "<span class="key">slug</span>": "",
-                "<span class="key">avatar</span>": "",
-                "<span class="key">email</span>": "",
-                "<span class="key">phone</span>": "",
-                "<span class="key">address</span>": "",
-                "<span class="key">mobile</span>": "",
-                "<span class="key">additional_fields</span>": {
-                      "<span class="key">name</span>": ""
-                      "<span class="key">value</span>": ""
-                },
-                "<span class="key">description</span>": ""
-            },
+                 "<span class="key">ip</span>": "167.235.19.231",
+                 "<span class="key">iban</span>": null,
+                 "<span class="key">name</span>": null,
+                 "<span class="key">slug</span>": null,
+                 "<span class="key">avatar</span>": null,
+                 "<span class="key">legal_name</span>": null,
+                 "<span class="key">business_owner</span>": null,
+                 "<span class="key">email</span>": null,
+                 "<span class="key">phone</span>": null,
+                 "<span class="key">address</span>": null,
+                 "<span class="key">mobile</span>": null,
+                 "<span class="key">additional_fields</span>": null,
+                 "<span class="key">description</span>":  "خرید به شماره سفارش : 91 | محصولات - تست (165)",
+             },
             "<span class="key">receiver</span>": {
-                "<span class="key">name</span>": "",
-                "<span class="key">slug</span>": "",
-                "<span class="key">avatar</span>": "",
-                "<span class="key">iban</span>": "",
-                "<span class="key">bank_name</span>": ""
-            }
-          }
-        ],
-        "<span class="key">first_page_url</span>": "https:\/\/api.vandar.io\/v2\/{business}\/hosting\/transaction?page=1",
-        "<span class="key">from</span>": 1,
-        "<span class="key">last_page</span>": 85,
-        "<span class="key">last_page_url</span>": "https:\/\/api.vandar.io\/v2\/business\/hosting\/transaction?page=85",
-        "<span class="key">next_page_url</span>": "https:\/\/api.vandar.io\/v2\/business\/hosting\/transaction?page=2",
-        "<span class="key">path</span>": "https:\/\/api.vandar.io\/v2\/business\/hosting\/transaction",
-        "<span class="key">per_page</span>": 10,
-        "<span class="key">prev_page_url</span>": "",
-        "<span class="key">to</span>": 10,
-        "<span class="key">total</span>": 842
+                  "<span class="key">name</span>": null,
+                  "<span class="key">legal_name</span>": null,
+                  "<span class="key">slug</span>": null,
+                  "<span class="key">avatar</span>": null,
+                  "<span class="key">business_owner</span>": null,
+                  "<span class="key">iban</span>": null,
+                  "<span class="key">bank_name</span>": null
+             },
+            "<span class="key">receipt_url</span>": null,
+            "<span class="key">time_prediction</span>": {
+                  "<span class="key">settlement_done_time_prediction</span>": null
+                  "<span class="key">settlement_cancelable_time</span>": null
+                  "<span class="key">is_settlement_paya_report_finally</span>": null
+                  "<span class="key">settlement_paya_report_finally_time</span>": null
+                  "<span class="key">is_after_time_prediction</span>": null
+                  "<span class="key">p2p_time_prediction</span>": null
+                                },
     }
-}</pre>
+}
+                            </pre>
 
                             <h3 class="sub-title">
                                 توضیحات
                             </h3>
                             <ul>
                                 <li>status: درصورت موفق بودن درخواست این مقدار برابر با 1 می باشد</li>
-                                <li>current_page: با توجه به برگشت دادن اطلاعات به صورت صفحه به صفحه، صفحه فعلی را نمایش می‌دهد</li>
+                                <li>has_more: در صورتی عناصر بیشتری از مجموعه وجود دارد این مقدار برابر با true می باشد.
+                                    در غیر اینصورت مقدار false برگشت داده می شود.
+                                    در صورت true بودن میتوانید از پارامتر ورودی  start_after در ورودی استفاده کنید
+                                </li>
                                 <li>id: شناسه تراکنش یا تسویه را مشخص می‌کند</li>
                                 <li>uuid: شناسه یکتای تراکنش  یا تسویه را مشخص می‌کند</li>
                                 <li>amount: مبلغ کل تراکنش به تومان</li>
@@ -498,6 +522,7 @@
                                 <li>verified:  در صورت استفاده از درگاه پرداخت دو مرحله‌ای تراکنش تایید شود این مقدار برابر با ۱ می‌باشد در غیر این‌صورت برابر با ۰ می باشد. در درگاه پرداخت تک مرحله‌ای بلافاصله بعد از انجام تراکنش این مقدار ۱ می‌شود   </li>
                                 <li>channel:    توضیحات فارسی نوع تراکنش </li>
                                 <li>payment_date:  تاریخ و زمان اتمام تراکنش  </li>
+                                <li>effective_time_stamp:   مقدار timestamp تاریخ و زمان اتمام تراکنش  </li>
                                 <li>receipt_url:  لینک رسید برای تسویه های موفق  </li>
                                 <li>created_at:  تاریخ و زمان شروع تراکنش  </li>
                                 <li>wallet:   موجودی کیف پول بعد از تراکنش </li>
@@ -526,7 +551,7 @@
                                     </ul>
                                     <li>description:   توضیحات پرداخت کننده را مشخص می‌کند </li>
                                     <li>نکته: فیلدهای نام، ایمیل، شماره تماس، آدرس، موبایل و توضیحات، زمان پرداخت فرم درصورتی که در تنظیمات فرم فعال شده باشد ذخیره  می‌شود </li>
-‍
+                                    ‍
                                 </ul>
                                 <li>receiver:  طلاعات دریافت کننده تسویه را مشخص‌ می‌کند </li>
                                 <ul>
@@ -558,6 +583,72 @@
                                 <li>error: در صورت منقضی شدن Token ارسالی در Header و یا اشتباه بودن Token با مقدار Unauthenticated برگشت داده می‌شود. </li>
                             </ul>
 
+                        </div>
+
+
+                        <div>
+                            <h3 class="title" id="transactions-meta">
+                                <a href="#transactions-meta"><strong>جزئیات صورت حساب: </strong>دریافت جزئیات صفحه بندی </a>
+                            </h3>
+                            <p>این وب‌سرویس جهت دریافت اطلاعات صفحه بندی (pagination) مورد استفاده قرار می‌گیرد و تعداد کل گزارش ها و تعداد صفحات کلی مشخص می‌شود</p>
+                            <pre>
+<span class="key">METHOD:</span> GET
+<span class="key">URL:</span> https://api.vandar.io/v3/business/{business}/meta
+<span class="key">Header:</span> authorization : Bearer {token}</pre>
+
+
+                            <h3 class="sub-title">
+                                پارامترهای مجاز
+                            </h3>
+                            <table>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Status</th>
+                                </tr>
+
+                                <tr>
+                                    <td>per_page</td>
+                                    <td>String</td>
+                                    <td>optional</td>
+                                </tr>
+
+                                <tr>
+                                    <td>page</td>
+                                    <td>String</td>
+                                    <td>optional</td>
+                                </tr>
+
+                            </table>
+
+                            <h3 class="sub-title">
+                                توضیحات
+                            </h3>
+                            <ul>
+                                <li>per_page(اختیاری): تعداد رکورد اطلاعاتی درخواست صورت حساب را مشخص میکند </li>
+                                <li>page(اختیاری): با توجه به pagination، صفحه مورد نظر را مشخص می‌کند. </li>
+                            </ul>
+
+                            <h3 class="sub-title">
+                                نمونه پاسخ دریافتی موفق
+                            </h3>
+                            <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+    "<span class="key">status</span>": 1,
+    "<span class="key">data</span>": {
+        "<span class="key">total</span>":  846,
+        "<span class="key">pages</span>":  43,
+    },
+  } </pre>
+
+                            <h3 class="sub-title">
+                                توضیحات
+                            </h3>
+                            <ul>
+                                <li>total: تعداد کل گزارشات</li>
+                                <li>pages: تعداد کل صفحات صورتحساب</li>
+                            </ul>
                         </div>
 
 
