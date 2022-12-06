@@ -141,8 +141,7 @@
                             <a href="https://vandarpay.github.io/docs/customers/#wallet">کیف پول</a><br>
                             <a href="https://vandarpay.github.io/docs/customers/#transactions">تراکنش</a><br>
                             <a href="https://vandarpay.github.io/docs/customers/#sheba">شبا</a><br>
-                            <a href="https://vandarpay.github.io/docs/customers/#new-sheba">شبا (نسخه جدید)</a><br>
-                            <a href="https://vandarpay.github.io/docs/customers/#sheba_new_version">کارت (نسخه جدید)</a><br>
+                            <a href="https://vandarpay.github.io/docs/customers/#card">کارت</a><br>
                         </div>
                     </li>
                     <li>
@@ -1617,147 +1616,8 @@
                         </ul>
 
                         <h2 class="article-header" id="sheba">
-                            <a href="#sheba">شبا</a> </h2>
+                            <a href="#sheba">شبا</a></h2>
                         <h3 class="title" id="sheba-store"><a href="#sheba-store"> ۱. ثبت شماره شبا</a>
-                        </h3>
-                        <p>با اسفاده از این سرویس می‌توانید برای مشتری شماره شبا ثبت نمایید. </p>
-                        <pre>
-<span class="key">Method:</span> POST
-<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/ibans
-</pre>
-
-                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
-                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل دسترسی می‌باشد.</p>
-                        <h3 class="sub-title">
-                            پارامترهای مجاز
-                        </h3>
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>name</th>
-                                <th>Type</th>
-                                <th>Status</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>iban</td>
-                                <td>string</td>
-                                <td>required</td>
-                            </tr>
-                            </tbody>
-                        </table>
-
-
-                        <ul>
-                            <li>
-                                توضیحات:
-                                <ul>
-                                    <li>iban (اجباری): شماره شبا مشتری.</li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <h3 class="sub-title">
-                            نمونه پاسخ دریافتی موفق:
-                        </h3>
-
-                        <pre>
-<span class="key">HTTP/1.1</span> 200
-{
-    "status": 1,
-    "data": {
-        "account_number": "0001780000000",
-        "resolved_account_owner": "الناز نوروزی",
-        "account_description": "حساب فعال است",
-        "id": "0f4b9c30-2360-11ec-bec5-fffd717e132a",
-        "IBAN": "IR880620000000001780000000",
-        "account_owner": [
-            {
-                "firstName": "الناز",
-                "lastName": "نوروزی"
-            }
-        ],
-        "bank_name": "آینده"
-    }
-}
-</pre>
-
-                        <h3 class="title" id="sheba-index"><a href="#sheba-index"> ۲. لیست شماره شباها</a>
-                        </h3>
-
-                        <p>در این بخش لیست شماره شباهای ثبت شده برای هر مشتری را مشاهده خواهید کرد.</p>
-
-                        <pre>
-  <span class="key">Method:</span> GET
-  <span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/ibans
-  </pre>
-
-                        <h3 class="sub-title">
-                            نمونه پاسخ دریافتی موفق:
-                        </h3>
-
-                        <pre>
-  <span class="key">HTTP/1.1</span> 200
-  {
-    "current_page": 1,
-    "data": [
-        {
-            "account_number": "0001780000000",
-            "resolved_account_owner": "الناز نوروزی",
-            "account_description": "حساب فعال است",
-            "id": "0f4b9c30-2360-11ec-bec5-fffd717e132a",
-            "IBAN": "IR880620000000001780000000",
-            "account_owner": [
-                {
-                    "firstName": "الناز",
-                    "lastName": "نوروزی"
-                }
-            ],
-            "bank_name": "آینده"
-        }
-    ],
-    "first_page_url": "https://customer.vandar.io/v2/business/{business}/customers/394dd280-210f-11ec-96d5-95b80dce5a5a/ibans?page=1",
-    "from": 1,
-    "last_page": 1,
-    "last_page_url": "https://customer.vandar.io/v2/business/{business}/customers/394dd280-210f-11ec-96d5-95b80dce5a5a/ibans?page=1",
-    "next_page_url": null,
-    "path": "https://customer.vandar.io/v2/business/{business}/customers/394dd280-210f-11ec-96d5-95b80dce5a5a/ibans",
-    "per_page": 20,
-    "prev_page_url": null,
-    "to": 1,
-    "total": 1
-}
-  </pre>
-
-
-                        <h3 class="title" id="sheba-delete">
-                            <a href="#sheba-delete"> ۳. حذف شماره شبا</a>
-                        </h3>
-                        <p>در صورت نیاز می‌توانید از این بخش شماره شبا مربوط به مشتری را حدف نمایید.</p>
-                        <pre>
-   <span class="key">METHOD:</span> DELETE
-   <span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/ibans/{iban_id}
-   </pre>
-                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
-                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل دسترسی می‌باشد.</p>
-
-                        <h3 class="sub-title">
-                            نمونه پاسخ دریافتی موفق:
-                        </h3>
-                        <pre>
-   <span class="key">HTTP/1.1</span> 200
-{
-    "status": 1,
-    "data": {
-        "message": "شماره شبا با موفقیت حذف شد."
-     }
-}
-   </pre>
-
-
-                        <h2 class="article-header" id="sheba_new_version">
-                            <a href="#sheba_new_version">شبا (نسخه جدید)</a></h2>
-                        <h3 class="title" id="sheba-new-store"><a href="#sheba-new-store"> ۱. ثبت شماره شبا</a>
                         </h3>
                         <p>با اسفاده از این سرویس می‌توانید برای مشتری شماره شبا ثبت نمایید. </p>
                         <pre>
@@ -1866,7 +1726,7 @@
                             <li>updated_at: تاریخ ویراش شماره شبا</li>
                         </ul>
 
-                        <h3 class="title" id="sheba-new-index"><a href="#sheba-new-index"> ۲. لیست شماره شباها</a>
+                        <h3 class="title" id="sheba-index"><a href="#sheba-index"> ۲. لیست شماره شباها</a>
                         </h3>
 
                         <p>در این بخش لیست شماره شباهای ثبت شده برای هر مشتری را مشاهده خواهید کرد.</p>
@@ -1934,8 +1794,8 @@
   </pre>
 
 
-                        <h3 class="title" id="sheba-new-delete">
-                            <a href="#sheba-new-delete"> ۳. حذف شماره شبا</a>
+                        <h3 class="title" id="sheba-delete">
+                            <a href="#sheba-delete"> ۳. حذف شماره شبا</a>
                         </h3>
                         <p>در صورت نیاز می‌توانید از این بخش شماره شبا مربوط به مشتری را حدف نمایید.</p>
                         <pre>
@@ -1958,8 +1818,8 @@
    </pre>
 
 
-                        <h3 class="title" id="sheba-new-inquiry">
-                            <a href="#sheba-new-inquiry"> ۴. استعلام شماره شبا</a>
+                        <h3 class="title" id="sheba-inquiry">
+                            <a href="#sheba-inquiry"> ۴. استعلام شماره شبا</a>
                         </h3>
                         <p>در صورت نیاز می‌توانید از این بخش شماره شبا مربوط به مشتری را استعلام نمایید.</p>
                         <pre>
@@ -2040,8 +1900,8 @@
 
 
 
-                        <h3 class="title" id="sheba-new-set-default">
-                            <a href="#sheba-new-set-default"> ۵. تنظیم شماره شبا پیش فرض</a>
+                        <h3 class="title" id="sheba-set-default">
+                            <a href="#sheba-set-default"> ۵. تنظیم شماره شبا پیش فرض</a>
                         </h3>
                         <p>در صورت نیاز می‌توانید از این بخش شماره شبا مربوط به مشتری را به صورت پیش فرض تنظیم نمایید.</p>
                         <pre>
@@ -2065,9 +1925,9 @@
 
 
 
-                        <h2 class="article-header" id="card_new_version">
-                            <a href="#card_new_version">کارت (نسخه جدید)</a></h2>
-                        <h3 class="title" id="card-new-store"><a href="#card-new-store"> ۱. ثبت شماره کارت</a>
+                        <h2 class="article-header" id="card">
+                            <a href="#card">کارت</a></h2>
+                        <h3 class="title" id="card-store"><a href="#card-store"> ۱. ثبت شماره کارت</a>
                         </h3>
                         <p>با اسفاده از این سرویس می‌توانید برای مشتری شماره کارت ثبت نمایید. </p>
                         <pre>
@@ -2171,7 +2031,7 @@
                             <li>updated_at: تاریخ ویراش شماره کارت</li>
                         </ul>
 
-                        <h3 class="title" id="card-new-index"><a href="#card-new-index"> ۲. لیست شماره کارت ها</a>
+                        <h3 class="title" id="card-index"><a href="#card-index"> ۲. لیست شماره کارت ها</a>
                         </h3>
 
                         <p>در این بخش لیست شماره کارت های ثبت شده برای هر مشتری را مشاهده خواهید کرد.</p>
@@ -2234,8 +2094,8 @@
   </pre>
 
 
-                        <h3 class="title" id="card-new-delete">
-                            <a href="#card-new-delete"> ۳. حذف شماره کارت</a>
+                        <h3 class="title" id="card-delete">
+                            <a href="#card-delete"> ۳. حذف شماره کارت</a>
                         </h3>
                         <p>در صورت نیاز می‌توانید از این بخش شماره کارت مربوط به مشتری را حدف نمایید.</p>
                         <pre>
@@ -2258,8 +2118,8 @@
    </pre>
 
 
-                        <h3 class="title" id="card-new-inquiry">
-                            <a href="#card-new-inquiry"> ۴. استعلام شماره کارت</a>
+                        <h3 class="title" id="card-inquiry">
+                            <a href="#card-inquiry"> ۴. استعلام شماره کارت</a>
                         </h3>
                         <p>در صورت نیاز می‌توانید از این بخش  شماره کارت مربوط به مشتری را استعلام نمایید.</p>
                         <pre>
@@ -2332,8 +2192,8 @@
    </pre>
 
 
-                        <h3 class="title" id="card-new-set-default">
-                            <a href="#card-new-set-default"> ۵. تنظیم شماره کارت پیش فرض</a>
+                        <h3 class="title" id="card-set-default">
+                            <a href="#card-set-default"> ۵. تنظیم شماره کارت پیش فرض</a>
                         </h3>
                         <p>در صورت نیاز می‌توانید از این بخش  شماره کارت مربوط به مشتری را به صورت پیش فرض تنظیم نمایید.</p>
                         <pre>
