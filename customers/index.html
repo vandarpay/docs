@@ -137,9 +137,11 @@
                         <div class="dropdown-container">
                             <a href="https://vandarpay.github.io/docs/customers/#customers">مقدمه</a><br>
                             <a href="https://vandarpay.github.io/docs/customers/#base">مشتریان</a><br>
+                            <a href="https://vandarpay.github.io/docs/customers/#custom_field">فیلد اختصاصی</a><br>
                             <a href="https://vandarpay.github.io/docs/customers/#wallet">کیف پول</a><br>
                             <a href="https://vandarpay.github.io/docs/customers/#transactions">تراکنش</a><br>
                             <a href="https://vandarpay.github.io/docs/customers/#sheba">شبا</a><br>
+                            <a href="https://vandarpay.github.io/docs/customers/#card">کارت</a><br>
                         </div>
                     </li>
                     <li>
@@ -184,7 +186,7 @@
                 <div class="article" id="ipg">
 
                     <div>
-                        آخرین تغییرات: ۱۴۰۰/۰۷/۰۸
+                        آخرین تغییرات: ۱۴۰۱/۰۹/۱۳
                     </div>
 
                     <h2 class="article-header">مقدمه</h2>
@@ -193,7 +195,9 @@
                             <a href="#customers" > <strong>سرویس مشتریان چیست:</strong></a>
                         </h3>
                         <p>
-                            سرویس مشتریان جهت مدیریت طرف‌حساب‌های پذیرندگان وندار ارائه شده است که توسط این سرویس، پذیرندگان می‌توانند اطلاعات هویتی، کیف پول، شبا، اشتراک‌ها و تراکنش‌های مشتریان خود را مدیریت کنند.
+                            سرویس مشتریان جهت مدیریت طرف‌حساب‌های پذیرندگان وندار ارائه شده است که توسط این سرویس،
+                            پذیرندگان می‌توانند اطلاعات هویتی، کیف پول، شبا، کارت، اشتراک‌ها و تراکنش‌های مشتریان خود را
+                            مدیریت کنند.
                         </p>
                         <h3 class="sub-title">
                             توضیحات
@@ -210,13 +214,12 @@
                         <h2 class="article-header" id="base">
                             <a href="#base">مشتریان</a> </h2>
                         <p>
-                            در این بخش سرویس‌های ثبت مشتری، مشاهده لیست مشتریان، ویرایش اطلاعات مشتری، حذف مشتری و مشاهده اطلاعات یک مشتری ارائه می‌شوند.
+                            در این بخش سرویس‌های ثبت مشتری، فیلدهای اختصاصی مشتری، مشاهده لیست مشتریان، ویرایش اطلاعات
+                            مشتری، حذف مشتری و مشاهده اطلاعات یک مشتری ارائه می‌شوند.
                         </p>
 
                         <h3 class="title" id="base-index"><a href="#base-index">
-                            ۱. لیست مشتریان:
-                        </a>
-
+                            ۱. لیست مشتریان:</a>
                         </h3>
                         <p>در این بخش لیست مشتریان کسب‌و‌کار خود را مشاهده می‌کنید.</p>
                         <pre>
@@ -238,14 +241,34 @@
             "name": "تست",
             "balance": 0,
             "created_at": "13:53 - 1400/07/07",
-            "mobile": null
+            "mobile": null,
+            "custom_fields": [
+                {
+                    "key": "سن",
+                    "value": "25"
+                },
+                {
+                    "key": "تاریخ تولد",
+                    "value": "1376/01/01"
+                }
+            ]
         },
         {
             "id": "35e431e0-210c-11ec-9200-79b42496d8e0",
             "name": "الناز نوروزی",
             "balance": 0,
             "created_at": "13:31 - 1400/07/07",
-            "mobile": "09121234567"
+            "mobile": "09121234567",
+            "custom_fields": [
+                {
+                    "key": "سن",
+                    "value": "25"
+                },
+                {
+                    "key": "تاریخ تولد",
+                    "value": "1376/01/01"
+                }
+             ]
         }
     ],
     "links": {
@@ -278,6 +301,7 @@
                                     <li>balance: موجودی کیف پول مشتری</li>
                                     <li>created_at: تاریخ ثبت مشتری</li>
                                     <li>mobile: شماره موبایل مشتری</li>
+                                    <li>custom_fields: لیست فیلد های اختصاصی ثبت شده</li>
                                 </ul>
                             </li>
                             <li>
@@ -412,6 +436,11 @@
                                 <td>string</td>
                                 <td>optional</td>
                             </tr>
+                            <tr>
+                                <td>custom_fields</td>
+                                <td>array</td>
+                                <td>optional</td>
+                            </tr>
                             </tbody>
                         </table>
                         <h3 class="sub-title">
@@ -474,6 +503,11 @@
                                 mcc_code (اختیاری برای مشتری حقوقی):
                                 کد صنف مشتری.
                             </li>
+                            <li>
+                                custom_fields (اختیاری):
+                                فیلد های اختصاصی مشتری. قبل از ثبت این فیلد باید فیلد های اختصاصی برای کسب و کار از طریق
+                                سرویس مربوطه که در ادامه توضیح داده خواهد شد ثبت شود.
+                            </li>
                         </ul>
                         <h3 class="sub-title">
                             نکته
@@ -512,7 +546,11 @@
     "province_id": "8",
     "city_id": "6",
     "address": "تهران...",
-    "postal_code": ""
+    "postal_code": "",
+    "custom_fields": [
+        {"field_id": 1, "field_value": "25"},
+        {"field_id": 2, "field_value": "01/01/1376"},
+    ]
 }
                       </pre>
                         <h3 class="sub-title">
@@ -547,7 +585,11 @@
     "city_id": "6",
     "address": "تهران",
     "postal_code": ""
-    "mcc_code": ""
+    "mcc_code": "",
+    "custom_fields": [
+        {"field_id": 1, "field_value": "25"},
+        {"field_id": 2, "field_value": "01/01/1376"},
+    ]
 }
                       </pre>
                         <h3 class="sub-title">
@@ -563,6 +605,23 @@
         "customer": {
             "id": "394dd280-210f-11ec-96d5-95b80dce5a5a"
         }
+    }
+}
+                      </pre>
+
+
+                        <h3 class="sub-title">
+                            در صورتی که از قبل فیلد اختصاصی برای کسب و کار ثبت نشده باشد خطای زیر برگردانده می شود:
+                        </h3>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 422
+{
+    "message": "چنین فیلدی برای این کسب و کار ثبت نشده است.",
+    "errors": {
+        "custom_fields.0.field_id": [
+            "چنین فیلدی برای این کسب و کار ثبت نشده است."
+        ]
     }
 }
                       </pre>
@@ -668,6 +727,11 @@
                                 <td>string</td>
                                 <td>optional</td>
                             </tr>
+                            <tr>
+                                <td>custom_fields</td>
+                                <td>array</td>
+                                <td>optional</td>
+                            </tr>
                             </tbody>
                         </table>
                         <h3 class="sub-title">
@@ -730,6 +794,11 @@
                                 mcc_code (اختیاری):
                                 کدپستی محل سکونت مشتری.
                             </li>
+                            <li>
+                                custom_fields (اختیاری):
+                                فیلد های اختصاصی مشتری. قبل از ثبت این فیلد باید فیلد های اختصاصی برای کسب و کار از طریق
+                                سرویس مربوطه که در ادامه توضیح داده خواهد شد ثبت شود.
+                            </li>
                         </ul>
                         <h3 class="sub-title">
                             نکته
@@ -767,7 +836,11 @@
      "province_id": "8",
      "city_id": "6",
      "address": "تهران...",
-     "postal_code": "1234567890"
+     "postal_code": "1234567890",
+     "custom_fields": [
+        {"field_id": 1, "field_value": "25"},
+        {"field_id": 2, "field_value": "01/01/1376"},
+     ]
  }
                        </pre>
                         <h3 class="sub-title">
@@ -798,7 +871,17 @@
       "address": "تهران...",
       "postal_code": "1234567890",
       "mcc_code": null,
-      "mcc_name": "-"
+      "mcc_name": "-",
+      "custom_fields": [
+            {
+                "key": "سن",
+                "value": "25"
+            },
+            {
+                "key": "تاریخ تولد",
+                "value": "1376/01/01"
+            }
+      ]
   }
 }
                        </pre>
@@ -817,7 +900,11 @@
      "province_id": "8",
      "city_id": "6",
      "address": "تهران",
-     "postal_code": ""
+     "postal_code": "",
+     "custom_fields": [
+        {"field_id": 1, "field_value": "25"},
+        {"field_id": 2, "field_value": "01/01/1376"},
+     ]
  }
                        </pre>
                         <h3 class="sub-title">
@@ -848,10 +935,36 @@
       "address": "تهران",
       "postal_code": "1234567890",
       "mcc_code": null,
-      "mcc_name": "-"
+      "mcc_name": "-",
+      "custom_fields": [
+            {
+                "key": "سن",
+                "value": "25"
+            },
+            {
+                "key": "تاریخ تولد",
+                "value": "1376/01/01"
+            }
+      ]
   }
 }
                        </pre>
+
+                        <h3 class="sub-title">
+                            در صورتی که از قبل فیلد اختصاصی برای کسب و کار ثبت نشده باشد خطای زیر برگردانده می شود:
+                        </h3>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 422
+{
+    "message": "چنین فیلدی برای این کسب و کار ثبت نشده است.",
+    "errors": {
+        "custom_fields.0.field_id": [
+            "چنین فیلدی برای این کسب و کار ثبت نشده است."
+        ]
+    }
+}
+                      </pre>
 
 
                         <h3 class="title" id="base-delete">
@@ -911,14 +1024,309 @@
       "address": "تهران",
       "postal_code": "1234567890",
       "mcc_code": null,
-      "mcc_name": "-"
+      "mcc_name": "-",
+      "custom_fields": [
+            {
+                "key": "سن",
+                "value": "25"
+            },
+            {
+                "key": "تاریخ تولد",
+                "value": "1376/01/01"
+            }
+      ]
   }
 }
 </pre>
 
-                        <h2 class="article-header" id="wallet"> <a href="#wallet"> کیف پول</a></h2>
+                        <h2 class="article-header" id="custom_field"><a href="#custom_field">فیلد اختصاصی</a></h2>
                         <p>
-                            در این بخش مدیریت کیف پول مشتریان که شامل واریز، برداشت و مشاهده موجودی کیف پول مشتری می‌باشد، صورت می‌گیرد.
+                            با استفاده از این سرویس می‌توانید فیلدهای اختصاصی برای کسب و کار ثبت نمایید.
+                        </p>
+
+
+                        <h3 class="title" id="field-index"><a href="#field-index">
+                            ۱. لیست فیلدها:
+                        </a>
+
+                        </h3>
+                        <p>در این بخش لیست فیلدهای اختصاصی کسب‌و‌کار خود را مشاهده می‌کنید.</p>
+                        <pre>
+<span class="key">Method:</span> GET
+<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/fields
+                        </pre>
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+    "data": [
+        {
+            "id": 1,
+            "name": "سن",
+            "created_at": 1670222123,
+            "updated_at": 1670222123
+        },
+        {
+            "id": 2,
+            "name": "تاریخ تولد",
+            "created_at": 1670222052,
+            "updated_at": 1670222052
+        }
+    ],
+    "links": {
+        "first": "https://customer.vandar.io/v2/business/{business}/customers/fields?page=1",
+        "last": "https://customer.vandar.io/v2/business/{business}/customers/fields?page=1",
+        "prev": null,
+        "next": null
+    },
+    "meta": {
+        "current_page": 1,
+        "from": 1,
+        "last_page": 1,
+        "path": "https://customer.vandar.io/v2/business/{business}/customers/fields",
+        "per_page": 10,
+        "to": 2,
+        "total": 2
+    }
+}
+                        </pre>
+
+                        <ul>
+                            <li>
+                                status: ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛
+                                درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن
+                                منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره.
+                            </li>
+                            <li>
+                                data:
+                                <ul>
+                                    <li>id: شناسه یکتای فیلد اختصاصی</li>
+                                    <li>name: نام فیلد اختصاصی.</li>
+                                    <li>created_at: تاریخ ثبت فیلد اختصاصی</li>
+                                    <li>updated_at: تاریخ ویرایش فیلد اختصاصی</li>
+                                </ul>
+                            </li>
+                            <li>
+                                links:
+                                <ul>
+                                    <li>first: آدرس اولین صفحه</li>
+                                    <li>last: آدرس آخرین صفحه</li>
+                                    <li>prev: آدرس صفحه قبل</li>
+                                    <li>next: آدرس صفحه بعد</li>
+                                </ul>
+                            </li>
+                            <li>
+                                meta:
+                                <ul>
+                                    <li>current_page: آدرس همین صفحه</li>
+                                    <li>from: شماره اولین آیتمی که در این صفحه آمده است</li>
+                                    <li>last_page: تعداد کل صفحات</li>
+                                    <li>path: آدرس خالص بدون صفحه بندی</li>
+                                    <li>per_page: تعداد آیتم در هر صفحه</li>
+                                    <li>to: شماره آخرین آیتمی که در این صفحه آمده است</li>
+                                    <li>total: تعداد کل آیتم ها</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی نا موفق:
+                        </h3>
+                        <pre>
+<span class="key">HTTP/1.1</span> 401
+{
+  "status": 0,
+  "error": "Unauthenticated"
+}
+                        </pre>
+
+                        <h3 class="title" id="field-store">
+                            <a href="#field-store"> ۲. ثبت فیلد اختصاصی جدید</a>
+                        </h3>
+                        <p>
+                            با استفاده از این سرویس می‌توانید یک فیلد اختصاصی جدید ثبت نمایید.
+                        </p>
+                        <pre>
+<span class="key">METHOD:</span> POST
+<span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/customers/fields
+                      </pre>
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <h3 class="sub-title">
+                            پارامترهای مجاز
+                        </h3>
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>name</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="sub-title">
+                            توضیحات
+                        </h3>
+                        <ul>
+                            <li>name (اجباری):
+                                نام فیلد اختصاصی.
+                            </li>
+                        </ul>
+
+                        <h3 class="sub-title">
+                            نمونه json برای ثبت فیلد اختصاصی
+                        </h3>
+                        <pre>
+{
+    "name": "نام پدر"
+}
+                      </pre>
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+    "status": "1",
+    "message": "فیلد با موفقیت ثبت گردید.",
+    "result": {
+        "field": {
+            "id": 1
+        }
+    }
+}
+                        </pre>
+
+                        <h3 class="title" id="field-update">
+                            <a href="#field-update"> ۳. ویرایش فیلد اختصاصی</a>
+                        </h3>
+                        <p>
+                            با استفاده از این سرویس می‌توانید فیلد اختصاصی را ویراش نمایید.
+                        </p>
+                        <pre>
+ <span class="key">METHOD:</span> PUT
+ <span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/customers/fields/{field}
+                       </pre>
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <p>پارامتر {field} شناسه یکتای فیلد اختصاصی می‌باشد.</p>
+
+                        <h3 class="sub-title">
+                            پارامترهای مجاز
+                        </h3>
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>name</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="sub-title">
+                            توضیحات
+                        </h3>
+                        <ul>
+                            <li>name (اجباری):
+                                نام فیلد اختصاصی.
+                            </li>
+                        </ul>
+
+                        <h3 class="sub-title">
+                            نمونه json برای ویرایش فیلد اختصاصی
+                        </h3>
+                        <pre>
+{
+    "name": "تاریخ تولد"
+}
+                       </pre>
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
+ <span class="key">HTTP/1.1</span> 200
+ {
+    "message": "فیلد با موفقیت به‌روزرسانی شد.",
+    "field": {
+        "id": 1,
+        "name": "تاریخ تولد",
+        "created_at": 1670222052,
+        "updated_at": 1670225515
+    }
+}
+                       </pre>
+
+                        <h3 class="title" id="field-delete">
+                            <a href="#field-delete"> ۴. حذف فیلد اختصاصی</a>
+                        </h3>
+                        <p>در صورت نیاز به حذف یک فیلد اختصاصی از این سرویس استفاده نمایید.</p>
+                        <pre>
+<span class="key">METHOD:</span> DELETE
+<span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/customers/fields/{field}
+</pre>
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <p>پارامتر {field} شناسه یکتای فیلد اختصاصی می‌باشد.</p>
+
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+    "status": 1,
+    "message": "فیلد با موفقیت حذف گردید."
+}
+</pre>
+                        <h3 class="title" id="field-show">
+                            <a href="#field-show"> ۵. نمایش فیلد اختصاصی</a>
+                        </h3>
+                        <p>در این بخش امکان مشاهده اطلاعات یک فیلد اختصاصی را خواهید داشت.</p>
+                        <pre>
+<span class="key">Method:</span> GET
+<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/fields/{field}
+</pre>
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <p>پارامتر {field} شناسه یکتای فیلد اختصاصی می‌باشد.</p>
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+    "data": {
+        "id": 1,
+        "name": "تاریخ تولد",
+        "created_at": 1670222052,
+        "updated_at": 1670225515
+    }
+}
+</pre>
+
+
+                        <h2 class="article-header" id="wallet"><a href="#wallet"> کیف پول</a></h2>
+                        <p>
+                            در این بخش مدیریت کیف پول مشتریان که شامل واریز، برداشت و مشاهده موجودی کیف پول مشتری
+                            می‌باشد، صورت می‌گیرد.
                         </p>
 
                         <h3 class="title" id="wallet-balance">
@@ -1104,6 +1512,7 @@
                         <p>در این بخش اطلاعات تراکنش‌های مشتریان قابل مشاهده می‌باشد.</p>
                         <h3 class="title" id="transactions-index"><a href="#transactions-index">
                             ۱. لیست تراکنش‌ها
+                        </a>
                         </h3>
 
                         <p>با استفاده از این سرویس، لیست همه تراکنش های مشتری شامل واریز و برداشت را مشاهده می‌کنید.</p>
@@ -1207,17 +1616,18 @@
                         </ul>
 
                         <h2 class="article-header" id="sheba">
-                            <a href="#sheba">شبا</a> </h2>
+                            <a href="#sheba">شبا</a></h2>
                         <h3 class="title" id="sheba-store"><a href="#sheba-store"> ۱. ثبت شماره شبا</a>
                         </h3>
-                        <p>با اسفاده از این سوریس می‌توانید برای مشتری شماره شبا ثبت نمایید. </p>
+                        <p>با اسفاده از این سرویس می‌توانید برای مشتری شماره شبا ثبت نمایید. </p>
                         <pre>
 <span class="key">Method:</span> POST
-<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/ibans
+<span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}/ibans
 </pre>
 
                         <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
-                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل دسترسی می‌باشد.</p>
+                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل
+                            دسترسی می‌باشد.</p>
                         <h3 class="sub-title">
                             پارامترهای مجاز
                         </h3>
@@ -1235,6 +1645,31 @@
                                 <td>string</td>
                                 <td>required</td>
                             </tr>
+                            <tr>
+                                <td>is_default</td>
+                                <td>boolean</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
+                                <td>has_inquiry</td>
+                                <td>boolean</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
+                                <td>first_name</td>
+                                <td>string</td>
+                                <td>required if has_inquiry=true and customer first_name=null</td>
+                            </tr>
+                            <tr>
+                                <td>last_name</td>
+                                <td>string</td>
+                                <td>required if has_inquiry=true and customer last_name=null</td>
+                            </tr>
+                            <tr>
+                                <td>legal_name</td>
+                                <td>string</td>
+                                <td>required if has_inquiry=true and customer legal_name=null</td>
+                            </tr>
                             </tbody>
                         </table>
 
@@ -1244,6 +1679,17 @@
                                 توضیحات:
                                 <ul>
                                     <li>iban (اجباری): شماره شبا مشتری.</li>
+                                    <li>is_default (اجباری): تعیین شماره شبا پیش فرض.</li>
+                                    <li>has_inquiry (اجباری): تعیین کننده استعلام شماره شبا در لحظه.</li>
+                                    <li>first_name: در صورتی که فیلد has_inquiry برابر true باشد و مشتری از نوع حقیقی
+                                        باشد و نام مشتری خالی باشد این فیلد اجباری است.
+                                    </li>
+                                    <li>last_name: در صورتی که فیلد has_inquiry برابر true باشد و مشتری از نوع حقیقی
+                                        باشد و نام خانوادگی مشتری خالی باشد این فیلد اجباری است.
+                                    </li>
+                                    <li>legal_name: در صورتی که فیلد has_inquiry برابر true باشد و مشتری از نوع حقوقی
+                                        باشد و نام حقوقی مشتری خالی باشد این فیلد اجباری است.
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
@@ -1254,23 +1700,31 @@
                         <pre>
 <span class="key">HTTP/1.1</span> 200
 {
-    "status": 1,
-    "data": {
-        "account_number": "0001780000000",
-        "resolved_account_owner": "الناز نوروزی",
-        "account_description": "حساب فعال است",
-        "id": "0f4b9c30-2360-11ec-bec5-fffd717e132a",
-        "IBAN": "IR880620000000001780000000",
-        "account_owner": [
-            {
-                "firstName": "الناز",
-                "lastName": "نوروزی"
-            }
-        ],
-        "bank_name": "آینده"
-    }
+    "iban": "IR880620000000001780000000",
+    "is_default": true,
+    "iban_compatibility": "UNMATCHED",
+    "account_owners": [
+        {
+            "firstName": "الناز",
+            "lastName": "نوروزی"
+        }
+    ],
+    "created_at": 1669185629,
+    "updated_at": 1669185629
 }
 </pre>
+
+                        <ul>
+                            <li>iban: شماره شبا</li>
+                            <li>is_default: تعیین کننده شماره شبا پیش فرض</li>
+                            <li>iban_compatibility: تعیین کننده تطابق شماره شبا با اطلاعات مشتری که شامل 3 وضعیت UNKNOWN
+                                و MATCHED و UNMATCHED می باشد. مقدار UNKNOWN در صورتی برگردانده می شود که پارامتر
+                                has_inquiry برابر false باشد.
+                            </li>
+                            <li>account_owners: لیستی از صاحبان شماره شبا</li>
+                            <li>created_at: تاریخ ثبت شماره شبا</li>
+                            <li>updated_at: تاریخ ویراش شماره شبا</li>
+                        </ul>
 
                         <h3 class="title" id="sheba-index"><a href="#sheba-index"> ۲. لیست شماره شباها</a>
                         </h3>
@@ -1279,7 +1733,7 @@
 
                         <pre>
   <span class="key">Method:</span> GET
-  <span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/ibans
+  <span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}/ibans
   </pre>
 
                         <h3 class="sub-title">
@@ -1289,33 +1743,53 @@
                         <pre>
   <span class="key">HTTP/1.1</span> 200
   {
-    "current_page": 1,
     "data": [
         {
-            "account_number": "0001780000000",
-            "resolved_account_owner": "الناز نوروزی",
-            "account_description": "حساب فعال است",
-            "id": "0f4b9c30-2360-11ec-bec5-fffd717e132a",
-            "IBAN": "IR880620000000001780000000",
-            "account_owner": [
+            "iban": "IR880620000000001780000000",
+            "is_default": true,
+            "iban_compatibility": "UNMATCHED",
+            "account_owners": [
                 {
                     "firstName": "الناز",
                     "lastName": "نوروزی"
                 }
             ],
-            "bank_name": "آینده"
+            "created_at": 1669185629,
+            "updated_at": 1669185629
         }
     ],
-    "first_page_url": "https://customer.vandar.io/v2/business/{business}/customers/394dd280-210f-11ec-96d5-95b80dce5a5a/ibans?page=1",
-    "from": 1,
-    "last_page": 1,
-    "last_page_url": "https://customer.vandar.io/v2/business/{business}/customers/394dd280-210f-11ec-96d5-95b80dce5a5a/ibans?page=1",
-    "next_page_url": null,
-    "path": "https://customer.vandar.io/v2/business/{business}/customers/394dd280-210f-11ec-96d5-95b80dce5a5a/ibans",
-    "per_page": 20,
-    "prev_page_url": null,
-    "to": 1,
-    "total": 1
+    "links": {
+        "first": "https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}/ibans?page=1",
+        "last": "https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}/ibans?page=1",
+        "prev": null,
+        "next": null
+    },
+    "meta": {
+        "current_page": 1,
+        "from": 1,
+        "last_page": 1,
+        "links": [
+            {
+                "url": null,
+                "label": "&laquo; قبلی",
+                "active": false
+            },
+            {
+                "url": "https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}/ibans?page=1",
+                "label": "1",
+                "active": true
+            },
+            {
+                "url": null,
+                "label": "بعدی &raquo;",
+                "active": false
+            }
+        ],
+        "path": "http://api.vandar.local/v3/business/{business}/customers/{customer_uuid}/ibans",
+        "per_page": 15,
+        "to": 1,
+        "total": 1
+    }
 }
   </pre>
 
@@ -1326,10 +1800,385 @@
                         <p>در صورت نیاز می‌توانید از این بخش شماره شبا مربوط به مشتری را حدف نمایید.</p>
                         <pre>
    <span class="key">METHOD:</span> DELETE
-   <span class="key">URL:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/ibans/{iban_id}
+   <span class="key">URL:</span> https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}/ibans/{iban}
    </pre>
                         <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
-                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل دسترسی می‌باشد.</p>
+                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل
+                            دسترسی می‌باشد.</p>
+                        <p>پارامتر {iban} شماره شبا مشتری می‌باشد.</p>
+
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+                        <pre>
+   <span class="key">HTTP/1.1</span> 200
+   {
+       "message": "شماره شبا با موفقیت حذف شد."
+   }
+   </pre>
+
+
+                        <h3 class="title" id="sheba-inquiry">
+                            <a href="#sheba-inquiry"> ۴. استعلام شماره شبا</a>
+                        </h3>
+                        <p>در صورت نیاز می‌توانید از این بخش شماره شبا مربوط به مشتری را استعلام نمایید.</p>
+                        <pre>
+   <span class="key">METHOD:</span> POST
+   <span class="key">URL:</span> https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}/ibans/{iban}/inquiry
+   </pre>
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل
+                            دسترسی می‌باشد.</p>
+                        <p>پارامتر {iban} شماره شبا مشتری می‌باشد.</p>
+
+                        <h3 class="sub-title">
+                            پارامترهای مجاز
+                        </h3>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>first_name</td>
+                                <td>string</td>
+                                <td>required if customer first_name=null</td>
+                            </tr>
+                            <tr>
+                                <td>last_name</td>
+                                <td>string</td>
+                                <td>required if customer last_name=null</td>
+                            </tr>
+                            <tr>
+                                <td>legal_name</td>
+                                <td>string</td>
+                                <td>required if customer legal_name=null</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+
+                        <ul>
+                            <li>
+                                توضیحات:
+                                <ul>
+                                    <li>first_name: در صورتی که مشتری از نوع حقیقی باشد و نام مشتری خالی باشد این فیلد
+                                        اجباری است.
+                                    </li>
+                                    <li>last_name: در صورتی که مشتری از نوع حقیقی باشد و نام خانوادگی مشتری خالی باشد
+                                        این فیلد اجباری است.
+                                    </li>
+                                    <li>legal_name: در صورتی که مشتری از نوع حقوقی باشد و نام حقوقی مشتری خالی باشد این
+                                        فیلد اجباری است.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+                        <pre>
+   <span class="key">HTTP/1.1</span> 200
+   {
+    "iban_compatibility": "UNMATCHED",
+    "account_owners": [
+        {
+            "firstName": "الناز",
+            "lastName": "نوروزی"
+        }
+    ]
+}
+   </pre>
+
+
+
+
+
+                        <h3 class="title" id="sheba-set-default">
+                            <a href="#sheba-set-default"> ۵. تنظیم شماره شبا پیش فرض</a>
+                        </h3>
+                        <p>در صورت نیاز می‌توانید از این بخش شماره شبا مربوط به مشتری را به صورت پیش فرض تنظیم نمایید.</p>
+                        <pre>
+   <span class="key">METHOD:</span> POST
+   <span class="key">URL:</span> https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}/ibans/{iban}/set-default
+   </pre>
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل
+                            دسترسی می‌باشد.</p>
+                        <p>پارامتر {iban} شماره شبا مشتری می‌باشد.</p>
+
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+                        <pre>
+   <span class="key">HTTP/1.1</span> 200
+   {
+       "message": "این شماره شبا به صورت پیش فرض تنظیم شد."
+   }
+   </pre>
+
+
+
+                        <h2 class="article-header" id="card">
+                            <a href="#card">کارت</a></h2>
+                        <h3 class="title" id="card-store"><a href="#card-store"> ۱. ثبت شماره کارت</a>
+                        </h3>
+                        <p>با اسفاده از این سرویس می‌توانید برای مشتری شماره کارت ثبت نمایید. </p>
+                        <pre>
+<span class="key">Method:</span> POST
+<span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}/cards
+</pre>
+
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل
+                            دسترسی می‌باشد.</p>
+                        <h3 class="sub-title">
+                            پارامترهای مجاز
+                        </h3>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>card</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
+                                <td>is_default</td>
+                                <td>boolean</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
+                                <td>has_inquiry</td>
+                                <td>boolean</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
+                                <td>first_name</td>
+                                <td>string</td>
+                                <td>required if has_inquiry=true and customer first_name=null</td>
+                            </tr>
+                            <tr>
+                                <td>last_name</td>
+                                <td>string</td>
+                                <td>required if has_inquiry=true and customer last_name=null</td>
+                            </tr>
+                            <tr>
+                                <td>legal_name</td>
+                                <td>string</td>
+                                <td>required if has_inquiry=true and customer legal_name=null</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+
+                        <ul>
+                            <li>
+                                توضیحات:
+                                <ul>
+                                    <li>card (اجباری): شماره کارت مشتری.</li>
+                                    <li>is_default (اجباری): تعیین شماره کارت پیش فرض.</li>
+                                    <li>has_inquiry (اجباری): تعیین کننده استعلام شماره کارت در لحظه.</li>
+                                    <li>first_name: در صورتی که فیلد has_inquiry برابر true باشد و مشتری از نوع حقیقی
+                                        باشد و نام مشتری خالی باشد این فیلد اجباری است.
+                                    </li>
+                                    <li>last_name: در صورتی که فیلد has_inquiry برابر true باشد و مشتری از نوع حقیقی
+                                        باشد و نام خانوادگی مشتری خالی باشد این فیلد اجباری است.
+                                    </li>
+                                    <li>legal_name: در صورتی که فیلد has_inquiry برابر true باشد و مشتری از نوع حقوقی
+                                        باشد و نام حقوقی مشتری خالی باشد این فیلد اجباری است.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+    "card": "5648125647856214",
+    "is_default": true,
+    "card_compatibility": "UNMATCHED",
+    "name": "الناز نوروزی",
+    "created_at": 1669185629,
+    "updated_at": 1669185629
+}
+</pre>
+
+                        <ul>
+                            <li>card: شماره کارت</li>
+                            <li>is_default: تعیین کننده شماره کارت پیش فرض</li>
+                            <li>card_compatibility: تعیین کننده تطابق شماره کارت با اطلاعات مشتری که شامل 3 وضعیت UNKNOWN
+                                و MATCHED و UNMATCHED می باشد. مقدار UNKNOWN در صورتی برگردانده می شود که پارامتر
+                                has_inquiry برابر false باشد.
+                            </li>
+                            <li>name: نام صاحب شماره کارت</li>
+                            <li>created_at: تاریخ ثبت شماره کارت</li>
+                            <li>updated_at: تاریخ ویراش شماره کارت</li>
+                        </ul>
+
+                        <h3 class="title" id="card-index"><a href="#card-index"> ۲. لیست شماره کارت ها</a>
+                        </h3>
+
+                        <p>در این بخش لیست شماره کارت های ثبت شده برای هر مشتری را مشاهده خواهید کرد.</p>
+
+                        <pre>
+  <span class="key">Method:</span> GET
+  <span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}/cards
+  </pre>
+
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
+  <span class="key">HTTP/1.1</span> 200
+  {
+    "data": [
+        {
+            "card": "5648125647856214",
+            "is_default": true,
+            "card_compatibility": "UNMATCHED",
+            "name": "الناز نوروزی",
+            "created_at": 1669185629,
+            "updated_at": 1669185629
+        }
+    ],
+    "links": {
+        "first": "https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}/cards?page=1",
+        "last": "https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}/cards?page=1",
+        "prev": null,
+        "next": null
+    },
+    "meta": {
+        "current_page": 1,
+        "from": 1,
+        "last_page": 1,
+        "links": [
+            {
+                "url": null,
+                "label": "&laquo; قبلی",
+                "active": false
+            },
+            {
+                "url": "https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}/cards?page=1",
+                "label": "1",
+                "active": true
+            },
+            {
+                "url": null,
+                "label": "بعدی &raquo;",
+                "active": false
+            }
+        ],
+        "path": "http://api.vandar.local/v3/business/{business}/customers/{customer_uuid}/cards",
+        "per_page": 15,
+        "to": 1,
+        "total": 1
+    }
+}
+  </pre>
+
+
+                        <h3 class="title" id="card-delete">
+                            <a href="#card-delete"> ۳. حذف شماره کارت</a>
+                        </h3>
+                        <p>در صورت نیاز می‌توانید از این بخش شماره کارت مربوط به مشتری را حدف نمایید.</p>
+                        <pre>
+   <span class="key">METHOD:</span> DELETE
+   <span class="key">URL:</span> https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}/cards/{card}
+   </pre>
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل
+                            دسترسی می‌باشد.</p>
+                        <p>پارامتر {card} شماره کارت مشتری می‌باشد.</p>
+
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+                        <pre>
+   <span class="key">HTTP/1.1</span> 200
+   {
+       "message": "شماره کارت با موفقیت حذف شد."
+   }
+   </pre>
+
+
+                        <h3 class="title" id="card-inquiry">
+                            <a href="#card-inquiry"> ۴. استعلام شماره کارت</a>
+                        </h3>
+                        <p>در صورت نیاز می‌توانید از این بخش  شماره کارت مربوط به مشتری را استعلام نمایید.</p>
+                        <pre>
+   <span class="key">METHOD:</span> POST
+   <span class="key">URL:</span> https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}/cards/{card}/inquiry
+   </pre>
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل
+                            دسترسی می‌باشد.</p>
+                        <p>پارامتر {card} شماره کارت مشتری می‌باشد.</p>
+
+                        <h3 class="sub-title">
+                            پارامترهای مجاز
+                        </h3>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>first_name</td>
+                                <td>string</td>
+                                <td>required if customer first_name=null</td>
+                            </tr>
+                            <tr>
+                                <td>last_name</td>
+                                <td>string</td>
+                                <td>required if customer last_name=null</td>
+                            </tr>
+                            <tr>
+                                <td>legal_name</td>
+                                <td>string</td>
+                                <td>required if customer legal_name=null</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+
+                        <ul>
+                            <li>
+                                توضیحات:
+                                <ul>
+                                    <li>first_name: در صورتی که مشتری از نوع حقیقی باشد و نام مشتری خالی باشد این فیلد
+                                        اجباری است.
+                                    </li>
+                                    <li>last_name: در صورتی که مشتری از نوع حقیقی باشد و نام خانوادگی مشتری خالی باشد
+                                        این فیلد اجباری است.
+                                    </li>
+                                    <li>legal_name: در صورتی که مشتری از نوع حقوقی باشد و نام حقوقی مشتری خالی باشد این
+                                        فیلد اجباری است.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
 
                         <h3 class="sub-title">
                             نمونه پاسخ دریافتی موفق:
@@ -1337,16 +2186,39 @@
                         <pre>
    <span class="key">HTTP/1.1</span> 200
 {
-    "status": 1,
-    "data": {
-        "message": "شماره شبا با موفقیت حذف شد."
-     }
+    "card_compatibility": "MATCHED",
+    "name": "الناز نوروزی"
 }
    </pre>
 
-                        <br>
 
+                        <h3 class="title" id="card-set-default">
+                            <a href="#card-set-default"> ۵. تنظیم شماره کارت پیش فرض</a>
+                        </h3>
+                        <p>در صورت نیاز می‌توانید از این بخش  شماره کارت مربوط به مشتری را به صورت پیش فرض تنظیم نمایید.</p>
+                        <pre>
+   <span class="key">METHOD:</span> POST
+   <span class="key">URL:</span> https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}/cards/{card}/set-default
+   </pre>
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل
+                            دسترسی می‌باشد.</p>
+                        <p>پارامتر {card} شماره کارت مشتری می‌باشد.</p>
+
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+                        <pre>
+   <span class="key">HTTP/1.1</span> 200
+   {
+       "message": "این شماره کارت به صورت پیش فرض تنظیم شد."
+   }
+   </pre>
+
+
+                        <br>
                     </div>
+                </div>
             </article>
         </div>
     </div>
@@ -1432,5 +2304,6 @@
         });
 
 
-</script></body>
+</script>
+</body>
 </html>
