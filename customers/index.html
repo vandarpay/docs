@@ -142,6 +142,8 @@
                             <a href="https://vandarpay.github.io/docs/customers/#transactions">تراکنش</a><br>
                             <a href="https://vandarpay.github.io/docs/customers/#sheba">شبا</a><br>
                             <a href="https://vandarpay.github.io/docs/customers/#card">کارت</a><br>
+                            <a href="https://vandarpay.github.io/docs/customers/#authentication">احراز هویت</a><br>
+                            <a href="https://vandarpay.github.io/docs/customers/#logs">گزارشات</a><br>
                         </div>
                     </li>
                     <li>
@@ -2215,6 +2217,276 @@
    }
    </pre>
 
+
+                        <h2 class="article-header" id="authentication">
+                            <a href="#authentication">احراز هویت</a></h2>
+
+                        <p>
+                            این سرویس جهت احراز هویت طرف‌حساب‌های پذیرندگان وندار ارائه شده است که توسط آن،
+                            پذیرندگان می‌توانند اطلاعات هویتی مخاطبان خود را مورد سنجش قرار دهند.
+                        </p>
+                        <p>
+                            در حال حاضر وب سرویس احراز هویت مخاطبین به دو دسته کلی تقصیم شده است:
+                        </p>
+                        <ul>
+                            <li>مخاطبینی که از قبل توسط پذیرنده ثبت نام شده اند.</li>
+                            <li>مخاطبینی که ثبت نام نشده اند.</li>
+                        </ul>
+
+                        <p>
+                            انواع احراز هویت:
+                        </p>
+                        <ul>
+                            <li>
+                                کی وای سی (KYC)
+                                <ul>
+                                    <li>این سرویس با دریافت نام , نام خانوادگی , کد ملی و تاریخ تولد اطلاعات هویتی کاربر را مورد سنجش قرار میدهد</li>
+                                </ul>
+                            </li>
+                            <li>
+                                شاهکار (SHAHKAR)
+                                <ul>
+                                    <li>این سرویس با دریافت شماره تلفن همراه و کد ملی اطلاعات هویتی کاربر را مورد سنجش قرار میدهد</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <h3 class="title" id="authentications-usage">
+                            <a href="#authentications-usage" > <strong>نحوه استفاده از وب سرویس احراز هویت</strong></a>
+                        </h3>
+                        <p>
+                            برای احراز هویت کاربرانی که از قبل توسط پذیرنده ثبت نام شده اند احتیاجی به وارد کردن اطلاعات مخاطب نیست
+                            بلکه اطلاعات مخاطبین واکشی شده و در صورت وجود نقض یا مغایرت وب سرویس پیغام مناسب بر می گرداند.
+                        </p>
+                        <p>
+                            برای احراز هویت مخاطبینی که از قبل توسط پذیرنده ثبت نام نشده اند وارد کردن اطلاعات مربوط به هر سرویس الزامی است.
+                        </p>
+
+                        <h3 class="title" id="authentications-kyc">
+                            <a href="#authentications-kyc" >احراز هویت کی وای سی (KYC)</a>
+                        </h3>
+                        <h3>وب سرویس احراز هویت برای مخاطبینی که ثبت نام شده اند:</h3>
+
+                        <pre>
+<span class="key">Method:</span> POST
+<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/authentication/kyc
+</pre>
+
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل
+                            دسترسی می‌باشد.</p>
+
+                        <h3>وب سرویس احراز هویت برای مخاطبینی که ثبت نام نشده اند:</h3>
+                        <pre>
+<span class="key">Method:</span> POST
+<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/authentication/kyc
+</pre>
+
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <h3 class="sub-title">
+                            پارامترهای مجاز
+                        </h3>
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>first_name</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
+                                <td>last_name</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
+                                <td>individual_national_code</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
+                                <td>birthday</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <ul>
+                            <li>
+                                توضیحات:
+                                <ul>
+                                    <li>first_name (اجباری): نام مخاطب.</li>
+                                    <li>last_name (اجباری): نام خانوادگی مخاطب.</li>
+                                    <li>individual_national_code (اجباری): کد ملی مخاطب.</li>
+                                    <li>birthday (اجباری): تاریخ تولد جلالی مخاطب.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <h3 class="title" id="authentications-shahkar">
+                            <a href="#authentications-shahkar" >احراز هویت شاهکار (SHAHKAR)</a>
+                        </h3>
+                        <h3>وب سرویس احراز هویت برای مخاطبینی که ثبت نام شده اند:</h3>
+
+                        <pre>
+<span class="key">Method:</span> POST
+<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/authentication/shahkar
+</pre>
+
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل
+                            دسترسی می‌باشد.</p>
+
+                        <h3>وب سرویس احراز هویت برای مخاطبینی که ثبت نام نشده اند:</h3>
+                        <pre>
+<span class="key">Method:</span> POST
+<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/authentication/shahkar
+</pre>
+
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <h3 class="sub-title">
+                            پارامترهای مجاز
+                        </h3>
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>individual_national_code</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
+                                <td>mobile</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <ul>
+                            <li>
+                                توضیحات:
+                                <ul>
+                                    <li>individual_national_code (اجباری): کد ملی مخاطب.</li>
+                                    <li>mobile (اجباری): شماره تلفن همراه مخاطب.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+    "status": "1",
+    "authentication_status": "SUCCESSFUL",
+    "message": "اطلاعات احراز هویت کاربر با موفقیت واکشی شد"
+}
+</pre>
+
+                        <ul>
+                            <li>status: در صورت موفقیت آمیز بودن درخواست عدد 1 و در غیر اینصورت عدد 0 را نمایش خواهد داد.</li>
+                            <li>authentication_status: تعیین کننده تطابق اطلاعات هویتی ارسالی با اطلاعات مخاطب که شامل 3 وضعیت SUCCESSFUL
+                                و FAILURE و PENDING و NOT_FOUND می باشد.
+                                در صورت تطابق اطلاعات SUCCESSFUL , در صورت عدم تطابق اطلاعات FAILURE , در صورت عدم پاسخگویی سرور احراز هویت PENDING و در صورت بروز خطا یا عدم وجود اطلاعات استعلامی NOT_FOUND نمایش داده خواهد شد.
+                            </li>
+                        </ul>
+
+                        <h2 class="article-header" id="logs">
+                            <a href="#logs">گزارشات</a></h2>
+                        <p>
+                            این سرویس جهت گزارش گیری از طرف‌حساب‌های پذیرندگان وندار ارائه شده است که توسط آن،
+                            پذیرندگان می‌توانند گزارش های مربوط به مخاطبان خود را مشاهده کنند.
+                        </p>
+
+                        <pre>
+<span class="key">Method:</span> POST
+<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/logs
+</pre>
+
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل
+                            دسترسی می‌باشد.</p>
+
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
+  <span class="key">HTTP/1.1</span> 200
+  {
+    "data": [
+        {
+            "type": "CUSTOMER_UPDATED",
+            "description": "مخاطب با موفقیت ویرایش شد",
+            "created_at": 1670156241,
+            "updated_at": 1670156241
+        }
+    ],
+    "links": {
+        "first": "https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/logs?page=1",
+        "last": "https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/logs?page=1",
+        "prev": null,
+        "next": null
+    },
+    "meta": {
+        "current_page": 1,
+        "from": 1,
+        "last_page": 1,
+        "links": [
+            {
+                "url": null,
+                "label": "&laquo; قبلی",
+                "active": false
+            },
+            {
+                "url": "https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/logs?page=1",
+                "label": "1",
+                "active": true
+            },
+            {
+                "url": null,
+                "label": "بعدی &raquo;",
+                "active": false
+            }
+        ],
+        "path": "http://api.vandar.local/v2/business/{business}/customers/{customer_uuid}/logs",
+        "per_page": 15,
+        "to": 1,
+        "total": 1
+    }
+}
+  </pre>
+                        <ul>
+                            <li>type: نوع گزارش ایجاد شده برای مخاطب را نمایش می دهد.
+                                <ol>
+                                    <li>CUSTOMER_CREATED: گزارش ایجاد مخاطب</li>
+                                    <li>CUSTOMER_UPDATED: گزارش ویرایش مخاطب</li>
+                                    <li>CUSTOMER_KYC_AUTHENTICATION_REQUEST: گزارش درخواست احراز هویت کی وای سی مخاطب</li>
+                                    <li>CUSTOMER_SHAHKAR_AUTHENTICATION_REQUEST: گزارش درخواست احراز هویت کی شاهکار مخاطب</li>
+                                </ol>
+                            </li>
+                            <li>description: توضیحات مربوط به گزارش مخاطب را نمایش میدهد.</li>
+                        </ul>
 
                         <br>
                     </div>
