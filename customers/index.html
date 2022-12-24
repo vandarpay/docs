@@ -144,6 +144,7 @@
                             <a href="https://vandarpay.github.io/docs/customers/#card">کارت</a><br>
                             <a href="https://vandarpay.github.io/docs/customers/#authentication">احراز هویت</a><br>
                             <a href="https://vandarpay.github.io/docs/customers/#logs">گزارشات</a><br>
+                            <a href="https://vandarpay.github.io/docs/customers/#cash-in-code">شناسه پرداخت</a><br>
                         </div>
                     </li>
                     <li>
@@ -188,7 +189,7 @@
                 <div class="article" id="ipg">
 
                     <div>
-                        آخرین تغییرات: ۱۴۰۱/۰۹/۱۳
+                        آخرین تغییرات: 1401/09/29
                     </div>
 
                     <h2 class="article-header">مقدمه</h2>
@@ -2487,6 +2488,75 @@
                             </li>
                             <li>description: توضیحات مربوط به گزارش مخاطب را نمایش میدهد.</li>
                         </ul>
+
+                        <h2 class="article-header" id="cash-in-code">
+                            <a href="#cash-in-code">شناسه پرداخت</a></h2>
+                        <p>
+                            این سرویس جهت ایجاد شناسه پرداخت و انتصاب آن به طرف‌حساب‌های پذیرندگان وندار ارائه شده است که توسط آن،
+                            پذیرندگان می‌توانند به ازای هر مشتری یک شناسه پرداخت منحصر به فرد ایجاد کنند.
+                        </p>
+
+                        <h3 class="title" id="cash-in-code-store"><a href="#cash-in-code-store"> ۱. ایجاد شناسه پرداخت</a>
+                        </h3>
+                        <p>با اسفاده از این سرویس می‌توانید برای مشتری شناسه پرداخت جدید ایجاد نمایید. </p>
+                        <pre>
+<span class="key">Method:</span> POST
+<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/cash-in-code
+</pre>
+
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل
+                            دسترسی می‌باشد.</p>
+
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+    "status": 1,
+    "code": "143992020000736",
+    "message": "شناسه پرداخت با موفقیت ایجاد شد"
+}
+</pre>
+
+                        <ul>
+                            <li>code: شناسه پرداخت منحصر به فرد مشتری</li>
+                        </ul>
+
+
+                        <h3 class="title" id="cash-in-code-index"><a href="#cash-in-code-index"> ۲. لیست شناسه پرداخت</a>
+                        </h3>
+                        <p>با اسفاده از این سرویس می‌توانید شناسه پرداخت مشتریان را ملاحظه نمایید. </p>
+                        <pre>
+<span class="key">Method:</span> GET
+<span class="key">Address:</span> https://api.vandar.io/v2/business/{business}/customers/{customer_uuid}/cash-in-code
+</pre>
+
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل
+                            دسترسی می‌باشد.</p>
+
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+    "status": 1,
+    "code": "143992020000736",
+    "message": "شناسه پرداخت مشتری با موفقیت واکشی شد."
+}
+</pre>
+
+                        <ul>
+                            <li>code: شناسه پرداخت منحصر به فرد مشتری</li>
+                        </ul>
+
+
+
 
                         <br>
                     </div>
