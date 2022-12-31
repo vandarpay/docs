@@ -395,17 +395,17 @@
                         </pre>
                         <br>
                         <h2 class="article-header" id="get-token">
-                        <a href="#get-token">سرویس دریافت توکن (AUTHORIZATION)</a> </h2>
+                        <a href="#get-token">صدور مجوز در روش پرداخت از حساب</a> </h2>
 
                         <h3 class="title" id="subscription"><a href="#subscription">
-                            ۱. ایجاد درخواست اشتراک:
+                            ۱. درخواست بستن مجوز:
                         </a>
 
                         </h3>
-                        <p>اولین مرحله برای دریافت دسترسی به حساب روش‌های پرداختی و ایجاد یک اشتراک جدید،ثبت درخواست اشتراک است. لازم است که درخواست اشتراک خود را به آدرس زیر ارسال کنید.</p>
+                        <p>اولین مرحله برای بستن مجوز برداشت از حساب، ثبت درخواست صدور مجوز است. لازم است که درخواست خود را به آدرس زیر ارسال کنید.</p>
                         <pre>
 <span class="key">Method:</span> POST
-<span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/subscription/authorization/store
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/mandates/store
                         </pre>
                         <h3 class="sub-title">
                           پارامترهای مجاز
@@ -420,13 +420,23 @@
                           </thead>
                           <tbody>
                           <tr>
-                              <td>bank_code</td>
+                              <td>payment_method</td>
                               <td>string</td>
                               <td>required</td>
                           </tr>
                           <tr>
-                              <td>mobile</td>
-                              <td>string</td>
+                              <td>count</td>
+                              <td>integer</td>
+                              <td>required</td>
+                          </tr>
+                          <tr>
+                              <td>limit</td>
+                              <td>integer</td>
+                              <td>required</td>
+                          </tr>
+                          <tr>
+                              <td>expiration_date</td>
+                              <td>date</td>
                               <td>required</td>
                           </tr>
                           <tr>
@@ -435,32 +445,22 @@
                               <td>required</td>
                           </tr>
                           <tr>
-                            <td>count</td>
-                            <td>integer</td>
-                            <td>required</td>
+                              <td>customer.mobile</td>
+                              <td>string</td>
+                              <td>required</td>
                           </tr>
                           <tr>
-                            <td>limit</td>
-                            <td>integer</td>
-                            <td>required</td>
-                          </tr>
-                          <tr>
-                            <td>expiration_date</td>
-                            <td>date</td>
-                            <td>required (optional on version 2)</td>
-                          </tr>
-                          <tr>
-                            <td>name</td>
+                            <td>customer.email</td>
                             <td>string</td>
                             <td>optional</td>
                           </tr>
                           <tr>
-                            <td>email</td>
-                            <td>string</td>
-                            <td>optional</td>
+                              <td>customer.first_name</td>
+                              <td>string</td>
+                              <td>optional</td>
                           </tr>
                           <tr>
-                              <td>wage_type</td>
+                              <td>customer.last_name</td>
                               <td>string</td>
                               <td>optional</td>
                           </tr>
@@ -470,68 +470,32 @@
                         توضیحات
                       </h3>
                         <ul>
-                          <li>bank_code (اجباری): کد روش‌های پرداخت که از جدول زیر قابل دسترسی است.
-                              <div class="info">
-                                  <strong>نکته! </strong>
-                                    اگر چه داکیومنت ما همواره به روز می‌شود اما معیار اصلی بر اساس <a href="https://health.vandar.io/subscription" target="_blank" style="color: blue">وضعیت سلامت روش‌های پرداخت‌</a> است.<br>
-                                  پارامتر has_direct_debit_ability: نشان‌دهنده‌ی این است که روش‌های پرداخت مربوطه دارای قابلیت دایرکت‌دبیت (سرویس پرداخت خودکار) هست یا خیر. <br>
-                                  پارامتر is_healthy_on_direct_debit: نشان‌دهنده‌ی این است که در آن لحظه‌ی خاص با توجه به وضعیت سلامت روش‌های پرداخت مورد نظر، امکان ریدایرکت به صفحه‌ی روش‌های پرداخت وجود دارد یا خیر.
-                              </div>
-                            <br>
-                                <table class="table" style="direction: ltr;" id="banks_table">
-                                    <thead>
-                                    <tr>
-                                        <th style="text-align: center;">Bank</th>
-                                        <th style="text-align: center;">Code</th>
-                                        <th style="text-align: center;">Current Health</th>
-                                    </tr>
-                                    </thead>
-                                </table>
-                            <br>
-                          </li>
-                          <li>
-                            mobile (اجباری): شماره موبایل کاربر. شماره موبایل بدون کد کشور و به فرمت 09123456789 باشد.
-                          </li>
-                          <div class="info">
-                            <strong>نکته! </strong>
-                            دقت داشته باشید که در صورت منتقل شدن به صفحه‌ی روش‌های پرداخت با این شماره موبایل، برای روش‌های پرداختی که برای ورود نیاز به کد ملی کاربر دارند، <b>بایستی کد ملی و شماره موبایل متعلق به یک شخص باشند. </b> در غیر این صورت در صفحه‌ی روش‌های پرداخت با پیغام خطا روبرو می‌شود و امکان ورود پیدا نمی‌کند.
-                          </div>
-                            <br>
-                          <li>callback_url (اجباری): باید با آدرس درگاه پرداخت تایید شده در وندار بر روی یک دامنه باشد</li>
+                          <li>payment_method: (اجباری) slug روش‌ پرداخت که از لیست روش های پرداخت قابل استفاده است.</li>
                           <li>count (اجباری): حداکثر تعداد دفعاتی که در یک ماه می‌توان با این مجوز، برداشت وجه موفق انجام داد.</li>
-                          <li>limit (اجباری):  حداکثر مبلغ قابل برداشت وجه در برداشت وجه‌های مربوط به این مجوز. واحد پول ریال است.</li>
-                          <li>expiration_date (اجباری): تاریخ انقضای اشتراک. این تاریخ باید بزرگتر از تاریخ روز جاری باشد و به صورت میلادی وارد می‌شود.</li>
-                            <div class="info">
-                                <strong>نکته! </strong>
-                                این مقدار در نسخه ۲ APIهای وندار اجباری نبوده و در صورت عدم وجود به شکل پیش‌فرض ۳ سال از زمان حال در نظر گرفته می‌شود.
-                            </div>
-                          <li>name (اختیاری): نام کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
-                          <li>email (اختیاری): ایمیل کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود.</li>
-                          <li>wage_type (اختیاری): میزان کارمزد ، که میتواند دو مقدار APPLICATION_USER یا APPLICATION_SELF باشد اگر این مقدار را برابر با APPLICATION_SELF قرار دهید میزان کارمزد از شما کسر میشود و اگر برابر با APPLICATION_USER قرار دهید این مقدار از کاربر کسر میشود .</li>
-                            <div class="info">
-                                <strong>نکته! </strong>
-                                اگر مقدار wage_type در درخواست ارسال نشود این مقدار از بخش  اشتراک -> جزییات که در پنل کاربری شما در وندار قرار گرفته است خوانده می شود.
-                            </div>
-
-                            <div class="info">
-                                <strong>نکته! </strong>
-                                در صورتی که wage_type در پنل کاربری شما APPLICATION_SELF  و در درخواست ارسالی شما APPLICATION_USER باشد و یا برعکس ، اولویت با درخواستی است که ارسال کرده اید.
-                            </div>
+                          <li>limit (اجباری): حداکثر مبلغ وجه قابل برداشت در هر درخواست مربوط به این مجوز. واحد پول ریال است.</li>
+                          <li>expiration_date: (اجباری) تاریخ انقضای مجوز. این تاریخ باید بزرگتر از تاریخ روز جاری باشد و به صورت میلادی وارد می‌شود.</li>
+                          <li>callback_url (اجباری): باید با آدرس درگاه پرداخت تایید شده در وندار بر روی یک دامنه باشد</li>
+                          <li>customer.mobile (اجباری): شماره موبایل کاربر. شماره موبایل بدون کد کشور و به فرمت 09123456789 باشد.</li>
+                          <li>customer.email (اختیاری): ایمیل کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود.</li>
+                          <li>customer.first_name (اختیاری): نام کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
+                          <li>customer.last_name (اختیاری): نام‌خانوادگی کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
                         </ul>
                         <h3 class="sub-title">
                           نمونه json
                         </h3>
                         <pre>
 {
-  "bank_code": "062",
-  "mobile": "09123456789",
-  "callback_url": "https://paperpiano.ir/subscription/callback",
+  "payment_method": "debit-saman",
   "count": 7,
   "limit": 10000,
-  "name": "محمد مقصودی",
-  "wage_type":"APPLICATION_USER",
-  "email": "yourcustomer@gmail.com",
-  "expiration_date": "2021-03-03"
+  "expiration_date": "2023-03-03",
+  "callback_url": "https://paperpiano.ir/mandate/callback",
+  "customer": {
+    "mobile": "09123456789",
+    "email": "yourcustomer@gmail.com",
+    "first_name": "محمد",
+    "last_name": "مقصودی",
+  }
 }
                         </pre>
                         <h3 class="sub-title">
@@ -543,9 +507,14 @@
 {
   "status": 1,
   "message": "درخواست توکن با موفقیت ثبت شد.",
-  "result": {
-    "authorization": {
-      "token": "0cf235d0-d48b-11ea-86cd-298ec898a9bd"
+  "data": {
+      "token": "0cf235d0-d48b-11ea-86cd-298ec898a9bd",
+        "customer": {
+            "mobile": "09123456789",
+            "first_name": "محمد",
+            "last_name": "مقصودی",
+            "email": "yourcustomer@gmail.com",
+      }
     }
   }
 }
@@ -555,48 +524,27 @@
                           token دریافتی در این قسمت یکبار مصرف است و پس از ۲۰ دقیقه باطل می شود.
                         </div>
                         <ul>
-                            <li>
-                                status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
-                                <br>
-                                1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
-                                <br>
-                                0 به معنای این است که http response از خانواده‌ی ۴۰۰ یا ۵۰۰ است.
-                            </li>
                           <li>message: پیغام درخواست توکن با موفقیت ثبت شد.</li>
                           <li>
-                            result:
+                            data:
                             <ul>
-                              <li>authorization:
-                                <ul>
-                                  <li>token: آیدی شما در سرویس پرداخت خودکار که باید درخواست های بعدی خود را با این آیدی ارسال کنید.</li>
-                                </ul>
+                              <li>token: آیدی شما در سرویس پرداخت خودکار که باید درخواست های بعدی خود را با این آیدی ارسال کنید.</li>
+                            </ul>
+                            <ul>
+                              <li>
+                                  customer:
+                                  <ul>
+                                      <li>mobile: شماره موبایل کاربر</li>
+                                      <li>first_name: نام کاربر</li>
+                                      <li>last_name: نام‌خانوادگی کاربر</li>
+                                      <li>email: ایمیل کاربر</li>
+                                  </ul>
                               </li>
                             </ul>
                           </li>
                         </ul>
-                      <h3 class="sub-title">
-                        نمونه پاسخ دریافتی نا موفق:
-                      </h3>
-                      <pre>
-<span class="key">HTTP/1.1</span> 401
-{
-  "status": 0,
-  "error": "Unauthenticated"
-}
-                        </pre>
-
-                        <ul>
-                            <li>
-                                status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
-                                <br>
-                                1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
-                                <br>
-                                0 به معنای این است که http response از خانواده‌ی ۴۰۰ یا ۵۰۰ است.
-                            </li>
-                          <li>errors: آرایه ای از خطا‌ها</li>
-                        </ul>
                       <h3 class="title" id="transfer">
-                       <a href="#transfer"> ۲. انتقال کاربر به صفحه روش‌های پرداخت</a>
+                       <a href="#transfer"> ۲. انتقال کاربر به صفحه تایید صدور مجوز</a>
                       </h3>
                       <p>
                         در مرحله بعد token دریافتی از قسمت قبل را در انتهای
@@ -605,7 +553,7 @@
                       </p>
                       <pre>
 <span class="key">METHOD:</span> get
-<span class="key">URL:</span> https://subscription.vandar.io/authorizations/{token}
+<span class="key">URL:</span> https://mpg.vandar.io/mandate/{token}
                       </pre>
 
                         <p>
@@ -625,14 +573,14 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
 
                         </p>
-
+<!-- todo renew images -->
 <img src="../images/authorize-intro.png" alt="صفحه ورود روش‌های پرداخت">
 <p>با وارد کردن کد ملی و گذر واژه صحیح وارد صفحه زیر می شوید.</p>
 <img src="../images/authorize.png" alt="صفحه دسترسی">
 <h3 class="title" id="subscription-code">
   <a href="#subscription-code">۳. دریافت کد اشتراک</a>
 </h3>
-<p>در صورتی که کاربر بر روی دکمه دسترسی دارد کلیک کند، وندار کاربر را به آدرس برگشتی که در مرحله اول ارسال کرده‌اید به همراه پارامتر token و status و authorization_id هدایت می‌کند.
+<p>در صورتی که کاربر بر روی دکمه دسترسی دارد کلیک کند، وندار کاربر را به آدرس برگشتی که در مرحله اول ارسال کرده‌اید به همراه پارامتر token و status و mandate_id هدایت می‌کند.
 
 </p>
 
@@ -876,16 +824,15 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 </pre>
 
 <h3 class="title" id="delete">
- <a href="#delete">۷. پاک کردن یک اشتراک با استفاده از id</a>
+ <a href="#delete">۷. پاک کردن یک مجوز برداشت از حساب با استفاده از id</a>
 </h3>
 
 <pre>
 <span class="key">Method:</span> DELETE
-<span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/subscription/authorization/{id}
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/mandates/{id}
 </pre>
 
-<p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد حذف یکی از اشتراک های آن را دارید.</p>
-<p>پارامتر {id} همان id مربوط به اشتراکی است که قصد حذف آن را دارید.</p>
+<p>پارامتر {id} همان id مربوط به مجوز برداشت از حسابی است که قصد حذف آن را دارید.</p>
 
 <h3 class="sub-title">
   نمونه پاسخ دریافتی موفق:
@@ -894,75 +841,45 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 <span class="key">HTTP/1.1</span> 200
 {
   "status": 1,
-  "message": "مجوز با موفقیت لغو گردید.",
-  "result": {
-    "authorization": {
-      "id": "9f307e30-dc77-11ea-830e-7533ca1787c5"
+  "message": "مجوز کسب و کار با موفقیت لغو شد.",
+  "data": {
+    "mandate": {
+      "id": "58ffbb2d-2a64-336d-b7c5-d5982eabf658",
+      "count": 2,
+      "limit": 800000,
+      "payment_method_slug": debit-saman,
+      "status": "REVOKED",
+      "expiration_date": "1401/11/20",
+      "customer_id": "f02ba3c5-6235-3601-981e-87094ac2365c",
+      "created_at": 1664719213,
+      "updated_at": 1672495213,
+      "revoked_at": 1672495213,
     }
   }
 }
 </pre>
 <ul>
-    <li>
-        status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
-        <br>
-        1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
-        <br>
-        0 به معنای این است که http response از خانواده‌ی ۴۰۰ یا ۵۰۰ است.
-    </li>
-  <li>message: پیغام مجوز با موفقیت لغو گردید</li>
+  <li>message: پیغام مجوز کسب و کار با موفقیت لغو شد.</li>
   <li>
-    result:
+    data:
     <ul>
-      <li>authorization:
+      <li>mandate:
         <ul>
-          <li>id: آیدی اشتراک حذف شده </li>
+          <li>id: آیدی مجوز حذف شده </li>
+          <li>count: حداکثر تعداد دفعاتی که در یک ماه می‌ شد با مجوز حذف شده برداشت انجام شود.</li>
+          <li>limit: حداکثر مبلغ وجه قابل برداشت با مجوز حذف شده.</li>
+          <li>payment_method_slug: slug روش‌ پرداخت </li>
+          <li>status: وضعیت مجوز</li>
+          <li>expiration_date:  تاریخ انقضای مجوز</li>
+          <li>callback_url: آدرس بازگشتی درگاه پرداخت تایید شده در وندار</li>
+          <li>customer_id: آیدی کاربری که مجوز برای او صادر شده بود.</li>
+          <li>created_at: تاریخ ایجاد به صورت timestamp</li>
+          <li>updated_at: تاریخ آخرین بروزرسانی به صورت timestamp</li>
+          <li>revoked_at: تاریخ حذف به صورت timestamp</li>
         </ul>
       </li>
     </ul>
   </li>
-</ul>
-<h3 class="sub-title">
-  نمونه پاسخ دریافتی ناموفق:
-</h3>
-<p>در صورتی که توکن فرستاده شده برای کسب و کاری که در آدرس ارسال کردید، معتبر نباشد پاسخ زیر را دریافت می کنید:</p>
-<pre>
-<span class="key">HTTP/1.1</span> 401
-{
-  "status": 0,
-  "error": "Unauthenticated"
-}
-</pre>
-
-<ul>
-    <li>
-        status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
-        <br>
-        1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
-        <br>
-        0 به معنای این است که http response از خانواده‌ی ۴۰۰ یا ۵۰۰ است.
-    </li>
-  <li>errors: آرایه ای از خطا‌ها</li>
-</ul>
-
-  <p>در صورتی که اشتراکی با id ارسال شده موجود نباشد پاسخ زیر را دریافت می کنید:</p>
-<pre>
-<span class="key">HTTP/1.1</span> 404
-{
-  "status": 0,
-  "message": "خطای ۴۰۴ رخ داده است"
-}
-</pre>
-
-<ul>
-    <li>
-        status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
-        <br>
-        1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
-        <br>
-        0 به معنای این است که http response از خانواده‌ی ۴۰۰ یا ۵۰۰ است.
-    </li>
-  <li>message: آرایه ای از خطا‌ها</li>
 </ul>
 <div class="info">
   <strong> نکته! </strong>
