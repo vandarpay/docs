@@ -280,7 +280,7 @@
                             </tr>
                             <tr>
                                 <td>limit</td>
-                                <td>integer</td>
+                                <td>numeric</td>
                                 <td>optional</td>
                             </tr>
                             <tr>
@@ -711,6 +711,48 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 <span class="key">METHOD:</span> GET
 <span class="key">URL:</span> https://api.vandar.io/mpg/v1/mandates
 </pre>
+
+<h3 class="sub-title">
+    پارامترهای مجاز
+</h3>
+
+<table class="table" dir="rtl">
+    <thead>
+    <tr>
+        <th>name</th>
+        <th>Type</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>page</td>
+        <td>numeric</td>
+        <td>optional</td>
+    </tr>
+    <tr>
+        <td>per_page</td>
+        <td>numeric</td>
+        <td>optional</td>
+    </tr>
+    </tbody>
+</table>
+                        </h3>
+                        <ul>
+                            <li>
+                                page (اختیاری): شماره صفحه.
+                            </li>
+                            <li>per_page (اختیاری): تعداد آیتم در هر صفحه.</li>
+                        </ul>
+                        <h3 class="sub-title">
+                            نمونه json
+                        </h3>
+                        <pre>
+{
+    "page": 1,
+    "per_page":12
+}
+ </pre>
 <h3 class="sub-title">
   نمونه پاسخ دریافتی موفق:
 </h3>
