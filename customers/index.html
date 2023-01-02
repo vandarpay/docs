@@ -1928,6 +1928,95 @@
 
 
 
+                        <h3 class="title" id="card-to-iban"><a href="#card-store"> ۱. ثبت شماره کارت</a>
+                        </h3>
+                        <p>با استفاده از این سرویس می‌توانید از شماره کارت به شماره شبا پشت کارت برسید. </p>
+                        <pre>
+<span class="key">Method:</span> POST
+<span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/customers/{customer_uuid}/cards/to-iban
+</pre>
+
+                        <p>پارامتر {business} نام انگلیسی کسب و کار است.</p>
+                        <p>پارامتر {customer_uuid} شناسه یکتای مشتری می‌باشد که از طریق سرویس مشاهده لیست مشتریان قابل
+                            دسترسی می‌باشد.</p>
+                        <h3 class="sub-title">
+                            پارامترهای مجاز
+                        </h3>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>card</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
+                                <td>is_default</td>
+                                <td>boolean</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
+                                <td>has_inquiry</td>
+                                <td>boolean</td>
+                                <td>required</td>
+                            </tr>
+                        </table>
+
+
+                        <ul>
+                            <li>
+                                توضیحات:
+                                <ul>
+                                    <li>card (اجباری): شماره کارت مشتری.</li>
+                                    <li>is_default (اجباری): تعیین شماره کارت پیش فرض.</li>
+                                    <li>has_inquiry (اجباری): تعیین کننده استعلام شماره کارت در لحظه.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+    "iban": "IR610550018180006734170001",
+    "is_default": true,
+    "iban_compatibility": "UNMATCHED",
+    "account_owners": [
+        {
+            "lastName": "شهرياري فرد",
+            "firstName": "محمد"
+        }
+    ],
+    "bank_name": null,
+    "account_description": null,
+    "account_number": null,
+    "created_at": 1672655515,
+    "updated_at": 1672655517
+}
+</pre>
+
+                        <ul>
+                            <li>iban: شماره شبا</li>
+                            <li>is_default: تعیین کننده شماره شبا پیش فرض</li>
+                            <li>iban_compatibility: تعیین کننده تطابق شماره شبا با اطلاعات مشتری که شامل 3 وضعیت UNKNOWN
+                                و MATCHED و UNMATCHED می باشد. مقدار UNKNOWN در صورتی برگردانده می شود که پارامتر
+                                has_inquiry برابر false باشد.
+                            </li>
+                            <li>account_owners: لیستی از صاحبان شماره شبا</li>
+                            <li>created_at: تاریخ ثبت شماره شبا</li>
+                            <li>updated_at: تاریخ ویراش شماره شبا</li>
+                        </ul>
+
+
+
                         <h2 class="article-header" id="card">
                             <a href="#card">کارت</a></h2>
                         <h3 class="title" id="card-store"><a href="#card-store"> ۱. ثبت شماره کارت</a>
@@ -2095,7 +2184,6 @@
     }
 }
   </pre>
-
 
                         <h3 class="title" id="card-delete">
                             <a href="#card-delete"> ۳. حذف شماره کارت</a>
