@@ -405,7 +405,7 @@
                         <p>اولین مرحله برای بستن مجوز برداشت از حساب، ثبت درخواست صدور مجوز است. لازم است که درخواست خود را به آدرس زیر ارسال کنید.</p>
                         <pre>
 <span class="key">Method:</span> POST
-<span class="key">Address:</span> https://api.vandar.io/mpg/v1/mandates/store
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/mandates
                         </pre>
                         <h3 class="sub-title">
                           پارامترهای مجاز
@@ -553,7 +553,7 @@
                       </p>
                       <pre>
 <span class="key">METHOD:</span> get
-<span class="key">URL:</span> https://mpg.vandar.io/mandate/{token}
+<span class="key">URL:</span> https://mpg.vandar.io/mandates/{token}
                       </pre>
 
                         <p>
@@ -888,22 +888,18 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
 <br>
 
-<h2 class="article-header" id="withdrawal"> <a href="#withdrawal"> سرویس برداشت وجه  (Withdrawal)</a></h2>
+<h2 class="article-header" id="checkout"> <a href="#checkout"> سرویس صورتحساب  (Checkout)</a></h2>
 
-<p>سرویس برداشت وجه از حساب دیگران، این سرویس هنگامی به کار می‌رود که شما قصد دارید از حساب مشتریان خود یکبار یا به صورت دوره‌ای وجهی را برداشت کنید.</p>
+<p>این سرویس هنگامی به کار می‌رود که شما قصد دارید یک صورتحساب با روش پرداخت مشخص برای مشتری خود ایجاد کرده و مشتری نسبت به پرداخت آن اقدام نماید.</p>
 
 <h3 class="title">
-  ۱. ثبت درخواست برداشت وجه
+  ۱. ثبت صورتحساب
 </h3>
-
-<p>این درخواست برداشت وجه را می توانید تا سقف محدودیت مبلغ و تعداد برداشت تعیین شده برای اشتراک صدا بزنید.</p>
 
 <pre>
 <span class="key">Method:</span> POST
-<span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/subscription/withdrawal/store
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/checkouts
 </pre>
-
-<p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد برداشت وجه از اشتراک آن را دارید.</p>
 
 <h3 class="sub-title">
   پارامترهای مجاز
@@ -919,7 +915,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
   </thead>
   <tbody>
   <tr>
-      <td>authorization_id</td>
+      <td>payment_method</td>
       <td>string</td>
       <td>required</td>
   </tr>
@@ -929,23 +925,13 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
       <td>required</td>
   </tr>
   <tr>
-    <td>withdrawal_date</td>
+    <td>request_id</td>
     <td>string</td>
-    <td>required if is_instant=0</td>
+    <td>optional</td>
   </tr>
   <tr>
-      <td>is_instant</td>
-      <td>Integer (0,1)</td>
-      <td>optional</td>
-  </tr>
-  <tr>
-      <td>notify_url</td>
+      <td>checkout_number</td>
       <td>string</td>
-      <td>optional</td>
-  </tr>
-  <tr>
-      <td>max_retry_count</td>
-      <td>integer</td>
       <td>optional</td>
   </tr>
   <tr>
@@ -954,9 +940,19 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
       <td>optional</td>
   </tr>
   <tr>
-      <td>track_id</td>
+      <td>type</td>
       <td>string</td>
       <td>optional</td>
+  </tr>
+  <tr>
+      <td>debit</td>
+      <td>object</td>
+      <td>required if type = debit</td>
+  </tr>
+  <tr>
+      <td>debit.mandate_id</td>
+      <td>string</td>
+      <td>required if type = debit</td>
   </tr>
   </tbody>
 </table>
@@ -965,45 +961,27 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
   توضیحات
 </h3>
 
-<h3 class="sub-title">
-  دو نوع برداشت امکان پذیر است. در همین لحظه (is_instant=1) و برداشت در آینده (is_instant=0):
-</h3>
-
-<p>
-در صورت برداشت آنی (is_instant=1) برداشت از حساب کاربر در همان لحظه انجام می شود. در این حالت ۲ پارامتر withdrawal_date و max_retry_count از درخواست شما محاسبه نمی شوند بلکه withdrawal_date همیشه برابر تاریخ امروز و max_retry_count همیشه برابر با ۱ در نظر گرفته می شوند. بودن یا نبودن این دو پارامتر در درخواست شما تغییری ایجاد نمی کند.
-</p>
-<p>
-در صورت برداشت در آینده (is_instant=0) برداشت از حساب کاربر زمانی در آینده رخ خواهد داد. این زمان را شما با پارامتر withdrawal_date تعیین می کنید و در حالت برداشت در آینده این پارامتر اجباری است و باید تاریخ صحیحی بعد از امروز باشد. در این حالت پارامتر max_retry_count اختیاری است و در صورت وجود نداشتن در درخواست شما برابر با ۱ در نظر گرفته می شود. اما اگر عدد دیگری برای max_retry_count تعیین کنید، عدد در خواست شما برای این پارامتر منظور می شود.
-</p>
- 
-
 <ul>
-  <li>authorization_id (اجباری):
-    آیدی دریافتی در بخش اشتراک که می خواهید مبلغ از آن دسترسی برداشت شود
+  <li>payment_method (اجباری):
+    روش پرداختی
   </li>
   <li>amount (اجباری):
-    مبلغ برداشت وجه
+    مبلغ صورتحساب
   </li>
-  <li>withdrawal_date (اجباری در حالت is_instant=0):
-    تاریخی که در آن روز از حساب برداشت شود. روز معین شده باید بعد از امروز باشد.
+  <li>request_id (اختیاری):
+      برای جلوگیری از تکراری بودن درخواست(یکتا برای هر درخواست).
   </li>
-    <li>is_instant (اختیاری):
-این پارامتر مشخص می‌کند که برداشت وجه در همین لحظه انجام شود یا در آینده. مقدار این پارامتر می تواند 0 یا 1 باشد. 1 به معنای این که برداشت در لحظه انجام شود و 0 به این معنا که برداشت در آینده انجام شود. در صورت عدم ارسال، 1 در نظر گرفته می‌شود.
-
-    </li>
-    <li>notify_url (اختیاری):
-        آدرس وبهوکی که می‌توانید ارسال کنید تا از وضعیت نهایی این برداشت وجه مطلع شوید که طول آن نباید بیشتر از ۲۰۴۸ کاراکتر باشد. در مواقع تست می‌توانید از وبسایت  <a target="_blank" href="https://webhook.site">webhook.site</a>استفاده کنید.
-    </li>
-    <li>max_retry_count (اختیاری):
-        حداکثر تعداد دفعاتی که می‌خواهید برای این برداشت وجه تلاش شود. حداقل ۱ و حداکثر ۱۶ مرتبه می‌توان برای یک برداشت وجه تلاش کرد. دقت داشته باشید که در صورت عدم ارسال این پارامتر، مقدار آن برابر با ۱ در نظر گرفته می‌شود.
-        همچنین در نظر داشته باشید این پارامتر برای برداشت وجه‌های آنی (is_instant: 1) برابر با ۱ در نظر گرفته می‌شود (و برداشت وجه آنی بلافاصله پس از استعلام (نمایش برداشت وجه - withdrawal show)، تعیین وضعیت می‌شود که حالت FAILED است یا DONE). در صورتی که برداشت وجه به صورت آنی نباشد (is_instant: 0) اگر برداشت وجه موفقیت‌آمیز باشد (status: DONE) که دیگر تلاشی صورت نمی‌گیرد، اما اگر برداشت وجه به هر دلیل موفقیت‌آمیز نباشد، تا زمانی که برداشت وجه موفقیت‌آمیز شود و یا مقدار retry_count به تعداد max_retry_count برسد سعی به برداشت وجه صورت می‌گیرد. لازم به ذکر است که تا زمانی که برداشت وجه موفقیت‌آمیز نباشد وضعیت آن برداشت وجه به حالت PENDING است و فقط زمانی که مقدار retry_count به max_retry_count (ارسالی از شما) برسد و هنوز برداشت وجه موفقیت‌آمیز نبوده باشد دیگر تلاشی برای برداشت وجه صورت نمی‌گیرد و وضعیت آن برداشت وجه از حالت PENDING به حالت FAILED تبدیل می‌شود.
+    <li>checkout_number (اختیاری):
+        شماره فاکتور
     </li>
     <li>
-        description (اختیاری): توضیحات اختیاری برای ثبت برداشت وجه
+        description (اختیاری): توضیحات اختیاری
     </li>
     <li>
-        track_id (اختیاری): شناسه پیگیری که به ازای هر درخواست برداشت باید یکتا باشد. پیشنهاد ما استفاده از uuid برای این پارامتر می‌باشد. این پارامتر به حروف بزرگ و کوچک حساس است.
-        با استفاده از این پارامتر می توان در سرویس نمایش برداشت وجه بر اساس شناسه پیگیری که در ادامه توضیح داده می شود از جزییات برداشت وجه مطع شوید.
+        type (اجباری):  نوع روش پرداختی که در حال حاضر مقدار debit پشتیبانی می شود.
+    </li>
+    <li>
+        debit.mandate_id (اجباری در صورتی که مقدار type برابر debit باشد): شناسه مجوز
     </li>
 </ul>
 
