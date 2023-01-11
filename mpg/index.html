@@ -991,23 +991,15 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
 <pre>
 {
-  "authorization_id": "9f307e30-dc77-11ea-830e-7533ca1787c5",
-  "amount": "10000",
-  "is_instant": 1,
-  "notify_url": "http://yourdomain.com/notify/me",
-}
-</pre>
-
-<pre>
-{
-  "authorization_id": "9f307e30-dc77-11ea-830e-7533ca1787c5",
-  "amount": "10000",
-  "withdrawal_date": "2020-07-04",
-  "is_instant": 0,
-  "notify_url": "http://yourdomain.com/notify/me",
-  "max_retry_count": 1,
-  "description": "تست وندار",
-  "track_id": "d2c5bf5a-280f-4ee5-8888-3d220b63bcc0"
+    "payment_method": "debit-ayandeh",
+    "amount": 1000,
+    "request_id": 123,
+    "checkout_number": "123",
+    "description": "test",
+    "type": "debit",
+    "debit": {
+        "mandate_id": "2de1307d-26e2-4de7-81c0-610c86a404cd"
+    }
 }
 </pre>
 
