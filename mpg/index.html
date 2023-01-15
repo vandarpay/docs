@@ -128,20 +128,20 @@
                             <!--                        </div>-->
                         </div>
                     </li>
-                    <li>
-                        <button class="dropdown-btn">سرویس پرداخت با وندار
-                            <br>
-                            <i class="fa fa-caret-down"></i>
-                        </button>
-                        <div class="dropdown-container">
-                            <a href="https://vandarpay.github.io/docs/pay-by-vandar/#overview">معرفی سرویس</a><br>
-                            <a href="https://vandarpay.github.io/docs/pay-by-vandar/#intro">مقدمه</a><br>
-                            <a href="https://vandarpay.github.io/docs/pay-by-vandar/#send">دریافت توکن</a><br>
-                            <a href="https://vandarpay.github.io/docs/pay-by-vandar/#redirect">انتقال کاربر</a><br>
-                            <a href="https://vandarpay.github.io/docs/pay-by-vandar/#inquiry">استعلام</a><br>
-                            <a href="https://vandarpay.github.io/docs/pay-by-vandar/#verify">تایید</a><br>
-                        </div>
-                    </li>
+                    <!--                    <li>-->
+                    <!--                        <button class="dropdown-btn">سرویس پرداخت با وندار-->
+                    <!--                            <br>-->
+                    <!--                            <i class="fa fa-caret-down"></i>-->
+                    <!--                        </button>-->
+                    <!--                        <div class="dropdown-container">-->
+                    <!--                            <a href="https://vandarpay.github.io/docs/pay-by-vandar/#overview">معرفی سرویس</a><br>-->
+                    <!--                            <a href="https://vandarpay.github.io/docs/pay-by-vandar/#intro">مقدمه</a><br>-->
+                    <!--                            <a href="https://vandarpay.github.io/docs/pay-by-vandar/#send">دریافت توکن</a><br>-->
+                    <!--                            <a href="https://vandarpay.github.io/docs/pay-by-vandar/#redirect">انتقال کاربر</a><br>-->
+                    <!--                            <a href="https://vandarpay.github.io/docs/pay-by-vandar/#inquiry">استعلام</a><br>-->
+                    <!--                            <a href="https://vandarpay.github.io/docs/pay-by-vandar/#verify">تایید</a><br>-->
+                    <!--                        </div>-->
+                    <!--                    </li>-->
                     <li>
                       <button class="dropdown-btn">سرویس مشتریان
                           <br>
@@ -210,23 +210,209 @@
                           <a href="#mpg" > <strong>سرویس پرداخت آزاد چیست:</strong></a>
                         </h3>
                         <!--todo: description-->
-                        <p>سرویس پرداخت خودکار یا دایرکت دبیت سرویسی است که یک فرد وجوهی را از حساب روش‌های پرداختی شخص دیگری خارج میکند در واقع شما به روش‌های پرداخت اجازه میدهید که مبلغی را مستقیما   از حسابتان کسر و در قبال آن خدماتی را به شما  ارایه دهد. به طور کلی دایرت دبیت برداشت مستقیم پول برای انجام معاملات مالی در صورت صدور مجوز توسط پرداخت کننده می باشد. این کار بیشتر زمانی انجام می شود که شما بخواهید اشتراک خود را تمدید کنید.
+                        <p>سرویس پرداخت خودکار یا دایرکت دبیت سرویسی است که یک فرد وجوهی را از حساب روش‌های پرداختی شخص
+                            دیگری خارج میکند در واقع شما به روش‌های پرداخت اجازه میدهید که مبلغی را مستقیما از حسابتان
+                            کسر و در قبال آن خدماتی را به شما ارایه دهد. به طور کلی دایرت دبیت برداشت مستقیم پول برای
+                            انجام معاملات مالی در صورت صدور مجوز توسط پرداخت کننده می باشد. این کار بیشتر زمانی انجام می
+                            شود که شما بخواهید مجوز خود را تمدید کنید.
 
                             شما می توانید در وندار به وسیله این API پرداخت خودکار حساب های خود را مدیریت کنید.
                             تمامی API های وندار بر اساس معماری REST پیاده سازی شده و آدرس آن به شرح زیر می باشد:
-                            </p>
+                        </p>
                         <p>برای تمامی درخواست های ارسالی باید مقادیر زیر در هدر ارسال شوند:
                             توکن همان کلید API یی است که از وندار دریافت کرده اید.
-                            </p>
+                        </p>
                         <pre>
 <span class="key">Accept:</span> application/json
 <span class="key">x-api-key:</span> {api-key}
                         </pre>
+
+                        <br>
+                        <h2 class="article-header" id="objects">
+                            <a href="#objects">آبجکت های سرویس پرداخت آزاد</a>
+                        </h2>
+                        <p>سرویس های مختلف ممکن است آبجکت های یکسانی داشته باشد که در ادامه آورده شده است.</p>
+                        <h3 class="title" id="objects-customer">
+                            <a href="#objects-customer">
+                                ۱. آبجکت مشتری (customer)
+                            </a>
+                        </h3>
+                        <pre>
+{
+    "id": "efdaf820-2075-11ed-a96b-a9167c05d45d",
+    "mobile": "09354614194",
+    "first_name": "Ali",
+    "last_name": "Gholami",
+    "email": "asd@qwe.com"
+}
+                        </pre>
+
+                        <ul>
+                            <li>id: شناسه مشتری.</li>
+                            <li>mobile: شماره موبایل مشتری.</li>
+                            <li>first_name: نام مشتری.</li>
+                            <li>last_name: نام خانوادگی مشتری.</li>
+                            <li>email: : ایمیل مشتری.</li>
+                        </ul>
+
+
+                        <h3 class="title" id="objects-mandate">
+                            <a href="#objects-mandate">
+                                ۲. آبجکت مجوز (mandate)
+                            </a>
+                        </h3>
+                        <pre>
+{
+    "id": "1408bf10-2dcd-11ed-b084-bb5348c5e321",
+    "count": 30,
+    "limit": 30000000,
+    "payment_method_slug": "debit-saman",
+    "status": "ACTIVE",
+    "expiration_date": "1403/06/15",
+    "customer_id": "efdaf820-2075-11ed-a96b-a9167c05d45d",
+    "created_at": 1662452234,
+    "updated_at": 1662452234,
+    "revoked_at": null
+}
+                        </pre>
+
+                        <ul>
+                            <li>id: شناسه مجوز.</li>
+                            <li>count: حداکثر تعداد دفعاتی که در یک ماه می‌توان با این مجوز، پرداخت موفق انجام داد.</li>
+                            <li>limit: حداکثر مبلغ قابل برداشت در پرداخت وجه‌های مربوط به این مجوز. واحد پول ریال است.
+                            </li>
+                            <li>payment_method_slug: روش پرداخت.</li>
+                            <li>status: وضعیت مجوز.</li>
+                            <li>expiration_date: تاریخ انقضای مجوز.</li>
+                            <li>customer_id: شناسه مشتری.</li>
+                            <li>created_at: زمان ایجاد مجوز.</li>
+                            <li>updated_at: زمان بروزرسانی مجوز.</li>
+                            <li>revoked_at: زمان لغو مجوز.</li>
+                        </ul>
+
+
+                        <h3 class="title" id="objects-payment">
+                            <a href="#objects-payment">
+                                ۳. آبجکت پرداخت (payment)
+                            </a>
+                        </h3>
+                        <pre>
+{
+    "id": "b7d0d74c-4b25-4d42-8338-d9dce3c9e16f",
+    "amount": 10000,
+    "wage_amount": 1000,
+    "affected_amount": 9000,
+    "payment_method_slug": "debit-ayandeh",
+    "ref_id": null,
+    "tracking_code": null,
+    "created_at": 1673773548,
+    "updated_at": 1673773548,
+    "payment_date": 1673773548,
+    "status": "DONE",
+    "error": null,
+    "type": "debit",
+    "debit": {
+        "mandate_id": "068bb9f0-5ddf-11ed-b16d-61da2281b3d4"
+    }
+}
+                        </pre>
+
+                        <ul>
+                            <li>id: شناسه پرداخت.</li>
+                            <li>amount: مبلغ پرداخت.</li>
+                            <li>wage_amount: کارمزد پرداخت.</li>
+                            <li>affected_amount: مبلغی که کیف پول کسب و کار را تحت تاثیر قرار داده است.</li>
+                            <li>payment_method_slug: روش پرداخت.</li>
+                            <li>ref_id: رسید دیجیتال یکتا در شبکه پرداخت کشور.</li>
+                            <li>tracking_code: کد رهگیری به همراه تاریخ انجام تراکنش یکتا است.</li>
+                            <li>created_at: زمان ایجاد پرداخت.</li>
+                            <li>updated_at: زمان بروزرسانی پرداخت.</li>
+                            <li>payment_date: زمان انجام تراکنش.</li>
+                            <li>status: وضعیت پرداخت.</li>
+                            <li>error: خطا در صورت انجام نشدن پرداخت.</li>
+                            <div class="info">
+                                <strong>نکته! </strong>
+                                <span>
+                                    در صورت وجود خطا آبجکت زیر برگردانده میشود:
+                                </span>
+                                <pre>
+"error": {
+   "code": "WITHDRAWAL_TIMEOUT",
+   "message": "withdrawal timeout"
+}
+                                    </pre>
+                            </div>
+                            <li>type: نوع روش پرداختی که در حا حاضر دارای مقدار debit می باشد.</li>
+                            <li>debit.mandate_id: درصورتی که نوع روش پرداختی برابر debit باشد شناسه مجوز برگردانده
+                                میشود.
+                            </li>
+                        </ul>
+
+
+                        <h3 class="title" id="objects-checkout">
+                            <a href="#objects-checkout">
+                                ۴. آبجکت صورت‌حساب (checkout)
+                            </a>
+                        </h3>
+                        <pre>
+{
+    "id": "fbcf27ba-45d2-4aee-aa50-18a7d33a5d27",
+    "request_id": "sDrfgkT5lkk5llk4Gt",
+    "checkout_number": "123",
+    "amount": 10000,
+    "status": "PAID",
+    "description": "test",
+    "created_at": 1673773548,
+    "updated_at": 1673773548,
+    "customer": {
+        "id": "efdaf820-2075-11ed-a96b-a9167c05d45d",
+        "mobile": "09354614194",
+        "first_name": "Ali",
+        "last_name": "Gholami",
+        "email": "asd@qwe.com"
+    },
+    "payments": [
+        {
+            "id": "b7d0d74c-4b25-4d42-8338-d9dce3c9e16f",
+            "amount": 10000,
+            "wage_amount": 1000,
+            "affected_amount": 9000,
+            "payment_method_slug": "debit-ayandeh",
+            "ref_id": null,
+            "tracking_code": null,
+            "created_at": 1673773548,
+            "updated_at": 1673773548,
+            "payment_date": 1673773548,
+            "status": "DONE",
+            "error": null,
+            "type": "debit",
+            "debit": {
+                "mandate_id": "068bb9f0-5ddf-11ed-b16d-61da2281b3d4"
+            }
+        }
+    ]
+}
+                        </pre>
+
+                        <ul>
+                            <li>id: شناسه صورت‌حساب</li>
+                            <li>request_id: شناسه یکتا صورت‌حساب</li>
+                            <li>checkout_number: شماره فاکتور صورت‌حساب</li>
+                            <li>amount: مبلغ صورت‌حساب</li>
+                            <li>status: وضعیت صورت‌حساب</li>
+                            <li>description: توضیحات صورت‌حساب</li>
+                            <li>updated_at: زمان بروزرسانی صورت‌حساب</li>
+                            <li>customer: اطلاعات مشتری</li>
+                            <li>payments: اطلاعات پرداخت</li>
+                        </ul>
+
                         <br>
                         <h2 class="article-header" id="banks">
-                            <a href="#banks">دریافت لیست روش‌های پرداخت</a> </h2>
+                            <a href="#banks">دریافت لیست روش‌های پرداخت</a></h2>
                         <p>لیست روش های پرداخت قابل استفاده از این بخش قابل دسترس می‌باشد.
-                            می‌توانید بر اساس نیازمندی کسب‌وکار خود کلیه روش‌های پرداخت فعال را به کاربران ارائه دهید و یا در صورت نیاز یک لیست شخصی‌سازی شده برای کسب‌وکار خود ایجاد کنید و لیست تعیین شده‌ای از روش‌های پرداخت را در اختیار کاربران خود قرار دهید.
+                            می‌توانید بر اساس نیازمندی کسب‌وکار خود کلیه روش‌های پرداخت فعال را به کاربران ارائه دهید و
+                            یا در صورت نیاز یک لیست شخصی‌سازی شده برای کسب‌وکار خود ایجاد کنید و لیست تعیین شده‌ای از
+                            روش‌های پرداخت را در اختیار کاربران خود قرار دهید.
                         </p>
                         <h3 class="title" id="custom-payment-methods"><a href="#custom-payment-methods">
                             ۱. لیست شخصی‌سازی شده روش‌های پرداخت
@@ -403,7 +589,7 @@
                         <p>اولین مرحله برای بستن مجوز برداشت از حساب، ثبت درخواست صدور مجوز است. لازم است که درخواست خود را به آدرس زیر ارسال کنید.</p>
                         <pre>
 <span class="key">Method:</span> POST
-<span class="key">Address:</span> https://api.vandar.io/mpg/v1/mandates/store
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/mandates
                         </pre>
                         <h3 class="sub-title">
                           پارامترهای مجاز
@@ -549,9 +735,9 @@
                          آدرس
                         می گذارید و در مرورگر وارد سایت می شوید.
                       </p>
-                      <pre>
+                        <pre>
 <span class="key">METHOD:</span> get
-<span class="key">URL:</span> https://mpg.vandar.io/mandate/{token}
+<span class="key">URL:</span> https://mpg.vandar.io/mandates/{token}
                       </pre>
 
                         <p>
@@ -581,7 +767,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                             <img src="../images/ayandeh-mandate-step2.png" style="max-width: 500px;" alt="صفحه دسترسی">
                         </p>
 <h3 class="title" id="subscription-code">
-  <a href="#subscription-code">۳. دریافت کد اشتراک</a>
+    <a href="#subscription-code">۳. دریافت کد مجوز</a>
 </h3>
 <p>در صورتی که کاربر بر روی دکمه دسترسی دارد کلیک کند، وندار کاربر را به آدرس برگشتی که در مرحله اول ارسال کرده‌اید به همراه پارامتر token و status و mandate_id هدایت می‌کند.
 
@@ -613,23 +799,29 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                                         <th style="text-align: center;">error_message</th>
                                     </tr>
                                     </thead>
-                                </table>
+              </table>
 
-              <h3 class="title" id="subscription-verify"><a href="#subscription-verify">
-                ۴. تایید اشتراک
-            </a>
+                        <h3 class="title" id="subscription-verify"><a href="#subscription-verify">
+                            ۴. تایید مجوز
+                        </a>
 
-            </h3>
+                        </h3>
+                        <p>درصورتی که کاربر اجازه دسترسی به مجوز را صادر کرده باشد، باید مجوز ایجاد شده را از طریق ارسال
+                            mandate_id به وندار تایید کنید. برای جلوگیری از تغییر وضعیت مجوزهای پیشین، وندار تنها یک بار
+                            اجازه تایید مجوز را به API می‌دهد.</p>
 
-            <p>درصورتی که کاربر اجازه دسترسی به مجوز را صادر کرده باشد، باید مجوز ایجاد شده را از طریق ارسال mandate_id به وندار تایید کنید. برای جلوگیری از تغییر وضعیت مجوزهای پیشین، وندار تنها یک بار اجازه تایید مجوز را به API می‌دهد.</p>
-            <pre>
+                        <p>درصورتی که کاربر اجازه دسترسی به مجوز را صادر کرده باشد، باید مجوز ایجاد شده را از طریق ارسال
+                            mandate_id به وندار تایید کنید. برای جلوگیری از تغییر وضعیت مجوزهای پیشین، وندار تنها یک بار
+                            اجازه تایید مجوز را به API می‌دهد.</p>
+                        <pre>
 <span class="key">Method:</span> PUT
-<span class="key">Address:</span> https://api.vandar.io/mpg/v1/mandate/{mandate_id}/verify</pre>
-          </pre>
-          <div class="info">
-            <strong>نکته! </strong>
-             وندار به جهت جلوگیری از ایجاد مجوز رهاشده، مجوزهایی که پس از ۲۰ دقیقه تایید نشوند را به شکل خودکار لغو می‌کند.
-          </div>
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/mandates/{mandate_id}/verify</pre>
+                        </pre>
+                        <div class="info">
+                            <strong>نکته! </strong>
+                            وندار به جهت جلوگیری از ایجاد مجوز رهاشده، مجوزهایی که پس از ۲۰ دقیقه تایید نشوند را به شکل
+                            خودکار لغو می‌کند.
+                        </div>
             <h3 class="sub-title">
               نمونه پاسخ دریافتی موفق:
             </h3>
@@ -901,13 +1093,443 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
     </ul>
   </li>
 </ul>
-<div class="info">
-  <strong> نکته! </strong>
-  بعد از لغو یک مجوز این مجوز از خروجی لیست مجوزها حذف شده و اگر درخواست نمایش مجوز با آیدی را صدا بزنید خطای ۴۲۲ با متن مجوز باطل شده است را دریافت می کنید.
+                        <div class="info">
+                            <strong> نکته! </strong>
+                            بعد از لغو یک مجوز این مجوز از خروجی لیست مجوزها حذف شده و اگر درخواست نمایش مجوز با آیدی را
+                            صدا بزنید خطای ۴۲۲ با متن مجوز باطل شده است را دریافت می کنید.
+                        </div>
+
+                        <br>
+
+                        <h2 class="article-header" id="checkout"><a href="#checkout"> سرویس صورت‌حساب (Checkout)</a>
+                        </h2>
+
+                        <p>این سرویس هنگامی به کار می‌رود که شما قصد دارید یک صورت‌حساب با روش پرداخت مشخص برای مشتری
+                            خود ایجاد کرده و مشتری نسبت به پرداخت آن اقدام نماید.</p>
+
+                        <h3 class="title">
+                            ۱. ثبت صورت‌حساب
+                        </h3>
+
+                        <pre>
+<span class="key">Method:</span> POST
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/checkouts
+</pre>
+
+                        <h3 class="sub-title">
+                            پارامترهای مجاز
+                        </h3>
+
+                        <table class="table" dir="rtl">
+                            <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>payment_method</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
+                                <td>amount</td>
+                                <td>numeric</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
+                                <td>request_id</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>checkout_number</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>description</td>
+                                <td>string</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>type</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
+                                <td>debit</td>
+                                <td>object</td>
+                                <td>required if type = debit</td>
+                            </tr>
+                            <tr>
+                                <td>debit.mandate_id</td>
+                                <td>string</td>
+                                <td>required if type = debit</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 class="sub-title">
+                            توضیحات
+                        </h3>
+
+                        <ul>
+                            <li>payment_method (اجباری):
+                                روش پرداختی
+                            </li>
+                            <li>amount (اجباری):
+                                مبلغ صورت‌حساب
+                            </li>
+                            <li>request_id (اختیاری):
+                                برای جلوگیری از تکراری بودن درخواست(یکتا برای هر درخواست).
+                            </li>
+                            <li>checkout_number (اختیاری):
+                                شماره فاکتور
+                            </li>
+                            <li>
+                                description (اختیاری): توضیحات اختیاری
+                            </li>
+                            <li>
+                                type (اجباری): نوع روش پرداختی که در حال حاضر مقدار debit پشتیبانی می شود.
+                            </li>
+                            <li>
+                                debit.mandate_id (اجباری در صورتی که مقدار type برابر debit باشد): شناسه مجوز
+                            </li>
+                        </ul>
+
+                        <h3 class="sub-title">
+                            نمونه json
+                        </h3>
+
+                        <pre>
+{
+    "payment_method": "debit-ayandeh",
+    "amount": 1000,
+    "request_id": 123,
+    "checkout_number": "123",
+    "description": "test",
+    "type": "debit",
+    "debit": {
+        "mandate_id": "2de1307d-26e2-4de7-81c0-610c86a404cd"
+    }
+}
+</pre>
+
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+    "message": "صورت‌حساب با موفقیت ثبت شد",
+    "data": {
+        "checkout": {
+            "id": "fbcf27ba-45d2-4aee-aa50-18a7d33a5d27",
+            "request_id": "sDrfgkT5lkk5llk4Gt",
+            "checkout_number": "123",
+            "amount": 10000,
+            "status": "PAID",
+            "description": "test",
+            "created_at": 1673773548,
+            "updated_at": 1673773548,
+            "customer": {
+                "id": "efdaf820-2075-11ed-a96b-a9167c05d45d",
+                "mobile": "09354614194",
+                "first_name": "Ali",
+                "last_name": "Gholami",
+                "email": "asd@qwe.com"
+            },
+            "payments": [
+                {
+                    "id": "b7d0d74c-4b25-4d42-8338-d9dce3c9e16f",
+                    "amount": 10000,
+                    "wage_amount": 1000,
+                    "affected_amount": 9000,
+                    "payment_method_slug": "debit-ayandeh",
+                    "ref_id": null,
+                    "tracking_code": null,
+                    "created_at": 1673773548,
+                    "updated_at": 1673773548,
+                    "payment_date": 1673773548,
+                    "status": "DONE",
+                    "error": null,
+                    "type": "debit",
+                    "debit": {
+                        "mandate_id": "068bb9f0-5ddf-11ed-b16d-61da2281b3d4"
+                    }
+                }
+            ]
+        }
+    }
+}
+</pre>
+
+                        <ul>
+                            <li>message: پیغام ثبت صورت‌حساب</li>
+                            <li>
+                                data:
+                                <ul>
+                                    <li>checkout: اطلاعات صورت‌حساب</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+
+                        <h3 class="title">
+                            ۲. لیست صورت‌حساب
+                        </h3>
+
+                        <pre>
+<span class="key">Method:</span> GET
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/checkouts
+</pre>
+
+                        <h3 class="sub-title">
+                            پارامترهای مجاز
+                        </h3>
+
+                        <table class="table" dir="rtl">
+                            <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>per_page</td>
+                                <td>numeric</td>
+                                <td>optional</td>
+                            </tr>
+                            <tr>
+                                <td>page</td>
+                                <td>numeric</td>
+                                <td>optional</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 class="sub-title">
+                            توضیحات
+                        </h3>
+
+                        <ul>
+                            <li>per_page (اختیاری):
+                                تعداد آیتم در هر صفحه
+                            </li>
+                            <li>page (اختیاری):
+                                شماره صفحه
+                            </li>
+                        </ul>
+
+                        <h3 class="sub-title">
+                            نمونه json
+                        </h3>
+
+                        <pre>
+{
+    "per_page": 2,
+    "page": 1
+}
+</pre>
+
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+    "message": "لیست صورتحساب ها",
+    "data": [
+        {
+            "id": "76252e83-fa00-46a4-b157-171213f2908a",
+            "request_id": "123",
+            "checkout_number": "123",
+            "amount": "10000",
+            "status": "PAID",
+            "description": "test",
+            "created_at": 1673682519,
+            "updated_at": 1673682519,
+            "customer": {
+                "id": "efdaf820-2075-11ed-a96b-a9167c05d45d",
+                "mobile": "09354614194",
+                "first_name": "Ali",
+                "last_name": "Gholami",
+                "email": "asd@qwe.com"
+            },
+            "payments": [
+                {
+                    "id": "92df1c50-d510-463b-aa3b-c42ed2b06f05",
+                    "amount": 10000,
+                    "wage_amount": 100,
+                    "affected_amount": 99900,
+                    "payment_method_slug": "debit-saman",
+                    "ref_id": null,
+                    "tracking_code": null,
+                    "created_at": 1673682519,
+                    "updated_at": 1673682519,
+                    "payment_date": 1673682519,
+                    "status": "DONE",
+                    "error": null,
+                    "type": "debit",
+                    "debit": {
+                        "mandate_id": "068bb9f0-5ddf-11ed-b16d-61da2281b3d4"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "206428c9-54ff-4f49-9abc-f3b7c8326d3c",
+            "request_id": "456",
+            "checkout_number": "123",
+            "amount": "10000",
+            "status": "NOT_PAID",
+            "description": "test",
+            "created_at": 1673684560,
+            "updated_at": 1673684560,
+            "customer": {
+                "id": "efdaf820-2075-11ed-a96b-a9167c05d45d",
+                "mobile": "09354614194",
+                "first_name": "Ali",
+                "last_name": "Gholami",
+                "email": "asd@qwe.com"
+            },
+            "payments": [
+                {
+                    "id": "99b963c7-c36b-43e1-bb11-f0182890350f",
+                    "amount": 10000,
+                    "wage_amount": 100,
+                    "affected_amount": 99900,
+                    "payment_method_slug": "debit-saman",
+                    "ref_id": null,
+                    "tracking_code": null,
+                    "created_at": 1673682519,
+                    "updated_at": 1673682519,
+                    "payment_date": 1673682519,
+                    "status": "FAILED",
+                    "error": {
+                        "code": "WITHDRAWAL_TIMEOUT",
+                        "message": "withdrawal timeout"
+                     },
+                    "type": "debit",
+                    "debit": {
+                        "mandate_id": "068bb9f0-5ddf-11ed-b16d-61da2281b3d4"
+                    }
+                }
+            ]
+        }
+    ],
+    "meta": {
+        "current_page": 1,
+        "from": 1,
+        "last_page": 15,
+        "per_page": 2,
+        "to": 2,
+        "total": 30
+    }
+}
+</pre>
+
+                        <ul>
+                            <li>message: پیغام لیست صورت‌حساب ها</li>
+                            <li>
+                                data: لیستی از صورت‌حساب ها
+                            </li>
+                        </ul>
+
+
+                        <h3 class="title">
+                            ۳. جزيیات صورت‌حساب
+                        </h3>
+
+                        <pre>
+<span class="key">Method:</span> GET
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/checkouts/76252e83-fa00-46a4-b157-171213f2908a
+</pre>
+
+
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+    "message": "صورتحساب",
+    "data": {
+        "checkout": {
+            "id": "76252e83-fa00-46a4-b157-171213f2908a",
+            "request_id": "123",
+            "checkout_number": "123",
+            "amount": "10000",
+            "status": "PAID",
+            "description": "test",
+            "created_at": 1673682519,
+            "updated_at": 1673682519,
+            "customer": {
+                "id": "efdaf820-2075-11ed-a96b-a9167c05d45d",
+                "mobile": "09354614194",
+                "first_name": "Ali",
+                "last_name": "Gholami",
+                "email": "asd@qwe.com"
+            },
+            "payments": [
+                {
+                    "id": "92df1c50-d510-463b-aa3b-c42ed2b06f05",
+                    "amount": 10000,
+                    "wage_amount": 100,
+                    "affected_amount": 99900,
+                    "payment_method_slug": "debit-saman",
+                    "ref_id": null,
+                    "tracking_code": null,
+                    "created_at": 1673682519,
+                    "updated_at": 1673682519,
+                    "payment_date": 1673682519,
+                    "status": "DONE",
+                    "error": null,
+                    "type": "debit",
+                    "debit": {
+                        "mandate": {
+                            "id": "068bb9f0-5ddf-11ed-b16d-61da2281b3d4",
+                            "count": 15,
+                            "limit": 100000,
+                            "payment_method_slug": "debit-saman",
+                            "status": "ACTIVE",
+                            "expiration_date": "2025-12-31",
+                            "customer_id": "efdaf820-2075-11ed-a96b-a9167c05d45d",
+                            "created_at": 1667741198,
+                            "updated_at": 1667741493,
+                            "revoked_at": null
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
+</pre>
+
+                        <ul>
+                            <li>message: پیغام جزییات صورت‌حساب</li>
+                            <li>
+                                data: جزییات صورت‌حساب
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
 </div>
 
-<br>
-  <footer id="footer">
+<footer id="footer">
     <div class="container">
         <div class="row" style="text-align: center">
             <div class="col-sm-8 col-xs-6 no-padding-bottom">
@@ -916,7 +1538,6 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             <div class="col-sm-4 col-xs-6 text-right no-padding-bottom">2020 &copy; <a href="https://vandar.io" target="_blank">وندار</a></div>
         </div>
     </div>
-
 </footer>
 <button onclick="goTop()" id="go_top" title="Go to top">^</button>
 <script>
@@ -935,7 +1556,6 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             }
         });
     }
-
 
     var header = document.getElementById("myHeader");
     var sticky = header.offsetTop;
@@ -1026,7 +1646,6 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
         }
 
       });
-
-
-</script></body>
+</script>
+</body>
 </html>
