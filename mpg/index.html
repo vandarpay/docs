@@ -361,9 +361,7 @@
     "data": [
         {
             "modes": [
-                {
-                    "slug": "once"
-                }
+                   "once"
             ],
             "slug": "debit-saman",
             "type": "debit",
@@ -379,7 +377,7 @@
                         "limit": 30000000,
                         "payment_method_slug": "debit-saman",
                         "status": "ACTIVE",
-                        "expiration_date": "1403/06/15",
+                        "expiration_date": "2022-11-09",
                         "customer_id": "efdaf820-2075-11ed-a96b-a9167c05d45d",
                         "created_at": 1662452234,
                         "updated_at": 1662452234,
@@ -574,9 +572,14 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
                         </p>
 <!-- todo renew images -->
-<img src="../images/authorize-intro.png" alt="صفحه ورود روش‌های پرداخت">
-<p>با وارد کردن کد ملی و گذر واژه صحیح وارد صفحه زیر می شوید.</p>
-<img src="../images/authorize.png" alt="صفحه دسترسی">
+                        <p style=" text-align: center">
+<img src="../images/ayandeh-mandate-step1.png"  style="max-width: 500px;" alt="صفحه ورود روش‌های پرداخت">
+                        </p>
+<p>با وارد کردن اطلاعات کارت وارد صفحه زیر می شوید.</p>
+                        <p style=" text-align: center">
+
+                            <img src="../images/ayandeh-mandate-step2.png" style="max-width: 500px;" alt="صفحه دسترسی">
+                        </p>
 <h3 class="title" id="subscription-code">
   <a href="#subscription-code">۳. دریافت کد اشتراک</a>
 </h3>
@@ -586,7 +589,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
 <p>در صورت اجازه‌ی دسترسی به حساب در صفحه‌ی روش‌های پرداخت</p>
 <pre>
-https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&authorization_id=9f307e30-dc77-11ea-830e-7533ca1787c5&status=SUCCEED
+https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&mandate_id=9f307e30-dc77-11ea-830e-7533ca1787c5&status=SUCCEED
 </pre>
 
 <p>در صورت عدم اجازه‌ی دسترسی به حساب در صفحه‌ی روش‌های پرداخت</p>
@@ -617,13 +620,11 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             </a>
 
             </h3>
-            <div class="info">
-                چنانچه کسب‌وکار شما از <strong>نسخه ۲</strong> APIهای وندار بهره می‌برد، تا ۱ اسفند ۱۴۰۰ نیازی به پیاده‌سازی این قدم نخواهید داشت.
-            </div>
-            <p>درصورتی که کاربر اجازه دسترسی به مجوز را صادر کرده باشد، باید مجوز ایجاد شده را از طریق ارسال authorization_id به وندار تایید کنید. برای جلوگیری از تغییر وضعیت مجوزهای پیشین، وندار تنها یک بار اجازه تایید مجوز را به API می‌دهد.</p>
+
+            <p>درصورتی که کاربر اجازه دسترسی به مجوز را صادر کرده باشد، باید مجوز ایجاد شده را از طریق ارسال mandate_id به وندار تایید کنید. برای جلوگیری از تغییر وضعیت مجوزهای پیشین، وندار تنها یک بار اجازه تایید مجوز را به API می‌دهد.</p>
             <pre>
-<span class="key">Method:</span> PATCH
-<span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/subscription/authorization/{authorization}/verify</pre>
+<span class="key">Method:</span> PUT
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/mandate/{mandate_id}/verify</pre>
           </pre>
           <div class="info">
             <strong>نکته! </strong>
@@ -636,19 +637,38 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             <pre>
 <span class="key">HTTP/1.1</span> 200
 {
-    'status' => 1,
-    'message' => 'مجوز با موفقیت تایید شد.'
-
+    "message": "مجوز با موفقیت تایید شد",
+    "data": {
+        "mandate": {
+            "id": "068bb9f0-5ddf-11ed-b16d-61da2281b3d4",
+            "count": 15,
+            "limit": 100000,
+            "payment_method_slug": "debit-ayandeh",
+            "status": "ACTIVE",
+            "expiration_date": "2022-11-09",
+            "customer_id": "9da2e7f0-9de1-11ec-a6bc-978fb3b88c9d",
+            "created_at": 1667744798,
+            "updated_at": 1672579535,
+            "revoked_at": null
+        }
+    }
 }
             </pre>
           <h3 class="sub-title">
             نمونه پاسخ دریافتی نا موفق:
           </h3>
           <pre>
-<span class="key">HTTP/1.1</span> 422
+<span class="key">HTTP/1.1</span> 403
 {
-    'status' => 0,
-    'message': 'مجوز پیش از این تایید شده است.'
+    "message": "مجاز به انجام این کار نیستید",
+    "code": "mandate_already_revoked"
+}
+            </pre>
+                        <pre>
+<span class="key">HTTP/1.1</span> 403
+{
+    "message": "مجاز به انجام این کار نیستید",
+    "code": "mandate_already_activated"
 }
             </pre>
 <h3 class="title" id="subscriptions">
@@ -715,7 +735,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             "limit": 100000,
             "payment_method_slug": "debit-ayandeh",
             "status": "REVOKED",
-            "expiration_date": "1401/08/18",
+            "expiration_date": "2022-11-09",
             "customer_id": "9da2e7f0-9de1-11ec-a6bc-978fb3b88c9d",
             "created_at": 1667741198,
             "updated_at": 1667741493,
@@ -727,7 +747,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             "limit": 50000,
             "payment_method_slug": "debit-saman",
             "status": "ACTIVE",
-            "expiration_date": "1402/07/17",
+            "expiration_date": "2022-11-09",
             "customer_id": "4c12b5c0-1323-11ed-88aa-1d355b7661f1",
             "created_at": 1667368162,
             "updated_at": 1667368266,
@@ -813,7 +833,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             "limit": 100000,
             "payment_method_slug": "debit-ayandeh",
             "status": "REVOKED",
-            "expiration_date": "1401/08/18",
+            "expiration_date": "2022-11-09",
             "customer_id": "9da2e7f0-9de1-11ec-a6bc-978fb3b88c9d",
             "created_at": 1667741198,
             "updated_at": 1667741493,
@@ -849,7 +869,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
       "limit": 800000,
       "payment_method_slug": debit-saman,
       "status": "REVOKED",
-      "expiration_date": "1401/11/20",
+      "expiration_date": "2022-11-09",
       "customer_id": "f02ba3c5-6235-3601-981e-87094ac2365c",
       "created_at": 1664719213,
       "updated_at": 1672495213,
@@ -887,919 +907,6 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 </div>
 
 <br>
-
-<h2 class="article-header" id="withdrawal"> <a href="#withdrawal"> سرویس برداشت وجه  (Withdrawal)</a></h2>
-
-<p>سرویس برداشت وجه از حساب دیگران، این سرویس هنگامی به کار می‌رود که شما قصد دارید از حساب مشتریان خود یکبار یا به صورت دوره‌ای وجهی را برداشت کنید.</p>
-
-<h3 class="title">
-  ۱. ثبت درخواست برداشت وجه
-</h3>
-
-<p>این درخواست برداشت وجه را می توانید تا سقف محدودیت مبلغ و تعداد برداشت تعیین شده برای اشتراک صدا بزنید.</p>
-
-<pre>
-<span class="key">Method:</span> POST
-<span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/subscription/withdrawal/store
-</pre>
-
-<p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد برداشت وجه از اشتراک آن را دارید.</p>
-
-<h3 class="sub-title">
-  پارامترهای مجاز
-</h3>
-
-<table class="table" dir="rtl">
-  <thead>
-  <tr>
-      <th>name</th>
-      <th>Type</th>
-      <th>Status</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-      <td>authorization_id</td>
-      <td>string</td>
-      <td>required</td>
-  </tr>
-  <tr>
-      <td>amount</td>
-      <td>numeric</td>
-      <td>required</td>
-  </tr>
-  <tr>
-    <td>withdrawal_date</td>
-    <td>string</td>
-    <td>required if is_instant=0</td>
-  </tr>
-  <tr>
-      <td>is_instant</td>
-      <td>Integer (0,1)</td>
-      <td>optional</td>
-  </tr>
-  <tr>
-      <td>notify_url</td>
-      <td>string</td>
-      <td>optional</td>
-  </tr>
-  <tr>
-      <td>max_retry_count</td>
-      <td>integer</td>
-      <td>optional</td>
-  </tr>
-  <tr>
-      <td>description</td>
-      <td>string</td>
-      <td>optional</td>
-  </tr>
-  <tr>
-      <td>track_id</td>
-      <td>string</td>
-      <td>optional</td>
-  </tr>
-  </tbody>
-</table>
-
-<h3 class="sub-title">
-  توضیحات
-</h3>
-
-<h3 class="sub-title">
-  دو نوع برداشت امکان پذیر است. در همین لحظه (is_instant=1) و برداشت در آینده (is_instant=0):
-</h3>
-
-<p>
-در صورت برداشت آنی (is_instant=1) برداشت از حساب کاربر در همان لحظه انجام می شود. در این حالت ۲ پارامتر withdrawal_date و max_retry_count از درخواست شما محاسبه نمی شوند بلکه withdrawal_date همیشه برابر تاریخ امروز و max_retry_count همیشه برابر با ۱ در نظر گرفته می شوند. بودن یا نبودن این دو پارامتر در درخواست شما تغییری ایجاد نمی کند.
-</p>
-<p>
-در صورت برداشت در آینده (is_instant=0) برداشت از حساب کاربر زمانی در آینده رخ خواهد داد. این زمان را شما با پارامتر withdrawal_date تعیین می کنید و در حالت برداشت در آینده این پارامتر اجباری است و باید تاریخ صحیحی بعد از امروز باشد. در این حالت پارامتر max_retry_count اختیاری است و در صورت وجود نداشتن در درخواست شما برابر با ۱ در نظر گرفته می شود. اما اگر عدد دیگری برای max_retry_count تعیین کنید، عدد در خواست شما برای این پارامتر منظور می شود.
-</p>
- 
-
-<ul>
-  <li>authorization_id (اجباری):
-    آیدی دریافتی در بخش اشتراک که می خواهید مبلغ از آن دسترسی برداشت شود
-  </li>
-  <li>amount (اجباری):
-    مبلغ برداشت وجه
-  </li>
-  <li>withdrawal_date (اجباری در حالت is_instant=0):
-    تاریخی که در آن روز از حساب برداشت شود. روز معین شده باید بعد از امروز باشد.
-  </li>
-    <li>is_instant (اختیاری):
-این پارامتر مشخص می‌کند که برداشت وجه در همین لحظه انجام شود یا در آینده. مقدار این پارامتر می تواند 0 یا 1 باشد. 1 به معنای این که برداشت در لحظه انجام شود و 0 به این معنا که برداشت در آینده انجام شود. در صورت عدم ارسال، 1 در نظر گرفته می‌شود.
-
-    </li>
-    <li>notify_url (اختیاری):
-        آدرس وبهوکی که می‌توانید ارسال کنید تا از وضعیت نهایی این برداشت وجه مطلع شوید که طول آن نباید بیشتر از ۲۰۴۸ کاراکتر باشد. در مواقع تست می‌توانید از وبسایت  <a target="_blank" href="https://webhook.site">webhook.site</a>استفاده کنید.
-    </li>
-    <li>max_retry_count (اختیاری):
-        حداکثر تعداد دفعاتی که می‌خواهید برای این برداشت وجه تلاش شود. حداقل ۱ و حداکثر ۱۶ مرتبه می‌توان برای یک برداشت وجه تلاش کرد. دقت داشته باشید که در صورت عدم ارسال این پارامتر، مقدار آن برابر با ۱ در نظر گرفته می‌شود.
-        همچنین در نظر داشته باشید این پارامتر برای برداشت وجه‌های آنی (is_instant: 1) برابر با ۱ در نظر گرفته می‌شود (و برداشت وجه آنی بلافاصله پس از استعلام (نمایش برداشت وجه - withdrawal show)، تعیین وضعیت می‌شود که حالت FAILED است یا DONE). در صورتی که برداشت وجه به صورت آنی نباشد (is_instant: 0) اگر برداشت وجه موفقیت‌آمیز باشد (status: DONE) که دیگر تلاشی صورت نمی‌گیرد، اما اگر برداشت وجه به هر دلیل موفقیت‌آمیز نباشد، تا زمانی که برداشت وجه موفقیت‌آمیز شود و یا مقدار retry_count به تعداد max_retry_count برسد سعی به برداشت وجه صورت می‌گیرد. لازم به ذکر است که تا زمانی که برداشت وجه موفقیت‌آمیز نباشد وضعیت آن برداشت وجه به حالت PENDING است و فقط زمانی که مقدار retry_count به max_retry_count (ارسالی از شما) برسد و هنوز برداشت وجه موفقیت‌آمیز نبوده باشد دیگر تلاشی برای برداشت وجه صورت نمی‌گیرد و وضعیت آن برداشت وجه از حالت PENDING به حالت FAILED تبدیل می‌شود.
-    </li>
-    <li>
-        description (اختیاری): توضیحات اختیاری برای ثبت برداشت وجه
-    </li>
-    <li>
-        track_id (اختیاری): شناسه پیگیری که به ازای هر درخواست برداشت باید یکتا باشد. پیشنهاد ما استفاده از uuid برای این پارامتر می‌باشد. این پارامتر به حروف بزرگ و کوچک حساس است.
-        با استفاده از این پارامتر می توان در سرویس نمایش برداشت وجه بر اساس شناسه پیگیری که در ادامه توضیح داده می شود از جزییات برداشت وجه مطع شوید.
-    </li>
-</ul>
-
-<h3 class="sub-title">
-  نمونه json
-</h3>
-
-<pre>
-{
-  "authorization_id": "9f307e30-dc77-11ea-830e-7533ca1787c5",
-  "amount": "10000",
-  "is_instant": 1,
-  "notify_url": "http://yourdomain.com/notify/me",
-}
-</pre>
-
-<pre>
-{
-  "authorization_id": "9f307e30-dc77-11ea-830e-7533ca1787c5",
-  "amount": "10000",
-  "withdrawal_date": "2020-07-04",
-  "is_instant": 0,
-  "notify_url": "http://yourdomain.com/notify/me",
-  "max_retry_count": 1,
-  "description": "تست وندار",
-  "track_id": "d2c5bf5a-280f-4ee5-8888-3d220b63bcc0"
-}
-</pre>
-
-<h3 class="sub-title">
-  نمونه پاسخ دریافتی موفق:
-</h3>
-
-<pre>
-<span class="key">HTTP/1.1</span> 200
-{
-  "status": 1,
-  "message": "درخواست برداشت وجه با موفقیت ثبت شد.",
-  "result": {
-    "withdrawal": {
-      "id": "8c6e27c0-dbbd-11ea-a2f6-e9c8bf97463f",
-      "authorization_id": "9f307e30-dc77-11ea-830e-7533ca1787c5",
-      "retry_count": 1,
-      "max_retry_count": 1,
-      "gateway_transaction_id": "159714176734",
-      "amount": "10000",
-      "wage_amount": 200,
-      "payment_number": null,
-      "track_id": null,
-      "status": "PENDING",
-      "description": null,
-      "withdrawal_date": "1399\/05\/21",
-      "notify_url": "http://yourdomain.com/notify/me",
-      "is_instant": true,
-      "error_code": null,
-      "error_message": null
-    }
-  }
-}
-</pre>
-
-<ul>
-    <li>
-        status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
-        <br>
-        1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
-        <br>
-        0 به معنای این است که http response از خانواده‌ی ۴۰۰ یا ۵۰۰ است.
-    </li>
-  <li>message: پیغام درخواست برداشت وجه با موفقیت ثبت شد</li>
-    <li>
-        result:
-        <ul>
-            <li>withdrawal:
-                <ul>
-                    <li>id: آیدی درخواست برداشت وجه</li>
-                    <li>authorization_id: آیدی اشتراکی که درخواست برداشت وجه برای آن صادر شده است</li>
-                    <li>retry_count: تعداد دفعات تلاش برای برداشت وجه</li>
-                    <li>gateway_transaction_id: شناسه یکتای برداشت وجه</li>
-                    <li>amount: مبلغ برداشت وجه</li>
-                    <li>wage_amount: کارمزد</li>
-                    <li>payment_number: شناسه روش‌های پرداختی برداشت وجه</li>
-                    <li>track_id: شناسه پیگیری</li>
-                    <li>status: وضعیت برداشت وجه که ۶ حالت PENDING, INIT, DONE, CANCELED, REFUND, FAILED دارد. وضعیت PENDING
-                        نشان‌دهنده‌ی این است که تراکنش در حالت انتظار است. INIT نشان‌دهنده‌ی این است که تراکنش به سمت
-                        روش‌های پرداخت
-                        فرستاده شده است. DONE نشان‌دهنده‌ی وضعیت موفقیت‌آمیز تراکنش است. FAILED تراکنش ناموفق را نشان
-                        می‌دهد.
-                        CANCELED تراکنشی را نشان می‌دهد که لغو شده است
-                        و REFUND به این معنی است که مبلغ تراکنش به کاربر بازگشت خورده است.
-                        لازم به ذکر است که امکان لغو تراکنش صرفاً برای
-                        تراکنش‌هایی امکان‌پذیر است که به صورت آنی انجام نشده باشند (is_instant: false).
-                    </li>
-                    <li>description: توضیحات</li>
-                    <li>withdrawal_date: تاریخ درخواست برداشت وجه ارسالی توسط شما</li>
-                    <li>notify_url: آدرس وبهوکی که می‌توانید ارسال کنید تا از وضعیت نهایی این برداشت وجه مطلع شوید که طول آن نباید بیشتر از ۲۰۴۸ کاراکتر باشد. لازم
-                        به
-                        ذکر
-                        است که متد POST برای ارسال به این آدرس در نظر گرفته شده است و فیلدهای withdrawal_id,
-                        authorization_id,
-                        gateway_transaction_id, status, amount و payment_number برای شما ارسال می‌شود. در شرایطی که شما
-                        در
-                        حال
-                        تست هستید می‌توانید از وبسایت <a target="_blank" href="https://webhook.site">webhook.site</a>
-                        استفاده
-                        کنید.
-                    </li>
-                    <li>is_instant: نشان دهنده این است که برداشت وجه به صورت آنی انجام شده است یا خیر.</li>
-                    <li>max_retry_count:
-                        حداکثر تعداد دفعاتی که می‌خواهید برای این برداشت وجه تلاش شود. حداقل ۱ و حداکثر ۱۶ مرتبه می‌توان
-                        برای
-                        یک
-                        برداشت وجه تلاش کرد. دقت داشته باشید که در صورت عدم ارسال این پارامتر، مقدار آن برابر با ۱ در
-                        نظر
-                        گرفته
-                        می‌شود.
-                        همچنین در نظر داشته باشید این پارامتر برای برداشت وجه‌های آنی (is_instant: 1) برابر با ۱ در نظر
-                        گرفته
-                        می‌شود (و برداشت وجه آنی بلافاصله پس از استعلام (نمایش برداشت وجه - withdrawal show)، تعیین
-                        وضعیت
-                        می‌شود
-                        که حالت FAILED است یا DONE). در صورتی که برداشت وجه به صورت آنی نباشد (is_instant: 0) اگر برداشت
-                        وجه
-                        موفقیت‌آمیز باشد (status: DONE) که دیگر تلاشی صورت نمی‌گیرد، اما اگر برداشت وجه به هر دلیل
-                        موفقیت‌آمیز
-                        نباشد، تا زمانی که برداشت وجه موفقیت‌آمیز شود و یا مقدار retry_count به تعداد max_retry_count
-                        برسد
-                        سعی
-                        به برداشت وجه صورت می‌گیرد. لازم به ذکر است که تا زمانی که برداشت وجه موفقیت‌آمیز نباشد وضعیت آن
-                        برداشت
-                        وجه به حالت PENDING است و فقط زمانی که مقدار retry_count به max_retry_count (ارسالی از شما) برسد
-                        و
-                        هنوز
-                        برداشت وجه موفقیت‌آمیز نبوده باشد دیگر تلاشی برای برداشت وجه صورت نمی‌گیرد و وضعیت آن برداشت وجه
-                        از
-                        حالت
-                        PENDING به حالت FAILED تبدیل می‌شود.
-                    </li>
-                    <li>error_code: در زمان ثبت برداشت null می باشد (بعد از استعلام برداشت وجه در صورت وجود خطا کد خطا
-                        برگردانده میشود)
-                    </li>
-                    <li>error_message: در زمان ثبت برداشت null می باشد (بعد از استعلام برداشت وجه در صورت وجود خطا متن خطا
-                        برگردانده میشود)
-                    </li>
-
-
-                </ul>
-            </li>
-        </ul>
-    </li>
-</ul>
-<div class="info">
-  <strong>نکته! </strong>
-  <a href="https://vandarpay.github.io/docs/subscription/#error">لیست تمامی خطا ها در پایین صفحه قرار گرفته است.</a>
-</div>
-
-<h3 class="sub-title">
-  نمونه پاسخ دریافتی ناموفق:
-</h3>
-<p>
-  اگر بیشتر از تعداد count این درخواست را صدا بزنید با خطای زیر مواجه می شوید.
-</p>
-
-<pre>
-<span class="key">HTTP/1.1</span> 422
-{
-  "status": 0,
-  "errors": {
-    "authorization_id": ["ذخیره برداشت وجه به دلیل رسیدن به حداکثر تعداد برداشت در ماه، امکان پذیر نیست."]
-  }
-}
-</pre>
-<ul>
-    <li>
-        status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
-        <br>
-        1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
-        <br>
-        0 به معنای این است که http response از خانواده‌ی ۴۰۰ یا ۵۰۰ است.
-    </li>
-  <li>
-    errors:
-    <ul>
-      <li>authorization_id: متن خطا</li>
-    </ul>
-  </li>
-</ul>
-
-<p>در صورتی که روش‌های پرداخت مربوطه در دسترس نباشد با خطای زیر مواجه می شوید: </p>
-<pre>
-<span class="key">HTTP/1.1</span> 409
-{
-  "status": 0,
-  "message": "درحال حاضر امکان ثبت درخواست برداشت وجه در روش‌های پرداخت مورد نظر وجود ندارد."
-}
-</pre>
-
-<ul>
-    <li>
-        status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛
-        درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن
-        منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به
-        شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا
-        خیر. به طور خلاصه:
-        <br>
-        1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
-        <br>
-        0 به معنای این است که http response از خانواده‌ی ۴۰۰ یا ۵۰۰ است.
-    </li>
-    <li>message: متن خطا</li>
-</ul>
-
-
-<p>در صورتی که توکن فرستاده شده معتبر نباشد پاسخ زیر را دریافت می کنید:</p>
-<pre>
-<span class="key">HTTP/1.1</span> 401
-{
-  "status": 0,
-  "error": "Unauthenticated"
-}
-</pre>
-
-<ul>
-    <li>
-        status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛
-        درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن
-        منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به
-        شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا
-        خیر. به طور خلاصه:
-        <br>
-        1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
-        <br>
-        0 به معنای این است که http response از خانواده‌ی ۴۰۰ یا ۵۰۰ است.
-    </li>
-    <li>errors: آرایه ای از خطا‌ها</li>
-</ul>
-
-<p>در صورت عدم وجود کسب و کار این خطا را دریافت می کنید: </p>
-<pre>
-<span class="key">HTTP/1.1</span> 404
-{
-  "status": 0,
-  "error": "کسب و کار وجود ندارد"
-}
-</pre>
-
-<ul>
-    <li>
-        status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛
-        درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن
-        منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به
-        شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا
-        خیر. به طور خلاصه:
-        <br>
-        1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
-        <br>
-        0 به معنای این است که http response از خانواده‌ی ۴۰۰ یا ۵۰۰ است.
-    </li>
-    <li>message: آرایه ای از خطا‌ها</li>
-</ul>
-
-
-
-<p>در صورت ارسال شناسه پیگیری تکراری این خطا را دریافت می کنید: </p>
-                        <pre>
-<span class="key">HTTP/1.1</span> 422
-{
-	"message": "The given data was invalid.",
-	"errors": {
-		"track_id": [
-			"یک دستور برداشت با این شناسه قبلا ثبت شد است."
-		]
-	}
-}
-</pre>
-
-
-
-
-<h3 class="title" id="list-of-registered-funds"><a href="#list-of-registered-funds"> ۲. لیست
-                            برداشت وجه های ثبت شده
-</a>
-</h3>
-<p>با استفاده از api زیر می توانید تمام برداشت های وجه انجام شده تا کنون را مشاهده کنید. </p>
-                        <pre>
-<span class="key">Method:</span> GET
-<span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/subscription/withdrawal
-</pre>
-                        <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد نمایش لیست برداشت وجه از اشتراک آن
-                            را دارید.</p>
-
-                        <h3 class="sub-title">
-                            لیست برداشت وجه های یک اشتراک
-                        </h3>
-
-                        <p>
-                            برای مشاهده لیست برداشت وجه‌های ثبت شده از یک اشتراک از آدرس زیر استفاده نمایید.</p>
-
-                        <pre>
-<span class="key">Method:</span> GET
-<span class="key">Address:</span> https://api.vandar.io/v3/business/{business}/subscription/withdrawal?q={authorization_id}
-</pre>
-
-                        <h3 class="sub-title">
-                            نمونه پاسخ دریافتی موفق:
-                        </h3>
-
-                        <pre>
-<span class="key">HTTP/1.1</span> 200
-
-{
-  "data": [
-    {
-      "id": "f3d084e0-b603-11ea-94ad-ebc7f5bf8e12",
-      "authorization_id": "9f307e30-dc77-11ea-830e-7533ca1787c5",
-      "retry_count": 1,
-      "max_retry_count": 1,
-      "gateway_transaction_id": 159281892196,
-      "amount": 10000,
-      "wage_amount": "200.00",
-      "payment_number": null,
-      "track_id": "d2c5bf5a-280f-4ee5-8888-3d220b63bcc0",
-      "status": "DONE",
-      "description": null,
-      "withdrawal_date": "1399\/04\/04",
-      "notify_url": "http://yourdomain.com/notify/me",
-      "is_instant": true,
-      "error_code": null,
-      "error_message": null
-    },
-    {
-      "id": "88a2c1d0-ff9f-11eb-9054-d393c32ed3b6",
-      "authorization_id": "fa99a8f0-fb51-11eb-8a87-41af5f44fd0d",
-      "retry_count": 1,
-      "max_retry_count": 1,
-      "gateway_transaction_id": 162923462083,
-      "amount": 11000,
-      "wage_amount": "0.00",
-      "payment_number": null,
-      "track_id": "eb7dfff7-a752-402b-a46b-024545f06c76",
-      "status": "FAILED",
-      "description": "تست میلاد",
-      "withdrawal_date": "1400/05/27",
-      "notify_url": null,
-      "is_instant": 1,
-      "error_code": "01",
-      "error_message": "عدم کفایت موجودی"
-        },
-    ...
-  ],
-  "links": {
-    "first": "https://api.vandar.io/v3/business/vandario/subscription/withdrawal?page=1",
-    "last": "https://api.vandar.io/v3/business/vandario/subscription/withdrawal?page=33",
-    "prev": null,
-    "next": "https://api.vandar.io/v3/business/vandario/subscription/withdrawal?page=2"
-  },
-  "meta": {
-    "current_page": 1,
-    "from": 1,
-    "last_page": 33,
-    "links": [
-      {
-        "url": null,
-        "label": "&laquo; قبلی",
-        "active": false
-      },
-      {
-        "url": "https://api.vandar.io/v3/business/vandario/subscription/withdrawal?page=1",
-        "label": "1",
-        "active": true
-      },
-      {
-        "url": "https://api.vandar.io/v3/business/vandario/subscription/withdrawal?page=2",
-        "label": "2",
-        "active": false
-      },
-      {
-        "url": null,
-        "label": "...",
-        "active": false
-      },
-      {
-        "url": "https://api.vandar.io/v3/business/vandario/subscription/withdrawal?page=32",
-        "label": "32",
-        "active": false
-      },
-      {
-        "url": "https://api.vandar.io/v3/business/vandario/subscription/withdrawal?page=33",
-        "label": "33",
-        "active": false
-      },
-      {
-        "url": "https://api.vandar.io/v3/business/vandario/subscription/withdrawal?page=2",
-        "label": "بعدی &raquo;",
-        "active": false
-      }
-		],
-    "path": "https://api.vandar.io/v3/business/vandario/subscription/withdrawal",
-    "per_page": 20,
-    "to": 20,
-    "total": 656
-  }
-}
-</pre>
-
-<ul>
-  <li>
-    data:
-    <ul>
-      <li>id: آیدی درخواست برداشت وجه</li>
-      <li>authorization_id: آیدی اشتراکی که درخواست برداشت وجه برای آن صادر شده است</li>
-      <li>retry_count: تعداد دفعات تلاش برای برداشت وجه</li>
-      <li>gateway_transaction_id: شناسه یکتای برداشت وجه</li>
-      <li>amount: مبلغ برداشت وجه</li>
-      <li>wage_amount: کارمزد </li>
-      <li>payment_number: شناسه روش‌های پرداختی برداشت وجه</li>
-      <li>track_id: شناسه پیگیری</li>
-      <li>status: وضعیت برداشت وجه که ۵ حالت PENDING, DONE, CANCELED, FAILED, REFUND دارد.</li>
-      <li>description: توضیحات </li>
-      <li>withdrawal_date: تاریخ درخواست برداشت وجه ارسالی توسط شما</li>
-      <li>notify_url: آدرس وبهوکی که می‌توانید ارسال کنید تا از وضعیت نهایی این برداشت وجه مطلع شوید که طول آن نباید بیشتر از ۲۰۴۸ کاراکتر باشد. لازم به ذکر است که متد POST برای ارسال به این آدرس در نظر گرفته شده است و فیلدهای withdrawal_id, authorization_id, gateway_transaction_id, status, amount و payment_number برای شما ارسال می‌شود.</li>
-      <li>is_instant: نشان دهنده این است که برداشت وجه به صورت آنی انجام شده است یا خیر</li>
-      <li>max_retry_count (اختیاری):
-          حداکثر تعداد دفعاتی که می‌خواهید برای این برداشت وجه تلاش شود. حداقل ۱ و حداکثر ۱۶ مرتبه می‌توان برای یک برداشت وجه تلاش کرد. دقت داشته باشید که در صورت عدم ارسال این پارامتر، مقدار آن برابر با ۱ در نظر گرفته می‌شود.
-          همچنین در نظر داشته باشید این پارامتر برای برداشت وجه‌های آنی (is_instant: 1) برابر با ۱ در نظر گرفته می‌شود (و برداشت وجه آنی بلافاصله پس از استعلام (نمایش برداشت وجه - withdrawal show)، تعیین وضعیت می‌شود که حالت FAILED است یا DONE). در صورتی که برداشت وجه به صورت آنی نباشد (is_instant: 0) اگر برداشت وجه موفقیت‌آمیز باشد (status: DONE) که دیگر تلاشی صورت نمی‌گیرد، اما اگر برداشت وجه به هر دلیل موفقیت‌آمیز نباشد، تا زمانی که برداشت وجه موفقیت‌آمیز شود و یا مقدار retry_count به تعداد max_retry_count برسد سعی به برداشت وجه صورت می‌گیرد. لازم به ذکر است که تا زمانی که برداشت وجه موفقیت‌آمیز نباشد وضعیت آن برداشت وجه به حالت PENDING است و فقط زمانی که مقدار retry_count به max_retry_count (ارسالی از شما) برسد و هنوز برداشت وجه موفقیت‌آمیز نبوده باشد دیگر تلاشی برای برداشت وجه صورت نمی‌گیرد و وضعیت آن برداشت وجه از حالت PENDING به حالت FAILED تبدیل می‌شود.
-      </li>
-      <li>error_code: کد خطای ناموفق بودن درخواست برداشت وجه</li>
-      <li>error_message: متن خطای ناموفق بودن درخواست برداشت وجه</li>
-    </ul>
-  </li>
-  <li>
-    links:
-    <ul>
-      <li>first: آدرس اولین صفحه</li>
-      <li>last: آدرس آخرین صفحه</li>
-      <li>prev: آدرس صفحه قبل</li>
-      <li>next: آدرس صفحه بعد</li>
-    </ul>
-  </li>
-  <li>
-    meta:
-    <ul>
-      <li>current_page: آدرس همین صفحه</li>
-      <li>from: شماره اولین آیتمی که در این صفحه آمده است </li>
-      <li>last_page: تعداد کل صفحات</li>
-      <li>links: آرایه ای قابل استفاده برای نمایش pagination</li>
-      <li>path: آدرس خالص بدون صفحه بندی</li>
-      <li>per_page: تعداد آیتم در هر صفحه</li>
-      <li>to: شماره آخرین آیتمی که در این صفحه آمده است</li>
-      <li>total: تعداد کل آیتم ها</li>
-    </ul>
-  </li>
-</ul>
-
-<h3 class="sub-title">
-  نمونه پاسخ دریافتی ناموفق:
-</h3>
-<pre>
-<span class="key">HTTP/1.1</span> 401
-{
-  "status": 0,
-  "error": "Unauthenticated"
-}
-</pre>
-<ul>
-    <li>
-        status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
-        <br>
-        1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
-        <br>
-        0 به معنای این است که http response از خانواده‌ی ۴۰۰ یا ۵۰۰ است.
-    </li>
-  <li>errors: آرایه ای از خطا‌ها</li>
-</ul>
-
-
-
-<h3 class="title" id="show-withdrawal"><a href="#show-withdrawal">
-    ۳. نمایش یک برداشت وجه:
-</a>
-</h3>
-
-<pre>
-<span class="key">METHOD:</span> GET
-<span class="key">URL:</span> https://api.vandar.io/v3/business/{business}/subscription/withdrawal/{id}
-</pre>
-<p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد دارید یک برداشت وجه از آن را نمایش دهید.</p>
-<p>پارامتر {id} همان id مربوط به برداشت وجهی است که قصد نمایش آن را دارید.</p>
-
-
-<h3 class="sub-title">
-  نمونه پاسخ دریافتی موفق:
-</h3>
-<pre>
-<span class="key">HTTP/1.1</span> 200
-{
-  "status": 1,
-  "message": "برداشت وجه با موفقیت به نمایش درآمد.",
-  "result": {
-    "withdrawal": {
-      "id": "f3d084e0-b603-11ea-94ad-ebc7f5bf8e12",
-      "authorization_id": "9f307e30-dc77-11ea-830e-7533ca1787c5",
-      "retry_count": 1,
-      "max_retry_count": 1,
-      "gateway_transaction_id": 159281892196,
-      "amount": 10000,
-      "wage_amount": "200.00",
-      "payment_number": null,
-      "track_id": "d2c5bf5a-280f-4ee5-8888-3d220b63bcc0",
-      "status": "DONE",
-      "description": null,
-      "withdrawal_date": "1399\/04\/04"
-      "notify_url": "http://yourdomain.com/notify/me",
-      "is_instant": true
-      "error_code": null,
-      "error_message": null
-      }
-    },
-  }
-}
-</pre>
-                        <h3 class="sub-title">
-                            نمونه پاسخ دریافتی موفق برای برداشت وجه ناموفق: (error_code و error_message علت و کد خطا را نشان می دهد.)
-                        </h3>
-                        <pre>
-<span class="key">HTTP/1.1</span> 200
-{
-  "status": 1,
-  "message": "برداشت وجه با موفقیت به نمایش درآمد.",
-  "result": {
-  "withdrawal": {
-  "id": "c0fae570-9b64-11eb-9635-1bfa552b96c5",
-  "authorization_id": "ac42fcd0-9b64-11eb-af96-abcc98948330",
-  "retry_count": 1,
-  "max_retry_count": 1,
-  "gateway_transaction_id": 159903362213,
-  "amount": 2040000,
-  "wage_amount": "40000.00",
-  "payment_number": null,
-  "track_id": "d2c5bf5a-280f-4ee5-8888-3d220b63bcc0",
-  "status": "INIT",
-  "description": null,
-  "withdrawal_date": "1400\/01\/22",
-  "notify_url": null,
-  "is_instant": 0,
-  "error_code": "01",
-  "error_message": "عدم کفایت موجودی"
-}
-</pre>
-                        <div class="info">
-                            <strong>نکته! </strong>
-                            <a href="https://vandarpay.github.io/docs/subscription/#error">لیست تمامی خطا ها در پایین
-                                صفحه قرار گرفته است.</a>
-                        </div>
-                        <ul>
-                            <li>
-                                status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛
-                                درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن
-                                منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به
-                                شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا
-                                خیر. به طور خلاصه:
-                                <br>
-                                1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
-                                <br>
-                                0 به معنای این است که http response از خانواده‌ی ۴۰۰ یا ۵۰۰ است.
-                            </li>
-                            <li>message: پیغام برداشت وجه با موفقیت به نمایش درآمد</li>
-                            <li>
-    result:
-    <ul>
-      <li>withdrawal:
-        <ul>
-          <li>id: آیدی درخواست برداشت وجه</li>
-          <li>authorization_id: آیدی اشتراکی که درخواست برداشت وجه برای آن صادر شده است</li>
-          <li>retry_count: تعداد دفعات تلاش برای برداشت وجه</li>
-          <li>gateway_transaction_id: شناسه یکتای برداشت وجه</li>
-          <li>amount: مبلغ برداشت وجه</li>
-          <li>wage_amount: کارمزد </li>
-            <li>payment_number: شناسه روش‌های پرداختی برداشت وجه</li>
-            <li>track_id: شناسه پیگیری</li>
-            <li>status: وضعیت برداشت وجه که ۵ حالت PENDING, DONE, CANCELED, FAILED, REFUND دارد.</li>
-            <li>description: توضیحات</li>
-            <li>withdrawal_date: تاریخ درخواست برداشت وجه ارسالی توسط شما</li>
-            <li>notify_url: آدرس وبهوکی که می‌توانید ارسال کنید تا از وضعیت نهایی این برداشت وجه مطلع شوید که طول آن نباید بیشتر از ۲۰۴۸ کاراکتر باشد. لازم به ذکر
-                است که متد POST برای ارسال به این آدرس در نظر گرفته شده است و فیلدهای withdrawal_id, authorization_id,
-                gateway_transaction_id, status, amount و payment_number برای شما ارسال می‌شود.
-            </li>
-            <li>is_instant: نشان دهنده این است که برداشت وجه به صورت آنی انجام شده است یا خیر</li>
-            <li>max_retry_count (اختیاری):
-                حداکثر تعداد دفعاتی که می‌خواهید برای این برداشت وجه تلاش شود. حداقل ۱ و حداکثر ۱۶ مرتبه می‌توان برای یک
-                برداشت وجه تلاش کرد. دقت داشته باشید که در صورت عدم ارسال این پارامتر، مقدار آن برابر با ۱ در نظر گرفته
-                می‌شود.
-                همچنین در نظر داشته باشید این پارامتر برای برداشت وجه‌های آنی (is_instant: 1) برابر با ۱ در نظر گرفته
-                می‌شود (و برداشت وجه آنی بلافاصله پس از استعلام (نمایش برداشت وجه - withdrawal show)، تعیین وضعیت می‌شود
-                که حالت FAILED است یا DONE). در صورتی که برداشت وجه به صورت آنی نباشد (is_instant: 0) اگر برداشت وجه
-                موفقیت‌آمیز باشد (status: DONE) که دیگر تلاشی صورت نمی‌گیرد، اما اگر برداشت وجه به هر دلیل موفقیت‌آمیز
-                نباشد، تا زمانی که برداشت وجه موفقیت‌آمیز شود و یا مقدار retry_count به تعداد max_retry_count برسد سعی
-                به برداشت وجه صورت می‌گیرد. لازم به ذکر است که تا زمانی که برداشت وجه موفقیت‌آمیز نباشد وضعیت آن برداشت
-                وجه به حالت PENDING است و فقط زمانی که مقدار retry_count به max_retry_count (ارسالی از شما) برسد و هنوز
-                برداشت وجه موفقیت‌آمیز نبوده باشد دیگر تلاشی برای برداشت وجه صورت نمی‌گیرد و وضعیت آن برداشت وجه از حالت
-                PENDING به حالت FAILED تبدیل می‌شود.
-            </li>
-            <li>error_code: کد خطای ناموفق بودن درخواست برداشت وجه</li>
-            <li>error_message: متن خطای ناموفق بودن درخواست برداشت وجه</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-                        <h3 class="sub-title">
-                            نمونه پاسخ دریافتی ناموفق:
-                        </h3>
-                        <pre>
-<span class="key">HTTP/1.1</span> 401
-{
-  "status": 0,
-  "error": "Unauthenticated"
-}
-</pre>
-                        <p>در صورت عدم کفایت موجودی خطای زیر را در خروجی درخواست دریافت خواهید کرد: </p>
-
-
-                        <ul>
-                            <li>
-                                status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛
-                                درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن
-                                منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به
-                                شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا
-                                خیر. به طور خلاصه:
-                                <br>
-                                1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
-                                <br>
-                                0 به معنای این است که http response از خانواده‌ی ۴۰۰ یا ۵۰۰ است.
-                            </li>
-                            <li>errors: آرایه ای از خطا‌ها</li>
-                        </ul>
-
-
-
-                        <h3 class="title" id="show-withdrawal-by-track-id"><a href="#show-withdrawal-by-track-id">
-                            ۳.۱. نمایش برداشت وجه بر اساس شناسه پیگیری:
-                        </a>
-                        </h3>
-
-                        <pre>
-<span class="key">METHOD:</span> GET
-<span class="key">URL:</span> https://api.vandar.io/v3/business/{business}/subscription/withdrawal/track-id/{track_id}
-</pre>
-                        <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد دارید یک برداشت وجه از آن را نمایش دهید.</p>
-                        <p>پارامتر {track_id} همان شناسه پیگیری مربوط به برداشت وجهی است که قصد نمایش آن را دارید.</p>
-
-
-                        <h3 class="sub-title">
-                            نمونه پاسخ دریافتی موفق:
-                        </h3>
-                        <pre>
-<span class="key">HTTP/1.1</span> 200
-{
-  "status": 1,
-  "message": "برداشت وجه با موفقیت به نمایش درآمد.",
-  "result": {
-    "withdrawal": {
-      "id": "f3d084e0-b603-11ea-94ad-ebc7f5bf8e12",
-      "authorization_id": "9f307e30-dc77-11ea-830e-7533ca1787c5",
-      "retry_count": 1,
-      "max_retry_count": 1,
-      "gateway_transaction_id": 159281892196,
-      "amount": 10000,
-      "wage_amount": "200.00",
-      "payment_number": null,
-      "track_id": "d2c5bf5a-280f-4ee5-8888-3d220b63bcc0",
-      "status": "DONE",
-      "description": null,
-      "withdrawal_date": "1399\/04\/04"
-      "notify_url": "http://yourdomain.com/notify/me",
-      "is_instant": true
-      "error_code": null,
-      "error_message": null
-      }
-    },
-  }
-}
-</pre>
-
-
-
-          <h3 class="title" id="cancel-withdrawal"><a href="#cancel-withdrawal">
-              ۴. انصراف از برداشت وجه:
-          </a>
-          </h3>
-
-          <p>در صورتی که کاربر از برداشت وجه منصرف شود با صدا زدن متد زیر می تواند انصراف خود را اعلام کند.</p>
-
-<pre>
-<span class="key">METHOD:</span> PUT
-<span class="key">URL:</span> https://api.vandar.io/v3/business/{business}/subscription/withdrawal/{id}
-</pre>
-<p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد دارید یک برداشت وجه از آن را لغو کنید.</p>
-<p>پارامتر {id} همان id مربوط به برداشت وجهی است که قصد لغو آن را دارید.</p>
-
-<h3 class="sub-title">
-  نمونه پاسخ دریافتی موفق:
-</h3>
-
-<pre>
-  <span class="key">HTTP/1.1</span> 200
-{
-  "status": 1,
-  "message": "برداشت وجه با موفقیت لغو گردید.",
-  "result": {
-    "withdrawal": {
-      "id": "8c6e27c0-dbbd-11ea-a2f6-e9c8bf97463f"
-    }
-  }
-}
-  </pre>
-
-  <ul>
-      <li>
-          status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
-          <br>
-          1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
-          <br>
-          0 به معنای این است که http response از خانواده‌ی ۴۰۰ یا ۵۰۰ است.
-      </li>
-    <li>message: پیغام برداشت وجه با موفقیت لغو گردید.</li>
-    <li>
-      result:
-      <ul>
-        <li>withdrawal:
-          <ul>
-            <li>id: </li> شناسه‌ی برداشت وجهی که قصد کنسل کردن آن را داشتید.
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-
-  <h3 class="sub-title">
-    نمونه پاسخ دریافتی ناموفق:
-  </h3>
-<pre>
-<span class="key">HTTP/1.1</span> 401
-{
-  "status": 0,
-  "error": "Unauthenticated"
-}
-</pre>
-
-      <ul>
-          <li>
-              status (منسوخ شده): ما http response را مطابق آن‌چه که واقعاً اتفاق افتاده برای شما ارسال می‌کنیم؛ درخواست‌های موفقیت‌آمیز با ۲۰۰، خطاهای اعتبارسنجی را با ۴۲۲، خطای ۴۰۴ برای عدم یافتن منبعی خاص، خطاهای سمت سرور با ۵۰۰ و غیره. اما افزون بر این، فیلد status برای کمک به شماست که متوجه شوید آیا این api کاری که به آن محول شده را به درستی انجام داده است یا خیر. به طور خلاصه:
-              <br>
-              1 به معنای این است که http response از خانواده‌ی ۲۰۰ است.
-              <br>
-              0 به معنای این است که http response از خانواده‌ی ۴۰۰ یا ۵۰۰ است.
-          </li>
-        <li>errors: آرایه ای از خطا‌ها</li>
-      </ul>
-
-                        <h3 class="title" id="health">
-                            <strong><a href="#health">وضعیت سلامت روش‌های پرداخت‌ی سرویس پرداخت خودکار</a></strong>
-                        </h3>
-
-                        <p>در این آدرس ‌می‌توانید از وضعیت سلامت روش‌های پرداخت‌ی سرویس پرداخت خودکار مطلع شوید.</p>
-                        <pre>
-<span class="key">METHOD:</span> GET
-<span class="key">URL:</span> https://health.vandar.io/subscription
-                      </pre>
-
-                        <p>با ارسال پارامتر type میتوانید نوع لوگوی روش‌های پرداخت را با توجه به نیاز تغییر دهید.</p>
-                        <p>در حال حاضر type های svg و png پشتیبانی می شود که به صورت پیشفرض svg می باشد.</p>
-                        <pre>
-<span class="key">METHOD:</span> GET
-<span class="key">URL:</span> https://health.vandar.io/subscription?type=png
-                      </pre>
-                        <br>
-
-
-                        <h2 class="article-header" id="error">
-                            <a href="#error"> نمونه خطاهای دریافتی هنگام برداشت وجه ناموفق:</a>
-                        </h2>
-
-                        <table class="table" style="direction: ltr;" id="withdrawal_errors_table">
-                          <thead>
-                          <tr>
-                              <th style="text-align: center;">error_code</th>
-                              <th style="text-align: center;">error_message</th>
-                          </tr>
-                          </thead>
-                      </table>
-                    </div>
-                    </article>
-              </div>
-          </div>
-      </div>
   <footer id="footer">
     <div class="container">
         <div class="row" style="text-align: center">
