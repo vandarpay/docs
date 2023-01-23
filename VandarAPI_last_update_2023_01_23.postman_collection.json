@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "818bcd7b-dea0-4856-baaf-47a4c8acd875",
-		"name": "VandarAPI_last_update_2022_12_17",
+		"_postman_id": "79951b62-4c74-4cbf-bbad-f924d38b5c31",
+		"name": "VandarAPI_last_update_2023_01_23",
 		"description": "The Vandar API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "16103962"
+		"_exporter_id": "18201708"
 	},
 	"item": [
 		{
@@ -1042,6 +1042,72 @@
 		{
 			"name": "Direct Debit",
 			"item": [
+				{
+					"name": "Banks",
+					"item": [
+						{
+							"name": "banks-list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://health.vandar.io/subscription",
+									"protocol": "https",
+									"host": [
+										"health",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"subscription"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "business-banks-list",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api.vandar.io/v3/business/{business}/subscription/banks/actives",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v3",
+										"business",
+										"{business}",
+										"subscription",
+										"banks",
+										"actives"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
 				{
 					"name": "Authorization",
 					"item": [
