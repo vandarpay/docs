@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "5a711595-1ee1-45bb-80a6-d902c9353733",
-		"name": "VandarAPI_last_update_2022_11_07",
+		"_postman_id": "79951b62-4c74-4cbf-bbad-f924d38b5c31",
+		"name": "VandarAPI_last_update_2023_01_23",
 		"description": "The Vandar API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "24148547"
+		"_exporter_id": "18201708"
 	},
 	"item": [
 		{
@@ -890,7 +890,7 @@
 								"type": "text"
 							},
 							{
-								"key": "Accept",
+								"key": "Content-Type",
 								"value": "application/json",
 								"type": "text"
 							}
@@ -1042,6 +1042,72 @@
 		{
 			"name": "Direct Debit",
 			"item": [
+				{
+					"name": "Banks",
+					"item": [
+						{
+							"name": "banks-list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://health.vandar.io/subscription",
+									"protocol": "https",
+									"host": [
+										"health",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"subscription"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "business-banks-list",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api.vandar.io/v3/business/{business}/subscription/banks/actives",
+									"protocol": "https",
+									"host": [
+										"api",
+										"vandar",
+										"io"
+									],
+									"path": [
+										"v3",
+										"business",
+										"{business}",
+										"subscription",
+										"banks",
+										"actives"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
 				{
 					"name": "Authorization",
 					"item": [
@@ -2223,6 +2289,151 @@
 								"transaction",
 								"{transaction_id}",
 								"refund"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Batch-Settlement",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {token}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://batch.vandar.io/api/v2/business/{business}/batches",
+							"protocol": "https",
+							"host": [
+								"batch",
+								"vandar",
+								"io"
+							],
+							"path": [
+								"api",
+								"v2",
+								"business",
+								"{business}",
+								"batches"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {token}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://batch.vandar.io/api/v2/business/{business}/batch-settlements/{batch_id}?per_page=20&page=1&status=SUBMITTED",
+							"protocol": "https",
+							"host": [
+								"batch",
+								"vandar",
+								"io"
+							],
+							"path": [
+								"api",
+								"v2",
+								"business",
+								"{business}",
+								"batch-settlements",
+								"{batch_id}"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "20"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "status",
+									"value": "SUBMITTED"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {token}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"batch_id\": \"e94cf0682d8721dee87c9e50544a17c079a0efe1e9a2514d410a49883c82180c9967bfe9ca2afdc2fba60d57e42b87c630c3f9f73eb3edb1aaf3438b4bfe7d6f\",\n  \"batches_settlement\": [\n    {\n      \"track_id\": \"c612c886-7215-416c-bb55-2cefcde40e7d\",\n      \"iban\": \"IR350700001000116383322001\",\n      \"amount\": 50000,\n      \"payment_number\": 1,\n      \"description\": \"test\"\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "https://batch.vandar.io/api/v2/business/{business}/batches-settlement",
+							"protocol": "https",
+							"host": [
+								"batch",
+								"vandar",
+								"io"
+							],
+							"path": [
+								"api",
+								"v2",
+								"business",
+								"{business}",
+								"batches-settlement"
 							]
 						}
 					},

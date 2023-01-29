@@ -129,20 +129,20 @@
                             <!--                        </div>-->
                         </div>
                     </li>
-                    <li>
-                        <button class="dropdown-btn">سرویس پرداخت با وندار
-                            <br>
-                            <i class="fa fa-caret-down"></i>
-                        </button>
-                        <div class="dropdown-container">
-                            <a href="https://vandarpay.github.io/docs/pay-by-vandar/#overview">معرفی سرویس</a><br>
-                            <a href="https://vandarpay.github.io/docs/pay-by-vandar/#intro">مقدمه</a><br>
-                            <a href="https://vandarpay.github.io/docs/pay-by-vandar/#send">دریافت توکن</a><br>
-                            <a href="https://vandarpay.github.io/docs/pay-by-vandar/#redirect">انتقال کاربر</a><br>
-                            <a href="https://vandarpay.github.io/docs/pay-by-vandar/#inquiry">استعلام</a><br>
-                            <a href="https://vandarpay.github.io/docs/pay-by-vandar/#verify">تایید</a><br>
-                        </div>
-                    </li>
+<!--                    <li>-->
+<!--                        <button class="dropdown-btn">سرویس پرداخت با وندار-->
+<!--                            <br>-->
+<!--                            <i class="fa fa-caret-down"></i>-->
+<!--                        </button>-->
+<!--                        <div class="dropdown-container">-->
+<!--                            <a href="https://vandarpay.github.io/docs/pay-by-vandar/#overview">معرفی سرویس</a><br>-->
+<!--                            <a href="https://vandarpay.github.io/docs/pay-by-vandar/#intro">مقدمه</a><br>-->
+<!--                            <a href="https://vandarpay.github.io/docs/pay-by-vandar/#send">دریافت توکن</a><br>-->
+<!--                            <a href="https://vandarpay.github.io/docs/pay-by-vandar/#redirect">انتقال کاربر</a><br>-->
+<!--                            <a href="https://vandarpay.github.io/docs/pay-by-vandar/#inquiry">استعلام</a><br>-->
+<!--                            <a href="https://vandarpay.github.io/docs/pay-by-vandar/#verify">تایید</a><br>-->
+<!--                        </div>-->
+<!--                    </li>-->
                     <li>
                         <button class="dropdown-btn">سرویس مشتریان
                             <br>
@@ -339,6 +339,11 @@
                                     <td>String</td>
                                     <td>optional</td>
                                 </tr>
+				    <tr>
+                                    <td>port</td>
+                                    <td>String</td>
+                                    <td>optional</td>
+                                </tr>
                             </table>
                             <h3 class="sub-title">
                                 توضیحات
@@ -352,7 +357,12 @@
                                 <li>description (اختیاری): توضیحات (اختیاری، حداکثر 255 کاراکتر)</li>
                                 <li>national_code (اختیاری): کد ملی معتبر (در صورت ارسال کد ملی، کاربر فقط با کارت‌های بانکی تحت مالکیت آن کد ملی قابلیت پرداخت خواهد داشت. برای بررسی کدملی در درگاه پرداخت ارسال شماره موبایل مرتبط با کد ملی نیز الزامی است.)</li>
                                 <li>valid_card_number (اختیاری): شماره کارت معتبر (در صورت ارسال شماره کارت، کاربر فقط با همان شماره کارت قابلیت پرداخت خواهد داشت.)</li>
-                                <li>comment (اختیاری): یک یادداشت که در داشبورد شما روی تراکنش نمایش داده می شود. </li>
+                                <li>comment (اختیاری): یک یادداشت که در داشبورد شما روی تراکنش نمایش داده می شود. </li>1
+				<li>
+				    port:
+					در صورتی که نیاز به استفاده از پورت خاصی دارید می توانید با استفاده از این پارامتر پورت را انتخاب کنید
+					این گزینه می تواند SAMAN و یا BEHPARDAKHT باشد
+				    </li>
                             </ul>
 
                             <div class="info">
