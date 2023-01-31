@@ -571,6 +571,11 @@
                                 <td>required</td>
                             </tr>
                             <tr>
+                                <td>settlement_type</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
                                 <td>parties</td>
                                 <td>array</td>
                                 <td>required</td>
@@ -665,6 +670,15 @@
                             </li>
                             <li>creator (اجباری):
                                 نقش ایجاد کننده معامله (in:buyer,seller).
+                            </li>
+                            <li>settlement_type (اختیاری):
+                                نوع تسویه حساب معامله در صورت نهایی شدن (in:wallet,wallet_iban).
+                                <br>
+                                <div class="info">
+                                    wallet: شارژ کیف پول ونداری کاربر
+                                    <br>
+                                    wallet_iban: شارژ کیف پول و سپس انتقال به شبای کاربر
+                                </div>
                             </li>
                             <li>
                                 parties.*.role (اجباری):
