@@ -120,7 +120,7 @@
                         </button>
                         <div class="dropdown-container">
                             <a href="https://vandarpay.github.io/docs/subscription/#mpg">مقدمه</a><br>
-                            <a href="https://vandarpay.github.io/docs/subscription/#banks">دریافت لیست روش‌های پرداخت‌</a><br>
+                            <a href="https://vandarpay.github.io/docs/subscription/#banks">مدیریت روش‌های پرداخت</a><br>
                             <a href="https://vandarpay.github.io/docs/subscription/#get-token">سرویس دریافت توکن</a><br>
                             <a href="https://vandarpay.github.io/docs/subscription/#withdrawal">سرویس برداشت وجه</a><br>
                             <a href="https://vandarpay.github.io/docs/subscription/#error">لیست خطاهای دریافتی</a><br>
@@ -207,12 +207,12 @@
                     <h2 class="article-header">مقدمه</h2>
                     <div>
                         <h3 class="title" id="mpg">
-                          <a href="#mpg" > <strong>سرویس پرداخت آزاد چیست:</strong></a>
+                          <a href="#mpg" > <strong>سرویس پرداخت یکپارچه چیست:</strong></a>
                         </h3>
-                        <p>پرداخت آزاد سرویس پرداختی است که تمام روش های پرداخت (پرداخت از حساب، پرداخت با کارت، پرداخت اعتباری، کیف پول و ...) را بصورت یکپارچه و جامع به کسب و کار های ارايه میکند. در این سرویس با اضافه شدن روش های پرداخت جدید نیازی به پیاده سازی جدیدی نخواهید داشت.
+                        <p>پرداخت یکپارچه سرویس پرداختی است که تمام روش های پرداخت (پرداخت از حساب، پرداخت با کارت، پرداخت اعتباری، کیف پول و ...) را بصورت یکپارچه و جامع به کسب و کار های ارايه میکند. در این سرویس با اضافه شدن روش های پرداخت جدید نیازی به پیاده سازی جدیدی نخواهید داشت.
                         </p>
                         <p>برای تمامی درخواست های ارسالی باید مقادیر زیر در هدر ارسال شوند:
-                            توکن همان کلید API یی است که از وندار دریافت کرده اید.
+                            توکن همان کلید API یی است که از بخش پشتیبانی وندار بعد از اتمام فرآیند اداری دریافت کرده اید.
                         </p>
                         <pre>
 <span class="key">Accept:</span> application/json
@@ -221,7 +221,7 @@
 
                         <br>
                         <h2 class="article-header" id="objects">
-                            <a href="#objects">آبجکت های سرویس پرداخت آزاد</a>
+                            <a href="#objects">آبجکت های سرویس پرداخت یکپارچه</a>
                         </h2>
                         <p>سرویس های مختلف ممکن است آبجکت های یکسانی داشته باشد که در ادامه آورده شده است.</p>
                         <h3 class="title" id="objects-customer">
@@ -400,29 +400,49 @@
 
                         <br>
                         <h2 class="article-header" id="banks">
-                            <a href="#banks">دریافت لیست روش‌های پرداخت</a></h2>
+                            <a href="#banks">مدیریت روش‌های پرداخت</a></h2>
                         <p>لیست روش های پرداخت قابل استفاده از این بخش قابل دسترس می‌باشد.
                             می‌توانید بر اساس نیازمندی کسب‌وکار خود کلیه روش‌های پرداخت فعال را به کاربران ارائه دهید و
                             یا در صورت نیاز یک لیست شخصی‌سازی شده برای کسب‌وکار خود ایجاد کنید و لیست تعیین شده‌ای از
                             روش‌های پرداخت را در اختیار کاربران خود قرار دهید.
                         </p>
-                        <h3 class="title" id="custom-payment-methods"><a href="#custom-payment-methods">
-                            ۱. لیست شخصی‌سازی شده روش‌های پرداخت
-                        </a>
-                        </h3>
                         <p>
                             این امکان برای شما وجود دارد که از میان همه روش‌های پرداختی که در حال حاضر قابلیت ارائه سرویس پرداخت دارند، بر اساس نیاز خود، روش‌های پرداختی را فعال یا غیرفعال کنید.
                             بصورت پیش‌فرض کلیه روش‌های پرداخت‌ برای کسب‌وکار شما فعال می‌باشند و با فراخوانی سرویس لیست روش‌های پرداخت‌ می‌توانید اطلاعات روش‌های پرداخت و همچنین وضعیت در دسترس بودن روش‌های پرداخت را دریافت نمایید.
-                            در صورتی که بخواهید روش‌های پرداختی خاصی را از لیست روش‌های پرداخت‌ی دریافتی حذف نمایید می‌توانید از طریق داشبورد وندار، بخش پرداخت آزاد، اقدام نمایید.
+                            در صورتی که بخواهید روش‌های پرداختی خاصی را از لیست روش‌های پرداخت‌ی دریافتی حذف نمایید می‌توانید از طریق داشبورد وندار، بخش پرداخت یکپارچه، اقدام نمایید.
                         </p>
-                        </br>
+                        <h3 class="title" id="enable-disable-payment-methods"><a href="#enable-disable-payment-methods">
+                            ۱. فعال‌ و غیرفعال‌سازی روش‌های پرداخت
+                        </a>
+                        </h3>
                         <p>
                             جهت فعال یا غیرفعال‌سازی روش‌های پرداخت‌ می‌توانید از بخش مدیریت اقدام نمایید.
                         </p>
+                        <p>برای این کار کافی است که از داشبورد وارد کسب و کار مورد نظر خود شوید و از منوی سمت راست بر روی پرداخت یکپارچه کلیک نمایید.</p>
 
+                        <p style=" text-align: center">
+                            <img src="../images/payment-methods-list-managment-step-1.png"  style="max-width: 370px;" alt="فعال یا غیر فعال‌سازی روش‌های پرداخت">
+                        </p>
+
+                        <p>سپس می توانید با انتخاب گزینه مدیریت برای نوع های مختلف پرداخت، روش های پرداخت موجود را فعال یا غیرفعال‌ کنید.</p>
+
+                        <p style=" text-align: center">
+                            <img src="../images/payment-methods-list-managment-step-2.png"  style="max-width: 700px;" alt="فعال یا غیر فعال‌سازی روش‌های پرداخت">
+                        </p>
+
+                        <p>برای این کار کافیست که بر روی عدم نمایش یا نمایش در مودال باز شده کلیک نمایید.</p>
+
+                        <p style=" text-align: center">
+                            <img src="../images/payment-methods-list-managment-step-3.png"  style="max-width: 700px;" alt="فعال یا غیر فعال‌سازی روش‌های پرداخت">
+                        </p>
+
+                        <h3 class="title" id="get-payment-methods"><a href="#get-payment-methods">
+                            ۲. دریافت لیست روش‌های پرداخت
+                        </a>
+                        </h3>
 
                         <p>
-                            جهت فراخوانی سرویسی که لیست روش‌های پرداخت‌ی فعال کسب‌وکار شما را نمایش می‌دهد، آدرس زیر را فراخوانی کنید.
+                            جهت فراخوانی لیست روش‌های پرداخت، سرویس زیر را فراخوانی کنید.
                         </p>
                         <pre>
 <span class="key">Method:</span>  GET
@@ -487,7 +507,7 @@
                             <div class="info">
                                 <strong>نکته! </strong>
                                 <span>
-                                    در حال حاضر این سرویس دو مدل پرداخت را پشتیبانی میکند:
+                                    در حال حاضر این سرویس از یک مدل پرداخت پشتیبانی میکند:
                                 </span>
                                 <ul>
                                     <li>
@@ -772,7 +792,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&manda
 
 <p>در صورت عدم اجازه‌ی دسترسی به حساب در صفحه‌ی روش‌های پرداخت</p>
 <pre>
-https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&status=FAILED&error_code=21
+https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&status=FAILED&error_code=user_declined_to_confirm_mandate
 </pre>
 
         <ul>
@@ -784,7 +804,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                 </li>
         </ul>
 
-              <table class="table" style="direction: ltr;" id="tempAuthorization_errors_table">
+              <table class="table" style="direction: ltr;" id="temp_mandate_errors_table">
                                     <thead>
                                     <tr>
                                         <th style="text-align: center;">error_code</th>
@@ -1572,36 +1592,6 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
         document.documentElement.scrollTop = 0;
     }
 
-    fetch('https://health.vandar.io/subscription')
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(jsonResponse) {
-
-        var banksHealthResponse = jsonResponse;
-
-        var table = document.getElementById("banks_table");
-        var banks = banksHealthResponse["result"]["banks"];
-
-        for (var i = 0; i < banks.length ; i++)  {
-            if (banks[i]["is_healthy_on_direct_debit"]) {
-                var row = table.insertRow(-1);
-                var bankName = row.insertCell(0);
-                var bankCode = row.insertCell(1);
-                var bankIsHealthyDirectDebit = row.insertCell(2);
-
-                bankName.innerHTML = banks[i]["name"];
-                bankCode.innerHTML = banks[i]["code"];
-                bankIsHealthyDirectDebit.innerHTML = "سالم";
-                bankIsHealthyDirectDebit.style.color = "green";
-                bankName.style['text-align'] = 'center';
-                bankCode.style['text-align'] = 'center';
-                bankIsHealthyDirectDebit.style['text-align'] = 'center';
-            }
-        }
-
-      });
-
       fetch('https://health.vandar.io/subscription/errors')
       .then(function(response) {
         return response.json();
@@ -1610,27 +1600,16 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
         var errorsResponse = jsonResponse;
 
-        var withdrawalErrorsTable = document.getElementById("withdrawal_errors_table");
-        var tempAuthorizationErrorsTable = document.getElementById("tempAuthorization_errors_table");
+        var tempAuthorizationErrorsTable = document.getElementById("temp_mandate_errors_table");
         var errors = errorsResponse["data"];
 
         for (var i = 0; i < errors.length ; i++)  {
-            if (errors[i]["type"] == 'withdrawal') {
-                var row = withdrawalErrorsTable.insertRow(-1);
-                var error_code = row.insertCell(0);
-                var error_message = row.insertCell(1);
-
-                error_code.innerHTML = errors[i]["error_code"];
-                error_code.style['text-align'] = 'center';
-                error_message.innerHTML = errors[i]["error_message"];
-                error_message.style['text-align'] = 'right';
-            }
-            else if (errors[i]["type"] == 'tempMandate') {
+            if (errors[i]["type"] == 'tempMandate') {
                 var row = tempAuthorizationErrorsTable.insertRow(-1);
                 var error_code = row.insertCell(0);
                 var error_message = row.insertCell(1);
 
-                error_code.innerHTML = errors[i]["error_code"];
+                error_code.innerHTML = errors[i]["machine_readable_error_code"];
                 error_code.style['text-align'] = 'center';
                 error_message.innerHTML = errors[i]["error_message"];
                 error_message.style['text-align'] = 'right';
