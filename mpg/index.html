@@ -334,10 +334,12 @@
 }
                                     </pre>
                             </div>
-                            <li>type: نوع روش پرداختی که در حا حاضر دارای مقدار debit می باشد.</li>
+                            <li>type: نوع روش پرداختی که در حال حاضر از مقادیر debit، credit و card پشتیبانی می شود.</li>
                             <li>debit.mandate_id: درصورتی که نوع روش پرداختی برابر debit باشد شناسه مجوز برگردانده
                                 میشود.
                             </li>
+                            <li>credit: در صورتی که نوع روش پرداختی برابر با credit باشد، این پارامتر نمایش داده می شود که در حال حاضر مقدار آن برابر null است.</li>
+                            <li>card: در صورتی که نوع روش پرداختی برابر با card باشد، این پارامتر نمایش داده می شود که در حال حاضر مقدار آن برابر null است.</li>
                         </ul>
 
 
@@ -520,11 +522,17 @@
                             <div class="info">
                                 <strong>نکته! </strong>
                                 <span>
-                                    در حال حاضر این سرویس یک مدل پرداخت را پشتیبانی میکند:
+                                    در حال حاضر این سرویس سه مدل پرداخت را پشتیبانی میکند:
                                 </span>
                                 <ul>
                                     <li>
                                         debit : پرداخت از حساب
+                                    </li>
+                                    <li>
+                                        credit : پرداخت اعتباری
+                                    </li>
+                                    <li>
+                                        card : درگاه پرداخت
                                     </li>
                                 </ul>
                             </div>
@@ -1169,17 +1177,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                             <tr>
                                 <td>type</td>
                                 <td>string</td>
-                                <td>required</td>
-                            </tr>
-                            <tr>
-                                <td>debit</td>
-                                <td>object</td>
-                                <td>required if type = debit</td>
-                            </tr>
-                            <tr>
-                                <td>debit.mandate_id</td>
-                                <td>string</td>
-                                <td>required if type = debit</td>
+                                <td>required, can be [debit, credit, card]</td>
                             </tr>
                             </tbody>
                         </table>
@@ -1205,10 +1203,42 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                                 description (اختیاری): توضیحات اختیاری
                             </li>
                             <li>
-                                type (اجباری): نوع روش پرداختی که در حال حاضر مقدار debit پشتیبانی می شود.
+                                type (اجباری): نوع روش پرداختی که در حال حاضر از مقادیر debit، credit و card پشتیبانی می شود.
                             </li>
+                        </ul>
+
+                        <p>با توجه به نوع روش پرداختی (debit، credit و card) نیاز هست که شما پارامترهای دیگری نیز ارسال نمایید.</p>
+                        <p>پارامترهای اضافی مورد نیاز زمانی که type برابر با debit است.</p>
+
+                        <table class="table" dir="rtl">
+                            <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>debit</td>
+                                <td>object</td>
+                                <td>required if type = debit</td>
+                            </tr>
+                            <tr>
+                                <td>debit.mandate_id</td>
+                                <td>string</td>
+                                <td>required if type = debit</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 class="sub-title">
+                            توضیحات
+                        </h3>
+
+                        <ul>
                             <li>
-                                debit.mandate_id (اجباری در صورتی که مقدار type برابر debit باشد): شناسه مجوز
+                                debit.mandate_id (اجباری): شناسه مجوز
                             </li>
                         </ul>
 
@@ -1290,9 +1320,343 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                             </li>
                         </ul>
 
+                        <p>پارامترهای اضافی مورد نیاز زمانی که type برابر با credit است.</p>
+                        <table class="table" dir="rtl">
+                            <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>credit</td>
+                                <td>object</td>
+                                <td>required if type = credit</td>
+                            </tr>
+                            <tr>
+                                <td>credit.callback_url</td>
+                                <td>string</td>
+                                <td>required if type = credit</td>
+                            </tr>
+                            <tr>
+                                <td>credit.customer</td>
+                                <td>object</td>
+                                <td>required if type = credit</td>
+                            </tr>
+                            <tr>
+                                <td>credit.customer.mobile</td>
+                                <td>string</td>
+                                <td>required if type = credit</td>
+                            </tr>
+                            <tr>
+                                <td>credit.customer.email</td>
+                                <td>string</td>
+                                <td>optional if type = credit</td>
+                            </tr>
+                            <tr>
+                                <td>credit.customer.first_name</td>
+                                <td>string</td>
+                                <td>optional if type = credit</td>
+                            </tr>
+                            <tr>
+                                <td>credit.customer.last_name</td>
+                                <td>string</td>
+                                <td>optional if type = credit</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 class="sub-title">
+                            توضیحات
+                        </h3>
+
+                        <ul>
+                            <li>credit.callback_url (اجباری): باید با آدرس درگاه پرداخت تایید شده در وندار بر روی یک دامنه باشد</li>
+                            <li>customer.mobile (اجباری): شماره موبایل کاربر. شماره موبایل بدون کد کشور و به فرمت 09123456789 باشد.</li>
+                            <li>customer.email (اختیاری): ایمیل کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود.</li>
+                            <li>customer.first_name (اختیاری): نام کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
+                            <li>customer.last_name (اختیاری): نام‌خانوادگی کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
+                        </ul>
+
+                        <h3 class="sub-title">
+                            نمونه json
+                        </h3>
+
+                        <pre>
+{
+    "payment_method": "credit-tara",
+    "amount": 10000,
+    "request_id": "67843357634568",
+    "checkout_number": "123",
+    "description": "test",
+    "type": "credit",
+    "credit": {
+         "callback_url": "https://your-callback-address.com",
+        "customer": {
+            "mobile": "09367636320",
+            "email": "asd@qwe.com",
+            "first_name": "Amirali",
+            "last_name": "Habashizadeh"
+        }
+    }
+}
+</pre>
+
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+"message": "صورتحساب با موفقیت ثبت شد",
+    "data": {
+        "checkout": {
+            "id": "5460fedc-3484-41d6-b4be-b8dcba1afc4d",
+            "request_id": "67843357634568",
+            "checkout_number": "123",
+            "amount": 10000,
+            "status": "NOT_PAID",
+            "description": "test",
+            "created_at": 1678095461,
+            "updated_at": 1678095461,
+            "customer": {
+                "id": "de49afb0-b80b-11ed-8f15-65e047110052",
+                "mobile": "09367636320",
+                "first_name": "Amirali",
+                "last_name": "Habashizadeh",
+                "email": "asd@qwe.com"
+            },
+            "payments": [
+                {
+                    "id": "dc37640c-3449-4dce-bd9d-6e9a07f64e6f",
+                    "amount": 10000,
+                    "wage_amount": 0,
+                    "affected_amount": 10000,
+                    "payment_method_slug": "credit-tara",
+                    "ref_id": null,
+                    "tracking_code": null,
+                    "created_at": 1678095461,
+                    "updated_at": 1678095461,
+                    "payment_date": null,
+                    "status": "PENDING_REDIRECT",
+                    "error": null,
+                    "type": "credit",
+                    "credit": null
+                }
+            ]
+        }
+    }
+}
+</pre>
+
+                        <p>پارامترهای اضافی مورد نیاز زمانی که type برابر با card است.</p>
+                        <table class="table" dir="rtl">
+                            <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>card</td>
+                                <td>object</td>
+                                <td>required if type = card</td>
+                            </tr>
+                            <tr>
+                                <td>card.callback_url</td>
+                                <td>string</td>
+                                <td>required if type = card</td>
+                            </tr>
+                            <tr>
+                                <td>card.valid_card_number</td>
+                                <td>string</td>
+                                <td>optional if type = card</td>
+                            </tr>
+                            <tr>
+                                <td>card.customer</td>
+                                <td>object</td>
+                                <td>required if type = card</td>
+                            </tr>
+                            <tr>
+                                <td>card.customer.mobile</td>
+                                <td>string</td>
+                                <td>required if type = card</td>
+                            </tr>
+                            <tr>
+                                <td>card.customer.email</td>
+                                <td>string</td>
+                                <td>optional if type = card</td>
+                            </tr>
+                            <tr>
+                                <td>card.customer.first_name</td>
+                                <td>string</td>
+                                <td>optional if type = card</td>
+                            </tr>
+                            <tr>
+                                <td>card.customer.last_name</td>
+                                <td>string</td>
+                                <td>optional if type = card</td>
+                            </tr>
+                            <tr>
+                                <td>card.customer.national_code</td>
+                                <td>string</td>
+                                <td>optional if type = card</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 class="sub-title">
+                            توضیحات
+                        </h3>
+
+                        <ul>
+                            <li>card.callback_url (اجباری): باید با آدرس درگاه پرداخت تایید شده در وندار بر روی یک دامنه باشد</li>
+                            <li>card.valid_card_number (اختیاری): شماره کارت معتبر (در صورت ارسال شماره کارت، کاربر فقط با همان شماره کارت قابلیت پرداخت خواهد داشت.)</li>
+                            <li>customer.mobile (اجباری): شماره موبایل کاربر. شماره موبایل بدون کد کشور و به فرمت 09123456789 باشد.</li>
+                            <li>customer.email (اختیاری): ایمیل کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود.</li>
+                            <li>customer.first_name (اختیاری): نام کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
+                            <li>customer.last_name (اختیاری): نام‌خانوادگی کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
+                            <li>card.national_code (اختیاری): کد ملی معتبر (در صورت ارسال کد ملی، کاربر فقط با کارت‌های بانکی تحت مالکیت آن کد ملی قابلیت پرداخت خواهد داشت. برای بررسی کدملی در درگاه پرداخت ارسال شماره موبایل مرتبط با کد ملی نیز الزامی است.)</li>
+                        </ul>
+
+                        <h3 class="sub-title">
+                            نمونه json
+                        </h3>
+
+                        <pre>
+{
+    "payment_method": "card-saman",
+    "amount": 10000,
+    "request_id": "67843357634567",
+    "checkout_number": "123",
+    "description": "test",
+    "type": "card",
+    "card": {
+        "callback_url": "https://your-callback-address.com",
+        "valid_card_number": "5859832060120699",
+        "customer": {
+            "mobile": "09367636320",
+            "email": "asd@qwe.com",
+            "first_name": "Amirali",
+            "last_name": "Habashizadeh",
+            "national_code": "0058598310"
+        }
+    }
+}
+</pre>
+
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+    "message": "صورت‌حساب با موفقیت ثبت شد",
+    "data": {
+        "checkout": {
+            "id": "76e4e560-5ded-4953-80c7-d6324cc70954",
+            "request_id": "67843357634567",
+            "checkout_number": "123",
+            "amount": 10000,
+            "status": "NOT_PAID",
+            "description": "test",
+            "created_at": 1678095120,
+            "updated_at": 1678095120,
+            "customer": {
+                "id": "de49afb0-b80b-11ed-8f15-65e047110052",
+                "mobile": "09367636320",
+                "first_name": "Amirali",
+                "last_name": "Habashizadeh",
+                "email": "asd@qwe.com"
+            },
+            "payments": [
+                {
+                    "id": "17f06477-ce51-488c-9cca-e51fcbb061f6",
+                    "amount": 10000,
+                    "wage_amount": 0,
+                    "affected_amount": 10000,
+                    "payment_method_slug": "card-saman",
+                    "ref_id": null,
+                    "tracking_code": null,
+                    "created_at": 1678095120,
+                    "updated_at": 1678095120,
+                    "payment_date": null,
+                    "status": "PENDING_REDIRECT",
+                    "error": null,
+                    "type": "card",
+                    "card": null
+                }
+            ]
+        }
+    }
+}
+</pre>
 
                         <h3 class="title">
-                            ۲. لیست صورت‌حساب
+                            ۲. انتقال کاربر
+                        </h3>
+
+                        <p>اگر type پرداختی شما از نوع های credit یا card باشد، نیاز هست که کاربر خود را پس از ثبت موفقیت آمیز صورتحساب به آدرس زیر منتقل نمایید تا فرآیند پرداخت تکمیل شود.</p>
+                        <p>مقدار payment_uuid برابر است با id برگشتی در آبجکت payments که به صورت uuid می باشد.</p>
+                        <pre>
+<span class="key">Method:</span> GET
+<span class="key">Address:</span> https://mpg.vandar.io/payments/{payment_uuid}/pay
+</pre>
+                        <div class="info">
+                            <strong>نکته! </strong>
+                            <span>
+                                بعد از این مرحله منتظر بمانید که کاربر از صفحه پرداخت بازگردد. بعد از بازگشت دو پارامتر status و payment_uuid به آنتهای آدرس بازگشتی به صورت query params اضافه شده است. مانند آدرس زیر
+                            </span>
+                            <pre>https://your-callback-address.com?payment_uuid=17f06477-ce51-488c-9cca-e51fcbb061f6&status=PENDING_VERIFY</pre>
+                            <span>status می تواند دو مقدار PENDING_VERIFY و FAILED داشته باشد. اگر مقدار برابر با FAILED بود،  همینجا می‌توانید فرایند پرداخت را متوقف کنید. اما اگر مقدار آن برابر با PENDING_VERIFY بود، باید بخش آخر یعنی تایید تراکنش را انجام دهید.</span>
+                        </div>
+
+                        <h3 class="title">
+                            ۳. تایید تراکنش
+                        </h3>
+
+                        <pre>
+<span class="key">Method:</span> POST
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/payments/{payment_uuid}/verify
+</pre>
+                        <p>پارامتر payment_uuid همان مقدار payment_uuid هست که قصد تایید آن تراکنش را دارید.</p>
+
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق:
+                        </h3>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+    "message": " صورتحساب با موفقیت پرداخت شد",
+    "data": {
+        "payment": {
+            "id": "eb3747e6-877f-45c4-8954-483bce5b581c",
+            "amount": 10000,
+            "wage_amount": 0,
+            "affected_amount": 10000,
+            "payment_method_slug": "credit-tara",
+            "ref_id": "1234",
+            "tracking_code": null,
+            "created_at": 1678104568,
+            "updated_at": 1678104713,
+            "payment_date": 1678104713,
+            "status": "DONE",
+            "error": null,
+            "type": "credit",
+            "credit": null
+        }
+    }
+}
+</pre>
+
+                        <h3 class="title">
+                            ۴. لیست صورت‌حساب
                         </h3>
 
                         <pre>
@@ -1457,7 +1821,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
 
                         <h3 class="title">
-                            ۳. جزيیات صورت‌حساب
+                            ۵. جزيیات صورت‌حساب
                         </h3>
 
                         <pre>
