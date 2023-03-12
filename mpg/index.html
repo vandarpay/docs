@@ -339,7 +339,9 @@
                                 میشود.
                             </li>
                             <li>credit: در صورتی که نوع روش پرداختی برابر با credit باشد، این پارامتر نمایش داده می شود که در حال حاضر مقدار آن برابر null است.</li>
-                            <li>card: در صورتی که نوع روش پرداختی برابر با card باشد، این پارامتر نمایش داده می شود که در حال حاضر مقدار آن برابر null است.</li>
+                            <li>card: در صورتی که نوع روش پرداخت برابر با card باشد دو مقدار cid و card_number برای شما بازگردانده می شود.</li>
+                            <li>card.card_number: ماسکه شده شماره کارت پرداخت کننده.</li>
+                            <li>card.cid: هش شماره کارت که با الگوریتم SHA256 هش شده است.</li>
                         </ul>
 
 
@@ -1619,6 +1621,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                         <h3 class="title">
                             ۳. تایید تراکنش
                         </h3>
+                        <p>اگر type پرداختی شما از نوع های credit یا card باشد، نیاز هست که تراکنش کاربر خود را تایید نمایید.</p>
 
                         <pre>
 <span class="key">Method:</span> POST
@@ -1627,7 +1630,39 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                         <p>پارامتر payment_uuid همان مقدار payment_uuid هست که قصد تایید آن تراکنش را دارید.</p>
 
                         <h3 class="sub-title">
-                            نمونه پاسخ دریافتی موفق:
+                           نمونه پاسخ دریافتی موفق زمانی که type برابر است با card:
+                        </h3>
+
+                        <pre>
+<span class="key">HTTP/1.1</span> 200
+{
+    "message": " صورتحساب با موفقیت پرداخت شد",
+    "data": {
+        "payment": {
+            "id": "1b1266b9-cea5-405d-8933-bc90384c1450",
+            "amount": 10000,
+            "wage_amount": 0,
+            "affected_amount": 10000,
+            "payment_method_slug": "card-saman",
+            "ref_id": "167861357963",
+            "tracking_code": null,
+            "created_at": 1678626609,
+            "updated_at": 1678626759,
+            "payment_date": 1678626759,
+            "status": "DONE",
+            "error": null,
+            "type": "card",
+            "card": {
+                "card_number": "585983******0697",
+                "cid": "70A40B00C479015F96B12AE465E2E5E51F57D172655EDADB539F97119132438B"
+            }
+        }
+    }
+}
+</pre>
+
+                        <h3 class="sub-title">
+                            نمونه پاسخ دریافتی موفق زمانی که type برابر است با credit:
                         </h3>
 
                         <pre>
@@ -1654,7 +1689,6 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
     }
 }
 </pre>
-
                         <h3 class="title">
                             ۴. لیست صورت‌حساب
                         </h3>
