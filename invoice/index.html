@@ -203,7 +203,7 @@
                 <article class="content">
 
                     <div>
-                        آخرین تغییرات: ۱۴۰۱/۰۹/۰۲
+			    آخرین تغییرات: ۱۴۰۱/۱۱/۱۹
                     </div>
 
                     <div class="article" id="invoice">
@@ -371,6 +371,11 @@
                                     <td>String</td>
                                     <td>optional</td>
                                 </tr>
+				<tr>
+				    <td>search_field</td>
+                                    <td>String</td>
+                                    <td>optional</td>
+                                </tr>
 
 
 
@@ -413,6 +418,20 @@
 				    </li>
                                 <li>start_after(اختیاری): این پارامتر مشخص میکند که تراکنش های بعد از این تراکنش در لیست خروجی بازگردانده شوند. برای دریافت صفحه های بعدی میتوانید ایدی اخرین تراکنش را در این پارامتر ارسال کنید. تا لیست جدید را دریافت کنید. </li>
                                 <li>q(اختیاری): مقدار موجود در این پارامتر در  فیلدهای تراکنش و فرم و ... جستجو می شود </li>
+				<li>search_field (اختیاری): محدوده ی جستجو</li>
+                                <ul>
+                                    <li> description: اطلاعات تراکنش </li>
+                                    <li> ref_id : کد مرجع</li>
+                                    <li> tracking_code : کد پیگیری </li>
+                                    <li> transaction_id : شناسه یکتای تراکنش </li>
+                                    <li> factor_number : شماره فاکتور </li>
+                                    <li> iban : شماره شبا </li>
+				    <li> mobile_number : شماره موبایل</li>
+					<li> api_token : توکن</li>
+					<li> card_number : شماره کارت</li>
+					<li> form_id : شناسه فرم</li>
+					<li> payment_number : شناسه واریز</li>
+                                </ul>
                             </ul>
 
                             <h3 class="sub-title">
@@ -460,6 +479,7 @@
             "<span class="key">revised_transaction_id</span>":  null,
             "<span class="key">refund</span>":  null,
             "<span class="key">refund_detail_ids</span>":  [],
+	    "<span class="key">port</span>":  "SAMAN",
             "<span class="key">payer</span>": {
                  "<span class="key">ip</span>": "167.235.19.231",
                  "<span class="key">iban</span>": null,
@@ -541,6 +561,7 @@
                                 <li>callback_url:  آدرس بازگشتی که بعد از انجام تراکنش به آن صفحه بر‌می‌گردد که که در مرحله ارسال اطلاعات و دریافت توکن ارسال شده است </li>
                                 <li>form_title:  در صورت پرداخت از فرم پرداخت عنوان فرم نمایش داده می‌شود </li>
                                 <li>settlement:   </li>
+				<li>port:   پورت انجام تراکنش که در حال حاضر می تواند SAMAN و یا BEHPARDAKHT باشد</li>
                                 <li>payer:  طلاعات پرداخت کننده تراکنش را مشخص‌ می‌کند </li>
                                 <ul>
                                     <li>ip:   ip پرداخت کننده در زمان پرداخت را مشخص می‌کند</li>
