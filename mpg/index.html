@@ -273,7 +273,7 @@
     "limit": 30000000,
     "payment_method": "debit-saman",
     "status": "ACTIVE",
-    "expiration_date": "2022-12-29",
+    "expires_at": 1685350749,
     "customer_id": "efdaf820-2075-11ed-a96b-a9167c05d45d",
     "created_at": 1662452234,
     "updated_at": 1662452234,
@@ -288,7 +288,7 @@
                             </li>
                             <li>payment_method: روش پرداخت.</li>
                             <li>status: وضعیت مجوز.</li>
-                            <li>expiration_date: تاریخ انقضای مجوز.</li>
+                            <li>expires_at: تاریخ انقضای مجوز.</li>
                             <li>customer_id: شناسه مشتری.</li>
                             <li>created_at: زمان ایجاد مجوز.</li>
                             <li>updated_at: زمان بروزرسانی مجوز.</li>
@@ -313,7 +313,7 @@
     "created_at": 1673773548,
     "updated_at": 1673773548,
     "paid_at": 1673773548,
-    "status": "DONE",
+    "status": "done",
     "error": null,
     "type": "debit",
     "debit": {
@@ -369,7 +369,7 @@
     "request_id": "sDrfgkT5lkk5llk4Gt",
     "checkout_number": "123",
     "amount": 10000,
-    "status": "PAID",
+    "status": "paid",
     "description": "test",
     "created_at": 1673773548,
     "updated_at": 1673773548,
@@ -392,7 +392,7 @@
             "created_at": 1673773548,
             "updated_at": 1673773548,
             "paid_at": 1673773548,
-            "status": "DONE",
+            "status": "done",
             "error": null,
             "type": "debit",
             "debit": {
@@ -463,8 +463,9 @@
                         </p>
                         <pre>
 <span class="key">Method:</span>  GET
-<span class="key">Address:</span> https://api.vandar.io/mpg/v1/business-payment-methods
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/business/{business}/payment-methods
                         </pre>
+                        <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد دریافت لیست روش‌های پرداخت آن را دارید.</p>
                         </br>
                         <h3 class="sub-title">
                             پارامترهای مجاز
@@ -598,7 +599,7 @@
                         "limit": 30000000,
                         "payment_method": "debit-saman",
                         "status": "ACTIVE",
-                        "expiration_date": "2022-11-09",
+                        "expires_at": 1685350749,
                         "customer_id": "efdaf820-2075-11ed-a96b-a9167c05d45d",
                         "created_at": 1662452234,
                         "updated_at": 1662452234,
@@ -624,8 +625,9 @@
                         <p>اولین مرحله برای بستن مجوز پرداخت از حساب، ثبت درخواست صدور مجوز پرداخت از حساب است. لازم است که درخواست خود را به آدرس زیر ارسال کنید.</p>
                         <pre>
 <span class="key">Method:</span> POST
-<span class="key">Address:</span> https://api.vandar.io/mpg/v1/mandates
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/business/{business}/mandates
                         </pre>
+                        <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که درخواست بستن مجوز پرداخت از حساب بر روی آن را دارید.</p>
                         <h3 class="sub-title">
                           پارامترهای مجاز
                         </h3>
@@ -654,8 +656,8 @@
                               <td>required</td>
                           </tr>
                           <tr>
-                              <td>expiration_date</td>
-                              <td>date</td>
+                              <td>expires_at</td>
+                              <td>UNIX timestamp</td>
                               <td>required</td>
                           </tr>
                           <tr>
@@ -692,7 +694,7 @@
                           <li>payment_method: (اجباری) slug روش‌ پرداخت که از لیست روش های پرداخت قابل استفاده است.</li>
                           <li>count (اجباری): حداکثر تعداد دفعاتی که در یک ماه می‌توان با این مجوز پرداخت از حساب، برداشت وجه موفق انجام داد.</li>
                           <li>limit (اجباری): حداکثر مبلغ وجه قابل برداشت در هر درخواست مربوط به این مجوز پرداخت از حساب. واحد پول ریال است.</li>
-                          <li>expiration_date: (اجباری) تاریخ انقضای مجوز پرداخت از حساب. این تاریخ باید بزرگتر از تاریخ روز جاری باشد و به صورت میلادی وارد می‌شود.</li>
+                          <li>expires_at: (اجباری) تاریخ انقضای مجوز پرداخت از حساب. این تاریخ باید بزرگتر از تاریخ روز جاری باشد و به صورت UNIX timestamp وارد می‌شود.</li>
                           <li>callback_url (اجباری): آدرس بازگشتی که کاربر پس از تایید اطلاعات در صفحه بانک، به آن منتقل می‌شود. </li>
                             <li>
                                 customer:
@@ -712,7 +714,7 @@
   "payment_method": "debit-saman",
   "count": 7,
   "limit": 10000,
-  "expiration_date": "2023-03-03",
+  "expires_at": 1685350749,
   "callback_url": "https://paperpiano.ir/mandate/callback",
   "customer": {
     "mobile": "09123456789",
@@ -729,7 +731,6 @@
                         <pre>
 <span class="key">HTTP/1.1</span> 200
 {
-  "status": 1,
   "message": "درخواست توکن با موفقیت ثبت شد.",
   "data": {
       "token": "0cf235d0-d48b-11ea-86cd-298ec898a9bd",
@@ -738,6 +739,7 @@
             "first_name": "محمد",
             "last_name": "مقصودی",
             "email": "yourcustomer@gmail.com",
+            "national_code": "0098001212",
       }
     }
   }
@@ -762,6 +764,7 @@
                                       <li>first_name: نام کاربر</li>
                                       <li>last_name: نام‌خانوادگی کاربر</li>
                                       <li>email: ایمیل کاربر</li>
+                                      <li>national_code: کدملی کاربر</li>
                                   </ul>
                               </li>
                             </ul>
@@ -852,8 +855,9 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                             اجازه تایید مجوز پرداخت از حساب را به API می‌دهد.</p>
                         <pre>
 <span class="key">Method:</span> PUT
-<span class="key">Address:</span> https://api.vandar.io/mpg/v1/mandates/{mandate_id}/verify</pre>
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/business/{business}/mandates/{mandate_id}/verify</pre>
                         </pre>
+                        <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد تایید مجوز پرداخت از حساب بر روی آن را دارید.</p>
                         <div class="info">
                             <strong>نکته! </strong>
                             وندار به جهت جلوگیری از ایجاد مجوز پرداخت از حساب رهاشده، مجوز پرداخت از حسابهایی که پس از ۲۰ دقیقه تایید نشوند را به شکل
@@ -874,7 +878,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             "limit": 100000,
             "payment_method": "debit-ayandeh",
             "status": "ACTIVE",
-            "expiration_date": "2022-11-09",
+            "expires_at": 1685350749,
             "customer_id": "9da2e7f0-9de1-11ec-a6bc-978fb3b88c9d",
             "created_at": 1667744798,
             "updated_at": 1672579535,
@@ -906,9 +910,9 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 <p>در این بخش  شما می توانید لیست مجوز پرداخت از حسابهای ایجاد شده را مشاهده کنید.</p>
 <pre>
 <span class="key">METHOD:</span> GET
-<span class="key">URL:</span> https://api.vandar.io/mpg/v1/mandates
+<span class="key">URL:</span> https://api.vandar.io/mpg/v1/business/{business}/mandates
 </pre>
-
+                        <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد دریافت لیست مجوز پرداخت از حسابها بر روی آن را دارید.</p>
 <h3 class="sub-title">
     پارامترهای مجاز
 </h3>
@@ -964,7 +968,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             "limit": 100000,
             "payment_method": "debit-ayandeh",
             "status": "REVOKED",
-            "expiration_date": "2022-11-09",
+            "expires_at": 1685350749,
             "customer_id": "9da2e7f0-9de1-11ec-a6bc-978fb3b88c9d",
             "created_at": 1667741198,
             "updated_at": 1667741493,
@@ -976,7 +980,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             "limit": 50000,
             "payment_method": "debit-saman",
             "status": "ACTIVE",
-            "expiration_date": "2022-11-09",
+            "expires_at": 1685350749,
             "customer_id": "4c12b5c0-1323-11ed-88aa-1d355b7661f1",
             "created_at": 1667368162,
             "updated_at": 1667368266,
@@ -990,7 +994,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
         "links": [
             ...
         ],
-        "path": "https://api.vandar.io/mpg/v1/mandates",
+        "path": "https://api.vandar.io/mpg/v1/business/{business}/mandates",
         "per_page": 50,
         "to": 50,
         "total": 75
@@ -1006,7 +1010,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
       <li>limit:  حداکثر مبلغ برداشت وجه در هر برداشت. واحد پول ریال است.</li>
       <li>payment_method:  روش‌ پرداخت که به لیست آن در بالا اشاره شده است.</li>
       <li>status: وضعیت مجوز.</li>
-      <li>expiration_date: تاریخ انقضای مجوز.</li>
+      <li>expires_at: تاریخ انقضای مجوز.</li>
       <li>customer_id: شناسه مشتری مربوط به این مجوز.</li>
       <li>created_at: تاریخ ایجاد مجوز.</li>
       <li>updated_at: تاریخ آخرین بروزرسانی مجوز.</li>
@@ -1049,8 +1053,9 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 <p>شما می توانید با این دستور جزییات یک مجوز پرداخت از حساب را با فرستادن id دریافت کنید.</p>
 <pre>
 <span class="key">Method:</span> GET
-<span class="key">Address:</span> https://api.vandar.io/mpg/v1/mandates/{id}
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/business/{business}/mandates/{id}
 </pre>
+                        <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد نمایش یک مجوز پرداخت از حساب با id بر روی آن را دارید.</p>
 <p>پارامتر {id} همان شناسه مجوز پرداخت از حساب مربوطه است.</p>
 <h3 class="sub-title">
   نمونه پاسخ دریافتی موفق:
@@ -1066,7 +1071,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             "limit": 100000,
             "payment_method": "debit-ayandeh",
             "status": "REVOKED",
-            "expiration_date": "2022-11-09",
+            "expires_at": 1685350749,
             "customer_id": "9da2e7f0-9de1-11ec-a6bc-978fb3b88c9d",
             "created_at": 1667741198,
             "updated_at": 1667741493,
@@ -1082,9 +1087,9 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
 <pre>
 <span class="key">Method:</span> DELETE
-<span class="key">Address:</span> https://api.vandar.io/mpg/v1/mandates/{id}
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/business/{business}/mandates/{id}
 </pre>
-
+                        <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد لغو یک مجوز پرداخت از حساب با id بر روی آن را دارید.</p>
 <p>پارامتر {id} همان id مربوط به مجوز پرداخت از حساب برداشت از حسابی است که قصد حذف آن را دارید.</p>
 
 <h3 class="sub-title">
@@ -1102,7 +1107,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
       "limit": 800000,
       "payment_method": debit-saman,
       "status": "REVOKED",
-      "expiration_date": "2022-11-09",
+      "expires_at": 1685350749,
       "customer_id": "f02ba3c5-6235-3601-981e-87094ac2365c",
       "created_at": 1664719213,
       "updated_at": 1672495213,
@@ -1123,7 +1128,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
           <li>limit: حداکثر مبلغ وجه قابل برداشت با مجوز پرداخت از حساب حذف شده.</li>
           <li>payment_method: slug روش‌ پرداخت </li>
           <li>status: وضعیت مجوز پرداخت از حساب</li>
-          <li>expiration_date:  تاریخ انقضای مجوز پرداخت از حساب</li>
+          <li>expires_at:  تاریخ انقضای مجوز پرداخت از حساب</li>
           <li>callback_url: آدرس بازگشتی درگاه پرداخت تایید شده در وندار</li>
           <li>customer_id: آیدی کاربری که مجوز پرداخت از حساب برای او صادر شده بود.</li>
           <li>created_at: تاریخ ایجاد به صورت timestamp</li>
@@ -1154,9 +1159,9 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
                         <pre>
 <span class="key">Method:</span> POST
-<span class="key">Address:</span> https://api.vandar.io/mpg/v1/checkouts
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/business/{business}/checkouts
 </pre>
-
+                        <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد ثبت صورتحساب بر روی آن را دارید.</p>
                         <h3 class="sub-title">
                             پارامترهای مجاز
                         </h3>
@@ -1297,7 +1302,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             "request_id": "sDrfgkT5lkk5llk4Gt",
             "checkout_number": "123",
             "amount": 10000,
-            "status": "PAID",
+            "status": "paid",
             "description": "test",
             "created_at": 1673773548,
             "updated_at": 1673773548,
@@ -1320,7 +1325,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                     "created_at": 1673773548,
                     "updated_at": 1673773548,
                     "paid_at": 1673773548,
-                    "status": "DONE",
+                    "status": "done",
                     "error": null,
                     "type": "debit",
                     "debit": {
@@ -1474,7 +1479,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                     "created_at": 1678095461,
                     "updated_at": 1678095461,
                     "paid_at": null,
-                    "status": "PENDING_REDIRECT",
+                    "status": "pending_redirect",
                     "error": null,
                     "type": "credit",
                     "credit": null
@@ -1631,7 +1636,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                     "created_at": 1678095120,
                     "updated_at": 1678095120,
                     "paid_at": null,
-                    "status": "PENDING_REDIRECT",
+                    "status": "pending_redirect",
                     "error": null,
                     "type": "card",
                     "card": null
@@ -1657,8 +1662,8 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                             <span>
                                 بعد از این مرحله منتظر بمانید که کاربر از صفحه پرداخت بازگردد. بعد از بازگشت دو پارامتر status و payment_id به آنتهای آدرس بازگشتی به صورت query params اضافه شده است. مانند آدرس زیر
                             </span>
-                            <pre>https://your-callback-address.com?payment_id=17f06477-ce51-488c-9cca-e51fcbb061f6&status=PENDING_VERIFY</pre>
-                            <span>status می تواند دو مقدار PENDING_VERIFY و FAILED داشته باشد. اگر مقدار برابر با FAILED بود،  همینجا می‌توانید فرایند پرداخت را متوقف کنید. اما اگر مقدار آن برابر با PENDING_VERIFY بود، باید بخش آخر یعنی تایید تراکنش را انجام دهید.</span>
+                            <pre>https://your-callback-address.com?payment_id=17f06477-ce51-488c-9cca-e51fcbb061f6&status=pending_verify</pre>
+                            <span>status می تواند دو مقدار pending_verify و failed داشته باشد. اگر مقدار برابر با failed بود،  همینجا می‌توانید فرایند پرداخت را متوقف کنید. اما اگر مقدار آن برابر با pending_verify بود، باید بخش آخر یعنی تایید تراکنش را انجام دهید.</span>
                         </div>
 
                         <h3 class="title">
@@ -1668,9 +1673,10 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
                         <pre>
 <span class="key">Method:</span> POST
-<span class="key">Address:</span> https://api.vandar.io/mpg/v1/payments/{payment_id}/verify
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/business/{business}/payments/{payment_id}/verify
 </pre>
-                        <p>پارامتر payment_id همان مقدار payment_id هست که قصد تایید آن تراکنش را دارید.</p>
+                        <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد تایید تراکنش بر روی آن را دارید.</p>
+                        <p>پارامتر {payment_id} همان مقدار payment_id هست که قصد تایید آن تراکنش را دارید.</p>
 
                         <h3 class="sub-title">
                            نمونه پاسخ دریافتی موفق زمانی که type برابر است با card:
@@ -1692,7 +1698,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             "created_at": 1678626609,
             "updated_at": 1678626759,
             "paid_at": 1678626759,
-            "status": "DONE",
+            "status": "done",
             "error": null,
             "type": "card",
             "card": {
@@ -1724,7 +1730,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             "created_at": 1678104568,
             "updated_at": 1678104713,
             "paid_at": 1678104713,
-            "status": "DONE",
+            "status": "done",
             "error": null,
             "type": "credit",
             "credit": null
@@ -1738,9 +1744,9 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
                         <pre>
 <span class="key">Method:</span> GET
-<span class="key">Address:</span> https://api.vandar.io/mpg/v1/checkouts
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/business/{business}/checkouts
 </pre>
-
+                        <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد دریافت لیست صورتحساب بر روی آن را دارید.</p>
                         <h3 class="sub-title">
                             پارامترهای مجاز
                         </h3>
@@ -1805,7 +1811,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             "request_id": "123",
             "checkout_number": "123",
             "amount": "10000",
-            "status": "PAID",
+            "status": "paid",
             "description": "test",
             "created_at": 1673682519,
             "updated_at": 1673682519,
@@ -1828,7 +1834,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                     "created_at": 1673682519,
                     "updated_at": 1673682519,
                     "paid_at": 1673682519,
-                    "status": "DONE",
+                    "status": "done",
                     "error": null,
                     "type": "debit",
                     "debit": {
@@ -1885,7 +1891,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
         "links": [
             ...
         ],
-        "path": "https://api.vandar.io/mpg/v1/checkouts",
+        "path": "https://api.vandar.io/mpg/v1/business/{business}/checkouts",
         "per_page": 12,
         "to": 12,
         "total": 77
@@ -1907,7 +1913,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
                         <pre>
 <span class="key">Method:</span> GET
-<span class="key">Address:</span> https://api.vandar.io/mpg/v1/checkouts/76252e83-fa00-46a4-b157-171213f2908a
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/business/{business}/checkouts/76252e83-fa00-46a4-b157-171213f2908a
 </pre>
 
 
@@ -1925,7 +1931,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             "request_id": "123",
             "checkout_number": "123",
             "amount": "10000",
-            "status": "PAID",
+            "status": "paid",
             "description": "test",
             "created_at": 1673682519,
             "updated_at": 1673682519,
@@ -1948,7 +1954,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                     "created_at": 1673682519,
                     "updated_at": 1673682519,
                     "paid_at": 1673682519,
-                    "status": "DONE",
+                    "status": "done",
                     "error": null,
                     "type": "debit",
                     "debit": {
@@ -1958,7 +1964,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                             "limit": 100000,
                             "payment_method": "debit-saman",
                             "status": "ACTIVE",
-                            "expiration_date": "2025-12-31",
+                            "expires_at": 1685350749,
                             "customer_id": "efdaf820-2075-11ed-a96b-a9167c05d45d",
                             "created_at": 1667741198,
                             "updated_at": 1667741493,
