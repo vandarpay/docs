@@ -119,13 +119,26 @@
                             <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="dropdown-container">
-                            <a href="https://vandarpay.github.io/docs/subscription/#mpg">مقدمه</a><br>
+                            <a href="https://vandarpay.github.io/docs/subscription/#directdebit">مقدمه</a><br>
                             <a href="https://vandarpay.github.io/docs/subscription/#banks">مدیریت روش‌های پرداخت</a><br>
                             <a href="https://vandarpay.github.io/docs/subscription/#get-token">سرویس دریافت توکن</a><br>
                             <a href="https://vandarpay.github.io/docs/subscription/#withdrawal">سرویس برداشت وجه</a><br>
                             <a href="https://vandarpay.github.io/docs/subscription/#error">لیست خطاهای دریافتی</a><br>
                             <a href="https://vandarpay.github.io/docs/subscription/better-product-design/" target="_blank">طراحی محصولی بهتر</a><br>
                             <!--                        </div>-->
+                        </div>
+                    </li>
+                    <li>
+                        <button class="dropdown-btn">سرویس پرداخت یکپارچه
+                            <br>
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-container">
+                            <a href="https://vandarpay.github.io/docs/mpg/#mpg">مقدمه</a><br>
+                            <a href="https://vandarpay.github.io/docs/mpg/#objects">آبجکت های سرویس پرداخت یکپارچه</a><br>
+                            <a href="https://vandarpay.github.io/docs/mpg/#payment-methods">مدیریت روش‌های پرداخت</a><br>
+                            <a href="https://vandarpay.github.io/docs/mpg/#get-token">صدور مجوز در روش پرداخت از حساب</a><br>
+                            <a href="https://vandarpay.github.io/docs/mpg/#checkout">سرویس صورت‌حساب (Checkout)</a><br>
                         </div>
                     </li>
                     <!--                    <li>-->
@@ -250,7 +263,7 @@
 
                         <h3 class="title" id="objects-mandate">
                             <a href="#objects-mandate">
-                                ۲. آبجکت مجوز (mandate)
+                                ۲. آبجکت مجوز پرداخت از حساب (mandate)
                             </a>
                         </h3>
                         <pre>
@@ -258,9 +271,9 @@
     "id": "1408bf10-2dcd-11ed-b084-bb5348c5e321",
     "count": 30,
     "limit": 30000000,
-    "payment_method_slug": "debit-saman",
+    "payment_method": "debit-saman",
     "status": "ACTIVE",
-    "expiration_date": "1403/06/15",
+    "expiration_date": "2022-12-29",
     "customer_id": "efdaf820-2075-11ed-a96b-a9167c05d45d",
     "created_at": 1662452234,
     "updated_at": 1662452234,
@@ -269,11 +282,11 @@
                         </pre>
 
                         <ul>
-                            <li>id: شناسه مجوز.</li>
+                            <li>id: شناسه مجوز پرداخت از حساب.</li>
                             <li>count: حداکثر تعداد دفعاتی که در یک ماه می‌توان با این مجوز، پرداخت موفق انجام داد.</li>
                             <li>limit: حداکثر مبلغ قابل برداشت در پرداخت وجه‌های مربوط به این مجوز. واحد پول ریال است.
                             </li>
-                            <li>payment_method_slug: روش پرداخت.</li>
+                            <li>payment_method: روش پرداخت.</li>
                             <li>status: وضعیت مجوز.</li>
                             <li>expiration_date: تاریخ انقضای مجوز.</li>
                             <li>customer_id: شناسه مشتری.</li>
@@ -294,12 +307,12 @@
     "amount": 10000,
     "wage_amount": 1000,
     "affected_amount": 9000,
-    "payment_method_slug": "debit-ayandeh",
+    "payment_method": "debit-ayandeh",
     "ref_id": null,
     "tracking_code": null,
     "created_at": 1673773548,
     "updated_at": 1673773548,
-    "payment_date": 1673773548,
+    "paid_at": 1673773548,
     "status": "DONE",
     "error": null,
     "type": "debit",
@@ -314,18 +327,18 @@
                             <li>amount: مبلغ پرداخت.</li>
                             <li>wage_amount: کارمزد پرداخت.</li>
                             <li>affected_amount: مبلغی که کیف پول کسب و کار را تحت تاثیر قرار داده است.</li>
-                            <li>payment_method_slug: روش پرداخت.</li>
+                            <li>payment_method: روش پرداخت.</li>
                             <li>ref_id: رسید دیجیتال یکتا در شبکه پرداخت کشور.</li>
                             <li>tracking_code: کد رهگیری به همراه تاریخ انجام تراکنش یکتا است.</li>
                             <li>created_at: زمان ایجاد پرداخت.</li>
                             <li>updated_at: زمان بروزرسانی پرداخت.</li>
-                            <li>payment_date: زمان انجام تراکنش.</li>
+                            <li>paid_at: زمان انجام تراکنش.</li>
                             <li>status: وضعیت پرداخت.</li>
                             <li>error: خطا در صورت انجام نشدن پرداخت.</li>
                             <div class="info">
                                 <strong>نکته! </strong>
                                 <span>
-                                    در صورت وجود خطا آبجکت زیر برگردانده میشود:
+                                    در صورت وجود خطا فیلد error مشابه زیر خواهد بود:
                                 </span>
                                 <pre>
 "error": {
@@ -335,12 +348,12 @@
                                     </pre>
                             </div>
                             <li>type: نوع روش پرداختی که در حال حاضر از مقادیر debit، credit و card پشتیبانی می شود.</li>
-                            <li>debit.mandate_id: درصورتی که نوع روش پرداختی برابر debit باشد شناسه مجوز برگردانده
+                            <li>debit.mandate_id: درصورتی که نوع روش پرداختی برابر debit باشد شناسه مجوز پرداخت از حساب برگردانده
                                 میشود.
                             </li>
                             <li>credit: در صورتی که نوع روش پرداختی برابر با credit باشد، این پارامتر نمایش داده می شود که در حال حاضر مقدار آن برابر null است.</li>
                             <li>card: در صورتی که نوع روش پرداخت برابر با card باشد دو مقدار cid و card_number برای شما بازگردانده می شود.</li>
-                            <li>card.card_number: ماسکه شده شماره کارت پرداخت کننده.</li>
+                            <li>card.card_number: شماره کارت پرداخت کننده.</li>
                             <li>card.cid: هش شماره کارت که با الگوریتم SHA256 هش شده است.</li>
                         </ul>
 
@@ -373,12 +386,12 @@
             "amount": 10000,
             "wage_amount": 1000,
             "affected_amount": 9000,
-            "payment_method_slug": "debit-ayandeh",
+            "payment_method": "debit-ayandeh",
             "ref_id": null,
             "tracking_code": null,
             "created_at": 1673773548,
             "updated_at": 1673773548,
-            "payment_date": 1673773548,
+            "paid_at": 1673773548,
             "status": "DONE",
             "error": null,
             "type": "debit",
@@ -403,8 +416,8 @@
                         </ul>
 
                         <br>
-                        <h2 class="article-header" id="banks">
-                            <a href="#banks">مدیریت روش‌های پرداخت</a></h2>
+                        <h2 class="article-header" id="payment-methods">
+                            <a href="#payment-methods">مدیریت روش‌های پرداخت</a></h2>
                         <p>لیست روش های پرداخت قابل استفاده از این بخش قابل دسترس می‌باشد.
                             می‌توانید بر اساس نیازمندی کسب‌وکار خود کلیه روش‌های پرداخت فعال را به کاربران ارائه دهید و
                             یا در صورت نیاز یک لیست شخصی‌سازی شده برای کسب‌وکار خود ایجاد کنید و لیست تعیین شده‌ای از
@@ -503,7 +516,7 @@
                             <div class="info">
                                 <strong>نکته! </strong>
                                 <span>
-                                    اگر موبایل  در درخواست مربوطه ارسال گردد، و روش پرداخت از نوع debit باشد، لیست مجوزهای فعال مربوط به آن شماره موبایل نیز در پاسخ دریافتی قرارخواهد گرفت.(در نمونه پاسخ دریافتی میتوانید مشاهده کنید.)
+                                    اگر موبایل  در درخواست مربوطه ارسال گردد، و روش پرداخت از نوع debit باشد، لیست مجوز پرداخت از حسابهای فعال مربوط به آن شماره موبایل نیز در پاسخ دریافتی قرارخواهد گرفت.(در نمونه پاسخ دریافتی میتوانید مشاهده کنید.)
                                 </span>
                             </div>
                             <br>
@@ -534,7 +547,7 @@
                                         credit : پرداخت اعتباری
                                     </li>
                                     <li>
-                                        card : درگاه پرداخت
+                                        card : پرداخت با کارت
                                     </li>
                                 </ul>
                             </div>
@@ -583,7 +596,7 @@
                         "id": "1408bf10-2dcd-11ed-b084-bb5348c5e321",
                         "count": 30,
                         "limit": 30000000,
-                        "payment_method_slug": "debit-saman",
+                        "payment_method": "debit-saman",
                         "status": "ACTIVE",
                         "expiration_date": "2022-11-09",
                         "customer_id": "efdaf820-2075-11ed-a96b-a9167c05d45d",
@@ -604,11 +617,11 @@
                         <a href="#get-token">صدور مجوز در روش پرداخت از حساب</a> </h2>
 
                         <h3 class="title" id="subscription"><a href="#subscription">
-                            ۱. درخواست بستن مجوز:
+                            ۱. درخواست بستن مجوز پرداخت از حساب:
                         </a>
 
                         </h3>
-                        <p>اولین مرحله برای بستن مجوز برداشت از حساب، ثبت درخواست صدور مجوز است. لازم است که درخواست خود را به آدرس زیر ارسال کنید.</p>
+                        <p>اولین مرحله برای بستن مجوز پرداخت از حساب، ثبت درخواست صدور مجوز پرداخت از حساب است. لازم است که درخواست خود را به آدرس زیر ارسال کنید.</p>
                         <pre>
 <span class="key">Method:</span> POST
 <span class="key">Address:</span> https://api.vandar.io/mpg/v1/mandates
@@ -677,14 +690,19 @@
                       </h3>
                         <ul>
                           <li>payment_method: (اجباری) slug روش‌ پرداخت که از لیست روش های پرداخت قابل استفاده است.</li>
-                          <li>count (اجباری): حداکثر تعداد دفعاتی که در یک ماه می‌توان با این مجوز، برداشت وجه موفق انجام داد.</li>
-                          <li>limit (اجباری): حداکثر مبلغ وجه قابل برداشت در هر درخواست مربوط به این مجوز. واحد پول ریال است.</li>
-                          <li>expiration_date: (اجباری) تاریخ انقضای مجوز. این تاریخ باید بزرگتر از تاریخ روز جاری باشد و به صورت میلادی وارد می‌شود.</li>
-                          <li>callback_url (اجباری): باید با آدرس درگاه پرداخت تایید شده در وندار بر روی یک دامنه باشد</li>
-                          <li>customer.mobile (اجباری): شماره موبایل کاربر. شماره موبایل بدون کد کشور و به فرمت 09123456789 باشد.</li>
-                          <li>customer.email (اختیاری): ایمیل کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود.</li>
-                          <li>customer.first_name (اختیاری): نام کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
-                          <li>customer.last_name (اختیاری): نام‌خانوادگی کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
+                          <li>count (اجباری): حداکثر تعداد دفعاتی که در یک ماه می‌توان با این مجوز پرداخت از حساب، برداشت وجه موفق انجام داد.</li>
+                          <li>limit (اجباری): حداکثر مبلغ وجه قابل برداشت در هر درخواست مربوط به این مجوز پرداخت از حساب. واحد پول ریال است.</li>
+                          <li>expiration_date: (اجباری) تاریخ انقضای مجوز پرداخت از حساب. این تاریخ باید بزرگتر از تاریخ روز جاری باشد و به صورت میلادی وارد می‌شود.</li>
+                          <li>callback_url (اجباری): آدرس بازگشتی که کاربر پس از تایید اطلاعات در صفحه بانک، به آن منتقل می‌شود. </li>
+                            <li>
+                                customer:
+                                <ul>
+                                    <li>mobile (اجباری): شماره موبایل کاربر. شماره موبایل بدون کد کشور و به فرمت 09123456789 باشد.</li>
+                                    <li>email (اختیاری): ایمیل کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود.</li>
+                                    <li>first_name (اختیاری): نام کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
+                                    <li>last_name (اختیاری): نام‌خانوادگی کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
+                                </ul>
+                          </li>
                         </ul>
                         <h3 class="sub-title">
                           نمونه json
@@ -715,7 +733,7 @@
   "message": "درخواست توکن با موفقیت ثبت شد.",
   "data": {
       "token": "0cf235d0-d48b-11ea-86cd-298ec898a9bd",
-        "customer": {
+      "customer": {
             "mobile": "09123456789",
             "first_name": "محمد",
             "last_name": "مقصودی",
@@ -734,7 +752,7 @@
                           <li>
                             data:
                             <ul>
-                              <li>token: آیدی شما در سرویس پرداخت خودکار که باید درخواست های بعدی خود را با این آیدی ارسال کنید.</li>
+                              <li>token: از این توکن برای انتقال کاربر به صفحه بانک و گرفتن دسترسی مجوز پرداخت از حساب استفاده خواهد شد.</li>
                             </ul>
                             <ul>
                               <li>
@@ -750,7 +768,7 @@
                           </li>
                         </ul>
                       <h3 class="title" id="transfer">
-                       <a href="#transfer"> ۲. انتقال کاربر به صفحه تایید صدور مجوز</a>
+                       <a href="#transfer"> ۲. انتقال کاربر به صفحه تایید صدور مجوز پرداخت از حساب</a>
                       </h3>
                       <p>
                         در مرحله بعد token دریافتی از قسمت قبل را در انتهای
@@ -789,7 +807,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                             <img src="../images/ayandeh-mandate-step2.png" style="max-width: 500px;" alt="صفحه دسترسی">
                         </p>
 <h3 class="title" id="subscription-code">
-    <a href="#subscription-code">۳. دریافت کد مجوز</a>
+    <a href="#subscription-code">۳. دریافت کد مجوز پرداخت از حساب</a>
 </h3>
 <p>در صورتی که کاربر بر روی دکمه دسترسی دارد کلیک کند، وندار کاربر را به آدرس برگشتی که در مرحله اول ارسال کرده‌اید به همراه پارامتر token و status و mandate_id هدایت می‌کند.
 
@@ -823,25 +841,22 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                                     </thead>
               </table>
 
-                        <h3 class="title" id="subscription-verify"><a href="#subscription-verify">
-                            ۴. تایید مجوز
+                        <h3 class="title" id="subscription-verify">
+                            <a href="#subscription-verify">
+                            ۴. تایید مجوز پرداخت از حساب
                         </a>
-
                         </h3>
-                        <p>درصورتی که کاربر اجازه دسترسی به مجوز را صادر کرده باشد، باید مجوز ایجاد شده را از طریق ارسال
-                            mandate_id به وندار تایید کنید. برای جلوگیری از تغییر وضعیت مجوزهای پیشین، وندار تنها یک بار
-                            اجازه تایید مجوز را به API می‌دهد.</p>
 
-                        <p>درصورتی که کاربر اجازه دسترسی به مجوز را صادر کرده باشد، باید مجوز ایجاد شده را از طریق ارسال
-                            mandate_id به وندار تایید کنید. برای جلوگیری از تغییر وضعیت مجوزهای پیشین، وندار تنها یک بار
-                            اجازه تایید مجوز را به API می‌دهد.</p>
+                        <p>درصورتی که کاربر اجازه دسترسی به مجوز پرداخت از حساب را صادر کرده باشد، باید مجوز پرداخت از حساب ایجاد شده را از طریق ارسال
+                            mandate_id به وندار تایید کنید. برای جلوگیری از تغییر وضعیت مجوز پرداخت از حسابهای پیشین، وندار تنها یک بار
+                            اجازه تایید مجوز پرداخت از حساب را به API می‌دهد.</p>
                         <pre>
 <span class="key">Method:</span> PUT
 <span class="key">Address:</span> https://api.vandar.io/mpg/v1/mandates/{mandate_id}/verify</pre>
                         </pre>
                         <div class="info">
                             <strong>نکته! </strong>
-                            وندار به جهت جلوگیری از ایجاد مجوز رهاشده، مجوزهایی که پس از ۲۰ دقیقه تایید نشوند را به شکل
+                            وندار به جهت جلوگیری از ایجاد مجوز پرداخت از حساب رهاشده، مجوز پرداخت از حسابهایی که پس از ۲۰ دقیقه تایید نشوند را به شکل
                             خودکار لغو می‌کند.
                         </div>
             <h3 class="sub-title">
@@ -851,13 +866,13 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             <pre>
 <span class="key">HTTP/1.1</span> 200
 {
-    "message": "مجوز با موفقیت تایید شد",
+    "message": "مجوز پرداخت از حساب با موفقیت تایید شد",
     "data": {
         "mandate": {
             "id": "068bb9f0-5ddf-11ed-b16d-61da2281b3d4",
             "count": 15,
             "limit": 100000,
-            "payment_method_slug": "debit-ayandeh",
+            "payment_method": "debit-ayandeh",
             "status": "ACTIVE",
             "expiration_date": "2022-11-09",
             "customer_id": "9da2e7f0-9de1-11ec-a6bc-978fb3b88c9d",
@@ -886,9 +901,9 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 }
             </pre>
 <h3 class="title" id="subscriptions">
- <a href="#subscriptions"> ۵. لیست مجوزها</a>
+ <a href="#subscriptions"> ۵. لیست مجوز پرداخت از حسابها</a>
 </h3>
-<p>در این بخش  شما می توانید لیست مجوزهای ایجاد شده را مشاهده کنید.</p>
+<p>در این بخش  شما می توانید لیست مجوز پرداخت از حسابهای ایجاد شده را مشاهده کنید.</p>
 <pre>
 <span class="key">METHOD:</span> GET
 <span class="key">URL:</span> https://api.vandar.io/mpg/v1/mandates
@@ -941,13 +956,13 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 <pre>
 <span class="key">HTTP/1.1</span> 200
 {
-    "message": "لیست مجوزهای کسب و کار",
+    "message": "لیست مجوزهای پرداخت از حساب کسب و کار",
     "data": [
         {
             "id": "068bb9f0-5ddf-11ed-b16d-61da2281b3d4",
             "count": 15,
             "limit": 100000,
-            "payment_method_slug": "debit-ayandeh",
+            "payment_method": "debit-ayandeh",
             "status": "REVOKED",
             "expiration_date": "2022-11-09",
             "customer_id": "9da2e7f0-9de1-11ec-a6bc-978fb3b88c9d",
@@ -959,7 +974,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             "id": "7bebd4b0-5a7a-11ed-a48b-d349deb0a60a",
             "count": 5,
             "limit": 50000,
-            "payment_method_slug": "debit-saman",
+            "payment_method": "debit-saman",
             "status": "ACTIVE",
             "expiration_date": "2022-11-09",
             "customer_id": "4c12b5c0-1323-11ed-88aa-1d355b7661f1",
@@ -971,26 +986,30 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
     "meta": {
         "current_page": 1,
         "from": 1,
-        "last_page": 1,
-        "per_page": 12,
-        "to": 2,
-        "total": 2
-    }
+        "last_page": 2,
+        "links": [
+            ...
+        ],
+        "path": "https://api.vandar.io/mpg/v1/mandates",
+        "per_page": 50,
+        "to": 50,
+        "total": 75
+    },
 }
 </pre>
 <ul>
   <li>
     data:
     <ul>
-      <li>id: شناسه مجوز که برای درخواست برداشت وجه از این شناسه استفاده می شود.</li>
-      <li>count: رشته عددی مشخص کننده تعداد درخواست های برداشت وجه که به صورت ماهانه مشخص می‌شود.</li>
-      <li>limit: رشته عددی مشخص کننده حداکثر مبلغ برداشت وجه در هر برداشت. واحد پول ریال است.</li>
-      <li>payment_method_slug: کد روش‌ پرداخت که به لیست آن در بالا اشاره شده است.</li>
+      <li>id: شناسه مجوز پرداخت از حساب که برای درخواست برداشت وجه از این شناسه استفاده می شود.</li>
+      <li>count: تعداد درخواست های برداشت وجه که به صورت ماهانه مشخص می‌شود.</li>
+      <li>limit:  حداکثر مبلغ برداشت وجه در هر برداشت. واحد پول ریال است.</li>
+      <li>payment_method:  روش‌ پرداخت که به لیست آن در بالا اشاره شده است.</li>
       <li>status: وضعیت مجوز.</li>
       <li>expiration_date: تاریخ انقضای مجوز.</li>
       <li>customer_id: شناسه مشتری مربوط به این مجوز.</li>
       <li>created_at: تاریخ ایجاد مجوز.</li>
-      <li>updated_at: تاریخ آخرین بروزرسانی مجوز</li>
+      <li>updated_at: تاریخ آخرین بروزرسانی مجوز.</li>
       <li>revoked_at: تاریخ لغو مجوز.</li>
     </ul>
   </li>
@@ -1008,7 +1027,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 </ul>
 <div class="info">
   <strong>نکته! </strong>
-     در این قسمت در خروجی id را دریافت میکنیم که در مراحل بعد برای استفاده از متد show و revoke و verify که برای نمایش و پاک کردن و تایید مجوز است مورد استفاده قرار میگیرد.
+     در این قسمت در خروجی id را دریافت میکنیم که در مراحل بعد برای استفاده از متد show و revoke و verify که برای نمایش و پاک کردن و تایید مجوز پرداخت از حساب است مورد استفاده قرار میگیرد.
 </div>
 <h3 class="sub-title">
   نمونه پاسخ دریافتی نا موفق:
@@ -1025,27 +1044,27 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
     <li>code: کد خطا</li>
   </ul>
 <h3 class="title" id="show">
-<a href="#show">  ۶. نمایش یک مجوز با id </a>
+<a href="#show">  ۶. نمایش یک مجوز پرداخت از حساب با id </a>
 </h3>
-<p>شما می توانید با این دستور جزییات یک مجوز را با فرستادن id دریافت کنید.</p>
+<p>شما می توانید با این دستور جزییات یک مجوز پرداخت از حساب را با فرستادن id دریافت کنید.</p>
 <pre>
 <span class="key">Method:</span> GET
 <span class="key">Address:</span> https://api.vandar.io/mpg/v1/mandates/{id}
 </pre>
-<p>پارامتر {id} همان شناسه مجوز مربوطه است.</p>
+<p>پارامتر {id} همان شناسه مجوز پرداخت از حساب مربوطه است.</p>
 <h3 class="sub-title">
   نمونه پاسخ دریافتی موفق:
 </h3>
 <pre>
 <span class="key">HTTP/1.1</span> 200
 {
-    "message": "مجوز کسب و کار",
+    "message": "مجوز پرداخت از حساب کسب و کار",
     "data": {
         "mandate": {
             "id": "068bb9f0-5ddf-11ed-b16d-61da2281b3d4",
             "count": 15,
             "limit": 100000,
-            "payment_method_slug": "debit-ayandeh",
+            "payment_method": "debit-ayandeh",
             "status": "REVOKED",
             "expiration_date": "2022-11-09",
             "customer_id": "9da2e7f0-9de1-11ec-a6bc-978fb3b88c9d",
@@ -1058,7 +1077,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 </pre>
 
 <h3 class="title" id="delete">
- <a href="#delete">۷. پاک کردن یک مجوز برداشت از حساب با استفاده از id</a>
+ <a href="#delete">۷. لغو مجوز پرداخت از حساب با استفاده از id</a>
 </h3>
 
 <pre>
@@ -1066,7 +1085,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 <span class="key">Address:</span> https://api.vandar.io/mpg/v1/mandates/{id}
 </pre>
 
-<p>پارامتر {id} همان id مربوط به مجوز برداشت از حسابی است که قصد حذف آن را دارید.</p>
+<p>پارامتر {id} همان id مربوط به مجوز پرداخت از حساب برداشت از حسابی است که قصد حذف آن را دارید.</p>
 
 <h3 class="sub-title">
   نمونه پاسخ دریافتی موفق:
@@ -1075,13 +1094,13 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 <span class="key">HTTP/1.1</span> 200
 {
   "status": 1,
-  "message": "مجوز کسب و کار با موفقیت لغو شد.",
+  "message": "مجوز پرداخت از حساب کسب و کار با موفقیت لغو شد.",
   "data": {
     "mandate": {
       "id": "58ffbb2d-2a64-336d-b7c5-d5982eabf658",
       "count": 2,
       "limit": 800000,
-      "payment_method_slug": debit-saman,
+      "payment_method": debit-saman,
       "status": "REVOKED",
       "expiration_date": "2022-11-09",
       "customer_id": "f02ba3c5-6235-3601-981e-87094ac2365c",
@@ -1093,20 +1112,20 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 }
 </pre>
 <ul>
-  <li>message: پیغام مجوز کسب و کار با موفقیت لغو شد.</li>
+  <li>message: پیغام مجوز پرداخت از حساب کسب و کار با موفقیت لغو شد.</li>
   <li>
     data:
     <ul>
       <li>mandate:
         <ul>
-          <li>id: آیدی مجوز حذف شده </li>
-          <li>count: حداکثر تعداد دفعاتی که در یک ماه می‌ شد با مجوز حذف شده برداشت انجام شود.</li>
-          <li>limit: حداکثر مبلغ وجه قابل برداشت با مجوز حذف شده.</li>
-          <li>payment_method_slug: slug روش‌ پرداخت </li>
-          <li>status: وضعیت مجوز</li>
-          <li>expiration_date:  تاریخ انقضای مجوز</li>
+          <li>id: آیدی مجوز پرداخت از حساب حذف شده </li>
+          <li>count: حداکثر تعداد دفعاتی که در یک ماه می‌ شد با مجوز پرداخت از حساب حذف شده برداشت انجام شود.</li>
+          <li>limit: حداکثر مبلغ وجه قابل برداشت با مجوز پرداخت از حساب حذف شده.</li>
+          <li>payment_method: slug روش‌ پرداخت </li>
+          <li>status: وضعیت مجوز پرداخت از حساب</li>
+          <li>expiration_date:  تاریخ انقضای مجوز پرداخت از حساب</li>
           <li>callback_url: آدرس بازگشتی درگاه پرداخت تایید شده در وندار</li>
-          <li>customer_id: آیدی کاربری که مجوز برای او صادر شده بود.</li>
+          <li>customer_id: آیدی کاربری که مجوز پرداخت از حساب برای او صادر شده بود.</li>
           <li>created_at: تاریخ ایجاد به صورت timestamp</li>
           <li>updated_at: تاریخ آخرین بروزرسانی به صورت timestamp</li>
           <li>revoked_at: تاریخ حذف به صورت timestamp</li>
@@ -1117,8 +1136,8 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 </ul>
                         <div class="info">
                             <strong> نکته! </strong>
-                            بعد از لغو یک مجوز این مجوز از خروجی لیست مجوزها حذف شده و اگر درخواست نمایش مجوز با آیدی را
-                            صدا بزنید خطای ۴۲۲ با متن مجوز باطل شده است را دریافت می کنید.
+                            بعد از لغو یک مجوز پرداخت از حساب این مجوز پرداخت از حساب از خروجی لیست مجوز پرداخت از حسابها حذف شده و اگر درخواست نمایش مجوز پرداخت از حساب با آیدی را
+                            صدا بزنید خطای ۴۲۲ با متن مجوز پرداخت از حساب باطل شده است را دریافت می کنید.
                         </div>
 
                         <br>
@@ -1239,9 +1258,11 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                         </h3>
 
                         <ul>
-                            <li>
-                                debit.mandate_id (اجباری): شناسه مجوز
-                            </li>
+                            debit:
+                            <ul>
+                                <li>mandate_id (اجباری): شناسه مجوز پرداخت از حساب.</li>
+                            </ul>
+
                         </ul>
 
                         <h3 class="sub-title">
@@ -1293,12 +1314,12 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                     "amount": 10000,
                     "wage_amount": 1000,
                     "affected_amount": 9000,
-                    "payment_method_slug": "debit-ayandeh",
+                    "payment_method": "debit-ayandeh",
                     "ref_id": null,
                     "tracking_code": null,
                     "created_at": 1673773548,
                     "updated_at": 1673773548,
-                    "payment_date": 1673773548,
+                    "paid_at": 1673773548,
                     "status": "DONE",
                     "error": null,
                     "type": "debit",
@@ -1375,12 +1396,23 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                         </h3>
 
                         <ul>
-                            <li>credit.callback_url (اجباری): باید با آدرس درگاه پرداخت تایید شده در وندار بر روی یک دامنه باشد</li>
-                            <li>customer.mobile (اجباری): شماره موبایل کاربر. شماره موبایل بدون کد کشور و به فرمت 09123456789 باشد.</li>
-                            <li>customer.email (اختیاری): ایمیل کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود.</li>
-                            <li>customer.first_name (اختیاری): نام کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
-                            <li>customer.last_name (اختیاری): نام‌خانوادگی کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
+                            credit:
+                            <ul>
+                                <li>callback_url (اجباری): آدرس بازگشتی که کاربر پس از پرداخت، به آن منتقل می‌شود. </li>
+                            </ul>
+
                         </ul>
+                        <ul>
+                            customer:
+                            <ul>
+                                <li>mobile (اجباری): شماره موبایل کاربر. شماره موبایل بدون کد کشور و به فرمت 09123456789 باشد.</li>
+                                <li>email (اختیاری): ایمیل کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود.</li>
+                                <li>first_name (اختیاری): نام کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
+                                <li>last_name (اختیاری): نام‌خانوادگی کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
+                            </ul>
+
+                        </ul>
+
 
                         <h3 class="sub-title">
                             نمونه json
@@ -1395,7 +1427,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
     "description": "test",
     "type": "credit",
     "credit": {
-         "callback_url": "https://your-callback-address.com",
+        "callback_url": "https://your-callback-address.com",
         "customer": {
             "mobile": "09367636320",
             "email": "asd@qwe.com",
@@ -1436,12 +1468,12 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                     "amount": 10000,
                     "wage_amount": 0,
                     "affected_amount": 10000,
-                    "payment_method_slug": "credit-tara",
+                    "payment_method": "credit-tara",
                     "ref_id": null,
                     "tracking_code": null,
                     "created_at": 1678095461,
                     "updated_at": 1678095461,
-                    "payment_date": null,
+                    "paid_at": null,
                     "status": "PENDING_REDIRECT",
                     "error": null,
                     "type": "credit",
@@ -1516,14 +1548,25 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                         </h3>
 
                         <ul>
-                            <li>card.callback_url (اجباری): باید با آدرس درگاه پرداخت تایید شده در وندار بر روی یک دامنه باشد</li>
-                            <li>card.valid_card_number (اختیاری): شماره کارت معتبر (در صورت ارسال شماره کارت، کاربر فقط با همان شماره کارت قابلیت پرداخت خواهد داشت.)</li>
-                            <li>customer.mobile (اجباری): شماره موبایل کاربر. شماره موبایل بدون کد کشور و به فرمت 09123456789 باشد.</li>
-                            <li>customer.email (اختیاری): ایمیل کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود.</li>
-                            <li>customer.first_name (اختیاری): نام کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
-                            <li>customer.last_name (اختیاری): نام‌خانوادگی کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
-                            <li>card.national_code (اختیاری): کد ملی معتبر (در صورت ارسال کد ملی، کاربر فقط با کارت‌های بانکی تحت مالکیت آن کد ملی قابلیت پرداخت خواهد داشت. برای بررسی کدملی در درگاه پرداخت ارسال شماره موبایل مرتبط با کد ملی نیز الزامی است.)</li>
+                            card:
+                            <ul>
+                                <li>callback_url (اجباری): آدرس بازگشتی که کاربر پس از پرداخت، به آن منتقل می‌شود. </li>
+                                <li>valid_card_numbers (اختیاری): شماره کارت های معتبر (در صورت ارسال شماره کارت، کاربر فقط با همان شماره کارت قابلیت پرداخت خواهد داشت.)</li>
+                            </ul>
+
                         </ul>
+                        <ul>
+                            customer:
+                            <ul>
+                                <li>mobile (اجباری): شماره موبایل کاربر. شماره موبایل بدون کد کشور و به فرمت 09123456789 باشد.</li>
+                                <li>email (اختیاری): ایمیل کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود.</li>
+                                <li>first_name (اختیاری): نام کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
+                                <li>last_name (اختیاری): نام‌خانوادگی کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
+                                <li>national_code (اختیاری): کد ملی معتبر (در صورت ارسال کد ملی، کاربر فقط با کارت‌های بانکی تحت مالکیت آن کد ملی قابلیت پرداخت خواهد داشت. برای بررسی کدملی در درگاه پرداخت ارسال شماره موبایل مرتبط با کد ملی نیز الزامی است.)</li>
+                            </ul>
+
+                        </ul>
+
 
                         <h3 class="sub-title">
                             نمونه json
@@ -1582,12 +1625,12 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                     "amount": 10000,
                     "wage_amount": 0,
                     "affected_amount": 10000,
-                    "payment_method_slug": "card-saman",
+                    "payment_method": "card-saman",
                     "ref_id": null,
                     "tracking_code": null,
                     "created_at": 1678095120,
                     "updated_at": 1678095120,
-                    "payment_date": null,
+                    "paid_at": null,
                     "status": "PENDING_REDIRECT",
                     "error": null,
                     "type": "card",
@@ -1604,17 +1647,17 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                         </h3>
 
                         <p>اگر type پرداختی شما از نوع های credit یا card باشد، نیاز هست که کاربر خود را پس از ثبت موفقیت آمیز صورتحساب به آدرس زیر منتقل نمایید تا فرآیند پرداخت تکمیل شود.</p>
-                        <p>مقدار payment_uuid برابر است با id برگشتی در آبجکت payments که به صورت uuid می باشد.</p>
+                        <p>مقدار payment_id برابر است با id برگشتی در آبجکت payments که به صورت uuid می باشد.</p>
                         <pre>
 <span class="key">Method:</span> GET
-<span class="key">Address:</span> https://mpg.vandar.io/payments/{payment_uuid}/pay
+<span class="key">Address:</span> https://mpg.vandar.io/payments/{payment_id}/pay
 </pre>
                         <div class="info">
                             <strong>نکته! </strong>
                             <span>
-                                بعد از این مرحله منتظر بمانید که کاربر از صفحه پرداخت بازگردد. بعد از بازگشت دو پارامتر status و payment_uuid به آنتهای آدرس بازگشتی به صورت query params اضافه شده است. مانند آدرس زیر
+                                بعد از این مرحله منتظر بمانید که کاربر از صفحه پرداخت بازگردد. بعد از بازگشت دو پارامتر status و payment_id به آنتهای آدرس بازگشتی به صورت query params اضافه شده است. مانند آدرس زیر
                             </span>
-                            <pre>https://your-callback-address.com?payment_uuid=17f06477-ce51-488c-9cca-e51fcbb061f6&status=PENDING_VERIFY</pre>
+                            <pre>https://your-callback-address.com?payment_id=17f06477-ce51-488c-9cca-e51fcbb061f6&status=PENDING_VERIFY</pre>
                             <span>status می تواند دو مقدار PENDING_VERIFY و FAILED داشته باشد. اگر مقدار برابر با FAILED بود،  همینجا می‌توانید فرایند پرداخت را متوقف کنید. اما اگر مقدار آن برابر با PENDING_VERIFY بود، باید بخش آخر یعنی تایید تراکنش را انجام دهید.</span>
                         </div>
 
@@ -1625,9 +1668,9 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
                         <pre>
 <span class="key">Method:</span> POST
-<span class="key">Address:</span> https://api.vandar.io/mpg/v1/payments/{payment_uuid}/verify
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/payments/{payment_id}/verify
 </pre>
-                        <p>پارامتر payment_uuid همان مقدار payment_uuid هست که قصد تایید آن تراکنش را دارید.</p>
+                        <p>پارامتر payment_id همان مقدار payment_id هست که قصد تایید آن تراکنش را دارید.</p>
 
                         <h3 class="sub-title">
                            نمونه پاسخ دریافتی موفق زمانی که type برابر است با card:
@@ -1643,12 +1686,12 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             "amount": 10000,
             "wage_amount": 0,
             "affected_amount": 10000,
-            "payment_method_slug": "card-saman",
+            "payment_method": "card-saman",
             "ref_id": "167861357963",
             "tracking_code": null,
             "created_at": 1678626609,
             "updated_at": 1678626759,
-            "payment_date": 1678626759,
+            "paid_at": 1678626759,
             "status": "DONE",
             "error": null,
             "type": "card",
@@ -1675,12 +1718,12 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             "amount": 10000,
             "wage_amount": 0,
             "affected_amount": 10000,
-            "payment_method_slug": "credit-tara",
+            "payment_method": "credit-tara",
             "ref_id": "1234",
             "tracking_code": null,
             "created_at": 1678104568,
             "updated_at": 1678104713,
-            "payment_date": 1678104713,
+            "paid_at": 1678104713,
             "status": "DONE",
             "error": null,
             "type": "credit",
@@ -1779,12 +1822,12 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                     "amount": 10000,
                     "wage_amount": 100,
                     "affected_amount": 99900,
-                    "payment_method_slug": "debit-saman",
+                    "payment_method": "debit-saman",
                     "ref_id": null,
                     "tracking_code": null,
                     "created_at": 1673682519,
                     "updated_at": 1673682519,
-                    "payment_date": 1673682519,
+                    "paid_at": 1673682519,
                     "status": "DONE",
                     "error": null,
                     "type": "debit",
@@ -1816,12 +1859,12 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                     "amount": 10000,
                     "wage_amount": 100,
                     "affected_amount": 99900,
-                    "payment_method_slug": "debit-saman",
+                    "payment_method": "debit-saman",
                     "ref_id": null,
                     "tracking_code": null,
                     "created_at": 1673682519,
                     "updated_at": 1673682519,
-                    "payment_date": 1673682519,
+                    "paid_at": 1673682519,
                     "status": "FAILED",
                     "error": {
                         "code": "WITHDRAWAL_TIMEOUT",
@@ -1838,10 +1881,14 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
     "meta": {
         "current_page": 1,
         "from": 1,
-        "last_page": 15,
-        "per_page": 2,
-        "to": 2,
-        "total": 30
+        "last_page": 7,
+        "links": [
+            ...
+        ],
+        "path": "https://api.vandar.io/mpg/v1/checkouts",
+        "per_page": 12,
+        "to": 12,
+        "total": 77
     }
 }
 </pre>
@@ -1895,12 +1942,12 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                     "amount": 10000,
                     "wage_amount": 100,
                     "affected_amount": 99900,
-                    "payment_method_slug": "debit-saman",
+                    "payment_method": "debit-saman",
                     "ref_id": null,
                     "tracking_code": null,
                     "created_at": 1673682519,
                     "updated_at": 1673682519,
-                    "payment_date": 1673682519,
+                    "paid_at": 1673682519,
                     "status": "DONE",
                     "error": null,
                     "type": "debit",
@@ -1909,7 +1956,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                             "id": "068bb9f0-5ddf-11ed-b16d-61da2281b3d4",
                             "count": 15,
                             "limit": 100000,
-                            "payment_method_slug": "debit-saman",
+                            "payment_method": "debit-saman",
                             "status": "ACTIVE",
                             "expiration_date": "2025-12-31",
                             "customer_id": "efdaf820-2075-11ed-a96b-a9167c05d45d",
