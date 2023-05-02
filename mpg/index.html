@@ -248,6 +248,7 @@
     "mobile": "09354614194",
     "first_name": "Ali",
     "last_name": "Gholami",
+    "national_code": "0123456789",
     "email": "asd@qwe.com"
 }
                         </pre>
@@ -257,6 +258,7 @@
                             <li>mobile: شماره موبایل مشتری.</li>
                             <li>first_name: نام مشتری.</li>
                             <li>last_name: نام خانوادگی مشتری.</li>
+                            <li>national_code: کدملی مشتری.</li>
                             <li>email: : ایمیل مشتری.</li>
                         </ul>
 
@@ -269,12 +271,12 @@
                         <pre>
 {
     "id": "1408bf10-2dcd-11ed-b084-bb5348c5e321",
+    "payment_method": "debit-saman",
     "count": 30,
     "limit": 30000000,
-    "payment_method": "debit-saman",
-    "status": "ACTIVE",
-    "expiration_date": "2022-12-29",
+    "expires_at": 1685350749,
     "customer_id": "efdaf820-2075-11ed-a96b-a9167c05d45d",
+    "status": "active",
     "created_at": 1662452234,
     "updated_at": 1662452234,
     "revoked_at": null
@@ -283,13 +285,13 @@
 
                         <ul>
                             <li>id: شناسه مجوز پرداخت از حساب.</li>
+                            <li>payment_method: روش پرداخت.</li>
                             <li>count: حداکثر تعداد دفعاتی که در یک ماه می‌توان با این مجوز، پرداخت موفق انجام داد.</li>
                             <li>limit: حداکثر مبلغ قابل برداشت در پرداخت وجه‌های مربوط به این مجوز. واحد پول ریال است.
                             </li>
-                            <li>payment_method: روش پرداخت.</li>
-                            <li>status: وضعیت مجوز.</li>
-                            <li>expiration_date: تاریخ انقضای مجوز.</li>
+                            <li>expires_at: تاریخ انقضای مجوز.</li>
                             <li>customer_id: شناسه مشتری.</li>
+                            <li>status: وضعیت مجوز.</li>
                             <li>created_at: زمان ایجاد مجوز.</li>
                             <li>updated_at: زمان بروزرسانی مجوز.</li>
                             <li>revoked_at: زمان لغو مجوز.</li>
@@ -304,17 +306,17 @@
                         <pre>
 {
     "id": "b7d0d74c-4b25-4d42-8338-d9dce3c9e16f",
+    "payment_method": "debit-ayandeh",
     "amount": 10000,
     "wage_amount": 1000,
     "affected_amount": 9000,
-    "payment_method": "debit-ayandeh",
     "ref_id": null,
     "tracking_code": null,
+    "status": "done",
+    "error": null,
     "created_at": 1673773548,
     "updated_at": 1673773548,
     "paid_at": 1673773548,
-    "status": "DONE",
-    "error": null,
     "type": "debit",
     "debit": {
         "mandate_id": "068bb9f0-5ddf-11ed-b16d-61da2281b3d4"
@@ -324,15 +326,12 @@
 
                         <ul>
                             <li>id: شناسه پرداخت.</li>
+                            <li>payment_method: روش پرداخت.</li>
                             <li>amount: مبلغ پرداخت.</li>
                             <li>wage_amount: کارمزد پرداخت.</li>
                             <li>affected_amount: مبلغی که کیف پول کسب و کار را تحت تاثیر قرار داده است.</li>
-                            <li>payment_method: روش پرداخت.</li>
                             <li>ref_id: رسید دیجیتال یکتا در شبکه پرداخت کشور.</li>
                             <li>tracking_code: کد رهگیری به همراه تاریخ انجام تراکنش یکتا است.</li>
-                            <li>created_at: زمان ایجاد پرداخت.</li>
-                            <li>updated_at: زمان بروزرسانی پرداخت.</li>
-                            <li>paid_at: زمان انجام تراکنش.</li>
                             <li>status: وضعیت پرداخت.</li>
                             <li>error: خطا در صورت انجام نشدن پرداخت.</li>
                             <div class="info">
@@ -347,6 +346,9 @@
 }
                                     </pre>
                             </div>
+                            <li>created_at: زمان ایجاد پرداخت.</li>
+                            <li>updated_at: زمان بروزرسانی پرداخت.</li>
+                            <li>paid_at: زمان انجام تراکنش.</li>
                             <li>type: نوع روش پرداختی که در حال حاضر از مقادیر debit، credit و card پشتیبانی می شود.</li>
                             <li>debit.mandate_id: درصورتی که نوع روش پرداختی برابر debit باشد شناسه مجوز پرداخت از حساب برگردانده
                                 میشود.
@@ -369,7 +371,7 @@
     "request_id": "sDrfgkT5lkk5llk4Gt",
     "checkout_number": "123",
     "amount": 10000,
-    "status": "PAID",
+    "status": "paid",
     "description": "test",
     "created_at": 1673773548,
     "updated_at": 1673773548,
@@ -378,22 +380,23 @@
         "mobile": "09354614194",
         "first_name": "Ali",
         "last_name": "Gholami",
+        "national_code": "0123456789",
         "email": "asd@qwe.com"
     },
     "payments": [
         {
             "id": "b7d0d74c-4b25-4d42-8338-d9dce3c9e16f",
+            "payment_method": "debit-ayandeh",
             "amount": 10000,
             "wage_amount": 1000,
             "affected_amount": 9000,
-            "payment_method": "debit-ayandeh",
             "ref_id": null,
             "tracking_code": null,
+            "status": "done",
+            "error": null,
             "created_at": 1673773548,
             "updated_at": 1673773548,
             "paid_at": 1673773548,
-            "status": "DONE",
-            "error": null,
             "type": "debit",
             "debit": {
                 "mandate_id": "068bb9f0-5ddf-11ed-b16d-61da2281b3d4"
@@ -463,8 +466,9 @@
                         </p>
                         <pre>
 <span class="key">Method:</span>  GET
-<span class="key">Address:</span> https://api.vandar.io/mpg/v1/business-payment-methods
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/business/{business}/payment-methods
                         </pre>
+                        <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد دریافت لیست روش‌های پرداخت آن را دارید.</p>
                         </br>
                         <h3 class="sub-title">
                             پارامترهای مجاز
@@ -594,12 +598,12 @@
                 "mandates": [
                     {
                         "id": "1408bf10-2dcd-11ed-b084-bb5348c5e321",
+                        "payment_method": "debit-saman",
                         "count": 30,
                         "limit": 30000000,
-                        "payment_method": "debit-saman",
-                        "status": "ACTIVE",
-                        "expiration_date": "2022-11-09",
+                        "expires_at": 1685350749,
                         "customer_id": "efdaf820-2075-11ed-a96b-a9167c05d45d",
+                        "status": "active",
                         "created_at": 1662452234,
                         "updated_at": 1662452234,
                         "revoked_at": null
@@ -624,8 +628,9 @@
                         <p>اولین مرحله برای بستن مجوز پرداخت از حساب، ثبت درخواست صدور مجوز پرداخت از حساب است. لازم است که درخواست خود را به آدرس زیر ارسال کنید.</p>
                         <pre>
 <span class="key">Method:</span> POST
-<span class="key">Address:</span> https://api.vandar.io/mpg/v1/mandates
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/business/{business}/mandates
                         </pre>
+                        <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که درخواست بستن مجوز پرداخت از حساب بر روی آن را دارید.</p>
                         <h3 class="sub-title">
                           پارامترهای مجاز
                         </h3>
@@ -654,8 +659,8 @@
                               <td>required</td>
                           </tr>
                           <tr>
-                              <td>expiration_date</td>
-                              <td>date</td>
+                              <td>expires_at</td>
+                              <td>UNIX timestamp</td>
                               <td>required</td>
                           </tr>
                           <tr>
@@ -669,17 +674,22 @@
                               <td>required</td>
                           </tr>
                           <tr>
-                            <td>customer.email</td>
-                            <td>string</td>
-                            <td>optional</td>
-                          </tr>
-                          <tr>
                               <td>customer.first_name</td>
                               <td>string</td>
                               <td>optional</td>
                           </tr>
                           <tr>
                               <td>customer.last_name</td>
+                              <td>string</td>
+                              <td>optional</td>
+                          </tr>
+                          <tr>
+                              <td>customer.national_code</td>
+                              <td>string</td>
+                              <td>optional</td>
+                          </tr>
+                          <tr>
+                              <td>customer.email</td>
                               <td>string</td>
                               <td>optional</td>
                           </tr>
@@ -692,15 +702,16 @@
                           <li>payment_method: (اجباری) slug روش‌ پرداخت که از لیست روش های پرداخت قابل استفاده است.</li>
                           <li>count (اجباری): حداکثر تعداد دفعاتی که در یک ماه می‌توان با این مجوز پرداخت از حساب، برداشت وجه موفق انجام داد.</li>
                           <li>limit (اجباری): حداکثر مبلغ وجه قابل برداشت در هر درخواست مربوط به این مجوز پرداخت از حساب. واحد پول ریال است.</li>
-                          <li>expiration_date: (اجباری) تاریخ انقضای مجوز پرداخت از حساب. این تاریخ باید بزرگتر از تاریخ روز جاری باشد و به صورت میلادی وارد می‌شود.</li>
+                          <li>expires_at: (اجباری) تاریخ انقضای مجوز پرداخت از حساب. این تاریخ باید بزرگتر از تاریخ روز جاری باشد و به صورت UNIX timestamp وارد می‌شود.</li>
                           <li>callback_url (اجباری): آدرس بازگشتی که کاربر پس از تایید اطلاعات در صفحه بانک، به آن منتقل می‌شود. </li>
                             <li>
                                 customer:
                                 <ul>
                                     <li>mobile (اجباری): شماره موبایل کاربر. شماره موبایل بدون کد کشور و به فرمت 09123456789 باشد.</li>
-                                    <li>email (اختیاری): ایمیل کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود.</li>
                                     <li>first_name (اختیاری): نام کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
                                     <li>last_name (اختیاری): نام‌خانوادگی کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
+                                    <li>national_code (اختیاری): کدملی کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود.</li>
+                                    <li>email (اختیاری): ایمیل کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود.</li>
                                 </ul>
                           </li>
                         </ul>
@@ -712,13 +723,14 @@
   "payment_method": "debit-saman",
   "count": 7,
   "limit": 10000,
-  "expiration_date": "2023-03-03",
+  "expires_at": 1685350749,
   "callback_url": "https://paperpiano.ir/mandate/callback",
   "customer": {
     "mobile": "09123456789",
-    "email": "yourcustomer@gmail.com",
     "first_name": "محمد",
     "last_name": "مقصودی",
+    "national_code": "0123456789",
+    "email": "yourcustomer@gmail.com",
   }
 }
                         </pre>
@@ -729,7 +741,6 @@
                         <pre>
 <span class="key">HTTP/1.1</span> 200
 {
-  "status": 1,
   "message": "درخواست توکن با موفقیت ثبت شد.",
   "data": {
       "token": "0cf235d0-d48b-11ea-86cd-298ec898a9bd",
@@ -737,6 +748,7 @@
             "mobile": "09123456789",
             "first_name": "محمد",
             "last_name": "مقصودی",
+            "national_code": "0098001212",
             "email": "yourcustomer@gmail.com",
       }
     }
@@ -761,6 +773,7 @@
                                       <li>mobile: شماره موبایل کاربر</li>
                                       <li>first_name: نام کاربر</li>
                                       <li>last_name: نام‌خانوادگی کاربر</li>
+                                      <li>national_code: کدملی کاربر</li>
                                       <li>email: ایمیل کاربر</li>
                                   </ul>
                               </li>
@@ -851,9 +864,10 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                             mandate_id به وندار تایید کنید. برای جلوگیری از تغییر وضعیت مجوز پرداخت از حسابهای پیشین، وندار تنها یک بار
                             اجازه تایید مجوز پرداخت از حساب را به API می‌دهد.</p>
                         <pre>
-<span class="key">Method:</span> PUT
-<span class="key">Address:</span> https://api.vandar.io/mpg/v1/mandates/{mandate_id}/verify</pre>
+<span class="key">Method:</span> PATCH
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/business/{business}/mandates/{mandate_id}</pre>
                         </pre>
+                        <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد تایید مجوز پرداخت از حساب بر روی آن را دارید.</p>
                         <div class="info">
                             <strong>نکته! </strong>
                             وندار به جهت جلوگیری از ایجاد مجوز پرداخت از حساب رهاشده، مجوز پرداخت از حسابهایی که پس از ۲۰ دقیقه تایید نشوند را به شکل
@@ -869,15 +883,15 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
     "message": "مجوز پرداخت از حساب با موفقیت تایید شد",
     "data": {
         "mandate": {
-            "id": "068bb9f0-5ddf-11ed-b16d-61da2281b3d4",
-            "count": 15,
-            "limit": 100000,
-            "payment_method": "debit-ayandeh",
-            "status": "ACTIVE",
-            "expiration_date": "2022-11-09",
-            "customer_id": "9da2e7f0-9de1-11ec-a6bc-978fb3b88c9d",
-            "created_at": 1667744798,
-            "updated_at": 1672579535,
+            "id": "1408bf10-2dcd-11ed-b084-bb5348c5e321",
+            "payment_method": "debit-saman",
+            "count": 30,
+            "limit": 30000000,
+            "expires_at": 1685350749,
+            "customer_id": "efdaf820-2075-11ed-a96b-a9167c05d45d",
+            "status": "active",
+            "created_at": 1662452234,
+            "updated_at": 1662452234,
             "revoked_at": null
         }
     }
@@ -906,9 +920,9 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 <p>در این بخش  شما می توانید لیست مجوز پرداخت از حسابهای ایجاد شده را مشاهده کنید.</p>
 <pre>
 <span class="key">METHOD:</span> GET
-<span class="key">URL:</span> https://api.vandar.io/mpg/v1/mandates
+<span class="key">URL:</span> https://api.vandar.io/mpg/v1/business/{business}/mandates
 </pre>
-
+                        <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد دریافت لیست مجوز پرداخت از حسابها بر روی آن را دارید.</p>
 <h3 class="sub-title">
     پارامترهای مجاز
 </h3>
@@ -959,28 +973,28 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
     "message": "لیست مجوزهای پرداخت از حساب کسب و کار",
     "data": [
         {
-            "id": "068bb9f0-5ddf-11ed-b16d-61da2281b3d4",
-            "count": 15,
-            "limit": 100000,
-            "payment_method": "debit-ayandeh",
-            "status": "REVOKED",
-            "expiration_date": "2022-11-09",
-            "customer_id": "9da2e7f0-9de1-11ec-a6bc-978fb3b88c9d",
-            "created_at": 1667741198,
-            "updated_at": 1667741493,
-            "revoked_at": 1667741493
+             "id": "1408bf10-2dcd-11ed-b084-bb5348c5e321",
+             "payment_method": "debit-saman",
+             "count": 30,
+             "limit": 30000000,
+             "expires_at": 1685350749,
+             "customer_id": "efdaf820-2075-11ed-a96b-a9167c05d45d",
+             "status": "active",
+             "created_at": 1662452234,
+             "updated_at": 1662452234,
+             "revoked_at": null
         },
         {
-            "id": "7bebd4b0-5a7a-11ed-a48b-d349deb0a60a",
-            "count": 5,
-            "limit": 50000,
-            "payment_method": "debit-saman",
-            "status": "ACTIVE",
-            "expiration_date": "2022-11-09",
-            "customer_id": "4c12b5c0-1323-11ed-88aa-1d355b7661f1",
-            "created_at": 1667368162,
-            "updated_at": 1667368266,
-            "revoked_at": null
+             "id": "1408bf10-2dcd-11ed-b084-bb5348c5e321",
+             "payment_method": "debit-saman",
+             "count": 30,
+             "limit": 30000000,
+             "expires_at": 1685350749,
+             "customer_id": "efdaf820-2075-11ed-a96b-a9167c05d45d",
+             "status": "active",
+             "created_at": 1662452234,
+             "updated_at": 1662452234,
+             "revoked_at": null
         },
     ],
     "meta": {
@@ -990,7 +1004,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
         "links": [
             ...
         ],
-        "path": "https://api.vandar.io/mpg/v1/mandates",
+        "path": "https://api.vandar.io/mpg/v1/business/{business}/mandates",
         "per_page": 50,
         "to": 50,
         "total": 75
@@ -1006,7 +1020,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
       <li>limit:  حداکثر مبلغ برداشت وجه در هر برداشت. واحد پول ریال است.</li>
       <li>payment_method:  روش‌ پرداخت که به لیست آن در بالا اشاره شده است.</li>
       <li>status: وضعیت مجوز.</li>
-      <li>expiration_date: تاریخ انقضای مجوز.</li>
+      <li>expires_at: تاریخ انقضای مجوز.</li>
       <li>customer_id: شناسه مشتری مربوط به این مجوز.</li>
       <li>created_at: تاریخ ایجاد مجوز.</li>
       <li>updated_at: تاریخ آخرین بروزرسانی مجوز.</li>
@@ -1049,8 +1063,9 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 <p>شما می توانید با این دستور جزییات یک مجوز پرداخت از حساب را با فرستادن id دریافت کنید.</p>
 <pre>
 <span class="key">Method:</span> GET
-<span class="key">Address:</span> https://api.vandar.io/mpg/v1/mandates/{id}
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/business/{business}/mandates/{id}
 </pre>
+                        <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد نمایش یک مجوز پرداخت از حساب با id بر روی آن را دارید.</p>
 <p>پارامتر {id} همان شناسه مجوز پرداخت از حساب مربوطه است.</p>
 <h3 class="sub-title">
   نمونه پاسخ دریافتی موفق:
@@ -1061,16 +1076,16 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
     "message": "مجوز پرداخت از حساب کسب و کار",
     "data": {
         "mandate": {
-            "id": "068bb9f0-5ddf-11ed-b16d-61da2281b3d4",
-            "count": 15,
-            "limit": 100000,
-            "payment_method": "debit-ayandeh",
-            "status": "REVOKED",
-            "expiration_date": "2022-11-09",
-            "customer_id": "9da2e7f0-9de1-11ec-a6bc-978fb3b88c9d",
-            "created_at": 1667741198,
-            "updated_at": 1667741493,
-            "revoked_at": 1667741493
+            "id": "1408bf10-2dcd-11ed-b084-bb5348c5e321",
+             "payment_method": "debit-saman",
+             "count": 30,
+             "limit": 30000000,
+             "expires_at": 1685350749,
+             "customer_id": "efdaf820-2075-11ed-a96b-a9167c05d45d",
+             "status": "active",
+             "created_at": 1662452234,
+             "updated_at": 1662452234,
+             "revoked_at": null
         }
     }
 }
@@ -1082,9 +1097,9 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
 <pre>
 <span class="key">Method:</span> DELETE
-<span class="key">Address:</span> https://api.vandar.io/mpg/v1/mandates/{id}
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/business/{business}/mandates/{id}
 </pre>
-
+                        <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد لغو یک مجوز پرداخت از حساب با id بر روی آن را دارید.</p>
 <p>پارامتر {id} همان id مربوط به مجوز پرداخت از حساب برداشت از حسابی است که قصد حذف آن را دارید.</p>
 
 <h3 class="sub-title">
@@ -1097,16 +1112,16 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
   "message": "مجوز پرداخت از حساب کسب و کار با موفقیت لغو شد.",
   "data": {
     "mandate": {
-      "id": "58ffbb2d-2a64-336d-b7c5-d5982eabf658",
-      "count": 2,
-      "limit": 800000,
-      "payment_method": debit-saman,
-      "status": "REVOKED",
-      "expiration_date": "2022-11-09",
-      "customer_id": "f02ba3c5-6235-3601-981e-87094ac2365c",
-      "created_at": 1664719213,
-      "updated_at": 1672495213,
-      "revoked_at": 1672495213,
+          "id": "1408bf10-2dcd-11ed-b084-bb5348c5e321",
+          "payment_method": "debit-saman",
+          "count": 30,
+          "limit": 30000000,
+          "expires_at": 1685350749,
+          "customer_id": "efdaf820-2075-11ed-a96b-a9167c05d45d",
+          "status": "active",
+          "created_at": 1662452234,
+          "updated_at": 1662452234,
+          "revoked_at": 1662452234
     }
   }
 }
@@ -1123,7 +1138,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
           <li>limit: حداکثر مبلغ وجه قابل برداشت با مجوز پرداخت از حساب حذف شده.</li>
           <li>payment_method: slug روش‌ پرداخت </li>
           <li>status: وضعیت مجوز پرداخت از حساب</li>
-          <li>expiration_date:  تاریخ انقضای مجوز پرداخت از حساب</li>
+          <li>expires_at:  تاریخ انقضای مجوز پرداخت از حساب</li>
           <li>callback_url: آدرس بازگشتی درگاه پرداخت تایید شده در وندار</li>
           <li>customer_id: آیدی کاربری که مجوز پرداخت از حساب برای او صادر شده بود.</li>
           <li>created_at: تاریخ ایجاد به صورت timestamp</li>
@@ -1154,9 +1169,9 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
                         <pre>
 <span class="key">Method:</span> POST
-<span class="key">Address:</span> https://api.vandar.io/mpg/v1/checkouts
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/business/{business}/checkouts
 </pre>
-
+                        <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد ثبت صورتحساب بر روی آن را دارید.</p>
                         <h3 class="sub-title">
                             پارامترهای مجاز
                         </h3>
@@ -1297,7 +1312,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             "request_id": "sDrfgkT5lkk5llk4Gt",
             "checkout_number": "123",
             "amount": 10000,
-            "status": "PAID",
+            "status": "paid",
             "description": "test",
             "created_at": 1673773548,
             "updated_at": 1673773548,
@@ -1306,26 +1321,27 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                 "mobile": "09354614194",
                 "first_name": "Ali",
                 "last_name": "Gholami",
+                "national_code": "0123456789",
                 "email": "asd@qwe.com"
             },
             "payments": [
                 {
-                    "id": "b7d0d74c-4b25-4d42-8338-d9dce3c9e16f",
-                    "amount": 10000,
-                    "wage_amount": 1000,
-                    "affected_amount": 9000,
-                    "payment_method": "debit-ayandeh",
-                    "ref_id": null,
-                    "tracking_code": null,
-                    "created_at": 1673773548,
-                    "updated_at": 1673773548,
-                    "paid_at": 1673773548,
-                    "status": "DONE",
-                    "error": null,
-                    "type": "debit",
-                    "debit": {
-                        "mandate_id": "068bb9f0-5ddf-11ed-b16d-61da2281b3d4"
-                    }
+                     "id": "b7d0d74c-4b25-4d42-8338-d9dce3c9e16f",
+                     "payment_method": "debit-ayandeh",
+                     "amount": 10000,
+                     "wage_amount": 1000,
+                     "affected_amount": 9000,
+                     "ref_id": null,
+                     "tracking_code": null,
+                     "status": "done",
+                     "error": null,
+                     "created_at": 1673773548,
+                     "updated_at": 1673773548,
+                     "paid_at": 1673773548,
+                     "type": "debit",
+                     "debit": {
+                         "mandate_id": "068bb9f0-5ddf-11ed-b16d-61da2281b3d4"
+                     }
                 }
             ]
         }
@@ -1374,17 +1390,22 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                                 <td>required if type = credit</td>
                             </tr>
                             <tr>
-                                <td>credit.customer.email</td>
-                                <td>string</td>
-                                <td>optional if type = credit</td>
-                            </tr>
-                            <tr>
                                 <td>credit.customer.first_name</td>
                                 <td>string</td>
                                 <td>optional if type = credit</td>
                             </tr>
                             <tr>
                                 <td>credit.customer.last_name</td>
+                                <td>string</td>
+                                <td>optional if type = credit</td>
+                            </tr>
+                            <tr>
+                                <td>credit.customer.national_code</td>
+                                <td>string</td>
+                                <td>optional if type = credit</td>
+                            </tr>
+                            <tr>
+                                <td>credit.customer.email</td>
                                 <td>string</td>
                                 <td>optional if type = credit</td>
                             </tr>
@@ -1406,9 +1427,10 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                             customer:
                             <ul>
                                 <li>mobile (اجباری): شماره موبایل کاربر. شماره موبایل بدون کد کشور و به فرمت 09123456789 باشد.</li>
-                                <li>email (اختیاری): ایمیل کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود.</li>
                                 <li>first_name (اختیاری): نام کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
                                 <li>last_name (اختیاری): نام‌خانوادگی کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
+                                <li>national_code (اختیاری): کدملی کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود.</li>
+                                <li>email (اختیاری): ایمیل کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود.</li>
                             </ul>
 
                         </ul>
@@ -1430,9 +1452,10 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
         "callback_url": "https://your-callback-address.com",
         "customer": {
             "mobile": "09367636320",
-            "email": "asd@qwe.com",
             "first_name": "Amirali",
-            "last_name": "Habashizadeh"
+            "last_name": "Habashizadeh",
+            "national_code": "0123456789",
+            "email": "asd@qwe.com",
         }
     }
 }
@@ -1451,7 +1474,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             "request_id": "67843357634568",
             "checkout_number": "123",
             "amount": 10000,
-            "status": "NOT_PAID",
+            "status": "not_paid",
             "description": "test",
             "created_at": 1678095461,
             "updated_at": 1678095461,
@@ -1460,24 +1483,25 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                 "mobile": "09367636320",
                 "first_name": "Amirali",
                 "last_name": "Habashizadeh",
+                "national_code": "0123456789",
                 "email": "asd@qwe.com"
             },
             "payments": [
                 {
-                    "id": "dc37640c-3449-4dce-bd9d-6e9a07f64e6f",
-                    "amount": 10000,
-                    "wage_amount": 0,
-                    "affected_amount": 10000,
-                    "payment_method": "credit-tara",
-                    "ref_id": null,
-                    "tracking_code": null,
-                    "created_at": 1678095461,
-                    "updated_at": 1678095461,
-                    "paid_at": null,
-                    "status": "PENDING_REDIRECT",
-                    "error": null,
-                    "type": "credit",
-                    "credit": null
+                        "id": "b7d0d74c-4b25-4d42-8338-d9dce3c9e16f",
+                        "payment_method": "credit-tara",
+                        "amount": 10000,
+                        "wage_amount": 1000,
+                        "affected_amount": 9000,
+                        "ref_id": null,
+                        "tracking_code": null,
+                        "status": "pending_redirect",
+                        "error": null,
+                        "created_at": 1673773548,
+                        "updated_at": 1673773548,
+                        "paid_at": 1673773548,
+                        "type": "credit",
+                        "credit": null
                 }
             ]
         }
@@ -1521,11 +1545,6 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                                 <td>required if type = card</td>
                             </tr>
                             <tr>
-                                <td>card.customer.email</td>
-                                <td>string</td>
-                                <td>optional if type = card</td>
-                            </tr>
-                            <tr>
                                 <td>card.customer.first_name</td>
                                 <td>string</td>
                                 <td>optional if type = card</td>
@@ -1537,6 +1556,11 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                             </tr>
                             <tr>
                                 <td>card.customer.national_code</td>
+                                <td>string</td>
+                                <td>optional if type = card</td>
+                            </tr>
+                            <tr>
+                                <td>card.customer.email</td>
                                 <td>string</td>
                                 <td>optional if type = card</td>
                             </tr>
@@ -1559,10 +1583,10 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                             customer:
                             <ul>
                                 <li>mobile (اجباری): شماره موبایل کاربر. شماره موبایل بدون کد کشور و به فرمت 09123456789 باشد.</li>
-                                <li>email (اختیاری): ایمیل کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود.</li>
                                 <li>first_name (اختیاری): نام کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
                                 <li>last_name (اختیاری): نام‌خانوادگی کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود</li>
                                 <li>national_code (اختیاری): کد ملی معتبر (در صورت ارسال کد ملی، کاربر فقط با کارت‌های بانکی تحت مالکیت آن کد ملی قابلیت پرداخت خواهد داشت. برای بررسی کدملی در درگاه پرداخت ارسال شماره موبایل مرتبط با کد ملی نیز الزامی است.)</li>
+                                <li>email (اختیاری): ایمیل کاربر که بهتر است برای پیگیری‌های بعدی ارسال شود.</li>
                             </ul>
 
                         </ul>
@@ -1585,10 +1609,10 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
         "valid_card_number": "5859832060120699",
         "customer": {
             "mobile": "09367636320",
-            "email": "asd@qwe.com",
             "first_name": "Amirali",
             "last_name": "Habashizadeh",
-            "national_code": "0058598310"
+            "national_code": "0058598310",
+            "email": "asd@qwe.com",
         }
     }
 }
@@ -1608,7 +1632,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             "request_id": "67843357634567",
             "checkout_number": "123",
             "amount": 10000,
-            "status": "NOT_PAID",
+            "status": "not_paid",
             "description": "test",
             "created_at": 1678095120,
             "updated_at": 1678095120,
@@ -1617,22 +1641,23 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                 "mobile": "09367636320",
                 "first_name": "Amirali",
                 "last_name": "Habashizadeh",
+                "national_code": "0058598310",
                 "email": "asd@qwe.com"
             },
             "payments": [
                 {
-                    "id": "17f06477-ce51-488c-9cca-e51fcbb061f6",
-                    "amount": 10000,
-                    "wage_amount": 0,
-                    "affected_amount": 10000,
+                    "id": "b7d0d74c-4b25-4d42-8338-d9dce3c9e16f",
                     "payment_method": "card-saman",
+                    "amount": 10000,
+                    "wage_amount": 1000,
+                    "affected_amount": 9000,
                     "ref_id": null,
                     "tracking_code": null,
-                    "created_at": 1678095120,
-                    "updated_at": 1678095120,
-                    "paid_at": null,
-                    "status": "PENDING_REDIRECT",
+                    "status": "pending_redirect",
                     "error": null,
+                    "created_at": 1673773548,
+                    "updated_at": 1673773548,
+                    "paid_at": 1673773548,
                     "type": "card",
                     "card": null
                 }
@@ -1657,8 +1682,8 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                             <span>
                                 بعد از این مرحله منتظر بمانید که کاربر از صفحه پرداخت بازگردد. بعد از بازگشت دو پارامتر status و payment_id به آنتهای آدرس بازگشتی به صورت query params اضافه شده است. مانند آدرس زیر
                             </span>
-                            <pre>https://your-callback-address.com?payment_id=17f06477-ce51-488c-9cca-e51fcbb061f6&status=PENDING_VERIFY</pre>
-                            <span>status می تواند دو مقدار PENDING_VERIFY و FAILED داشته باشد. اگر مقدار برابر با FAILED بود،  همینجا می‌توانید فرایند پرداخت را متوقف کنید. اما اگر مقدار آن برابر با PENDING_VERIFY بود، باید بخش آخر یعنی تایید تراکنش را انجام دهید.</span>
+                            <pre>https://your-callback-address.com?payment_id=17f06477-ce51-488c-9cca-e51fcbb061f6&status=pending_verify</pre>
+                            <span>status می تواند دو مقدار pending_verify و failed داشته باشد. اگر مقدار برابر با failed بود،  همینجا می‌توانید فرایند پرداخت را متوقف کنید. اما اگر مقدار آن برابر با pending_verify بود، باید بخش آخر یعنی تایید تراکنش را انجام دهید.</span>
                         </div>
 
                         <h3 class="title">
@@ -1667,10 +1692,11 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                         <p>اگر type پرداختی شما از نوع های credit یا card باشد، نیاز هست که تراکنش کاربر خود را تایید نمایید.</p>
 
                         <pre>
-<span class="key">Method:</span> POST
-<span class="key">Address:</span> https://api.vandar.io/mpg/v1/payments/{payment_id}/verify
+<span class="key">Method:</span> PATCH
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/business/{business}/payments/{payment_id}
 </pre>
-                        <p>پارامتر payment_id همان مقدار payment_id هست که قصد تایید آن تراکنش را دارید.</p>
+                        <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد تایید تراکنش بر روی آن را دارید.</p>
+                        <p>پارامتر {payment_id} همان مقدار payment_id هست که قصد تایید آن تراکنش را دارید.</p>
 
                         <h3 class="sub-title">
                            نمونه پاسخ دریافتی موفق زمانی که type برابر است با card:
@@ -1682,18 +1708,18 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
     "message": " صورتحساب با موفقیت پرداخت شد",
     "data": {
         "payment": {
-            "id": "1b1266b9-cea5-405d-8933-bc90384c1450",
-            "amount": 10000,
-            "wage_amount": 0,
-            "affected_amount": 10000,
+            "id": "b7d0d74c-4b25-4d42-8338-d9dce3c9e16f",
             "payment_method": "card-saman",
-            "ref_id": "167861357963",
+            "amount": 10000,
+            "wage_amount": 1000,
+            "affected_amount": 9000,
+            "ref_id": null,
             "tracking_code": null,
-            "created_at": 1678626609,
-            "updated_at": 1678626759,
-            "paid_at": 1678626759,
-            "status": "DONE",
+            "status": "pending_redirect",
             "error": null,
+            "created_at": 1673773548,
+            "updated_at": 1673773548,
+            "paid_at": 1673773548,
             "type": "card",
             "card": {
                 "card_number": "585983******0697",
@@ -1714,18 +1740,18 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
     "message": " صورتحساب با موفقیت پرداخت شد",
     "data": {
         "payment": {
-            "id": "eb3747e6-877f-45c4-8954-483bce5b581c",
+            "id": "b7d0d74c-4b25-4d42-8338-d9dce3c9e16f",
+            "payment_method": "card-saman",
             "amount": 10000,
-            "wage_amount": 0,
-            "affected_amount": 10000,
-            "payment_method": "credit-tara",
-            "ref_id": "1234",
+            "wage_amount": 1000,
+            "affected_amount": 9000,
+            "ref_id": null,
             "tracking_code": null,
-            "created_at": 1678104568,
-            "updated_at": 1678104713,
-            "paid_at": 1678104713,
-            "status": "DONE",
+            "status": "pending_redirect",
             "error": null,
+            "created_at": 1673773548,
+            "updated_at": 1673773548,
+            "paid_at": 1673773548,
             "type": "credit",
             "credit": null
         }
@@ -1738,9 +1764,9 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
                         <pre>
 <span class="key">Method:</span> GET
-<span class="key">Address:</span> https://api.vandar.io/mpg/v1/checkouts
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/business/{business}/checkouts
 </pre>
-
+                        <p>پارامتر {business} همان نام انگلیسی کسب و کاری است که قصد دریافت لیست صورتحساب بر روی آن را دارید.</p>
                         <h3 class="sub-title">
                             پارامترهای مجاز
                         </h3>
@@ -1805,7 +1831,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             "request_id": "123",
             "checkout_number": "123",
             "amount": "10000",
-            "status": "PAID",
+            "status": "paid",
             "description": "test",
             "created_at": 1673682519,
             "updated_at": 1673682519,
@@ -1814,22 +1840,23 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                 "mobile": "09354614194",
                 "first_name": "Ali",
                 "last_name": "Gholami",
+                "national_code": "0123456789",
                 "email": "asd@qwe.com"
             },
             "payments": [
                 {
-                    "id": "92df1c50-d510-463b-aa3b-c42ed2b06f05",
+                    "id": "b7d0d74c-4b25-4d42-8338-d9dce3c9e16f",
+                    "payment_method": "debit-ayandeh",
                     "amount": 10000,
-                    "wage_amount": 100,
-                    "affected_amount": 99900,
-                    "payment_method": "debit-saman",
+                    "wage_amount": 1000,
+                    "affected_amount": 9000,
                     "ref_id": null,
                     "tracking_code": null,
-                    "created_at": 1673682519,
-                    "updated_at": 1673682519,
-                    "paid_at": 1673682519,
-                    "status": "DONE",
+                    "status": "done",
                     "error": null,
+                    "created_at": 1673773548,
+                    "updated_at": 1673773548,
+                    "paid_at": 1673773548,
                     "type": "debit",
                     "debit": {
                         "mandate_id": "068bb9f0-5ddf-11ed-b16d-61da2281b3d4"
@@ -1842,7 +1869,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             "request_id": "456",
             "checkout_number": "123",
             "amount": "10000",
-            "status": "NOT_PAID",
+            "status": "not_paid",
             "description": "test",
             "created_at": 1673684560,
             "updated_at": 1673684560,
@@ -1851,25 +1878,23 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                 "mobile": "09354614194",
                 "first_name": "Ali",
                 "last_name": "Gholami",
+                "national_code": "0123456789",
                 "email": "asd@qwe.com"
             },
             "payments": [
                 {
-                    "id": "99b963c7-c36b-43e1-bb11-f0182890350f",
+                    "id": "b7d0d74c-4b25-4d42-8338-d9dce3c9e16f",
+                    "payment_method": "debit-ayandeh",
                     "amount": 10000,
-                    "wage_amount": 100,
-                    "affected_amount": 99900,
-                    "payment_method": "debit-saman",
+                    "wage_amount": 1000,
+                    "affected_amount": 9000,
                     "ref_id": null,
                     "tracking_code": null,
-                    "created_at": 1673682519,
-                    "updated_at": 1673682519,
-                    "paid_at": 1673682519,
-                    "status": "FAILED",
-                    "error": {
-                        "code": "WITHDRAWAL_TIMEOUT",
-                        "message": "withdrawal timeout"
-                     },
+                    "status": "done",
+                    "error": null,
+                    "created_at": 1673773548,
+                    "updated_at": 1673773548,
+                    "paid_at": 1673773548,
                     "type": "debit",
                     "debit": {
                         "mandate_id": "068bb9f0-5ddf-11ed-b16d-61da2281b3d4"
@@ -1885,7 +1910,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
         "links": [
             ...
         ],
-        "path": "https://api.vandar.io/mpg/v1/checkouts",
+        "path": "https://api.vandar.io/mpg/v1/business/{business}/checkouts",
         "per_page": 12,
         "to": 12,
         "total": 77
@@ -1907,7 +1932,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
 
                         <pre>
 <span class="key">Method:</span> GET
-<span class="key">Address:</span> https://api.vandar.io/mpg/v1/checkouts/76252e83-fa00-46a4-b157-171213f2908a
+<span class="key">Address:</span> https://api.vandar.io/mpg/v1/business/{business}/checkouts/76252e83-fa00-46a4-b157-171213f2908a
 </pre>
 
 
@@ -1925,7 +1950,7 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
             "request_id": "123",
             "checkout_number": "123",
             "amount": "10000",
-            "status": "PAID",
+            "status": "paid",
             "description": "test",
             "created_at": 1673682519,
             "updated_at": 1673682519,
@@ -1934,34 +1959,35 @@ https://yourdomain.com/callback?token=0cf235d0-d48b-11ea-86cd-298ec898a9bd&statu
                 "mobile": "09354614194",
                 "first_name": "Ali",
                 "last_name": "Gholami",
+                "national_code": "4219849671",
                 "email": "asd@qwe.com"
             },
             "payments": [
                 {
-                    "id": "92df1c50-d510-463b-aa3b-c42ed2b06f05",
+                    "id": "b7d0d74c-4b25-4d42-8338-d9dce3c9e16f",
+                    "payment_method": "debit-ayandeh",
                     "amount": 10000,
-                    "wage_amount": 100,
-                    "affected_amount": 99900,
-                    "payment_method": "debit-saman",
+                    "wage_amount": 1000,
+                    "affected_amount": 9000,
                     "ref_id": null,
                     "tracking_code": null,
-                    "created_at": 1673682519,
-                    "updated_at": 1673682519,
-                    "paid_at": 1673682519,
-                    "status": "DONE",
+                    "status": "done",
                     "error": null,
+                    "created_at": 1673773548,
+                    "updated_at": 1673773548,
+                    "paid_at": 1673773548,
                     "type": "debit",
                     "debit": {
                         "mandate": {
-                            "id": "068bb9f0-5ddf-11ed-b16d-61da2281b3d4",
-                            "count": 15,
-                            "limit": 100000,
+                            "id": "1408bf10-2dcd-11ed-b084-bb5348c5e321",
                             "payment_method": "debit-saman",
-                            "status": "ACTIVE",
-                            "expiration_date": "2025-12-31",
+                            "count": 30,
+                            "limit": 30000000,
+                            "expires_at": 1685350749,
                             "customer_id": "efdaf820-2075-11ed-a96b-a9167c05d45d",
-                            "created_at": 1667741198,
-                            "updated_at": 1667741493,
+                            "status": "active",
+                            "created_at": 1662452234,
+                            "updated_at": 1662452234,
                             "revoked_at": null
                         }
                     }
