@@ -129,6 +129,19 @@
                             <!--                        </div>-->
                         </div>
                     </li>
+                    <li>
+                        <button class="dropdown-btn">سرویس پرداخت یکپارچه
+                            <br>
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-container">
+                            <a href="https://vandarpay.github.io/docs/mpg/#mpg">مقدمه</a><br>
+                            <a href="https://vandarpay.github.io/docs/mpg/#objects">آبجکت های سرویس پرداخت یکپارچه</a><br>
+                            <a href="https://vandarpay.github.io/docs/mpg/#payment-methods">مدیریت روش‌های پرداخت</a><br>
+                            <a href="https://vandarpay.github.io/docs/mpg/#get-token">صدور مجوز در روش پرداخت از حساب</a><br>
+                            <a href="https://vandarpay.github.io/docs/mpg/#checkout">سرویس صورت‌حساب (Checkout)</a><br>
+                        </div>
+                    </li>
 <!--                    <li>-->
 <!--                        <button class="dropdown-btn">سرویس پرداخت با وندار-->
 <!--                            <br>-->
@@ -336,7 +349,7 @@
                                 </tr>
                                 <tr>
                                     <td>valid_card_number</td>
-                                    <td>String</td>
+                                    <td>String|Array</td>
                                     <td>optional</td>
                                 </tr>
 				    <tr>
@@ -356,7 +369,9 @@
                                 <li>factorNumber (اختیاری): شماره فاکتور شما (اختیاری)</li>
                                 <li>description (اختیاری): توضیحات (اختیاری، حداکثر 255 کاراکتر)</li>
                                 <li>national_code (اختیاری): کد ملی معتبر (در صورت ارسال کد ملی، کاربر فقط با کارت‌های بانکی تحت مالکیت آن کد ملی قابلیت پرداخت خواهد داشت. برای بررسی کدملی در درگاه پرداخت ارسال شماره موبایل مرتبط با کد ملی نیز الزامی است.)</li>
-                                <li>valid_card_number (اختیاری): شماره کارت معتبر (در صورت ارسال شماره کارت، کاربر فقط با همان شماره کارت قابلیت پرداخت خواهد داشت.)</li>
+                                <li>
+                                    valid_card_number (اختیاری): درصورتی که پذیرنده خواستار الزام خریدار به استفاده از یک یا چند کارت خاص باشد، کارت یا کارت های خریدار را به صورت آرایه و حداکثر تا 10 شماره کارت در این کلید قرار می‌دهد.
+                                </li>
                                 <li>comment (اختیاری): یک یادداشت که در داشبورد شما روی تراکنش نمایش داده می شود. </li>1
 				<li>
 				    port:

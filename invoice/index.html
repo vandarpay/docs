@@ -129,6 +129,19 @@
                             <!--                        </div>-->
                         </div>
                     </li>
+                    <li>
+                        <button class="dropdown-btn">سرویس پرداخت یکپارچه
+                            <br>
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-container">
+                            <a href="https://vandarpay.github.io/docs/mpg/#mpg">مقدمه</a><br>
+                            <a href="https://vandarpay.github.io/docs/mpg/#objects">آبجکت های سرویس پرداخت یکپارچه</a><br>
+                            <a href="https://vandarpay.github.io/docs/mpg/#payment-methods">مدیریت روش‌های پرداخت</a><br>
+                            <a href="https://vandarpay.github.io/docs/mpg/#get-token">صدور مجوز در روش پرداخت از حساب</a><br>
+                            <a href="https://vandarpay.github.io/docs/mpg/#checkout">سرویس صورت‌حساب (Checkout)</a><br>
+                        </div>
+                    </li>
 <!--                    <li>-->
 <!--                        <button class="dropdown-btn">سرویس پرداخت با وندار-->
 <!--                            <br>-->
@@ -371,6 +384,11 @@
                                     <td>String</td>
                                     <td>optional</td>
                                 </tr>
+				<tr>
+				    <td>search_field</td>
+                                    <td>String</td>
+                                    <td>optional</td>
+                                </tr>
 
 
 
@@ -401,6 +419,7 @@
                                     <li> subscription : تراکنش های سرویس پرداخت خودکار </li>
                                     <li> settlements : تراکنش های تسویه و تسهیم </li>
                                     <li> cash-in : تراکنش های واریز بانکی </li>
+                                    <li> cash-in-by-code : تراکنش های واریز بانکی با شناسه واریز</li>
                                 </ul>
                                 <li>formId (اختیاری): شناسه فرم پرداخت </li>
                                 <li>ref_id (اختیاری): این پارامتر جستجو بر اساس کد مرجع را فراهم می‌سازد</li>
@@ -412,6 +431,20 @@
 				    </li>
                                 <li>start_after(اختیاری): این پارامتر مشخص میکند که تراکنش های بعد از این تراکنش در لیست خروجی بازگردانده شوند. برای دریافت صفحه های بعدی میتوانید ایدی اخرین تراکنش را در این پارامتر ارسال کنید. تا لیست جدید را دریافت کنید. </li>
                                 <li>q(اختیاری): مقدار موجود در این پارامتر در  فیلدهای تراکنش و فرم و ... جستجو می شود </li>
+				<li>search_field (اختیاری): محدوده ی جستجو</li>
+                                <ul>
+                                    <li> description: اطلاعات تراکنش </li>
+                                    <li> ref_id : کد مرجع</li>
+                                    <li> tracking_code : کد پیگیری </li>
+                                    <li> transaction_id : شناسه یکتای تراکنش </li>
+                                    <li> factor_number : شماره فاکتور </li>
+                                    <li> iban : شماره شبا </li>
+				    <li> mobile_number : شماره موبایل</li>
+					<li> api_token : توکن</li>
+					<li> card_number : شماره کارت</li>
+					<li> form_id : شناسه فرم</li>
+					<li> payment_number : شناسه واریز</li>
+                                </ul>
                             </ul>
 
                             <h3 class="sub-title">
