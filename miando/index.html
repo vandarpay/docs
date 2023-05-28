@@ -584,7 +584,17 @@
                                 <td>required</td>
                             </tr>
                             <tr>
-                                <td>settlement_type</td>
+                                <td>deposit_price</td>
+                                <td>integer</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
+                                <td>payer</td>
+                                <td>string</td>
+                                <td>required</td>
+                            </tr>
+                            <tr>
+                                <td>payment_method</td>
                                 <td>string</td>
                                 <td>required</td>
                             </tr>
@@ -634,22 +644,7 @@
                                 <td>optional</td>
                             </tr>
                             <tr>
-                                <td>items.*.item_price</td>
-                                <td>string</td>
-                                <td>required</td>
-                            </tr>
-                            <tr>
                                 <td>items.*.price</td>
-                                <td>string</td>
-                                <td>required</td>
-                            </tr>
-                            <tr>
-                                <td>items.*.payer</td>
-                                <td>string</td>
-                                <td>required</td>
-                            </tr>
-                            <tr>
-                                <td>items.*.payment_method</td>
                                 <td>string</td>
                                 <td>required</td>
                             </tr>
@@ -684,14 +679,16 @@
                             <li>creator (اجباری):
                                 نقش ایجاد کننده معامله (in:buyer,seller).
                             </li>
-                            <li>settlement_type (اختیاری):
-                                نوع تسویه حساب معامله در صورت نهایی شدن (in:wallet,wallet_iban).
-                                <br>
-                                <div class="info">
-                                    wallet: شارژ کیف پول ونداری کاربر
-                                    <br>
-                                    wallet_iban: شارژ کیف پول و سپس انتقال به شبای کاربر
-                                </div>
+                            <li>deposit_price (اجباری):
+                                مبلغ پرداختی معامله.
+                            </li>
+                            <li>
+                                payer (اجباری):
+                                نقش پرداخت‌کننده هزینه مربوط به کالا (in:buyer,seller).
+                            </li>
+                            <li>
+                                payment_method (اجباری):
+                                نوع پرداخت: پرداخت کامل، پیش پرداخت (in:full-pay,pre-pay).
                             </li>
                             <li>
                                 parties.*.role (اجباری):
@@ -733,20 +730,8 @@
                                 لینک توضیحات مربوط به کالا.
                             </li>
                             <li>
-                                items.*.item_price (اجباری):
-                                مبلغ کل کالا.
-                            </li>
-                            <li>
                                 items.*.price (اجباری):
                                 مبلغ بیعانه کالا.
-                            </li>
-                            <li>
-                                items.*.payer (اجباری):
-                                نقش پرداخت‌کننده هزینه مربوط به کالا (in:buyer,seller).
-                            </li>
-                            <li>
-                                items.*.payment_method (اجباری):
-                                نوع پرداخت: پرداخت کامل، پیش پرداخت (in:full-pay,pre-pay).
                             </li>
                             <li>
                                 items.*.quantity (اجباری):
@@ -767,6 +752,9 @@
   "redirect_url": "http://redirect.url",
   "description": "موبایل y8s",
   "creator": "buyer",
+  "deposit_price": "200000",
+  "payer": "buyer",
+  "payment_method": "full-pay",
   "parties": [
     {
       "role": "buyer",
@@ -785,10 +773,7 @@
       "category": "digital",
       "description": "در حد نو",
       "link": "https://divar.ir/v/gYoSNB1z",
-      "item_price": "200000",
       "price": "200000",
-      "payer": "buyer",
-      "payment_method": "full-pay",
       "quantity": 1,
       "attachments": [
         "https://vandar.io/assets/img/home/dashboard-full.png",
