@@ -333,6 +333,11 @@
                                 <td>String</td>
                                 <td>optional</td>
                             </tr>
+                            <tr>
+                                <td>payment_method</td>
+                                <td>String</td>
+                                <td>optional</td>
+                            </tr>
                         </table>
                         <h3 class="sub-title">
                             توضیحات
@@ -345,7 +350,12 @@
                             <li>national_code (اختیاری): کدملی کاربر سرویس شما</li>
                             <li>checkout_number (اختیاری): شماره صورتحساب سرویس شما که رشته‌ای از اعداد به طول حداقل ۱ و حداکثر ۳۲ کاراکتر می‌تواند باشد</li>
                             <li>description (اختیاری): توضیحات (حداکثر 255 کاراکتر)</li>
+                            <li>payment_method (اختیاری): روش پرداخت که در حال حاضر می توان دو مقدار direct_debit و tara را ارسال نمود. در صورت عدم ارسال این پارامتر مقدار پیش فرض direct_debit در نظر گرفته می شود که کاربر نیازمند ثبت نام یا ورود به حساب کاربری خود در وندار می باشد و در صورتی که پارامتر tara ارسال شود کاربر بدون ورود یا ثبت نام در وندار می تواند وارد درگاه اعتباری تارا شود.</li>
                         </ul>
+
+                        <div class="info">
+                            <strong>نکته!</strong> در حال حاضر روش های پرداخت direct_debit و tara پشتیبانی میشود.</strong>
+                        </div>
 
                         <h3 class="sub-title">
                             نمونه json
@@ -358,6 +368,7 @@
     "<span class="key">national_code</span>": "0123456789",
     "<span class="key">checkout_number</span>": "12345",
     "<span class="key">description</span>": "توضیحات دلخواه",
+    "<span class="key">payment_method</span>": "روش پرداخت",
 }
                             </pre>
                         <h3 class="sub-title">
